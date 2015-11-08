@@ -1,0 +1,14 @@
+{
+  "name": "pickyourday-webapp",
+  "homepage": "https://github.com/Zombispormedio/pickyourday-webapp",
+  "authors": [
+    "Claudia <cpg51@alu.ua.es>"
+  ],
+  "description": "",
+  "main": "index.html",
+  "moduleType": [],
+  "license": "MIT",
+  "dependencies": {
+    "angular": "angularjs#~1.4.7"
+  }
+}
