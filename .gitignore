@@ -1,1 +1,9 @@
-/bower_components/
+node_modules/
+public/bower_components/
+*.brackets.json
+/.ntvs_analysis.dat
+/pickyourday-api.njsproj
+typings/
+
+*.log
+*.bat
