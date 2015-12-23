@@ -3,8 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <title>Pickyourday Companies</title>
+    <link rel="stylesheet" href="/bower_components/semantic/dist/semantic.min.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
 </head>
-<body>
+<body ng-app="pickyourday-webapp">
 
+    <div ui-view></div>
+    <script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.min.js"></script>
+
+    <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="/bower_components/semantic/dist/semantic.min.js"></script>
+    <script type="text/javascript" src="/bower_components/notie/notie.js"></script>
+
+    <script type="text/javascript" src="/assets/js/utils.js"></script>
+
+    <script type="text/javascript" src="/app.js"></script>
+
+
+    <script type="text/javascript" src="/app/ctrl.js"></script>
+    <script type="text/javascript" src="/app/login/ctrl.js"></script>
+
+
+    <script type="text/javascript" src="lib/services/api.service.js"></script>
+    <script type="text/javascript" src="lib/services/interceptor.js"></script>
+    <script type="text/javascript" src="lib/services/oauth.service.js"></script>
+    <script type="text/javascript" src="lib/services/company.service.js"></script>
+
+    <script type="text/javascript" src="lib/filters.js"></script>
 </body>
 </html>
