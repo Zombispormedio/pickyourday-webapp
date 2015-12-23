@@ -11,8 +11,9 @@
   "dependencies": {
     "angular": "angularjs#~1.4.7",
     "semantic": "semantic-ui#~2.1.7",
-      "angular-ui-router": "~0.2.15",
-      "angular-resource": "~1.4.8",
-      "notie": "*"
+    "angular-ui-router": "~0.2.15",
+    "angular-resource": "~1.4.8",
+    "notie": "*",
+    "socket.io": "~1.3.7"
   }
 }
