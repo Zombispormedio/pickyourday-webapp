@@ -1,0 +1,22 @@
+<div class="ui card" ng-repeat="pick in picks">
+
+    <div class="content">
+        <a class="header">{{pick.initDate |date }}: {{pick.service.metadata.name}}</a>
+        <div class="meta">
+            <span class="date">Created: {{pick.dateCreated | date}}</span>
+        </div>
+        <div class="description">
+            <ul>
+                <li>Price: {{pick.service.price}}€</li>
+                <li>Duration: {{pick.service.duration}} minutes</li>
+            </ul>
+        </div>
+        <div class="extra content">
+        <h3>To</h3>
+            Email: {{pick.customer.email}}
+
+        </div>
+
+    </div>
+
+</div>
