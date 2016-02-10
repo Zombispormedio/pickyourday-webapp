@@ -12,6 +12,8 @@
     "angular": "~1.4.7",
     "angular-ui-router": "~0.2.15",
     "angular-resource": "~1.4.8",
-    "angular-material": "^1.0.5"
+    "angular-material": "^1.0.5",
+    "jquery": "^2.2.0",
+    "font-awesome": "^4.5.0"
   }
 }

@@ -1,22 +1,14 @@
-<div class="ui card" ng-repeat="pick in picks">
+<md-toolbar layout="row">
+    <div ui-view="header"></div>
+</md-toolbar>
 
-    <div class="content">
-        <a class="header">{{pick.initDate |date }}: {{pick.service.metadata.name}}</a>
-        <div class="meta">
-            <span class="date">Created: {{pick.dateCreated | date}}</span>
-        </div>
-        <div class="description">
-            <ul>
-                <li>Price: {{pick.service.price}}€</li>
-                <li>Duration: {{pick.service.duration}} minutes</li>
-            </ul>
-        </div>
-        <div class="extra content">
-        <h3>To</h3>
-            Email: {{pick.customer.email}}
 
-        </div>
+<div flex layout="row">
 
-    </div>
+
+    <md-sidenav md-is-locked-open="false" class="md-whiteframe-z2"></md-sidenav>
+
+    
+    <md-content flex id="content"></md-content>
 
 </div>
