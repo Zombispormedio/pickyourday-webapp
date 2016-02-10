@@ -2,10 +2,21 @@
 	background-image: url("https://googledrive.com/host/0B-TPTaV5ouD7TUtDXzVxQmhYa1E/fondo_login.png");
 }
 .loginForm{
-	margin-top: 50%;
+	padding-top: 15%;
+
+}
+#login label{
+	color: white;
+}
+.loginForm .md-input, #login input:focus{
+	border-color: white;
 }
 .loginButton{
 	min-width: 100%;
 	margin:0;
+	background-color: rgba(0, 82, 82, 0.76);
+	color:white;
 }
-
+.loginButton:hover{
+	background-color: rgba(222, 214, 214, 0.2);
+}
