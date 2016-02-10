@@ -22,7 +22,8 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
             }
         },
         templateUrl: 'app/login/main.html',
-        controller: 'LoginCtrl'
+        controller: 'LoginCtrl',
+       
 
     })
         .state("app", {
@@ -34,7 +35,8 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
             }
         },
         templateUrl: 'app/main.html',
-        controller: 'AppCtrl'
+        controller: 'AppCtrl',
+       
     });
 
 
