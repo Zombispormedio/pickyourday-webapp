@@ -10,7 +10,6 @@
   "license": "MIT",
   "dependencies": {
     "angular": "~1.4.7",
-    "semantic": "~2.1.7",
     "angular-ui-router": "~0.2.15",
     "angular-resource": "~1.4.8",
     "angular-material": "^1.0.5"

@@ -3,7 +3,7 @@ var webAppFactory = {};
 var webAppFilter = {};
 var webAppDirective = {};
 
-var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource"])
+var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMaterial'])
 .controller(webAppController)
 .factory(webAppFactory)
 .filter( webAppFilter)
@@ -38,11 +38,6 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource"])
     });
 
 
-
-
-
-
-
     $urlRouterProvider.otherwise("/login");
     $httpProvider.interceptors.push('AuthInterceptor');
 
@@ -53,35 +48,4 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource"])
     $rootScope.go = function (state, params) {
         $state.go(state, params);
     };
-
-
-    $rootScope.success=function(message){
-        notie.alert(1, message, 1.5);
-    };
-
-    $rootScope.error=function(message){
-        notie.alert(3, message, 2.5);
-    };
-
-    $rootScope.warning=function(message){
-        notie.alert(2, message, 2);
-    };
-
-    $rootScope.confirm=function(message, cb){
-        notie.confirm(message, 'Yes', 'Cancel', function() {
-            cb();
-        });
-    };
-
-    $rootScope.input=function(message, type, placeholder, cb){
-        notie.input(message, 'Submit', 'Cancel', type, placeholder, cb);
-    };
-
-
-
-
-
-
-
-
 });

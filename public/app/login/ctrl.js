@@ -11,7 +11,7 @@ webAppController.LoginCtrl = function ($rootScope, $scope, OauthService ) {
                 $rootScope.error(res.error);
             }
         }, function(){
-            $rootScope.warning("Server Not Found");
+            
         });
 
     };
