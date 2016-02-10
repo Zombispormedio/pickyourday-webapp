@@ -1,5 +1,5 @@
 webAppController.LoginCtrl = function ($rootScope, $scope, OauthService ) {
-
+document.body.classList.add("backgroundLogin");
     $scope.error="";
     $scope.user = {};
     $scope.login = function () {
