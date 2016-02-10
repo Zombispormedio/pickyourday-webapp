@@ -1,15 +1,3 @@
-body {
-    background-color: #DADADA;
-}
-body > .grid {
-    height: 100%;
-}
-.image {
-    margin-top: -100px;
-}
-.column {
-    max-width: 450px;
-}
 .backgroundLogin{
 	background-image: url("https://googledrive.com/host/0B-TPTaV5ouD7TUtDXzVxQmhYa1E/fondo_login.png");
 }
