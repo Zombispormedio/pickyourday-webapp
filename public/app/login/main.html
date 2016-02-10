@@ -1,23 +1,19 @@
-<div flex="grow" class="backgroundLogin">
-    <div layout="column" flex id="content" role="main" >
-    	<md-content layout="vertical" flex id="content">
-    		<div layout="row" layout-align="center center" layout-fill>
-    			<div  layout="column" flex="25" layout-padding>
-    				<md-content layout="column" layout-align="center ">
-    					<md-input-container>
-    						<label>Email</label>
-    						<input ng-model="user.email">
-    					</md-input-container>
-    					<md-input-container>
-    						<label>Password</label>
-    						<input ng-model="user.password" type="password">
-    					</md-input-container>
-    					<md-input-container layout-align="center center">
-    						<md-button ng-click="login()" class="md-raised loginButton" flex="30" flex-sm="100">Login</md-button>
-    					</md-input-container>
-    				</md-content>
-    			</div>
-    		</div>
-    	</md-content>
-    </div>
+<div flex="grow" class="backgroundLogin">    	
+	<div layout="row" layout-align="center center" layout-fill>
+		<div  layout="column" flex="25" layout-padding layout-align="center center" layout-fill>
+			<div layout="column" layout-align="center ">
+				<md-input-container>
+					<label>Email</label>
+					<input ng-model="user.email">
+				</md-input-container>
+				<md-input-container>
+					<label>Password</label>
+					<input ng-model="user.password" type="password">
+				</md-input-container>
+				<md-input-container layout-align="center center">
+					<md-button ng-click="login()" class="md-raised loginButton" flex="30" flex-sm="100">Login</md-button>
+				</md-input-container>
+			</div>
+		</div>
+	</div>
 </div>
