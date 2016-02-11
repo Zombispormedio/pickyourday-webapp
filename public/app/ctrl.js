@@ -1,4 +1,4 @@
-webAppController.AppCtrl = function ($rootScope, $scope, CompanyService, $interval) {
+webAppController.AppCtrl = function ($scope) {
 
     
 };

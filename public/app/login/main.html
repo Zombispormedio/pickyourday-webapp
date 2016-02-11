@@ -1,14 +1,13 @@
-<div flex="grow" class="backgroundLogin" id="login">   
-    <i flex class="contactIcon">
-        <md-button class="md-icon-button " aria-label="Settings">
-            <md-icon class="fa fa-envelope contact"></md-icon>
-        </md-button>
-    </i> 
+<div flex="grow" class="backgroundLogin" id="login">      
+    <md-button class="contactIcon" aria-label="contact">
+        <md-icon class="fa fa-envelope contact"></md-icon>
+    </md-button>
 
 	<div layout="row" class="loginForm" layout-align="center center" layout-fill>
          
 		<div layout="column" flex="25" layout-padding>
 			<div layout="column" layout-align="center">
+                <h2 class="md-display-1">Pick your day</h2>
 				<md-input-container> 
 					<label>Email</label>
 					<input ng-model="user.email">

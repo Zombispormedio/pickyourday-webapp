@@ -1,14 +1,20 @@
-<md-toolbar layout="row">
-    <div ui-view="header"></div>
-</md-toolbar>
+<md-toolbar class="md-tall md-accent backgroundLogin">
+      <h2 class="md-toolbar-tools">
+        <span>Toolbar: tall (md-accent)</span>
+      </h2>
+    </md-toolbar>
 
 
 <div flex layout="row">
 
-
-    <md-sidenav md-is-locked-open="true" class="md-whiteframe-z2" style="background-color:red"></md-sidenav>
+	
+    <md-sidenav md-is-locked-open="false" class="md-whiteframe-z2">
+		
+	</md-sidenav>
 
     
-    <md-content flex id="content" style="background-color:green"></md-content>
+    <md-content flex id="content">
+		<div ui-view="content"></div>
+	</md-content>
 
 </div>

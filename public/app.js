@@ -18,16 +18,16 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
         onEnter: function ($rootScope) {
             if (getJSONLocal("user")) {
 
-                $rootScope.go("app");
+                $rootScope.go("app.dashboard");
             }
         },
         templateUrl: 'app/login/main.html',
-        controller: 'LoginCtrl',
+        controller: 'LoginCtrl'
        
 
     })
         .state("app", {
-        url: '/',
+        url: '',
         onEnter: function ($rootScope) {
             if (!getJSONLocal("user")) {
 
@@ -35,9 +35,24 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
             }
         },
         templateUrl: 'app/main.html',
-        controller: 'AppCtrl',
-       
+        controller: 'AppCtrl'
+    })
+        .state("app.dashboard", {
+        url: '/dashboard',
+        onEnter: function ($rootScope) {
+            if (!getJSONLocal("user")) {
+
+                $rootScope.go("login");
+            }
+        },
+        views: {
+            content: {
+                templateUrl: 'app/dashboard/main.html',
+                controller: 'DashboardCtrl'
+            }
+        }       
     });
+
 
 
     $urlRouterProvider.otherwise("/login");

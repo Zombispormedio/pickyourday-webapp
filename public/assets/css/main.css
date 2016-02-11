@@ -1,15 +1,21 @@
 .contactIcon,.contact{
-	color:white;
-	float:right;
-	font-size: x-large;
-    margin-right: 2%;
+	color: white;
+    float: right;
+    font-size: 40px;
+    margin: 3%;
+    width: 50px;
+    height: 50px;
+    background-color: none;
+}
+.contactIcon:not([disabled]):hover{
+	background-color: transparent;
 }
 .backgroundLogin{
 	background-image: url("https://googledrive.com/host/0B-TPTaV5ouD7TUtDXzVxQmhYa1E/fondo_login.png");
 }
-.loginForm{
-	padding-top: 10%;
-
+.loginForm h2{
+	color:white;
+	text-align: left;
 }
 #login label{
 	color: white;
