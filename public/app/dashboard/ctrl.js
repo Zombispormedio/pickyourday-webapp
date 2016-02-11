@@ -1,0 +1,4 @@
+webAppController.DashboardCtrl = function ($scope) {
+
+    
+};
