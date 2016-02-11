@@ -1,19 +1,18 @@
-<md-toolbar class="md-tall md-accent backgroundLogin">
+<md-toolbar class="md-tall backgroundLogin">
       <h2 class="md-toolbar-tools">
-        <span>Toolbar: tall (md-accent)</span>
+        <md-button class="menuIcon" aria-label="menu" ng-click="openMenu()">
+          <md-icon class="fa fa-bars menu"></md-icon>
+        </md-button>
       </h2>
     </md-toolbar>
 
 
-<div flex layout="row">
-
-	
-    <md-sidenav md-is-locked-open="false" class="md-whiteframe-z2">
-		
-	</md-sidenav>
-
-    
-    <md-content flex id="content">
+<div flex layout="row">	
+  <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">	
+    <md-toolbar class="md-theme-light">
+      </md-toolbar>
+	</md-sidenav>    
+  <md-content flex id="content">
 		<div ui-view="content"></div>
 	</md-content>
 

@@ -1,17 +1,40 @@
+#content{
+	background-color:#d5d1ca;
+}
+.container1{
+	background-color: red;
+	width:50%;
+}
+.ng-scope{
+	height:100%;
+}
+/*Login*/
 .contactIcon,.contact{
 	color: white;
-    float: right;
+    right:0;
+    top:0;
     font-size: 40px;
     margin: 3%;
     width: 50px;
     height: 50px;
     background-color: none;
+    position: absolute;
 }
-.contactIcon:not([disabled]):hover{
+.menuIcon, .menu {
+    color: white;
+    top: 25px;
+    font-size: 40px;
+    margin-left: 20%;
+}
+.contactIcon:not([disabled]):hover, .menuIcon:not([disabled]):hover{
 	background-color: transparent;
 }
 .backgroundLogin{
 	background-image: url("https://googledrive.com/host/0B-TPTaV5ouD7TUtDXzVxQmhYa1E/fondo_login.png");
+	height:100%;
+}
+.loginForm{
+	height: 100%;
 }
 .loginForm h2{
 	color:white;
@@ -31,4 +54,13 @@
 }
 .loginButton:hover{
 	background-color: rgba(222, 214, 214, 0.2);
+}
+/*Toolbar*/
+.toolbarWeb{
+	
+}
+
+/*body*/
+.main{
+	background-color: red;
 }

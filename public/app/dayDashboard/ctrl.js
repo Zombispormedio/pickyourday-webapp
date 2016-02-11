@@ -1,0 +1,4 @@
+webAppController.DayDashboardCtrl = function ($scope) {
+
+    
+};
