@@ -1,9 +1,33 @@
+.mainContent{
+	margin-left:5%;
+	margin-right: 5%;
+	margin-bottom: 5%;
+}
+
 #content{
 	background-color:#d5d1ca;
 }
+.webAppMenuOptions,.webAppMenuInfo{
+	font-size: 20px;
+	margin-left: 5%;
+}
+.webAppMenuOptions > div {
+    margin-top: 4%;
+}
+.webAppMenuOptions a {
+    text-decoration: none;
+    color:black;
+}
+.dayDasboardDate{
+	display:flex;
+}
 .container1{
-	background-color: red;
-	width:50%;
+	background-color: white;
+	width:80%;
+    margin: 0 auto;
+    -webkit-box-shadow: 0px 0px 0px 10px rgba(203,200,194,0.52);
+	-moz-box-shadow: 0px 0px 0px 10px rgba(203,200,194,0.52);
+	box-shadow: 0px 0px 0px 10px rgba(203,200,194,0.52);
 }
 .ng-scope{
 	height:100%;
@@ -33,6 +57,9 @@
 	background-image: url("https://googledrive.com/host/0B-TPTaV5ouD7TUtDXzVxQmhYa1E/fondo_login.png");
 	height:100%;
 }
+.loginForm input{
+	color:white;
+}
 .loginForm{
 	height: 100%;
 }
@@ -60,7 +87,3 @@
 	
 }
 
-/*body*/
-.main{
-	background-color: red;
-}

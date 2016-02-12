@@ -1,6 +1,20 @@
-<div flex class="container1 column"  layout-align="center center">
-	<h2>hola</h2>
-	<div flex class="container2">
-	
-	</div>
+
+<div class="dayDasboardDate">
+	<img src="" alt="">
+	<h3 class="md-headline">Fecha</h3>
 </div>
+<md-content>
+	<md-list>
+	  <md-list-item class="md-3-line" ng-repeat="item in messages">
+	    <img ng-src="{{item.face}}?{{$index}}" class="face" alt="{{item.who}}">
+	    <div class="md-list-item-text">
+	      <!--<h3>{{item.name}}</h3>
+	      <h4>{{item.pick}}</h4>-->
+	      <h3>Name</h3>
+	      <h4>Cita actual</h4>
+	    </div>
+	    <md-divider vertical></md-divider>
+	    <md-divider md-inset ng-if="!$last"></md-divider>
+	  </md-list-item>
+	</md-list>
+</md-content>

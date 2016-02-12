@@ -1,0 +1,4 @@
+webAppController.companiesProfileCtrl = function ($scope) {
+
+    
+};

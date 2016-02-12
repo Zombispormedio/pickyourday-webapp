@@ -1,19 +1,38 @@
 <md-toolbar class="md-tall backgroundLogin">
       <h2 class="md-toolbar-tools">
-        <md-button class="menuIcon" aria-label="menu" ng-click="openMenu()">
+        <md-button class="menuIcon" aria-label="menu" ng-click="openLeftMenu()">
           <md-icon class="fa fa-bars menu"></md-icon>
         </md-button>
       </h2>
     </md-toolbar>
 
 
-<div flex layout="row">	
-  <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">	
-    <md-toolbar class="md-theme-light">
-      </md-toolbar>
-	</md-sidenav>    
-  <md-content flex id="content">
-		<div ui-view="content"></div>
-	</md-content>
+<div flex layout="row">	 
+  <md-sidenav md-component-id="left" class="md-sidenav-left">
+  <div class="webAppMenuInfo">
+    <img src="" alt="">
+    <h2>Nombre empresa</h2>
+  </div>
+  <md-divider></md-divider>
+    <div class="webAppMenuOptions" layout="column" layout-align="space-between start">
+      <div><a ui-sref="app.companiesProfile"><i class="fa fa-user"></i> Mi perfil</a></div>
+      <div><a ui-sref="app.dashboard"><i class="fa fa-calendar"></i> Dashboard</a></div>
+      <div><a ui-sref="app.dayDashboard"><i class="fa fa-calendar-check-o"></i> Hoy</a></div>
+      <div><a ui-sref="app.employees"><i class="fa fa-users"></i> Empleados</a></div>
+      <div><a ui-sref="app.services"><i class="fa fa-tags"></i> Servicios</a></div>
+      <div><a ui-sref="app.addPick"><i class="fa fa-plus-circle"></i> Pick manual</a></div>
+      <div><a ui-sref="app.createPromotion"><i class="fa fa-bullhorn"></i> Crear promoción</a></div>
+      <div><a ui-sref="app.statistics"><i class="fa fa-line-chart"></i> Estadísticas</a></div>
+      <div><a ui-sref="app.3Dstatistics"><i class="fa fa-bar-chart"></i> Estadísticas 3D</a></div>
+      <div><a ui-sref="app.settings"><i class="fa fa-cog"></i> Ajustes</a></div>
+      <div><a ui-sref="app.help"><i class="fa fa-question-circle"></i> Ayuda</a></div>
+    </div>  
+  </md-sidenav>
 
+  <md-content flex id="content">		
+    <div layout="column" class="container1">  
+      <div ui-view="content" class="mainContent">
+    </div>
+    </div>
+	</md-content>
 </div>

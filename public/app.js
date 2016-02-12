@@ -22,8 +22,7 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
             }
         },
         templateUrl: 'app/login/main.html',
-        controller: 'LoginCtrl'
-       
+        controller: 'LoginCtrl'      
 
     })
         .state("app", {
@@ -64,6 +63,21 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
             content: {
                 templateUrl: 'app/dayDashboard/main.html',
                 controller: 'DayDashboardCtrl'
+            }
+        }
+    })
+        .state("app.companiesProfile", {
+        url: '/companiesProfile',
+        onEnter: function ($rootScope) {
+            if (!getJSONLocal("user")) {
+
+                $rootScope.go("login");
+            }
+        },
+        views: {
+            content: {
+                templateUrl: 'app/companiesProfile/main.html',
+                controller: 'companiesProfileCtrl'
             }
         }      
     });
