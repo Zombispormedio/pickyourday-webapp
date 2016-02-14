@@ -6,7 +6,7 @@ webAppController.LoginCtrl = function ($rootScope, $scope, OauthService ) {
         OauthService.login().Session($scope.user, function(res){
             if (!res.error) {
                 saveLocal("user", res.data);
-                $rootScope.go("app.dayDashboard");
+                $rootScope.go("app.dashboard");
             } else {
                
             }

@@ -3,13 +3,18 @@
 	margin-right: 5%;
 	margin-bottom: 5%;
 }
-
 #content{
 	background-color:#d5d1ca;
 }
 .webAppMenuOptions,.webAppMenuInfo{
 	font-size: 20px;
 	margin-left: 5%;
+}
+button.webAppMenuOptions {
+    background-color: transparent;
+    border-color: transparent;
+    margin: 0;
+    margin-left: -5%;
 }
 .webAppMenuOptions > div {
     margin-top: 4%;
@@ -28,6 +33,7 @@
     -webkit-box-shadow: 0px 0px 0px 10px rgba(203,200,194,0.52);
 	-moz-box-shadow: 0px 0px 0px 10px rgba(203,200,194,0.52);
 	box-shadow: 0px 0px 0px 10px rgba(203,200,194,0.52);
+	margin-bottom: 5%;
 }
 .ng-scope{
 	height:100%;
@@ -72,6 +78,7 @@
 }
 .loginForm .md-input, #login input:focus{
 	border-color: white;
+
 }
 .loginButton{
 	min-width: 100%;
@@ -82,8 +89,14 @@
 .loginButton:hover{
 	background-color: rgba(222, 214, 214, 0.2);
 }
-/*Toolbar*/
-.toolbarWeb{
-	
+/*Company profile*/
+.companyProfileForm input{
+	color:#000;
 }
-
+#companyProfile label{
+	color:rgba(0, 0, 0, 0.57);
+}
+.companyProfileForm .md-input,#companyProfile input:focus, #companyProfile textarea{
+	border-color: rgba(0, 0, 0, 0.47);
+	width:50%;
+}
