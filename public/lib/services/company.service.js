@@ -13,15 +13,14 @@ webAppFactory.CompanyService= function(ApiService){
         	});
         },
         services:function(){
-            return ApiService.rest(this.base+"/resource/:id",{
-                get:{method:"GET", params:{}},
+            return ApiService.rest(this.base+"/service/:id",{
+                list:{method:"GET", params:{}},
             });
         },
          promotion:function(){
             return ApiService.rest(this.base+"/promotion/:id",{
                 create:{method:"POST", params:{}},
-                
-                });
+            });
         }
     };
 };

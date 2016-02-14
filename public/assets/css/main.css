@@ -133,8 +133,8 @@ button.webAppMenuOptions {
     line-height: 45px;
     border:50%;
 }
-.companyImages .deleteImageIcon:not([disabled]):hover{
-	background-color: #009688;
+.companyImages .deleteImageIcon:not([disabled]):hover,.companyImages .deleteImageIcon:not([disabled]):focus, .resourcesServices > button.md-fab:not([disabled]):hover, .resourcesServices > button.md-fab:not([disabled]):focus{
+	background-color: #00796B;
 }
 .companyImages > button {
     margin-top: -2%;
@@ -173,4 +173,26 @@ p.location {
 	padding-top: 2%;
 	padding-right: 2%;
 }
-
+.resourcesServices{
+	margin-top: 2%;
+}
+.resourcesServices > button.md-fab{
+	float: right;
+	background-color: #009688;
+}
+.services{
+	padding-bottom: 2%;
+	font-size: 20px;
+}
+.services i{
+	margin-right: 2%;
+	color: #009688;
+	font-size: 15px;
+}
+.services > h3{
+	font-weight: bolder;
+}
+.services > h4{
+	padding-top: 1%;
+	margin-left: 2%;
+}

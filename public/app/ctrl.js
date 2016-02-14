@@ -8,4 +8,8 @@ webAppController.AppCtrl = function ($rootScope,$scope, $mdSidenav) {
         deleteLocal("user");
         $rootScope.go("login");      
     };
+
+   $scope.resourcesView = function() {
+    $mdSidenav('right').toggle();
+  };
 };

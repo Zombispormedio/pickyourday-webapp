@@ -1,0 +1,27 @@
+<div class="headServicesList">
+	<i class="fa fa-tags"></i>
+	<h2>Listas de servicios</h2>
+</div>
+
+<div ng-repeat="service in services" class="resourcesServices">
+	<md-button class="md-fab fa fa-user" ng-click="resourcesView()"></md-button>
+	<md-list-item class="md-3-line" >
+		<div class="md-list-item-text services" layout="column">
+			<h3><i class="fa fa-tags"></i>{{service.id_name.name}}</h3>
+			<h4><i class="fa fa-align-justify"></i>{{service.description}}</h4>
+			<h4><i class="fa fa-clock-o"></i>{{service.duration}}</h4>
+			<h4><i class="fa fa-eur"></i>{{service.price}}</h4>
+		</div>
+	</md-list-item>	
+	<md-divider ></md-divider>
+</div>
+
+<md-sidenav md-component-id="right" class="md-sidenav-right">
+	<h2>Empleados</h2>
+	<md-list-item>
+		<img ng-src="{{item.face}}?{{$index}}" class="face" alt="{{item.who}}">
+	    <p>hi</p>
+	    <md-checkbox class="md-secondary" ng-model="topping.wanted"></md-checkbox>
+	  </md-list-item>
+</md-sidenav>
+
