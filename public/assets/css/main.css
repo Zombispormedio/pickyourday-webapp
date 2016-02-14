@@ -1,3 +1,7 @@
+.toolbar{
+	position:fixed;
+	overflow: auto;
+}
 .mainContent{
 	margin-left:5%;
 	margin-right: 5%;
@@ -6,10 +10,12 @@
 
 #content{
 	background-color:#d5d1ca;
+	overflow:visible;
+	padding-bottom: 5%;
 }
 .webAppMenuOptions,.webAppMenuInfo{
 	font-size: 20px;
-	margin-left: 5%;
+	margin-left: 4%;
 }
 button.webAppMenuOptions {
     background-color: transparent;
@@ -34,8 +40,12 @@ button.webAppMenuOptions {
     -webkit-box-shadow: 0px 0px 0px 10px rgba(203,200,194,0.52);
 	-moz-box-shadow: 0px 0px 0px 10px rgba(203,200,194,0.52);
 	box-shadow: 0px 0px 0px 10px rgba(203,200,194,0.52);
-	margin-bottom: 5%;
+	position: relative;
+	z-index: 2;
+	margin-top: 5%;
+	overflow:hidden;
 }
+
 .ng-scope{
 	height:100%;
 }
@@ -56,6 +66,7 @@ button.webAppMenuOptions {
     top: 25px;
     font-size: 40px;
     margin-left: 20%;
+    height:100%;
 }
 .contactIcon:not([disabled]):hover, .menuIcon:not([disabled]):hover{
 	background-color: transparent;
@@ -90,7 +101,76 @@ button.webAppMenuOptions {
 .loginButton:hover{
 	background-color: rgba(222, 214, 214, 0.2);
 }
-/*Toolbar*/
-.toolbarWeb{
-	
+/*Company profile*/
+.companyProfileForm input{
+	color:#000;
 }
+#companyProfile label, .companyProfileForm p{
+	color:rgba(0, 0, 0, 0.57);
+}
+.companyProfileForm .md-input,#companyProfile input:focus, #companyProfile textarea, #companyProfile input{
+	border-color: rgba(0, 0, 0, 0.3);
+	width:50%;
+}
+
+.dtp > .dtp-content > .dtp-date-view > header.dtp-header, .dtp div.dtp-date, .dtp div.dtp-time, .dtp table.dtp-picker-days tr > td > a.selected,.dtp .dtp-picker-time > a.dtp-select-hour.selected,.dtp .dtp-hand.on, .dtp .dtp-actual-meridien a.selected{
+	background-color: #009688;
+}
+.companyImages{
+	display:inline;
+	margin-right: 2%;
+}
+.companyImages > img {
+    width: 250px;
+    height: 150px;
+}
+.companyImages .deleteImageIcon{
+	background-color: #009688;
+    font-size: 20px;
+    vertical-align: top;
+    width: 35px;
+    height: 35px;
+    line-height: 45px;
+    border:50%;
+}
+.companyImages .deleteImageIcon:not([disabled]):hover{
+	background-color: #009688;
+}
+.companyImages > button {
+    margin-top: -2%;
+    margin-left: -3%;
+}
+.locationInfo{
+	display: block;
+	margin-top: -3%;
+}
+.locationInfo > p, p.phones{
+		color:black;
+}
+.phones, .location{
+	margin-left: 0;
+
+}
+p.location {
+    margin-top: 0.5%;
+}
+.phoneList{
+	margin-top: -1%;
+}
+.fa-phone{
+	font-size: 25px;
+    margin-right: 1%;
+    color:#009688;
+}
+/*Servicios*/
+.headServicesList{
+	display:inline-flex;
+	width:100%;
+	margin-top: 2%;
+}
+.headServicesList > i{
+	font-size: 30px;
+	padding-top: 2%;
+	padding-right: 2%;
+}
+

@@ -1,38 +1,66 @@
-<div id="companyProfile">
-	<div class="">
-		<img src="" alt="">
-		<h3 class="md-headline">Mi perfil</h3>
-	</div>
-
+<div id="companyProfile">	
+	<h3 class="md-headline">Mi perfil</h3>
 	<form name="userForm" class="companyProfileForm" layout="column">
 		<md-input-container>
 			<label>Nombre</label>
-			<input name="companyname" ng-model="name" required>
+			<input name="companyname" ng-model="profile.name">
 		</md-input-container>
 		<md-input-container>
 			<label>Descripcion</label>
-			<textarea name="description" ng-model="description"></textarea>
+			<textarea name="description" ng-model="profile.description"></textarea>
 		</md-input-container>
 		
-		<h4 class=".md-subhead">Horario de apertura</h4>
+		<p class=".md-subhead">Horario de apertura</p>
 		<md-input-container>		
-			<input mdc-datetime-picker="" date="true" time="true" type="text" id="datetime"
-placeholder="Date" min-date="date" ng-model="dateTime" class=" md-input">
+			<input mdc-datetime-picker="" date="true" time="true" type="text" id="datetime" placeholder="Desde" min-date="date" ng-model="dateTime" class=" md-input">
 		</md-input-container>
 		<md-input-container>
-			<label>Vacaciones</label>
-			<input name="vacaciones" ng-model="vacaciones" required>
+			<input mdc-datetime-picker="" date="true" time="true" type="text" id="datetime" placeholder="Hasta" min-date="date" ng-model="dateTime" class=" md-input">
 		</md-input-container>
 		<md-input-container>
-			<label>Localización</label>
-			<input name="location" ng-model="location" required>
+			<label>Email</label>
+			<input name="email" ng-model="profile.email">
+		</md-input-container>
+
+		<md-input-container>
+			<label>Sitio web</label>
+			<input name="website" ng-model="profile.web">
 		</md-input-container> 
-		<md-input-container>  
-			<label>Datos de contacto</label>
-			<input name="contactInfo" ng-model="contactInfo" required>
+
+		
+		<p class=".md-subhead">Localización</p>
+		<md-input-container >  
+	      <md-list-item class="locationInfo">		
+	      		<p class="location"> {{profile.location.name}}</p> 
+	      		<p class="location"> {{profile.location.address}}</p> 
+	      		<p class="location"> {{profile.location.country}}</p>
+	      		<p class="location"> {{profile.location.city}}</p>
+	      		<p class="location"> {{profile.location.province}}</p>
+	      		<p class="location"> {{profile.location.zipcode}}</p>			     
+		   </md-list-item>
+		   <div ng-if="profile.phone.length==0">
+		   	<p>no hay telefonos</p>
+		   </div>			
 		</md-input-container> 
+
+		<p class=".md-subhead">Teléfono</p>
+		<md-input-container class="phoneList">  
+	      <md-list-item ng-repeat="phones in profile.phone">	      	 	
+	  	 		<i class="fa fa-phone"></i>
+	      		<p class="phones"> {{phones}}</p> 	      	 			     
+		   </md-list-item>
+		   <div ng-if="profile.phone.length==0">
+		   	<p>no hay telefonos</p>
+		   </div>			
+		</md-input-container> 
+		<p class=".md-subhead">Fotos</p>
 		<md-input-container>  
-			<label>Fotos</label>
+			<div class="companyImages" ng-repeat="image in profile.images">				
+				 <img ng-src="{{image.src}}" alt="{{image.alt}}">
+				 <md-button class="md-fab deleteImageIcon" aria-label="delete">
+				  <md-icon class="fa fa-times"></md-icon>
+				</md-button>
+			</div>
 	 	</md-input-container>
 	</form>
 </div>

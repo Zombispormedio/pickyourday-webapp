@@ -1,11 +1,10 @@
-<md-toolbar class="md-tall backgroundLogin">
+<md-toolbar class="md-tall backgroundLogin toolbar">
       <h2 class="md-toolbar-tools">
         <md-button class="menuIcon" aria-label="menu" ng-click="openLeftMenu()">
           <md-icon class="fa fa-bars menu"></md-icon>
         </md-button>
       </h2>
     </md-toolbar>
-
 
 <div flex layout="row">	 
   <md-sidenav md-component-id="left" class="md-sidenav-left">
@@ -30,10 +29,12 @@
     </div>  
   </md-sidenav>
 
-  <md-content flex id="content">		
-    <div layout="column" class="container1">  
-      <div ui-view="content" class="mainContent">
-    </div>
+  <md-content flex>		
+    <div id="content">
+      <div layout="column" class="container1">  
+        <div ui-view="content" class="mainContent">
+        </div>
+      </div>
     </div>
 	</md-content>
 </div>
