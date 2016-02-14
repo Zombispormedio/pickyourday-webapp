@@ -16,17 +16,8 @@
 		
 		<h4 class=".md-subhead">Horario de apertura</h4>
 		<md-input-container>		
-			<div class="range layout-column flex-gt-md-30">
-			  <md-input-container class="md-input-has-placeholder">			    
-			    <input mdc-datetime-picker="" date="true" time="true" type="text"
-			    placeholder="Desde" max-date="dateTimeEnd" ng-model="dateTimeStart" class=" md-input"
-			    id="input_0">
-			  </md-input-container>
-			  <md-input-container class="md-input-has-placeholder">
-			    <input mdc-datetime-picker="" date="true" time="true" type="text"
-			    placeholder="Hasta" min-date="dateTimeStart"="dateTimeEnd" class=" md-input" id="input_1">
-			  </md-input-container>
-			</div>
+			<input mdc-datetime-picker="" date="true" time="true" type="text" id="datetime"
+placeholder="Date" min-date="date" ng-model="dateTime" class=" md-input">
 		</md-input-container>
 		<md-input-container>
 			<label>Vacaciones</label>
