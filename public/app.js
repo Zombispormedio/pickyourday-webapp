@@ -80,6 +80,22 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
                 controller: 'companiesProfileCtrl'
             }
         }      
+    })
+    
+        .state("app.promotion", {
+            url: '/promotion',
+        onEnter: function ($rootScope) {
+            if (!getJSONLocal("user")) {
+
+                $rootScope.go("login");
+            }
+        },
+        views: {
+            content: {
+                templateUrl: 'app/promotion/main.html',
+                controller: 'promotionCtrl'
+            }
+        }      
     });
 
 

@@ -3,6 +3,7 @@
 	margin-right: 5%;
 	margin-bottom: 5%;
 }
+
 #content{
 	background-color:#d5d1ca;
 }
@@ -89,14 +90,15 @@ button.webAppMenuOptions {
 .loginButton:hover{
 	background-color: rgba(222, 214, 214, 0.2);
 }
-/*Company profile*/
-.companyProfileForm input{
-	color:#000;
+/*Toolbar*/
+.toolbarWeb{
+	
 }
-#companyProfile label{
-	color:rgba(0, 0, 0, 0.57);
-}
-.companyProfileForm .md-input,#companyProfile input:focus, #companyProfile textarea{
-	border-color: rgba(0, 0, 0, 0.47);
-	width:50%;
-}
+
+.inputdemoErrors .inputErrorsApp {
+  min-height: 48px; }
+.inputdemoErrors md-input-container > p {
+  font-size: 0.8em;
+  text-align: left;
+  width: 100%; }
+

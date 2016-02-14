@@ -8,6 +8,13 @@ webAppFactory.CompanyService= function(ApiService){
 
 
             });
+        },
+        
+        promotion:function(){
+            return ApiService.rest(this.base+"/promotion/:id",{
+                create:{method:"POST", params:{}},
+                
+                });
         }
 
 
