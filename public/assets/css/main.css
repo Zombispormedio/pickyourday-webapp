@@ -133,7 +133,7 @@ button.webAppMenuOptions {
     line-height: 45px;
     border:50%;
 }
-.companyImages .deleteImageIcon:not([disabled]):hover,.companyImages .deleteImageIcon:not([disabled]):focus, .resourcesServices > button.md-fab:not([disabled]):hover, .resourcesServices > button.md-fab:not([disabled]):focus{
+.companyImages .deleteImageIcon:not([disabled]):hover,.companyImages .deleteImageIcon:not([disabled]):focus, .servicesList > button.md-fab:not([disabled]):hover, .servicesList > button.md-fab:not([disabled]):focus{
 	background-color: #00796B;
 }
 .companyImages > button {
@@ -173,11 +173,13 @@ p.location {
 	padding-top: 2%;
 	padding-right: 2%;
 }
-.resourcesServices{
+.servicesList{
 	margin-top: 2%;
+	margin-bottom: 2%;
 }
-.resourcesServices > button.md-fab{
+.servicesList > button.md-fab{
 	float: right;
+	font-size:20px;
 	background-color: #009688;
 }
 .services{
@@ -195,4 +197,14 @@ p.location {
 .services > h4{
 	padding-top: 1%;
 	margin-left: 2%;
+}
+.resourcesServices{
+	width: 80%;
+    padding-left: 2%;
+}
+md-checkbox.md-checked .md-icon {
+ background-color: #009688;;
+}
+.addService{
+		margin-right: 0;
 }
