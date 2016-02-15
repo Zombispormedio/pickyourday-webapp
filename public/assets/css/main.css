@@ -2,16 +2,11 @@
 	position:fixed;
 	overflow: auto;
 }
-.mainContent{
-	margin-left:5%;
-	margin-right: 5%;
-	margin-bottom: 5%;
-}
-
 #content{
 	background-color:#d5d1ca;
 	overflow:visible;
 	padding-bottom: 5%;
+	height:100%;
 }
 .webAppMenuOptions,.webAppMenuInfo{
 	font-size: 20px;
@@ -44,8 +39,9 @@ button.webAppMenuOptions {
 	z-index: 2;
 	margin-top: 5%;
 	overflow:hidden;
+	padding-left:5%;
+	padding-right:5%;
 }
-
 .ng-scope{
 	height:100%;
 }
@@ -66,7 +62,7 @@ button.webAppMenuOptions {
     top: 25px;
     font-size: 40px;
     margin-left: 20%;
-    height:100%;
+    /*height:100%;*/
 }
 .contactIcon:not([disabled]):hover, .menuIcon:not([disabled]):hover{
 	background-color: transparent;
@@ -90,7 +86,6 @@ button.webAppMenuOptions {
 }
 .loginForm .md-input, #login input:focus{
 	border-color: white;
-
 }
 .loginButton{
 	min-width: 100%;
@@ -130,10 +125,19 @@ button.webAppMenuOptions {
     vertical-align: top;
     width: 35px;
     height: 35px;
-    line-height: 45px;
+    line-height: 0px;
     border:50%;
 }
-.companyImages .deleteImageIcon:not([disabled]):hover,.companyImages .deleteImageIcon:not([disabled]):focus, .servicesList > button.md-fab:not([disabled]):hover, .servicesList > button.md-fab:not([disabled]):focus{
+     /*hover*/
+.companyImages .deleteImageIcon:not([disabled]):hover,.buttonViewResources.md-fab:not([disabled]):hover, .addService.md-fab:not([disabled]):hover{
+	background-color: #00796B;
+}
+	/*focus*/
+.companyImages .deleteImageIcon:not([disabled]):focus,.buttonViewResources.md-fab:not([disabled]):focus, .addService.md-fab:not([disabled]):focus{
+	background-color: #00796B;
+}
+	/*active*/
+.companyImages .deleteImageIcon:not([disabled]):active,.buttonViewResources.md-fab:not([disabled]):active, .addService.md-fab:not([disabled]):active{
 	background-color: #00796B;
 }
 .companyImages > button {
@@ -173,38 +177,53 @@ p.location {
 	padding-top: 2%;
 	padding-right: 2%;
 }
-.servicesList{
-	margin-top: 2%;
-	margin-bottom: 2%;
+.services{
+	width:90%;
 }
-.servicesList > button.md-fab{
+.serviceList>md-card-title{
+	background-color: #009688;	
+	padding:0;
+}
+.serviceList>md-card-title p{
+	margin-left: 2%;
+	color:white;
+	font-size: 18px;
+	font-weight: bold;
+}
+.serviceInfo, .serviceDescription{
+	font-size: 15px;
+	margin:0.5%;
+}
+.buttonViewResources.md-fab{
 	float: right;
 	font-size:20px;
 	background-color: #009688;
+	margin-top: 2%;
 }
-.services{
-	padding-bottom: 2%;
-	font-size: 20px;
+.addService.md-fab{
+	font-size:20px;
+	background-color: #009688;
+	float: right;
+    margin-right: -55px;
+}
+.servicesCardInfo{
+	display:flex;
 }
 .services i{
-	margin-right: 2%;
-	color: #009688;
-	font-size: 15px;
+	margin-right: 5%;
+	font-size: 18px;	
 }
-.services > h3{
-	font-weight: bolder;
-}
-.services > h4{
-	padding-top: 1%;
-	margin-left: 2%;
+.serviceInfo{
+	width: 15%;
+    margin-left: 0;
 }
 .resourcesServices{
 	width: 80%;
     padding-left: 2%;
 }
 md-checkbox.md-checked .md-icon {
- background-color: #009688;;
+ background-color: #009688;
 }
-.addService{
-		margin-right: 0;
+.serviceList {
+    margin-bottom: 5%;
 }
