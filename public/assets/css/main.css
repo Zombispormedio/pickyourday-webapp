@@ -199,6 +199,7 @@ p.location {
 	font-size:20px;
 	background-color: #009688;
 	margin-top: 2%;
+	/**/width: 60px;
 }
 .addService.md-fab{
 	font-size:20px;
@@ -214,7 +215,8 @@ p.location {
 	font-size: 18px;	
 }
 .serviceInfo{
-	width: 15%;
+	/*width: 15%;*/
+	width: 40%;
     margin-left: 0;
 }
 .resourcesServices{
@@ -226,4 +228,24 @@ md-checkbox.md-checked .md-icon {
 }
 .serviceList {
     margin-bottom: 5%;
+}
+.companyServices{
+	display:flex;
+}
+.companyServices md-card{
+	width:50%;
+}
+.buttonDeleteService{
+	color:white;
+	font-size: 25px;
+	margin-right: 0;
+}
+.serviceCardHead{
+	display:flex;
+}
+.serviceCardHead p{
+	width:100%;
+}
+.addServiceToolbar{
+	background-color: #009688;
 }
