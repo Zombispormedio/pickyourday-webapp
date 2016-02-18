@@ -1,47 +1,48 @@
-<form name="userForm" layout="column" ng-submit="create()">
-<md-input-container>
-        <label>Título</label>
-        <input ng-model="promotion.name" name="title">
-</md-input-container>
+<div id="formStyle">
+    <h3 class="md-headline">Nueva promoción</h3>
+    <form name="userForm" layout="column" class="form" ng-submit="create()">
+        <md-input-container>
+            <label>Título</label>
+            <input ng-model="promotion.name" name="title">
+        </md-input-container>
 
-	  
-<md-input-container>
-        <label>Descripción</label>
-        <textarea ng-model="promotion.description" name="description" ></textarea>
-</md-input-container>
+        	  
+        <md-input-container>
+            <label>Descripción</label>
+            <textarea ng-model="promotion.description" name="description" ></textarea>
+        </md-input-container>
 
-<md-checkbox ng-model="promotion.ownCustomers" aria-label="onlyClients">
-        Solo clientes
-</md-checkbox>
+        <md-checkbox ng-model="promotion.ownCustomers" aria-label="onlyClients">
+                Solo clientes
+        </md-checkbox>
 
-<md-input-container>
-        <label>Fecha desde</label>
-        <input ng-model="promotion.initDate" type="date">
-</md-input-container>
+        <p class=".md-subhead">Horario de apertura</p>
+        <md-input-container>        
+            <input mdc-datetime-picker="" date="true" time="true" type="text" id="datetime" placeholder="Desde" min-date="date" ng-model="dateTime" class=" md-input">
+        </md-input-container>
+        <md-input-container>
+            <input mdc-datetime-picker="" date="true" time="true" type="text" id="datetime" placeholder="Hasta" min-date="date" ng-model="dateTime" class=" md-input">
+        </md-input-container>
+    
+        <md-input-container>
+            <label>Máximo unidades</label>        
+            <input ng-model="promotion.useLimit" type="number" step="any" name="units" min="0"/>
+        </md-input-container>
 
-<md-input-container>
-        <label>Fecha hasta</label>
-        <input ng-model="promotion.endDate" type="date">
-</md-input-container>
+        <md-input-container>
+            <label>% descuento</label>
+            <input type="number" step="any" name="discount" ng-model="promotion.discount" min="0"
+                       max="100"/>     
+        </md-input-container>
 
-<md-input-container>
-        <label>Máximo unidades</label>
-        <input ng-model="promotion.useLimit" type="number" step="any" name="units" min="0"/>
-</md-input-container>
+        <p class=".md-subhead">Servicios asociados</p>
+        <md-input-container style="margin-right: 10px;">
+            <label>Servicios</label>
+            <md-select ng-model="promotion.service">
+              <md-option ng-repeat="service in services" value="{{service}}">{{service}}</md-option>
+            </md-select>
+        </md-input-container>
 
-<md-input-container>
-        <label>% descuento</label>
-        <input type="number" step="any" name="discount" ng-model="promotion.discount" min="0"
-               max="100"/>     
-</md-input-container>
-
-<h3>Lista de servicios asociados</h3>
-<md-input-container style="margin-right: 10px;">
-        <label>Servicios</label>
-        <md-select ng-model="promotion.service">
-          <md-option ng-repeat="service in services" value="{{service}}">{{service}}</md-option>
-        </md-select>
-</md-input-container>
-
-<md-button type="submit" class="createPromotion">Crear promoción</md-button>
-</form>
+        <md-button class="buttonStyle">Crear</md-button>
+    </form>
+</div>
