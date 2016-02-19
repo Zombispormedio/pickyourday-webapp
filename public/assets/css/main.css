@@ -32,12 +32,13 @@ button.webAppMenuOptions {
 	background-color: white;
 	width:80%;
     margin: 0 auto;
+    margin-bottom: 5%;
+    margin-top: 4%;
     -webkit-box-shadow: 0px 0px 0px 10px rgba(203,200,194,0.52);
 	-moz-box-shadow: 0px 0px 0px 10px rgba(203,200,194,0.52);
 	box-shadow: 0px 0px 0px 10px rgba(203,200,194,0.52);
 	position: relative;
-	z-index: 2;
-	margin-top: 5%;
+	z-index: 2;	
 	overflow:hidden;
 	padding-left:5%;
 	padding-right:5%;
@@ -97,13 +98,13 @@ button.webAppMenuOptions {
 	background-color: rgba(222, 214, 214, 0.2);
 }
 /*Company profile*/
-.companyProfileForm input{
+.form input{
 	color:#000;
 }
-#companyProfile label, .companyProfileForm p{
+#formStyle label, .form p{
 	color:rgba(0, 0, 0, 0.57);
 }
-.companyProfileForm .md-input,#companyProfile input:focus, #companyProfile textarea, #companyProfile input{
+.form .md-input,#formStyle input:focus, #formStyle textarea, #formStyle input{
 	border-color: rgba(0, 0, 0, 0.3);
 	width:50%;
 }
@@ -248,4 +249,13 @@ md-checkbox.md-checked .md-icon {
 }
 .addServiceToolbar{
 	background-color: #009688;
+}
+/*crear promocion*/
+.buttonStyle{
+	background-color: #009688;
+	color:white;
+	width:20%;
+}
+.buttonStyle:not([disabled]):hover,.buttonStyle:not([disabled]):active,.buttonStyle:not([disabled]):focus{
+	background-color: #00796B;
 }
