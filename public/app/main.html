@@ -10,7 +10,7 @@
   <md-sidenav md-component-id="left" class="md-sidenav-left">
   <div class="webAppMenuInfo">
     <img src="" alt="">
-    <h2>Nombre empresa</h2>
+    <h2 class="companyName">{{profile.name}}</h2>
   </div>
   <md-divider></md-divider>
     <div class="webAppMenuOptions" layout="column" layout-align="space-between start">
@@ -19,7 +19,7 @@
       <div><a ui-sref="app.dayDashboard"><i class="fa fa-calendar-check-o"></i> Hoy</a></div>
       <div><a ui-sref="app.employees"><i class="fa fa-users"></i> Empleados</a></div>
       <div><a ui-sref="app.services"><i class="fa fa-tags"></i> Servicios</a></div>
-      <div><a ui-sref="app.addPick"><i class="fa fa-plus-circle"></i> Pick manual</a></div>
+      <div><a ui-sref="app.addPick" ><i class="fa fa-plus-circle"></i> Pick manual</a></div>
       <div><a ui-sref="app.promotion"><i class="fa fa-bullhorn"></i> Crear promoción</a></div>
       <div><a ui-sref="app.statistics"><i class="fa fa-line-chart"></i> Estadísticas</a></div>
       <div><a ui-sref="app.3Dstatistics"><i class="fa fa-bar-chart"></i> Estadísticas 3D</a></div>

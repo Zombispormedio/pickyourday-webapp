@@ -11,7 +11,6 @@ webAppController.companiesProfileCtrl = function ($scope, CompanyService) {
 		}, function(){
 
 		});
-
 	}
 	this.getProfile();
 };

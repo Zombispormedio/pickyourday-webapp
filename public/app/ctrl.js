@@ -1,4 +1,4 @@
-webAppController.AppCtrl = function ($rootScope,$scope, $mdSidenav) {
+webAppController.AppCtrl = function ($rootScope,$scope, $mdSidenav,CompanyService) {
 
   $scope.openLeftMenu = function() {
     $mdSidenav('left').toggle();
@@ -12,4 +12,15 @@ webAppController.AppCtrl = function ($rootScope,$scope, $mdSidenav) {
    $scope.resourcesView = function() {
     $mdSidenav('right').toggle();
   };
+
+  this.getProfile=function(){
+    CompanyService.profile().get({},function(result){
+      if(result.error)
+        return console.log(result.error);
+      $scope.profile=result.data;
+    }, function(){
+
+    });
+  }
+  this.getProfile();
 };
