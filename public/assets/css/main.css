@@ -42,6 +42,7 @@ button.webAppMenuOptions {
 	overflow:hidden;
 	padding-left:5%;
 	padding-right:5%;
+	padding-bottom: 3%;
 }
 .ng-scope{
 	height:100%;
@@ -104,7 +105,7 @@ button.webAppMenuOptions {
 #formStyle label, .form p{
 	color:rgba(0, 0, 0, 0.57);
 }
-.form .md-input,#formStyle input:focus, #formStyle textarea, #formStyle input{
+.form .md-input,#formStyle input:focus, #formStyle textarea, #formStyle input, #formStyle md-select, #formStyle md-option{
 	border-color: rgba(0, 0, 0, 0.3);
 	width:50%;
 }
@@ -168,12 +169,12 @@ p.location {
     color:#009688;
 }
 /*Servicios*/
-.headServicesList{
+.head{
 	display:inline-flex;
 	width:100%;
 	margin-top: 2%;
 }
-.headServicesList > i{
+.head > i{
 	font-size: 30px;
 	padding-top: 2%;
 	padding-right: 2%;
@@ -206,7 +207,7 @@ p.location {
 	font-size:20px;
 	background-color: #009688;
 	float: right;
-    margin-right: -55px;
+    /*margin-right: -55px;*/
 }
 .servicesCardInfo{
 	display:flex;
@@ -227,9 +228,9 @@ p.location {
 md-checkbox.md-checked .md-icon {
  background-color: #009688;
 }
-.serviceList {
+/*.serviceList {
     margin-bottom: 5%;
-}
+}*/
 .companyServices{
 	display:flex;
 }
@@ -249,13 +250,29 @@ md-checkbox.md-checked .md-icon {
 }
 .addServiceToolbar{
 	background-color: #009688;
+	color:white;
+}
+.datePicker{
+	margin-left: 1%;
 }
 /*crear promocion*/
 .buttonStyle{
-	background-color: #009688;
-	color:white;
+	background-color: none;
+	color:#009688;
 	width:20%;
 }
 .buttonStyle:not([disabled]):hover,.buttonStyle:not([disabled]):active,.buttonStyle:not([disabled]):focus{
 	background-color: #00796B;
+	color:white;
+}
+.formIcon{
+	font-size: 22px;
+}
+md-input-container:not(.md-input-invalid).md-input-focused .formIcon{
+	color: #009688;
+}
+#formStyle md-checkbox{
+	margin-top: 1%;
+	margin-bottom: 1%;
+	margin-right: 2%;
 }

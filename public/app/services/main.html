@@ -1,4 +1,4 @@
-<div class="headServicesList">
+<div class="head">
 	<i class="fa fa-tags"></i>
 	<h2>Servicios</h2>
 </div>
@@ -22,30 +22,7 @@
 		    <md-button class="md-fab fa fa-user buttonViewResources" ng-click="resourcesView()"></md-button>
 	    </div>	    
 	</md-card>
-	<md-card ng-repeat="service in services" class="serviceList">
-	    <md-card-title>
-	      <md-card-title-text>
-	        <p class="serviceName">{{service.id_name.name}}</p>
-	      </md-card-title-text>
-	    </md-card-title>
-	    <div class="servicesCardInfo">
-		    <md-card-content class="services">
-		      	<p class="serviceDescription">{{service.description}}</p>
-		      	<md-card-actions layout="row" layout-align="start center">	          
-		            <p class="serviceInfo"><i class="fa fa-clock-o"></i>{{service.duration}} minutos</p>
-		            <p class="serviceInfo"><i class="fa fa-eur"></i>{{service.price}} euros</p>			
-		    </md-card-content>	    
-		    <md-button class="md-fab fa fa-user buttonViewResources" ng-click="resourcesView()"></md-button>
-	    </div>	    
-	</md-card>
 </div>
-  </div>
-  <div ng-if="status">
-    <br/>
-    <b layout="row" layout-align="center center" class="md-padding">
-      {{status}}
-    </b>
-  </div>
 <md-button class="md-fab fa fa-plus addService" ng-click="showTabDialog($event)"></md-button>
 
 

@@ -6,14 +6,20 @@ webAppController.promotionCtrl = function ($rootScope, $scope, CompanyService) {
 		CompanyService.promotion().create({}, $scope.promotion, function(result){
 				var res = result;
 				if (!res.error) {
-
-				} else {
-					
+				} else {					
 				}
-		}, function(){
-			
+		}, function(){		
 				
-		});
-		
+		});		
 	}
+	this.getServices=function(){
+		CompanyService.services().get({},function(result){
+			if(result.error)
+				return console.log(result.error);
+			$scope.services=result.data;
+		}, function(){
+
+		});
+	}
+	this.getServices();
 };

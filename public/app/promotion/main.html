@@ -1,48 +1,61 @@
+<div class="head">
+    <i class="fa fa-bullhorn"></i>
+    <h2>Nueva promoción</h2>
+</div>
 <div id="formStyle">
-    <h3 class="md-headline">Nueva promoción</h3>
-    <form name="userForm" layout="column" class="form" ng-submit="create()">
+    <form name="userForm" layout="column" class="form" ng-submit="create()">        
         <md-input-container>
             <label>Título</label>
             <input ng-model="promotion.name" name="title">
         </md-input-container>
 
-        	  
         <md-input-container>
             <label>Descripción</label>
             <textarea ng-model="promotion.description" name="description" ></textarea>
         </md-input-container>
 
-        <md-checkbox ng-model="promotion.ownCustomers" aria-label="onlyClients">
-                Solo clientes
-        </md-checkbox>
-
         <p class=".md-subhead">Horario de apertura</p>
-        <md-input-container>        
-            <input mdc-datetime-picker="" date="true" time="true" type="text" id="datetime" placeholder="Desde" min-date="date" ng-model="dateTime" class=" md-input">
+        <md-input-container class="datePicker">  
+            <md-icon class="fa fa-calendar formIcon"></md-icon>      
+            <input mdc-datetime-picker="" date="true" time="true" type="text" id="datetime" placeholder="Desde" min-date="date" ng-model="dateTime">
         </md-input-container>
-        <md-input-container>
-            <input mdc-datetime-picker="" date="true" time="true" type="text" id="datetime" placeholder="Hasta" min-date="date" ng-model="dateTime" class=" md-input">
+        <md-input-container class="datePicker">
+            <md-icon class="fa fa-calendar formIcon"></md-icon>
+            <input mdc-datetime-picker="" date="true" time="true" type="text" id="datetime" placeholder="Hasta" min-date="date" ng-model="dateTime" >
         </md-input-container>
     
         <md-input-container>
-            <label>Máximo unidades</label>        
-            <input ng-model="promotion.useLimit" type="number" step="any" name="units" min="0"/>
+          <label>Máximo de unidades</label>
+          <md-icon class="fa fa-users formIcon"></md-icon>
+          <input ng-model="promotion.useLimit" name="units" step="any" type="number">
         </md-input-container>
 
         <md-input-container>
-            <label>% descuento</label>
-            <input type="number" step="any" name="discount" ng-model="promotion.discount" min="0"
-                       max="100"/>     
+            <label>Descuento</label>
+            <md-icon class="fa fa-percent formIcon"></md-icon>
+            <input type="number" step="any" name="discount" ng-model="promotion.discount" min="0" max="100"/>     
         </md-input-container>
 
-        <p class=".md-subhead">Servicios asociados</p>
+        <md-checkbox ng-model="promotion.ownCustomers" aria-label="onlyClients">Solo clientes</md-checkbox>
+
+        <p class=".md-subhead">Fotos</p>
+        <!--<md-input-container>  
+            <div class="companyImages" ng-repeat="image in promotion.images">             
+                 <img ng-src="{{image.src}}" alt="{{image.alt}}">
+                 <md-button class="md-fab fa fa-times deleteImageIcon" aria-label="delete"></md-button>
+            </div>
+        </md-input-container>-->
+        <md-button class="buttonStyle">Añadir</md-button>
+
         <md-input-container style="margin-right: 10px;">
-            <label>Servicios</label>
-            <md-select ng-model="promotion.service">
-              <md-option ng-repeat="service in services" value="{{service}}">{{service}}</md-option>
-            </md-select>
+            <label>Servicios asociados</label>
+            <md-select ng-model="selectedService" ng-model-options="{trackBy: '$value.id'}">
+                <md-option ng-value="service" ng-repeat="service in services">{{ service.id_name.name }}</md-option>
+              </md-select>
         </md-input-container>
-
-        <md-button class="buttonStyle">Crear</md-button>
+        <div style="display:flex;margin-top:2%;">
+            <md-button class="buttonStyle">Crear</md-button>
+            <md-button class="buttonStyle">Cancelar</md-button>
+        </div>
     </form>
 </div>
