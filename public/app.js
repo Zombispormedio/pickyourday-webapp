@@ -111,6 +111,22 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
                 controller: 'promotionCtrl'
             }
         }      
+    })
+    
+        .state("app.employees", {
+            url: '/employees',
+        onEnter: function ($rootScope) {
+            if (!getJSONLocal("user")) {
+
+                $rootScope.go("login");
+            }
+        },
+        views: {
+            content: {
+                templateUrl: 'app/employees/main.html',
+                controller: 'employeesCtrl'
+            }
+        }      
     });
 
 

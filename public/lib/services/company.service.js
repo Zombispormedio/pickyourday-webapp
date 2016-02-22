@@ -21,6 +21,14 @@ webAppFactory.CompanyService= function(ApiService){
             return ApiService.rest(this.base+"/promotion/:id",{
                 create:{method:"POST", params:{}},
             });
+        },
+                
+        employees:function(){
+             return ApiService.rest(this.base+"/employees/:id",{
+                list:{method:"GET", params:{}},
+                
+                });
         }
+
     };
 };
