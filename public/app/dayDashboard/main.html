@@ -7,10 +7,10 @@
 	<md-list>
 	  <md-list-item class="md-3-line" ng-repeat="item in messages">
 	    <img ng-src="{{item.face}}?{{$index}}" class="face" alt="{{item.who}}">
-	    <div class="md-list-item-text">
+	    <div class="md-list-item-text" ng-repeat="resource in resources">
 	      <!--<h3>{{item.name}}</h3>
 	      <h4>{{item.pick}}</h4>-->
-	      <h3>Name</h3>
+	      <h3>{{resource.name}}</h3>
 	      <h4>Cita actual</h4>
 	    </div>
 	    <md-divider vertical></md-divider>

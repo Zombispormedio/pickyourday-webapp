@@ -72,18 +72,20 @@ button.webAppMenuOptions {
 }
 .menuIcon, .menu {
     color: white;
-    top: 25px;
+    top:30%;
     font-size: 40px;
-    margin-left: 50%;
+    left: 3%;
     /*height:100%;*/
 }
 .contactIcon:not([disabled]):hover, .menuIcon:not([disabled]):hover{
-	background-color: transparent;
-}
-.backgroundLogin{
-	background-image: url("https://googledrive.com/host/0B-TPTaV5ouD7TUtDXzVxQmhYa1E/fondo_login.png");
 	
+	background: none;
 }
+.backgroundLogin, md-toolbar:not(.md-menu-toolbar){
+	background-color: transparent;
+	background-image: url("https://googledrive.com/host/0B-TPTaV5ouD7TUtDXzVxQmhYa1E/fondo_login.png");	
+}
+
 .loginForm input{
 	color:white;
 }
@@ -140,17 +142,19 @@ button.webAppMenuOptions {
     height: 35px;
     line-height: 0px;
     border:50%;
+    display:none;
 }
+
      /*hover*/
-.companyImages .deleteImageIcon:not([disabled]):hover,.buttonViewResources.md-fab:not([disabled]):hover, .addService.md-fab:not([disabled]):hover{
+.companyImages .deleteImageIcon:not([disabled]):hover,.buttonViewResources.md-fab:not([disabled]):hover, .addService.md-fab:not([disabled]):hover, .md-fab.editProfile:not([disabled]):hover{
 	background-color: #00796B;
 }
 	/*focus*/
-.companyImages .deleteImageIcon:not([disabled]):focus,.buttonViewResources.md-fab:not([disabled]):focus, .addService.md-fab:not([disabled]):focus{
+.companyImages .deleteImageIcon:not([disabled]):focus,.buttonViewResources.md-fab:not([disabled]):focus, .addService.md-fab:not([disabled]):focus,.md-fab.editProfile:not([disabled]):focus{
 	background-color: #00796B;
 }
 	/*active*/
-.companyImages .deleteImageIcon:not([disabled]):active,.buttonViewResources.md-fab:not([disabled]):active, .addService.md-fab:not([disabled]):active{
+.companyImages .deleteImageIcon:not([disabled]):active,.buttonViewResources.md-fab:not([disabled]):active, .addService.md-fab:not([disabled]):active,.md-fab.editProfile:not([disabled]):active{
 	background-color: #00796B;
 }
 .companyImages > button {
@@ -178,6 +182,14 @@ p.location {
 	font-size: 25px;
     margin-right: 1%;
     color:#009688;
+}
+.md-fab#editProfile{
+	background-color: #009688;
+    font-size: 20px;
+    float:right;
+}
+#saveProfile, #addPhone,#addImage{
+	display:none;
 }
 /*Servicios*/
 .head{
@@ -211,8 +223,8 @@ p.location {
 	float: right;
 	font-size:20px;
 	background-color: #009688;
-	margin-top: 2%;
-	/**/width: 60px;
+	margin-top: 5%;
+    width: 18%;
 }
 .addService.md-fab{
 	font-size:20px;
@@ -238,6 +250,9 @@ p.location {
 }
 md-checkbox.md-checked .md-icon {
  background-color: #009688;
+}
+md-checkbox .md-ink-ripple, md-checkbox.md-checked .md-ink-ripple{
+	color: #009688;
 }
 /*.serviceList {
     margin-bottom: 5%;
@@ -272,7 +287,14 @@ md-checkbox.md-checked .md-icon {
 	color:#009688;
 	width:20%;
 }
-.buttonStyle:not([disabled]):hover,.buttonStyle:not([disabled]):active,.buttonStyle:not([disabled]):focus{
+.buttonStyle2{
+	background-color: #009688;;
+	color: white;
+	width:20%;
+	margin-top: 3%;
+}
+.buttonStyle:not([disabled]):hover,.buttonStyle:not([disabled]):active,.buttonStyle:not([disabled]):focus, 
+.buttonStyle2:not([disabled]):hover,.buttonStyle2:not([disabled]):active,.buttonStyle2:not([disabled]):focus{
 	background-color: #00796B;
 	color:white;
 }

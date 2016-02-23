@@ -13,4 +13,19 @@ webAppController.companiesProfileCtrl = function ($scope, CompanyService) {
 		});
 	}
 	this.getProfile();
+
+	$scope.edit=function(){
+		var deleteButtons = document.getElementsByClassName("deleteImageIcon");
+	
+		var i;
+		for (i = 0; i<deleteButtons.length; i++) {
+			deleteButtons[i].style.display="inline";
+		};
+		document.getElementById("saveProfile").style.display="inline";
+		document.getElementById("addPhone").style.display="inline";	
+		document.getElementById("addImage").style.display="inline";			
+		document.getElementById("editProfile").style.display="none";
+		
+	}
+
 };

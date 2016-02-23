@@ -1,6 +1,6 @@
 <div class="head">
 	<i class="fa fa-user"></i>
-	<h2>Mi perfil</h2>
+	<h2>Mi perfil</h2>	
 </div>
 <div id="formStyle">	
 	<form name="userForm" class="form" layout="column">
@@ -60,14 +60,18 @@
 		   </md-list-item>
 		   <div ng-if="profile.phone.length==0">
 		   	<p>no hay telefonos</p>
-		   </div>			
+		   </div>	
+		   <md-button class="buttonStyle" id="addPhone">+ añadir teléfono</md-button>		
 		</md-input-container> 
 		<p class=".md-subhead">Fotos</p>
 		<md-input-container>  
 			<div class="companyImages" ng-repeat="image in profile.images">				
 				 <img ng-src="{{image.src}}" alt="{{image.alt}}">
 				 <md-button class="md-fab fa fa-times deleteImageIcon" aria-label="delete"></md-button>
-			</div>
+			</div>			
 	 	</md-input-container>
+	 	<md-button class="buttonStyle" id="addImage">+ añadir fotos</md-button>
+	 	<md-button class="buttonStyle2" id="saveProfile">Guardar cambios</md-button>
 	</form>
+	<md-button class="md-fab fa fa-pencil" id="editProfile" ng-click="edit()"aria-label="editProfile"></md-button>
 </div>
