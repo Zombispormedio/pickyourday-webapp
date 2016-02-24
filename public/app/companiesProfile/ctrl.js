@@ -21,8 +21,14 @@ webAppController.companiesProfileCtrl = function ($scope, CompanyService) {
 		for (i = 0; i<deleteButtons.length; i++) {
 			deleteButtons[i].style.display="inline";
 		};
+		var deletePhones = document.getElementsByClassName("deletePhoneIcon");
+	
+		var j;
+		for (j = 0; j<deletePhones.length; j++) {
+			deletePhones[j].style.display="inline";
+		};
 		document.getElementById("saveProfile").style.display="inline";
-		document.getElementById("addPhone").style.display="inline";	
+		document.getElementById("addPhone").style.display="inline";		
 		document.getElementById("addImage").style.display="inline";			
 		document.getElementById("editProfile").style.display="none";
 		

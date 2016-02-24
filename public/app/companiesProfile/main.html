@@ -40,29 +40,27 @@
 		</md-input-container> 
 
 		
-		<md-input-container >  
-			<md-icon class="fa fa-map-marker formIcon"></md-icon> 
-		    <md-list-item class="locationInfo">	
-	      		<p class="location"> {{profile.location.name}}</p> 
-	      		<p class="location"> {{profile.location.address}}</p> 
-	      		<p class="location"> {{profile.location.country}}</p>
-	      		<p class="location"> {{profile.location.city}}</p>
-	      		<p class="location"> {{profile.location.province}}</p>
-	      		<p class="location"> {{profile.location.zipcode}}</p>			     
+		<md-input-container > 
+			<md-icon class="fa fa-map-marker formIcon"></md-icon> 			
+		    <md-list-item class="locationInfo">
+	      		<p class="location"> {{profile.location.name}},{{profile.location.address}},{{profile.location.country}}, {{profile.location.city}},{{profile.location.province}},{{profile.location.zipcode}} </p> 		     
 		   </md-list-item>
+
 		</md-input-container> 
 
 		<p class=".md-subhead">Teléfono</p>
 		<md-input-container class="phoneList">  
 	      <md-list-item ng-repeat="phones in profile.phone">	      	 	
 	  	 		<i class="fa fa-phone"></i>
-	      		<p class="phones"> {{phones}}</p> 	      	 			     
+	      		<p class="phones"> {{phones}}</p> 
+	      		<button class="fa fa-times deletePhoneIcon" aria-label="delete"></button>	      	 			     
 		   </md-list-item>
 		   <div ng-if="profile.phone.length==0">
 		   	<p>no hay telefonos</p>
-		   </div>	
-		   <md-button class="buttonStyle" id="addPhone">+ añadir teléfono</md-button>		
+		   </div>			   		
 		</md-input-container> 
+		<md-button class="buttonStyleSimple" id="addPhone">+ añadir teléfono</md-button>
+
 		<p class=".md-subhead">Fotos</p>
 		<md-input-container>  
 			<div class="companyImages" ng-repeat="image in profile.images">				
@@ -70,7 +68,7 @@
 				 <md-button class="md-fab fa fa-times deleteImageIcon" aria-label="delete"></md-button>
 			</div>			
 	 	</md-input-container>
-	 	<md-button class="buttonStyle" id="addImage">+ añadir fotos</md-button>
+	 	<md-button class="buttonStyleSimple" id="addImage">+ añadir fotos</md-button>
 	 	<md-button class="buttonStyle2" id="saveProfile">Guardar cambios</md-button>
 	</form>
 	<md-button class="md-fab fa fa-pencil" id="editProfile" ng-click="edit()"aria-label="editProfile"></md-button>

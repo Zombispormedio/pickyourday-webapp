@@ -70,15 +70,15 @@ button.webAppMenuOptions {
     background-color: none;
     position: absolute;
 }
-.menuIcon, .menu {
+.menuIcon{
     color: white;
-    top:30%;
     font-size: 40px;
-    left: 3%;
-    /*height:100%;*/
+    margin-top: 3%;
+    margin-left: 5%;
+    border:none;
+    background-color: transparent;
 }
-.contactIcon:not([disabled]):hover, .menuIcon:not([disabled]):hover{
-	
+.contactIcon:not([disabled]):hover, .menuIcon:not([disabled]):hover{	
 	background: none;
 }
 .backgroundLogin, md-toolbar:not(.md-menu-toolbar){
@@ -165,18 +165,19 @@ button.webAppMenuOptions {
 	display: block;
 	margin-top: -3%;
 }
-.locationInfo > p, p.phones{
-		color:black;
+.locationInfo > p{
+	color:black;
+	margin-left: 1%;
+	margin-top: 3.5%;
+    margin-bottom: -3%;
 }
-.phones, .location{
-	margin-left: 0;
-
-}
-p.location {
-    margin-top: 0.5%;
+p.phones{
+	color:black;
+	margin-left: 4%;
 }
 .phoneList{
 	margin-top: -1%;
+	width: 25%;
 }
 .fa-phone{
 	font-size: 25px;
@@ -282,7 +283,7 @@ md-checkbox .md-ink-ripple, md-checkbox.md-checked .md-ink-ripple{
 	margin-left: 1%;
 }
 /*crear promocion*/
-.buttonStyle{
+.buttonStyle,.buttonStyleSimple{
 	background-color: none;
 	color:#009688;
 	width:20%;
@@ -292,6 +293,9 @@ md-checkbox .md-ink-ripple, md-checkbox.md-checked .md-ink-ripple{
 	color: white;
 	width:20%;
 	margin-top: 3%;
+}
+.buttonStyleSimple:not([disabled]):hover,.buttonStyleSimple:not([disabled]):active,.buttonStyleSimple:not([disabled]):focus{
+	background-color: transparent;
 }
 .buttonStyle:not([disabled]):hover,.buttonStyle:not([disabled]):active,.buttonStyle:not([disabled]):focus, 
 .buttonStyle2:not([disabled]):hover,.buttonStyle2:not([disabled]):active,.buttonStyle2:not([disabled]):focus{
@@ -311,4 +315,10 @@ md-input-container:not(.md-input-invalid).md-input-focused .formIcon{
 }
  md-select:not([disabled]):focus .md-select-value {
 	border-bottom-color: #009688;
+}
+.deletePhoneIcon{
+	color:#009688;
+	background: transparent;
+	border: none;
+	display:none;
 }
