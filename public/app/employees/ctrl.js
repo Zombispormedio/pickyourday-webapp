@@ -1,4 +1,4 @@
-webAppController.resourcesCtrl = function ($rootScope, $scope, CompanyService) {
+webAppController.employeesCtrl = function ($rootScope, $scope, CompanyService) {
 	this.getServices=function(){
 		CompanyService.services().get({},function(result){
 			if(result.error)

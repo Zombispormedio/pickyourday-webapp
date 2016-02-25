@@ -1,16 +1,12 @@
-
 <div class="dayDasboardDate">
 	<img src="" alt="">
 	<h3 class="md-headline">Fecha</h3>
 </div>
-
 	<md-list>
-	  <md-list-item class="md-3-line" ng-repeat="item in messages">
-	    <img ng-src="{{item.face}}?{{$index}}" class="face" alt="{{item.who}}">
-	    <div class="md-list-item-text" ng-repeat="resource in resources">
-	      <!--<h3>{{item.name}}</h3>
-	      <h4>{{item.pick}}</h4>-->
-	      <h3>{{resource.name}}</h3>
+	  <md-list-item class="md-3-line" ng-repeat="employee in employees">
+		<ng-letter-avatar data="{{employee.name}}" shape="round"></ng-letter-avatar>
+	    <div class="md-list-item-text">
+	      <h3>{{employee.name}}</h3>
 	      <h4>Cita actual</h4>
 	    </div>
 	    <md-divider vertical></md-divider>
