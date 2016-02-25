@@ -322,3 +322,25 @@ md-input-container:not(.md-input-invalid).md-input-focused .formIcon{
 	border: none;
 	display:none;
 }
+/*DayDashboard*/
+.employeesAvatar img{
+	margin-top: 2.5%;
+    margin-right: 2%;
+}
+.dayEmployee{
+	margin-top: 2%;
+	margin-bottom: 2%;	
+}
+.pickActions > button{
+	background: transparent;
+	border: none;
+	display:block;
+	padding-bottom: 25%;
+    font-size: 20px;
+}
+.nextPick{
+	border-left: 2px solid #E1E1E1;
+}
+.nextPick h3, .nextPick h4{
+	padding-left: 3%;
+}

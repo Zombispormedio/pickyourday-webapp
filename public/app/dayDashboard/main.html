@@ -1,15 +1,23 @@
 <div class="dayDasboardDate">
-	<img src="" alt="">
-	<h3 class="md-headline">Fecha</h3>
-</div>
-	<md-list>
-	  <md-list-item class="md-3-line" ng-repeat="employee in employees">
-		<ng-letter-avatar data="{{employee.name}}" shape="round"></ng-letter-avatar>
-	    <div class="md-list-item-text">
-	      <h3>{{employee.name}}</h3>
-	      <h4>Cita actual</h4>
-	    </div>
-	    <md-divider vertical></md-divider>
-	    <md-divider md-inset ng-if="!$last"></md-divider>
-	  </md-list-item>
-	</md-list>
+	<h3 id="date"></h3>
+</div>	
+  <md-list-item class="md-3-line employeesAvatar dayEmployee" ng-repeat="employee in employees">
+	<ng-letter-avatar data="{{employee.name}}" shape="round"></ng-letter-avatar>
+    <div class="md-list-item-text actualPick">
+      <h3>{{employee.name}}</h3>
+      <h4>Cita actual</h4>     
+    </div>
+    <div class="md-list-item-text nextPick">
+      <h3>Cliente siguiente</h3>
+      <h4>Servicios</h4>     
+      <h4>Tiempo restante</h4> 
+      <h4>Precio</h4> 
+    </div>
+    <div class="pickActions">
+    	<button class="fa fa-arrow-right" aria-label="delete"></button>
+    	<button class="fa fa-times" aria-label="delete"></button>
+    	<button class="fa fa-calendar" aria-label="delete"></button>
+    </div>
+    <md-divider></md-divider>
+  </md-list-item>
+	
