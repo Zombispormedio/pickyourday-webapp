@@ -344,3 +344,29 @@ md-input-container:not(.md-input-invalid).md-input-focused .formIcon{
 .nextPick h3, .nextPick h4{
 	padding-left: 3%;
 }
+/*Employees*/
+.infoEmployee{
+	display: block;
+	margin-left: 9%;
+}
+.infoEmployee > i{
+	font-size: 20px;
+	margin-top: 1%;
+}
+.allEmployees{
+	display:block;
+}
+.employees1{
+	display:flex;
+}
+.employees1 > p{
+	    margin-top: 4%;	
+}
+.timetableHead, .tagsHead{
+	display:flex;
+}
+.timetableHead > i, .tagsHead > i{
+	font-size: 20px;
+	margin-top: 2.2%;
+    margin-right: 1%;
+}
