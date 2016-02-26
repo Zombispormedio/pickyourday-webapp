@@ -1,0 +1,45 @@
+<md-dialog>
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools addServiceToolbar">
+        <h2><i class="fa fa-user"></i>  Nuevo empleado</h2>
+      </div>
+    </md-toolbar>
+    <md-dialog-content style="max-width:600px;max-height:810px; ">
+        <md-content class="md-padding">
+          <form name="employeeForm" class="employeeForm" layout="column" >
+            <md-input-container>      
+              <label>Nombre</label>
+              <md-icon class="fa fa-user formIcon"></md-icon> 
+              <input name="name" ng-model="employee.name">
+            </md-input-container>
+            <md-input-container>              
+              <label>Apellidos</label>      
+              <md-icon class="fa fa-user formIcon"></md-icon> 
+              <input name="surname" type="text" ng-model="employee.surname"></input>
+            </md-input-container>
+            <md-input-container>              
+              <label>Descripcion</label>      
+              <md-icon class="fa fa-commenting-o formIcon"></md-icon> 
+              <input name="description" type="text" ng-model="employee.description"></input>
+            </md-input-container>
+            <md-input-container>              
+              <label>Teléfono</label>      
+              <md-icon class="fa fa-phone formIcon"></md-icon> 
+              <input name="phone" type="text" ng-model="employee.phone"></input>
+            </md-input-container>
+            <md-input-container style="margin-right: 10px;">
+              <label>Servicios</label>
+              <md-select ng-model="selectedService" ng-model-options="{trackBy: '$value.id'}"
+                <md-option ng-value="service" ng-repeat="service in services">{{ service.id_name.name }}</md-option>
+              </md-select>
+            </md-input-container>
+          </form>
+        </md-content>        
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <md-button class="buttonStyle" ng-click="answer()">Aceptar</md-button>
+      <md-button style="margin-right:20px;" class="buttonStyle" ng-click="cancel()">Cancelar</md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

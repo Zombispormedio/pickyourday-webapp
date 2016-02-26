@@ -146,15 +146,15 @@ button.webAppMenuOptions {
 }
 
      /*hover*/
-.companyImages .deleteImageIcon:not([disabled]):hover,.buttonViewResources.md-fab:not([disabled]):hover, .addService.md-fab:not([disabled]):hover, .md-fab.editProfile:not([disabled]):hover{
+.companyImages .deleteImageIcon:not([disabled]):hover,.buttonViewResources.md-fab:not([disabled]):hover, .addService.md-fab:not([disabled]):hover, .addEmployee.md-fab:not([disabled]):hover, .md-fab.editProfile:not([disabled]):hover{
 	background-color: #00796B;
 }
 	/*focus*/
-.companyImages .deleteImageIcon:not([disabled]):focus,.buttonViewResources.md-fab:not([disabled]):focus, .addService.md-fab:not([disabled]):focus,.md-fab.editProfile:not([disabled]):focus{
+.companyImages .deleteImageIcon:not([disabled]):focus,.buttonViewResources.md-fab:not([disabled]):focus, .addService.md-fab:not([disabled]):focus, .addEmployee.md-fab:not([disabled]):focus, .md-fab.editProfile:not([disabled]):focus{
 	background-color: #00796B;
 }
 	/*active*/
-.companyImages .deleteImageIcon:not([disabled]):active,.buttonViewResources.md-fab:not([disabled]):active, .addService.md-fab:not([disabled]):active,.md-fab.editProfile:not([disabled]):active{
+.companyImages .deleteImageIcon:not([disabled]):active,.buttonViewResources.md-fab:not([disabled]):active, .addService.md-fab:not([disabled]):active, .addEmployee.md-fab:not([disabled]):active, .md-fab.editProfile:not([disabled]):active{
 	background-color: #00796B;
 }
 .companyImages > button {
@@ -227,12 +227,15 @@ p.phones{
 	margin-top: 5%;
     width: 18%;
 }
-.addService.md-fab{
+.addService.md-fab, .addEmployee.md-fab{
 	font-size:20px;
 	background-color: #009688;
-	float: right;
-    /*margin-right: -55px;*/
+	float: right;    
+	margin-right: -4%;
+    margin-top: 4%;
+    margin-bottom: -2%;
 }
+
 .servicesCardInfo{
 	display:flex;
 }
@@ -356,10 +359,10 @@ md-input-container:not(.md-input-invalid).md-input-focused .formIcon{
 .allEmployees{
 	display:block;
 }
-.employees1{
+.employeesCard{
 	display:flex;
 }
-.employees1 > p{
+.employeesCard > p{
 	    margin-top: 4%;	
 }
 .timetableHead, .tagsHead{
