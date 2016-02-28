@@ -1,15 +1,15 @@
 webAppController.employeesCtrl = function ($rootScope, $scope, CompanyService,  $mdDialog) {
 
-	this.getServices=function(){
-		CompanyService.servicesAsigned().list({},function(result){
+	this.getEmployees=function(){
+		CompanyService.employees().get({},function(result){
 			if(result.error)
 				return console.log(result.error);
-			$scope.services=result.data;
+			$scope.employees=result.data;
 		}, function(){
 	
 		});
 	}
-	this.getServices();
+	this.getEmployees();
 
 	$scope.showInfo=function(employee){
 		
@@ -40,13 +40,13 @@ webAppController.employeesCtrl = function ($rootScope, $scope, CompanyService,  
 
 };
 function DialogController($scope, $mdDialog) {
-	  $scope.hide = function() {
-	    $mdDialog.hide();
-	  };
-	  $scope.cancel = function() {
-	    $mdDialog.cancel();
-	  };
-	  $scope.answer = function(answer) {
-	    $mdDialog.hide(answer);
-	  };
-	}
+	$scope.hide = function() {
+		$mdDialog.hide();
+	};
+	$scope.cancel = function() {
+		$mdDialog.cancel();
+	};
+	$scope.answer = function(answer) {
+		$mdDialog.hide(answer);
+	};
+}

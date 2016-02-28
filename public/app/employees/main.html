@@ -12,12 +12,13 @@
       <div class="timetableHead">
         <i class="fa fa-calendar" ></i> 
         <p>Horario: </p>
-      </div> 
-      
+      </div>       
       <div class="tagsHead">
         <i class="fa fa-tags" ></i>  
         <p>Servicios asignados</p>
-        <p>{{employee.services}}</p>
+        <md-list-item class="md-3-line" ng-repeat="service in employee.services">
+          <p>{{service.id_name.name}}</p>
+        </md-list-item>
       </div>
     </div>
      <!--<md-chips ng-model="" readonly="ctrl.readonly"></md-chips>-->

@@ -1,0 +1,12 @@
+<div class="head">
+    <i class="fa fa-bullhorn"></i>
+    <h2>Promociones</h2>
+</div>
+<md-list-item class="md-3-line" ng-repeat="promotion in promotions">
+    <img ng-src="{{promotion.images[1]}}" class="md-avatar" alt="{{promotion.name}}" />
+    <div class="md-list-item-text" layout="column">
+       <p>{{promotion.name}}</p>
+    </div>
+  </md-list-item>
+  <md-divider ></md-divider>
+<md-button class="md-fab fa fa-plus addService" ng-click="goToNewPromotion()"></md-button>

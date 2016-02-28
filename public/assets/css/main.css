@@ -112,6 +112,11 @@ button.webAppMenuOptions {
 	background-color: rgba(222, 214, 214, 0.2);
 }
 /*Company profile*/
+.location md-input-container{
+	
+    display: flex;
+    margin-left: 5%;
+}
 .form input{
 	color:#000;
 }
@@ -131,8 +136,9 @@ button.webAppMenuOptions {
 	margin-right: 2%;
 }
 .companyImages > img {
-    width: 250px;
+    width: 205px;
     height: 150px;
+    margin-bottom: 5%;
 }
 .companyImages .deleteImageIcon{
 	background-color: #009688;
@@ -142,7 +148,7 @@ button.webAppMenuOptions {
     height: 35px;
     line-height: 0px;
     border:50%;
-    display:none;
+    /*display:none;*/
 }
 
      /*hover*/
@@ -179,7 +185,7 @@ p.phones{
 	margin-top: -1%;
 	width: 25%;
 }
-.fa-phone{
+.fa-phone, .emailSecond{
 	font-size: 25px;
     margin-right: 1%;
     color:#009688;
@@ -189,7 +195,7 @@ p.phones{
     font-size: 20px;
     float:right;
 }
-#saveProfile, #addPhone,#addImage{
+#saveProfile, #addPhone,#addImage, #addEmailSecond{
 	display:none;
 }
 /*Servicios*/
@@ -292,7 +298,7 @@ md-checkbox .md-ink-ripple, md-checkbox.md-checked .md-ink-ripple{
 	width:20%;
 }
 .buttonStyle2{
-	background-color: #009688;;
+	background-color: #009688;
 	color: white;
 	width:20%;
 	margin-top: 3%;
@@ -308,8 +314,8 @@ md-checkbox .md-ink-ripple, md-checkbox.md-checked .md-ink-ripple{
 .formIcon{
 	font-size: 22px;
 }
-md-input-container:not(.md-input-invalid).md-input-focused .formIcon{
-	color: #009688;
+md-input-container:not(.md-input-invalid).md-input-focused .formIcon, md-input-container:not(.md-input-invalid).md-input-focused .fa-phone, md-input-container:not(.md-input-invalid).md-input-focused .emailSecond{
+	color: black;
 }
 #formStyle md-checkbox{
 	margin-top: 1%;
@@ -323,7 +329,10 @@ md-input-container:not(.md-input-invalid).md-input-focused .formIcon{
 	color:#009688;
 	background: transparent;
 	border: none;
-	display:none;
+	/*display:none;*/
+}
+md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
+	color: #009688;
 }
 /*DayDashboard*/
 .employeesAvatar img{

@@ -3,7 +3,7 @@ var webAppFactory = {};
 var webAppFilter = {};
 var webAppDirective = {};
 
-var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMaterial', 'ngMaterialDatePicker','ngLetterAvatar'])
+var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMaterial', 'ngMaterialDatePicker','ngLetterAvatar', 'naif.base64'])
 .controller(webAppController)
 .factory(webAppFactory)
 .filter( webAppFilter)
@@ -97,8 +97,8 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
         }
        
     })
-    .state("app.promotion", {
-            url: '/promotion',
+     .state("app.myPromotions", {
+            url: '/myPromotions',
         onEnter: function ($rootScope) {
             if (!getJSONLocal("user")) {
 
@@ -107,8 +107,23 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
         },
         views: {
             content: {
-                templateUrl: 'app/promotion/main.html',
+                templateUrl: 'app/myPromotions/main.html',
                 controller: 'promotionCtrl'
+            }
+        }      
+    })   
+    .state("app.newPromotion", {
+            url: '/newPromotion',
+        onEnter: function ($rootScope) {
+            if (!getJSONLocal("user")) {
+
+                $rootScope.go("login");
+            }
+        },
+        views: {
+            content: {
+                templateUrl: 'app/newPromotion/main.html',
+                controller: 'newPromotionCtrl'
             }
         }      
     })

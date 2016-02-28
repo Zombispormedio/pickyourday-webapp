@@ -6,69 +6,113 @@
 	<form name="userForm" class="form" layout="column">
 		<md-input-container>			
 			<label>Nombre</label>
-			<md-icon class="fa fa-user formIcon"></md-icon> 
-			<input name="companyname" ng-model="profile.name">
+			<md-icon class="fa fa-user formIcon"></md-icon> 			
+			<input name="companyname" ng-model="profile.name" ng-disabled="!editable">
 		</md-input-container>
 
-		<md-input-container>
-			
+		<md-input-container>			
 			<label>Descripcion</label>			
 			<md-icon class="fa fa-commenting-o formIcon"></md-icon> 
-			<input name="description" type="text" ng-model="profile.description"></input>
+			<input name="description" type="text" ng-model="profile.description" ng-disabled="!editable"></input>
 		</md-input-container>
 		
-		<p class=".md-subhead">Horario de apertura</p>
+		<!--<p class=".md-subhead">Horario de apertura</p>
 		<md-input-container>	
 			<md-icon class="fa fa-calendar formIcon"></md-icon> 	
-			<input mdc-datetime-picker="" date="true" time="true" type="text" id="datetime" placeholder="Desde" min-date="date" ng-model="dateTime">
+			<input mdc-datetime-picker="" date="true" time="true" type="text" id="datetime" placeholder="Desde" min-date="date" ng-model="">
 		</md-input-container>
 		<md-input-container>
 			<md-icon class="fa fa-calendar formIcon"></md-icon> 
-			<input mdc-datetime-picker="" date="true" time="true" type="text" id="datetime" placeholder="Hasta" min-date="date" ng-model="dateTime">
-		</md-input-container>
+			<input mdc-datetime-picker="" date="true" time="true" type="text" id="datetime" placeholder="Hasta" min-date="date" ng-model="">
+		</md-input-container>-->
+
 		<md-input-container>
 			<label>Email</label>
 			<md-icon class="fa fa-envelope-o formIcon"></md-icon> 
-			<input name="email" ng-model="profile.email">
+			<input name="email" ng-model="profile.email" ng-disabled="true" ng-disabled="!editable">
 		</md-input-container>
 
 		<md-input-container>
 			<label>Sitio web</label>
 			<md-icon class="fa fa-globe formIcon"></md-icon> 
-			<input name="website" ng-model="profile.web">
-		</md-input-container> 
+			<input name="website" ng-model="profile.web" ng-disabled="!editable">
+		</md-input-container>		
 
-		
-		<md-input-container > 
-			<md-icon class="fa fa-map-marker formIcon"></md-icon> 			
-		    <md-list-item class="locationInfo">
-	      		<p class="location"> {{profile.location.name}},{{profile.location.address}},{{profile.location.country}}, {{profile.location.city}},{{profile.location.province}},{{profile.location.zipcode}} </p> 		     
-		   </md-list-item>
-
-		</md-input-container> 
-
+		<md-input-container> 
+		 	<label>Dirección</label>
+			<md-icon class="fa fa-map-marker formIcon"></md-icon>
+			<input type="text" name="address" ng-model="profile.location.address" ng-disabled="!editable">
+		</md-input-container>
+		<div class="location">
+			<md-input-container> 
+				<label>País</label>
+				<input type="text" name="country" ng-model="profile.location.country" ng-disabled="!editable">
+			</md-input-container> 
+			<md-input-container> 
+				<label>Ciudad</label>
+				<input type="text" name="city" ng-model="profile.location.city" ng-disabled="!editable">
+			</md-input-container> 
+			<md-input-container> 
+				<label>Provincia</label>
+				<input type="text" name="province" ng-model="profile.location.province" ng-disabled="!editable"> 
+			</md-input-container> 
+			<md-input-container>
+				<label>Código postal</label>
+				<input type="text" name="zipcode" ng-model="profile.location.zipcode" ng-disabled="!editable">	   
+			</md-input-container> 
+			<md-input-container>
+				<label>Latitud</label>
+				<input type="text" name="zipcode" ng-model="profile.location.geolocation.latitude" ng-disabled="!editable">	
+			</md-input-container>
+			<md-input-container>
+				<label>Longitud</label> 
+				<input type="text" name="zipcode" ng-model="profile.location.geolocation.longitude" ng-disabled="!editable">
+			</md-input-container> 
+		</div>		
 		<p class=".md-subhead">Teléfono</p>
 		<md-input-container class="phoneList">  
 	      <md-list-item ng-repeat="phones in profile.phone">	      	 	
 	  	 		<i class="fa fa-phone"></i>
 	      		<p class="phones"> {{phones}}</p> 
-	      		<button class="fa fa-times deletePhoneIcon" aria-label="delete"></button>	      	 			     
+	      		<button class="fa fa-times deletePhoneIcon" ng-if="editable" aria-label="delete" ng-click="deletePhone($index)"></button> 	 			     
 		   </md-list-item>
 		   <div ng-if="profile.phone.length==0">
-		   	<p>No hay telefonos</p>
-		   </div>			   		
+		   	<p>Ninguno añadido</p>
+		   </div>
+		   <div ng-if="add1" style="display:flex;margin-left:-26%;">		
+			  <md-icon class="fa fa-phone"></md-icon>
+			  <input type="text" name="phone" ng-model="aux.phone">
+			</div>	   		
+		</md-input-container> 			
+		<md-button class="buttonStyleSimple" ng-if="editable" ng-click="addPhone()">+ añadir teléfono</md-button>
+
+		<p class=".md-subhead">Emails secundarios</p>
+		<md-input-container class="phoneList">  
+	      <md-list-item ng-repeat="emails in profile.emailSecond">	      	 	
+	  	 		<i class="fa fa-envelope-o emailSecond"></i>
+	      		<p class="phones"> {{emails}}</p> 
+	      		<button class="fa fa-times deletePhoneIcon" ng-if="editable" aria-label="delete" ng-click="deleteEmailSecond($index)"></button> 	 			     
+		   </md-list-item>
+		   <div ng-if="profile.emailSecond.length==0">
+		   		<p>Ninguno añadido</p>
+		   </div>
+		   <div ng-if="add2" style="display:flex;margin-left:-26%;">	
+		   		<md-icon class="fa fa-envelope-o emailSecond"></md-icon>	
+		   		<input type="text" name="emailSecond" ng-model="aux.emailSecond">	   		
+		   	</div>
 		</md-input-container> 
-		<md-button class="buttonStyleSimple" id="addPhone">+ añadir teléfono</md-button>
+		<md-button class="buttonStyleSimple" ng-if="editable" ng-click="addEmailSecond()">+ añadir email</md-button>
 
 		<p class=".md-subhead">Fotos</p>
 		<md-input-container>  
 			<div class="companyImages" ng-repeat="image in profile.images">				
-				 <img ng-src="{{image.src}}" alt="{{image.alt}}">
-				 <md-button class="md-fab fa fa-times deleteImageIcon" aria-label="delete"></md-button>
+				<img ng-src="{{image.src}}" alt="{{image.alt}}">
+				<md-button class="md-fab fa fa-times deleteImageIcon" aria-label="delete" ng-click="deleteImage($index)"></md-button>
 			</div>			
+		<input ng-if="editable" id="newFile" type="file" name="images" base-sixty-four-input ng-model="images.data" ng-if="editable"  style="display:none;" >
 	 	</md-input-container>
-	 	<md-button class="buttonStyleSimple" id="addImage">+ añadir fotos</md-button>
-	 	<md-button class="buttonStyle2" id="saveProfile">Guardar cambios</md-button>
+	 	<md-button class="buttonStyleSimple" ng-if="editable" ng-click="addImages()">+ añadir fotos</md-button>
+	 	<md-button class="buttonStyle2" ng-if="editable" ng-click="saveChanges()">Guardar cambios</md-button>
 	</form>
-	<md-button class="md-fab fa fa-pencil" id="editProfile" ng-click="edit()"aria-label="editProfile"></md-button>
+	<md-button class="md-fab fa fa-pencil" id="editProfile" ng-if="!editable" ng-click="edit()"aria-label="editProfile"></md-button>
 </div>

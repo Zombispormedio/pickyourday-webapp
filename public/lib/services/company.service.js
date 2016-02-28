@@ -9,7 +9,8 @@ webAppFactory.CompanyService= function(ApiService){
         },
         profile:function(){
         	return ApiService.rest(this.base+"/profile/:id",{
-        		get:{method:"GET", params:{}}
+        		get:{method:"GET", params:{}},
+                update:{method:"PUT", params:{}}
         	});
         },
         services:function(){
@@ -17,7 +18,6 @@ webAppFactory.CompanyService= function(ApiService){
                 list:{method:"GET", params:{}},
             });
         },
-        
          promotion:function(){
             return ApiService.rest(this.base+"/promotion/:id",{
                 create:{method:"POST", params:{}},
@@ -26,9 +26,9 @@ webAppFactory.CompanyService= function(ApiService){
                 
         employees:function(){
              return ApiService.rest(this.base+"/resource/:id",{
-                list:{method:"GET", params:{}},
-                
-                });
+                /*list:{method:"GET", params:{}},*/
+                get:{method:"GET", params:{}},
+            });
         },
         
         servicesAsigned:function(){
