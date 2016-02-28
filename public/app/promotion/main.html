@@ -50,9 +50,9 @@
 
         <md-input-container style="margin-right: 10px;">
             <label>Servicios asociados</label>
-            <md-select ng-model="selectedService" ng-model-options="{trackBy: '$value.id'}"
-                <md-option ng-value="service" ng-repeat="service in services">{{ service.id_name.name }}</md-option>
-              </md-select>
+            <md-select ng-model="selectedService">
+                <md-option ng-value="service" ng-repeat="service in services">{{ service.id_name.name}}</md-option>
+            </md-select>
         </md-input-container>
         <div style="display:flex;margin-top:2%;">
             <md-button class="buttonStyle">Crear</md-button>

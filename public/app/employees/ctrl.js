@@ -12,13 +12,14 @@ webAppController.employeesCtrl = function ($rootScope, $scope, CompanyService,  
 	this.getServices();
 
 	$scope.showInfo=function(employee){
-		var f = document.getElementsByClassName("infoEmployee");
-		var i;
-
-			console.log(employee);
-		for(i=0;i<f.length;i++){
-			if(f[i]==employee)
-				f[i].style.display="block";
+		
+		if(employee.open==true){
+			employee.open=false;
+		}else{
+			$scope.employees.forEach(function(e){
+				e.open=false;
+			})
+			employee.open=true;
 		}			
 	}
 
