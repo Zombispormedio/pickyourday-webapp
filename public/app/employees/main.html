@@ -1,22 +1,30 @@
-<div class="head">
-  <i class="fa fa-users"></i>
-  <h2>Empleados</h2>  
-</div>
-<md-list-item class="md-3-line employeesAvatar allEmployees" ng-repeat="employee in employees" >
-  <div class="employeesCard" ng-click="showInfo(employee)">
-    <ng-letter-avatar data="{{employee.name}}" shape="round"></ng-letter-avatar>
-    <p>{{employee.name}} {{employee.surname}}</p>    
-  </div> 
-  <div class="infoEmployee">
-    <div class="timetableHead">
-      <i class="fa fa-calendar" ></i> 
-      <p>Horario: </p>
-    </div> 
+<div ng-cloak>
+  <md-content class="md-padding" layout-xs="column" layout="row">
+    <div flex-xs flex-gt-xs="100" layout="column">
+      <md-card>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Perica de los palotes</span>
+            <span class="md-subhead">Horario</span>
+          </md-card-title-text>
+          <md-card-title-media>
+            <div class="md-media-lg card-media"><img ></div>
+          </md-card-title-media>
+        </md-card-title>
+		<md-list ng-cloak>
+			<md-subheader class="md-no-sticky">Servicios asociados</md-subheader>
+			<div ng-repeat="service in services" class="resourcesServices">
+				<p> {{service.id_name.name}} <md-checkbox class="md-secondary" ng-model="topping.wanted"></md-checkbox></p>
+			</div>
+		</md-list>
+
+    <md-button class="md-fab fa fa-plus addService" ng-click="showTabDialog($event)"></md-button>
     
-    <div class="tagsHead">
-      <i class="fa fa-tags" ></i>  
-      <p>Servicios asignados</p>
-      <p>{{employee.services}}</p>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button>Cancelar</md-button>
+          <md-button>Aceptar</md-button>
+        </md-card-actions>
+      </md-card>
     </div>
      <!--<md-chips ng-model="" readonly="ctrl.readonly"></md-chips>-->
   </div>
