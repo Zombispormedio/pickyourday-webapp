@@ -76,7 +76,7 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
         },
         views: {
             content: {
-                templateUrl: 'app/companiesProfile/main.html',
+                templateUrl: 'app/profile/main.html',
                 controller: 'profileCtrl'
             }
         }
