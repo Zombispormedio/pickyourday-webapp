@@ -157,13 +157,23 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
         $state.go(state, params);
     };
 
-    $rootScope.showMessageToast=function(message){
+    $rootScope.showMessageToast=function(message, theme){
         $mdToast.show({
             controller: 'MessageToastCtrl',
             templateUrl: 'app/utils/message-toast/main.html',
             position:"true true false false",
-            locals:{data:{message:"hello"}},
+            locals:{data:{message:message, theme:theme}},
             hideDelay: 600,
         });
+    };
+
+    $rootScope.warningToast=function(message){
+        if(typeof message==="object")message=JSON.stringify(message);
+        $rootScope.showMessageToast(message, "warning");
+    };
+
+    $rootScope.errorToast=function(message){
+        if(typeof message==="object")message=JSON.stringify(message);
+        $rootScope.showMessageToast(message, "error");
     };
 });

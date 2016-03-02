@@ -23,3 +23,15 @@ function getJSONLocal(key) {
 function deleteLocal(key) {
 	localStorage.removeItem(key);
 }
+
+function ClosureMessage(message){
+    return function(fn){
+        return function(){
+            fn(message);
+        };
+    };
+}
+
+function emptyOrUndefined(value){
+    return value==void 0 || value==="";
+}

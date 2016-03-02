@@ -411,7 +411,6 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
 
 .message-toast{
     height: auto;
-    background-color: rgb(236, 214, 56);
     font-weight: bold;
     width: -24%;
     font-size: 1.5em;
@@ -420,3 +419,10 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
     margin-top: 1.5%;
 }
 
+.toast-theme-warning{
+    background-color:#FBC02D;
+}
+
+.toast-theme-error{
+        background-color:#FF5252;
+}
