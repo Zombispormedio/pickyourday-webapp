@@ -18,14 +18,11 @@ var Config = Object.create(null);
 Config.prototype = {};
 var config = Object.create(Config.prototype, {
 
-	db_secure: secure("mongodb://127.0.0.1:27017/pickyourday"),
+
     root: secure(rootPath),
     config: secure_path("config/"),
-    routes: secure_path("app/routes/"),
-    lib:secure_path("app/lib/"),
-    models:secure_path("app/models/"),
-    ctrl:secure_path("app/ctrl/"),
-    port:secure(process.env.PORT || 5001)
+ 
+    port:secure(process.env.PORT || 5045)
 });
 
 
