@@ -371,15 +371,42 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
     display:flex;
 }
 .employeesCard > p{
-    margin-top: 4%;	
+	margin-top: 4%;	
 }
 .timetableHead, .tagsHead{
-    display:flex;
+	display:flex;	
+    margin-top: -2%;
 }
 .timetableHead > i, .tagsHead > i{
     font-size: 20px;
     margin-top: 2.2%;
     margin-right: 1%;
+}
+.employeeServices md-list-item{
+	margin-top: -3%;
+    margin-left: 2%;
+}
+/*my promotions*/
+.promotions > img{
+	width:150px;
+	height:100px;
+	margin:2%;
+}
+.promotions p{
+    font-size: 25px;
+}
+.promotions > div i {
+    margin-right: 2%;
+}
+.promotionActions{
+	margin-top: 15%;
+	margin-bottom: 2%;
+}
+.promotionActions > button{
+	background: transparent;
+	border: none;
+	display:inline;
+    font-size: 22px;
 }
 
 .message-toast{
@@ -392,3 +419,4 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
     margin-left: 1.5%;
     margin-top: 1.5%;
 }
+

@@ -36,17 +36,28 @@ webAppController.employeesCtrl = function ($rootScope, $scope, CompanyService,  
         }, function() {
           $scope.status = 'You cancelled the dialog.';
         });
-  };
+  	}
 
+
+	function DialogController($scope, $mdDialog) {
+		$scope.hide = function() {
+			$mdDialog.hide();
+		};
+		$scope.cancel = function() {
+			$mdDialog.cancel();
+		};
+		$scope.answer = function(answer) {
+			$mdDialog.hide(answer);
+		};
+	}
+	this.getServices=function(){
+		CompanyService.services().get({},function(result){
+			if(result.error)
+				return console.log(result.error);
+			$scope.services=result.data;
+		}, function(){
+
+		});
+	}
+	this.getServices();
 };
-function DialogController($scope, $mdDialog) {
-	$scope.hide = function() {
-		$mdDialog.hide();
-	};
-	$scope.cancel = function() {
-		$mdDialog.cancel();
-	};
-	$scope.answer = function(answer) {
-		$mdDialog.hide(answer);
-	};
-}

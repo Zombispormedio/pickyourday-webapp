@@ -1,4 +1,4 @@
-webAppController.newPromotionCtrl = function ($rootScope, $scope, CompanyService, SystemService) {
+webAppController.newPromotionCtrl = function ($rootScope, $scope, CompanyService, SystemService,$mdDialog) {
 	$scope.error="";
 	$scope.promotion = {images:[]};
 	$scope.images={};
@@ -8,7 +8,9 @@ webAppController.newPromotionCtrl = function ($rootScope, $scope, CompanyService
 			if(result.error)
 				return console.log(result.error);
 			$scope.promotion=result.data;
+			console.log($scope.promotion);
 			$scope.showAlert();
+			$rootScope.go("app.myPromotions");
 		}, function(){		
 				
 		});			
@@ -19,7 +21,7 @@ webAppController.newPromotionCtrl = function ($rootScope, $scope, CompanyService
 	        .parent(angular.element(document.querySelector('#popupContainer')))
 	        .clickOutsideToClose(true)
 	        .title('')
-	        .textContent('¡Los cambios han sido guardados!')
+	        .textContent('¡Promoción creada correctamente!')
 	        .ariaLabel('Alert Dialog Demo')
 	        .ok('OK')
 	    );
@@ -32,7 +34,6 @@ webAppController.newPromotionCtrl = function ($rootScope, $scope, CompanyService
 		console.log(data);    
 		if(data){
 			SystemService.images().upload({type:"data"}, data, function(res){
-				console.log($scope.promotion);
 				$scope.promotion.images.push(res.data);
 
 			})
@@ -50,8 +51,5 @@ webAppController.newPromotionCtrl = function ($rootScope, $scope, CompanyService
 
 		});
 	}
-	$scope.$watch("promotion.services",function(){
-		console.log($scope.promotion.services);
-	})
 	this.getServices();
 };

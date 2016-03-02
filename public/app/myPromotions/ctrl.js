@@ -4,11 +4,11 @@ webAppController.promotionCtrl = function ($rootScope, $scope, CompanyService, S
 	$scope.images={};
 
 	this.getPromotions=function () {
-		CompanyService.promotion().get({}, function(result){
+		CompanyService.promotions().get({}, function(result){
 			if(result.error)
 				return console.log(result.error);
-			$scope.promotion=result.data;
-			
+			$scope.promotions=result.data;
+			console.log(result.data);
 		}, function(){		
 				
 		});			

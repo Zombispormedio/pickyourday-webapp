@@ -13,15 +13,17 @@
         <i class="fa fa-calendar" ></i> 
         <p>Horario: </p>
       </div>       
-      <div class="tagsHead">
-        <i class="fa fa-tags" ></i>  
-        <p>Servicios asignados</p>
-        <md-list-item class="md-3-line" ng-repeat="service in employee.services">
-          <p>{{service.id_name.name}}</p>
-        </md-list-item>
+      <div class="employeeServices">
+        <div class="tagsHead">
+          <i class="fa fa-tags" ></i>  
+          <p>Servicios asignados</p>
+        </div>
+          <md-list-item  ng-repeat="service in employee.services">
+            <p>{{service.id_name.name}}</p>
+            <md-chips ng-model="" readonly="ctrl.readonly"></md-chips>
+          </md-list-item>
       </div>
     </div>
-     <!--<md-chips ng-model="" readonly="ctrl.readonly"></md-chips>-->
   </div>
   <md-divider></md-divider>  
 </md-list-item>
