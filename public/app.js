@@ -66,8 +66,8 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
             }
         }
     })
-        .state("app.companiesProfile", {
-        url: '/companiesProfile',
+        .state("app.profile", {
+        url: '/profile',
         onEnter: function ($rootScope) {
             if (!getJSONLocal("user")) {
 
@@ -77,7 +77,7 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
         views: {
             content: {
                 templateUrl: 'app/companiesProfile/main.html',
-                controller: 'companiesProfileCtrl'
+                controller: 'profileCtrl'
             }
         }
     })
@@ -95,10 +95,10 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
                 controller: 'servicesCtrl'
             }
         }
-       
+
     })
-     .state("app.myPromotions", {
-            url: '/myPromotions',
+        .state("app.myPromotions", {
+        url: '/myPromotions',
         onEnter: function ($rootScope) {
             if (!getJSONLocal("user")) {
 
@@ -112,8 +112,8 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
             }
         }      
     })   
-    .state("app.newPromotion", {
-            url: '/newPromotion',
+        .state("app.newPromotion", {
+        url: '/newPromotion',
         onEnter: function ($rootScope) {
             if (!getJSONLocal("user")) {
 
@@ -127,9 +127,9 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
             }
         }      
     })
-    
+
         .state("app.employees", {
-            url: '/employees',
+        url: '/employees',
         onEnter: function ($rootScope) {
             if (!getJSONLocal("user")) {
 
@@ -151,9 +151,19 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
 
 })
 
-.run(function ($rootScope, $state) {
+.run(function ($rootScope, $state, $mdToast) {
 
     $rootScope.go = function (state, params) {
         $state.go(state, params);
+    };
+
+    $rootScope.showMessageToast=function(message){
+        $mdToast.show({
+            controller: 'MessageToastCtrl',
+            templateUrl: 'app/utils/message-toast/main.html',
+            position:"true true false false",
+            locals:{data:{message:"hello"}},
+            hideDelay: 600,
+        });
     };
 });

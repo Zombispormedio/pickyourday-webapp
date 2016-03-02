@@ -1,27 +1,27 @@
 .companyName{
-	font-size: 25px;
+    font-size: 25px;
     color: white;
     margin: 4%;
 }
 .webAppMenuInfo{
-	background-color: #009688;
+    background-color: #009688;
     padding: 2%;
     padding-top: 4%;
     padding-bottom: 4%;
 }
 .toolbar{
-	position:fixed;
-	overflow: auto;
+    position:fixed;
+    overflow: auto;
 }
 #content{
-	/*background-color:#d5d1ca;*/
-	overflow:visible;
-	padding-bottom: 5%;
-	/*height:100%;*/
+    /*background-color:#d5d1ca;*/
+    overflow:visible;
+    padding-bottom: 5%;
+    /*height:100%;*/
 }
 .webAppMenuOptions{
-	font-size: 18px;
-	margin-left: 5%;
+    font-size: 18px;
+    margin-left: 5%;
 }
 button.webAppMenuOptions {
     background-color: transparent;
@@ -37,30 +37,30 @@ button.webAppMenuOptions {
     color:black;
 }
 .dayDasboardDate{
-	display:flex;
+    display:flex;
 }
 .container1{
-	background-color: white;
-	width:65%;
+    background-color: white;
+    width:65%;
     margin: 0 auto;
     margin-bottom: 5%;
     margin-top: 4%;
     -webkit-box-shadow: 0px 0px 0px 10px rgba(203,200,194,0.52);
-	-moz-box-shadow: 0px 0px 0px 10px rgba(203,200,194,0.52);
-	box-shadow: 0px 0px 0px 10px rgba(203,200,194,0.52);
-	position: relative;
-	z-index: 2;	
-	overflow:hidden;
-	padding-left:5%;
-	padding-right:5%;
-	padding-bottom: 3%;
+    -moz-box-shadow: 0px 0px 0px 10px rgba(203,200,194,0.52);
+    box-shadow: 0px 0px 0px 10px rgba(203,200,194,0.52);
+    position: relative;
+    z-index: 2;	
+    overflow:hidden;
+    padding-left:5%;
+    padding-right:5%;
+    padding-bottom: 3%;
 }
 .ng-scope{
-	height:100%;
+    height:100%;
 }
 /*Login*/
 .contactIcon,.contact{
-	color: white;
+    color: white;
     right:0;
     top:0;
     font-size: 40px;
@@ -79,61 +79,61 @@ button.webAppMenuOptions {
     background-color: transparent;
 }
 .contactIcon:not([disabled]):hover, .menuIcon:not([disabled]):hover{	
-	background: none;
+    background: none;
 }
 .backgroundLogin, md-toolbar:not(.md-menu-toolbar){
-	background-color: transparent;
-	background-image: url("https://googledrive.com/host/0B-TPTaV5ouD7TUtDXzVxQmhYa1E/fondo_login.png");	
+    background-color: transparent;
+    background-image: url("https://googledrive.com/host/0B-TPTaV5ouD7TUtDXzVxQmhYa1E/fondo_login.png");	
 }
 
 .loginForm input{
-	color:white;
+    color:white;
 }
 .loginForm{
-	height: 100%;
+    height: 100%;
 }
 .loginForm h2{
-	color:white;
-	text-align: left;
+    color:white;
+    text-align: left;
 }
 #login label{
-	color: white;
+    color: white;
 }
 .loginForm .md-input, #login input:focus{
-	border-color: white;
+    border-color: white;
 }
 .loginButton{
-	min-width: 100%;
-	margin:0;
-	background-color: rgba(0, 82, 82, 0.76);
-	color:white;
+    min-width: 100%;
+    margin:0;
+    background-color: rgba(0, 82, 82, 0.76);
+    color:white;
 }
 .loginButton:hover{
-	background-color: rgba(222, 214, 214, 0.2);
+    background-color: rgba(222, 214, 214, 0.2);
 }
 /*Company profile*/
 .location md-input-container{
-	
+
     display: flex;
     margin-left: 5%;
 }
 .form input{
-	color:#000;
+    color:#000;
 }
 #formStyle label, .form p{
-	color:rgba(0, 0, 0, 0.57);
+    color:rgba(0, 0, 0, 0.57);
 }
 .form .md-input,#formStyle input:focus, #formStyle textarea, #formStyle input, #formStyle md-select, #formStyle md-option{
-	border-color: rgba(0, 0, 0, 0.3);
-	width:60%;
+    border-color: rgba(0, 0, 0, 0.3);
+    width:60%;
 }
 
 .dtp > .dtp-content > .dtp-date-view > header.dtp-header, .dtp div.dtp-date, .dtp div.dtp-time, .dtp table.dtp-picker-days tr > td > a.selected,.dtp .dtp-picker-time > a.dtp-select-hour.selected,.dtp .dtp-hand.on, .dtp .dtp-actual-meridien a.selected{
-	background-color: #009688;
+    background-color: #009688;
 }
 .companyImages{
-	display:inline;
-	margin-right: 2%;
+    display:inline;
+    margin-right: 2%;
 }
 .companyImages > img {
     width: 205px;
@@ -141,7 +141,7 @@ button.webAppMenuOptions {
     margin-bottom: 5%;
 }
 .companyImages .deleteImageIcon{
-	background-color: #009688;
+    background-color: #009688;
     font-size: 20px;
     vertical-align: top;
     width: 35px;
@@ -151,233 +151,244 @@ button.webAppMenuOptions {
     /*display:none;*/
 }
 
-     /*hover*/
+/*hover*/
 .companyImages .deleteImageIcon:not([disabled]):hover,.buttonViewResources.md-fab:not([disabled]):hover, .addService.md-fab:not([disabled]):hover, .addEmployee.md-fab:not([disabled]):hover, .md-fab.editProfile:not([disabled]):hover{
-	background-color: #00796B;
+    background-color: #00796B;
 }
-	/*focus*/
+/*focus*/
 .companyImages .deleteImageIcon:not([disabled]):focus,.buttonViewResources.md-fab:not([disabled]):focus, .addService.md-fab:not([disabled]):focus, .addEmployee.md-fab:not([disabled]):focus, .md-fab.editProfile:not([disabled]):focus{
-	background-color: #00796B;
+    background-color: #00796B;
 }
-	/*active*/
+/*active*/
 .companyImages .deleteImageIcon:not([disabled]):active,.buttonViewResources.md-fab:not([disabled]):active, .addService.md-fab:not([disabled]):active, .addEmployee.md-fab:not([disabled]):active, .md-fab.editProfile:not([disabled]):active{
-	background-color: #00796B;
+    background-color: #00796B;
 }
 .companyImages > button {
     margin-top: -2%;
     margin-left: -3%;
 }
 .locationInfo{
-	display: block;
-	margin-top: -3%;
+    display: block;
+    margin-top: -3%;
 }
 .locationInfo > p{
-	color:black;
-	margin-left: 1%;
-	margin-top: 3.5%;
+    color:black;
+    margin-left: 1%;
+    margin-top: 3.5%;
     margin-bottom: -3%;
 }
 p.phones{
-	color:black;
-	margin-left: 4%;
+    color:black;
+    margin-left: 4%;
 }
 .phoneList{
-	margin-top: -1%;
-	width: 25%;
+    margin-top: -1%;
+    width: 25%;
 }
 .fa-phone, .emailSecond{
-	font-size: 25px;
+    font-size: 25px;
     margin-right: 1%;
     color:#009688;
 }
 .md-fab#editProfile{
-	background-color: #009688;
+    background-color: #009688;
     font-size: 20px;
     float:right;
 }
 #saveProfile, #addPhone,#addImage, #addEmailSecond{
-	display:none;
+    display:none;
 }
 /*Servicios*/
 .head{
-	display:inline-flex;
-	width:100%;
-	margin-top: 2%;
+    display:inline-flex;
+    width:100%;
+    margin-top: 2%;
 }
 .head > i{
-	font-size: 30px;
-	padding-top: 2%;
-	padding-right: 2%;
+    font-size: 30px;
+    padding-top: 2%;
+    padding-right: 2%;
 }
 .services{
-	width:90%;
+    width:90%;
 }
 .serviceList>md-card-title{
-	background-color: #009688;	
-	padding:0;
+    background-color: #009688;	
+    padding:0;
 }
 .serviceList>md-card-title p{
-	margin-left: 2%;
-	color:white;
-	font-size: 18px;
-	font-weight: bold;
+    margin-left: 2%;
+    color:white;
+    font-size: 18px;
+    font-weight: bold;
 }
 .serviceInfo, .serviceDescription{
-	font-size: 15px;
-	margin:0.5%;
+    font-size: 15px;
+    margin:0.5%;
 }
 .buttonViewResources.md-fab{
-	float: right;
-	font-size:20px;
-	background-color: #009688;
-	margin-top: 5%;
+    float: right;
+    font-size:20px;
+    background-color: #009688;
+    margin-top: 5%;
     width: 18%;
 }
 .addService.md-fab, .addEmployee.md-fab{
-	font-size:20px;
-	background-color: #009688;
-	float: right;    
-	margin-right: -4%;
+    font-size:20px;
+    background-color: #009688;
+    float: right;    
+    margin-right: -4%;
     margin-top: 4%;
     margin-bottom: -2%;
 }
 
 .servicesCardInfo{
-	display:flex;
+    display:flex;
 }
 .services i{
-	margin-right: 5%;
-	font-size: 18px;	
+    margin-right: 5%;
+    font-size: 18px;	
 }
 .serviceInfo{
-	/*width: 15%;*/
-	width: 40%;
+    /*width: 15%;*/
+    width: 40%;
     margin-left: 0;
 }
 .resourcesServices{
-	width: 80%;
+    width: 80%;
     padding-left: 2%;
 }
 md-checkbox.md-checked .md-icon {
- background-color: #009688;
+    background-color: #009688;
 }
 md-checkbox .md-ink-ripple, md-checkbox.md-checked .md-ink-ripple{
-	color: #009688;
+    color: #009688;
 }
 /*.serviceList {
-    margin-bottom: 5%;
+margin-bottom: 5%;
 }*/
 .companyServices{
-	display:flex;
+    display:flex;
 }
 .companyServices md-card{
-	width:50%;
+    width:50%;
 }
 .buttonDeleteService{
-	color:white;
-	font-size: 25px;
-	margin-right: 0;
+    color:white;
+    font-size: 25px;
+    margin-right: 0;
 }
 .serviceCardHead{
-	display:flex;
+    display:flex;
 }
 .serviceCardHead p{
-	width:100%;
+    width:100%;
 }
 .addServiceToolbar{
-	background-color: #009688;
-	color:white;
+    background-color: #009688;
+    color:white;
 }
 .datePicker{
-	margin-left: 1%;
+    margin-left: 1%;
 }
 /*crear promocion*/
 .buttonStyle,.buttonStyleSimple{
-	background-color: none;
-	color:#009688;
-	width:20%;
+    background-color: none;
+    color:#009688;
+    width:20%;
 }
 .buttonStyle2{
-	background-color: #009688;
-	color: white;
-	width:20%;
-	margin-top: 3%;
+    background-color: #009688;
+    color: white;
+    width:20%;
+    margin-top: 3%;
 }
 .buttonStyleSimple:not([disabled]):hover,.buttonStyleSimple:not([disabled]):active,.buttonStyleSimple:not([disabled]):focus{
-	background-color: transparent;
+    background-color: transparent;
 }
 .buttonStyle:not([disabled]):hover,.buttonStyle:not([disabled]):active,.buttonStyle:not([disabled]):focus, 
 .buttonStyle2:not([disabled]):hover,.buttonStyle2:not([disabled]):active,.buttonStyle2:not([disabled]):focus{
-	background-color: #00796B;
-	color:white;
+    background-color: #00796B;
+    color:white;
 }
 .formIcon{
-	font-size: 22px;
+    font-size: 22px;
 }
 md-input-container:not(.md-input-invalid).md-input-focused .formIcon, md-input-container:not(.md-input-invalid).md-input-focused .fa-phone, md-input-container:not(.md-input-invalid).md-input-focused .emailSecond{
-	color: black;
+    color: black;
 }
 #formStyle md-checkbox{
-	margin-top: 1%;
-	margin-bottom: 1%;
-	margin-right: 2%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-right: 2%;
 }
- md-select:not([disabled]):focus .md-select-value {
-	border-bottom-color: #009688;
+md-select:not([disabled]):focus .md-select-value {
+    border-bottom-color: #009688;
 }
 .deletePhoneIcon{
-	color:#009688;
-	background: transparent;
-	border: none;
-	/*display:none;*/
+    color:#009688;
+    background: transparent;
+    border: none;
+    /*display:none;*/
 }
 md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
-	color: #009688;
+    color: #009688;
 }
 /*DayDashboard*/
 .employeesAvatar img{
-	margin-top: 2.5%;
+    margin-top: 2.5%;
     margin-right: 2%;
 }
 .dayEmployee{
-	margin-top: 2%;
-	margin-bottom: 2%;	
+    margin-top: 2%;
+    margin-bottom: 2%;	
 }
 .pickActions > button{
-	background: transparent;
-	border: none;
-	display:block;
-	padding-bottom: 25%;
+    background: transparent;
+    border: none;
+    display:block;
+    padding-bottom: 25%;
     font-size: 20px;
 }
 .nextPick{
-	border-left: 2px solid #E1E1E1;
+    border-left: 2px solid #E1E1E1;
 }
 .nextPick h3, .nextPick h4{
-	padding-left: 3%;
+    padding-left: 3%;
 }
 /*Employees*/
 .infoEmployee{
-	margin-left: 9%;
+    margin-left: 9%;
 }
 .infoEmployee > i{
-	font-size: 20px;
-	margin-top: 1%;
+    font-size: 20px;
+    margin-top: 1%;
 }
 .allEmployees{
-	display:block;
+    display:block;
 }
 .employeesCard{
-	display:flex;
+    display:flex;
 }
 .employeesCard > p{
-	    margin-top: 4%;	
+    margin-top: 4%;	
 }
 .timetableHead, .tagsHead{
-	display:flex;
+    display:flex;
 }
 .timetableHead > i, .tagsHead > i{
-	font-size: 20px;
-	margin-top: 2.2%;
+    font-size: 20px;
+    margin-top: 2.2%;
     margin-right: 1%;
+}
+
+.message-toast{
+    height: auto;
+    background-color: rgb(236, 214, 56);
+    font-weight: bold;
+    width: -24%;
+    font-size: 1.5em;
+    text-align: center;
+    margin-left: 1.5%;
+    margin-top: 1.5%;
 }

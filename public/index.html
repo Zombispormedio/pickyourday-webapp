@@ -1,51 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Pickyourday Companies</title>
-    <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css"> 
-    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css"> 
-    <link rel="stylesheet" href="bower_components/angular-material-datetimepicker/css/material-datetimepicker.min.css">           
-    <link rel="stylesheet" href="/assets/css/main.css">
-</head>
-<body ng-app="pickyourday-webapp">
+    <head>
+        <meta charset="UTF-8">
+        <title>Pickyourday Companies</title>
+        <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css"> 
+        <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css"> 
+        <link rel="stylesheet" href="bower_components/angular-material-datetimepicker/css/material-datetimepicker.min.css">           
+        <link rel="stylesheet" href="/assets/css/main.css">
+    </head>
+    <body ng-app="pickyourday-webapp">
 
-    <div ui-view></div>
+        <div ui-view></div>
 
-    <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
-       <script type="text/javascript" src="/bower_components/momentjs/min/moment.min.js"></script>
-
-    <script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
-    <script src="bower_components/angular-aria/angular-aria.min.js"></script>
-    <script src="bower_components/angular-messages/angular-messages.min.js"></script>
-    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <script src="bower_components/angular-material/angular-material.min.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.min.js"></script>
-    <script src="bower_components/angular-material-datetimepicker/js/angular-material-datetimepicker.min.js"></script>
-    <script src="bower_components/ng-letter-avatar/dist/ngletteravatar.min.js"></script>
-    <script src="bower_components/angular-base64-upload/dist/angular-base64-upload.min.js"></script>
-    <script type="text/javascript" src="/assets/js/utils.js"></script>
-
-    <script type="text/javascript" src="/app.js"></script>
+        <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="/bower_components/momentjs/min/moment.min.js"></script>
+        <script type="text/javascript" src="/bower_components/async/dist/async.min.js"></script>
+        <script type="text/javascript" src="/bower_components/lodash/dist/lodash.min.js"></script>
 
 
-    <script type="text/javascript" src="/app/ctrl.js"></script>
-    <script type="text/javascript" src="/app/login/ctrl.js"></script>
-    <script type="text/javascript" src="/app/dashboard/ctrl.js"></script>
-    <script type="text/javascript" src="/app/dayDashboard/ctrl.js"></script>
-    <script type="text/javascript" src="/app/companiesProfile/ctrl.js"></script>
-    <script type="text/javascript" src="/app/services/ctrl.js"></script>
-    <script type="text/javascript" src="/app/newPromotion/ctrl.js"></script>
-    <script type="text/javascript" src="/app/myPromotions/ctrl.js"></script>
-    <script type="text/javascript" src="/app/employees/ctrl.js"></script>
+        <script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
+        <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+        <script src="bower_components/angular-aria/angular-aria.min.js"></script>
+        <script src="bower_components/angular-messages/angular-messages.min.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+        <script src="bower_components/angular-material/angular-material.min.js"></script>
+        <script src="bower_components/angular-resource/angular-resource.min.js"></script>
+        <script src="bower_components/angular-material-datetimepicker/js/angular-material-datetimepicker.min.js"></script>
+        <script src="bower_components/ng-letter-avatar/dist/ngletteravatar.min.js"></script>
+        <script src="bower_components/angular-base64-upload/dist/angular-base64-upload.min.js"></script>
 
-    <script type="text/javascript" src="lib/services/api.service.js"></script>
-    <script type="text/javascript" src="lib/services/interceptor.js"></script>
-    <script type="text/javascript" src="lib/services/oauth.service.js"></script>
-    <script type="text/javascript" src="lib/services/company.service.js"></script>
-    <script type="text/javascript" src="lib/services/config.service.js"></script>
-     <script type="text/javascript" src="lib/services/system.service.js"></script>
-    <script type="text/javascript" src="lib/filters.js"></script>
-</body>
+        <script type="text/javascript" src="/assets/js/utils.js"></script>
+
+        <script type="text/javascript" src="/app.js"></script>
+
+
+        <script type="text/javascript" src="/app/ctrl.js"></script>
+        <script type="text/javascript" src="/app/login/ctrl.js"></script>
+        <script type="text/javascript" src="/app/dashboard/ctrl.js"></script>
+        <script type="text/javascript" src="/app/dayDashboard/ctrl.js"></script>
+        <script type="text/javascript" src="/app/profile/ctrl.js"></script>
+        <script type="text/javascript" src="/app/services/ctrl.js"></script>
+        <script type="text/javascript" src="/app/newPromotion/ctrl.js"></script>
+        <script type="text/javascript" src="/app/myPromotions/ctrl.js"></script>
+        <script type="text/javascript" src="/app/employees/ctrl.js"></script>
+          <script type="text/javascript" src="/app/utils/message-toast/ctrl.js"></script>
+
+        <script type="text/javascript" src="lib/services/api.service.js"></script>
+        <script type="text/javascript" src="lib/services/interceptor.js"></script>
+        <script type="text/javascript" src="lib/services/oauth.service.js"></script>
+        <script type="text/javascript" src="lib/services/company.service.js"></script>
+        <script type="text/javascript" src="lib/services/config.service.js"></script>
+        <script type="text/javascript" src="lib/services/system.service.js"></script>
+        <script type="text/javascript" src="lib/filters.js"></script>
+    </body>
 </html>

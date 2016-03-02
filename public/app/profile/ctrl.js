@@ -1,4 +1,4 @@
-webAppController.companiesProfileCtrl = function ($scope, CompanyService, SystemService,$mdDialog) {
+webAppController.profileCtrl = function ($scope, CompanyService, SystemService,$mdDialog) {
 
 	$scope.editable=false;	
 	$scope.add1=false;	

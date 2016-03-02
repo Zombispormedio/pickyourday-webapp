@@ -1,7 +1,7 @@
 webAppFactory.ApiService= function($resource, $location){
     return {
-        //env:$location.absUrl().indexOf("localhost")==-1?"prod":"dev",
-        env:"prod",
+        env:$location.absUrl().indexOf("localhost")==-1?"prod":"dev",
+        //env:"prod",
         prod:{
             protocol:"https",
             host:"pickyourday.herokuapp.com",
