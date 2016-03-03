@@ -1,12 +1,32 @@
-webAppController.profileCtrl = function ($scope, CompanyService, SystemService,$mdDialog) {
+webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, SystemService,$mdDialog, NgMap) {
 
 	$scope.editable=false;	
-	$scope.add1=false;	
-	$scope.add2=false;	
+	
 	$scope.aux={phone:"",emailSecond:""};
 	$scope.images={};
 	$scope.dateTime=new Date();
 	$scope.date=new Date();
+    
+    
+    
+    NgMap.getMap().then(function(map) {
+        var marker=map.markers[0];
+
+
+        marker.addListener('dragend', function() {
+
+            var loc=marker.getPosition();
+
+            $scope.$apply(function () {
+                $scope.profile.location.geolocation.latitude=loc.lat();
+                $scope.profile.location.geolocation.longitude=loc.lng();
+            });
+
+
+
+        });
+
+    });
     
 	this.getProfile=function(){
 		CompanyService.profile().get({},function(result){
@@ -24,7 +44,7 @@ webAppController.profileCtrl = function ($scope, CompanyService, SystemService,$
 		$scope.editable=true;
 	}
 	$scope.addPhone=function(){
-		$scope.add1=true;	
+	
 		if($scope.aux.phone!=""){
 			$scope.profile.phone.push($scope.aux.phone);
 			$scope.aux.phone="";
@@ -35,7 +55,7 @@ webAppController.profileCtrl = function ($scope, CompanyService, SystemService,$
 		$scope.profile.phone.splice(index,1);
 	}
 	$scope.addEmailSecond=function(){
-		$scope.add2=true;	
+	
 		if($scope.aux.emailSecond!=""){
 			$scope.profile.emailSecond.push($scope.aux.emailSecond);
 			$scope.aux.emailSecond="";
@@ -63,20 +83,11 @@ webAppController.profileCtrl = function ($scope, CompanyService, SystemService,$
 			if(result.error)
 				return console.log(result.error);
 			$scope.profile=result.data;
-			$scope.showAlert();
+			$rootScope.sucessToast("Los datos se han guardado correctamente");
+               $scope.editable=false;
 		}, function(){
 
 		});
 	}
-	$scope.showAlert = function() {
-    $mdDialog.show(
-      	$mdDialog.alert()
-	        .parent(angular.element(document.querySelector('#popupContainer')))
-	        .clickOutsideToClose(true)
-	        .title('')
-	        .textContent('¡Los cambios han sido guardados!')
-	        .ariaLabel('Alert Dialog Demo')
-	        .ok('OK')
-	    );
-  	};
+	
 };
