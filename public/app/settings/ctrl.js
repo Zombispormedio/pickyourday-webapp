@@ -1,0 +1,3 @@
+webAppController.SettingsCtrl = function (){
+    
+}

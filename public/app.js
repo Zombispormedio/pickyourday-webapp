@@ -26,7 +26,7 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
 
     })
         .state("app", {
-        url: '',
+        url: '/',
         onEnter: function ($rootScope) {
             if (!getJSONLocal("user")) {
 
@@ -37,7 +37,7 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
         controller: 'AppCtrl'
     })
         .state("app.dashboard", {
-        url: '/dashboard',
+        url: 'dashboard',
         onEnter: function ($rootScope) {
             if (!getJSONLocal("user")) {
 
@@ -51,8 +51,8 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
             }
         }  
     })
-        .state("app.dayDashboard", {
-        url: '/dayDashboard',
+        .state("app.daydashboard", {
+        url: 'today',
         onEnter: function ($rootScope) {
             if (!getJSONLocal("user")) {
 
@@ -61,13 +61,13 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
         },
         views: {
             content: {
-                templateUrl: 'app/dayDashboard/main.html',
+                templateUrl: 'app/daydashboard/main.html',
                 controller: 'DayDashboardCtrl'
             }
         }
     })
         .state("app.profile", {
-        url: '/profile',
+        url: 'profile',
         onEnter: function ($rootScope) {
             if (!getJSONLocal("user")) {
 
@@ -77,12 +77,12 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
         views: {
             content: {
                 templateUrl: 'app/profile/main.html',
-                controller: 'profileCtrl'
+                controller: 'ProfileCtrl'
             }
         }
     })
         .state("app.services", {
-        url: '/services',
+        url: 'services',
         onEnter: function ($rootScope) {
             if (!getJSONLocal("user")) {
 
@@ -92,13 +92,13 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
         views: {
             content: {
                 templateUrl: 'app/services/main.html',
-                controller: 'servicesCtrl'
+                controller: 'ServicesCtrl'
             }
         }
 
     })
-        .state("app.myPromotions", {
-        url: '/myPromotions',
+        .state("app.promotions", {
+        url: 'promotions',
         onEnter: function ($rootScope) {
             if (!getJSONLocal("user")) {
 
@@ -107,13 +107,13 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
         },
         views: {
             content: {
-                templateUrl: 'app/myPromotions/main.html',
-                controller: 'promotionCtrl'
+                templateUrl: 'app/promotions/main.html',
+                controller: 'PromotionCtrl'
             }
         }      
     })   
         .state("app.newPromotion", {
-        url: '/newPromotion',
+        url: 'newPromotion',
         onEnter: function ($rootScope) {
             if (!getJSONLocal("user")) {
 
@@ -129,7 +129,7 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
     })
 
         .state("app.employees", {
-        url: '/employees',
+        url: 'employees',
         onEnter: function ($rootScope) {
             if (!getJSONLocal("user")) {
 
@@ -139,10 +139,70 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
         views: {
             content: {
                 templateUrl: 'app/employees/main.html',
-                controller: 'employeesCtrl'
+                controller: 'EmployeesCtrl'
             }
         }      
-    });
+    })
+    .state("app.help", {
+        url: 'help',
+        onEnter: function ($rootScope) {
+            if (!getJSONLocal("user")) {
+
+                $rootScope.go("login");
+            }
+        },
+        views: {
+            content: {
+                templateUrl: 'app/help/main.html',
+                controller: 'HelpCtrl'
+            }
+        }      
+    })
+    .state("app.ownpick", {
+        url: 'ownpick',
+        onEnter: function ($rootScope) {
+            if (!getJSONLocal("user")) {
+
+                $rootScope.go("login");
+            }
+        },
+        views: {
+            content: {
+                templateUrl: 'app/ownpick/main.html',
+                controller: 'OwnPickCtrl'
+            }
+        }      
+    })
+        .state("app.settings", {
+        url: 'settings',
+        onEnter: function ($rootScope) {
+            if (!getJSONLocal("user")) {
+
+                $rootScope.go("login");
+            }
+        },
+        views: {
+            content: {
+                templateUrl: 'app/settings/main.html',
+                controller: 'SettingsCtrl'
+            }
+        }      
+    })
+    .state("app.stats", {
+        url: 'stats',
+        onEnter: function ($rootScope) {
+            if (!getJSONLocal("user")) {
+
+                $rootScope.go("login");
+            }
+        },
+        views: {
+            content: {
+                templateUrl: 'app/stats/main.html',
+                controller: 'StatsCtrl'
+            }
+        }      
+    })
 
 
 

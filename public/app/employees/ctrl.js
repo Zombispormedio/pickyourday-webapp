@@ -1,4 +1,4 @@
-webAppController.employeesCtrl = function ($rootScope, $scope, CompanyService,  $mdDialog) {
+webAppController.EmployeesCtrl = function ($rootScope, $scope, CompanyService,  $mdDialog) {
 
 	this.getEmployees=function(){
 		CompanyService.employees().get({},function(result){

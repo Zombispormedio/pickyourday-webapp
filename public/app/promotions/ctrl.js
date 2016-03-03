@@ -1,4 +1,4 @@
-webAppController.promotionCtrl = function ($rootScope, $scope, CompanyService, SystemService) {
+webAppController.PromotionCtrl = function ($rootScope, $scope, CompanyService, SystemService) {
 	$scope.error="";
 	$scope.promotion = {images:[]};
 	$scope.images={};

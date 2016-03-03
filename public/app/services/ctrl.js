@@ -1,4 +1,4 @@
-webAppController.servicesCtrl = function ($scope, CompanyService,  $mdSidenav, $mdDialog) {
+webAppController.ServicesCtrl = function ($scope, CompanyService,  $mdSidenav, $mdDialog) {
     
     this.getServices=function(){
 		CompanyService.services().get({},function(result){
