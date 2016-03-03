@@ -1,40 +1,48 @@
 <md-toolbar class="md-tall backgroundLogin toolbar">
-      <h2 class="md-toolbar-tools">
+    <h2 class="md-toolbar-tools">
         <button class="menuIcon fa fa-bars" aria-label="menu" ng-click="openLeftMenu()">
-          
+
         </button>
-      </h2>
-    </md-toolbar>
+    </h2>
+</md-toolbar>
 
 <div flex layout="row">	 
-  <md-sidenav md-component-id="left" class="md-sidenav-left">
-  <div class="webAppMenuInfo">
-    <img src="" alt="">
-    <h2 class="companyName">{{profile.name}}</h2>
-  </div>
-  <md-divider></md-divider>
-    <div class="webAppMenuOptions" layout="column" layout-align="space-between start">
-      <div><a ui-sref="app.profile"><i class="fa fa-user"></i> Mi Negocio</a></div>
-      <div><a ui-sref="app.dashboard"><i class="fa fa-calendar"></i> Inicio</a></div>
-      <div><a ui-sref="app.daydashboard"><i class="fa fa-calendar-check-o"></i> Hoy</a></div>
-      <div><a ui-sref="app.employees"><i class="fa fa-users"></i> Empleados</a></div>
-      <div><a ui-sref="app.services"><i class="fa fa-tags"></i> Servicios</a></div>
-      <div><a ui-sref="app.ownpick" ><i class="fa fa-plus-circle"></i> Crear Pick</a></div>
-      <div><a ui-sref="app.promotions"><i class="fa fa-bullhorn"></i> Promociones</a></div>
-      <div><a ui-sref="app.stats"><i class="fa fa-line-chart"></i> Estadísticas</a></div>
-    
-      <div><a ui-sref="app.settings"><i class="fa fa-cog"></i> Ajustes</a></div>
-      <div><a ui-sref="app.help"><i class="fa fa-question-circle"></i> Ayuda</a></div>
-      <div><button class="webAppMenuOptions" ng-click="logout()"><i class="fa fa-power-off"></i> Cerrar sesión</button></div>
-    </div>  
-  </md-sidenav>
+    <md-sidenav md-component-id="left" class="md-sidenav-left">
+        <div class="webAppMenuInfo" layout="row">
 
- 	
-  <div flex id="content">
-    <div layout="column" class="container1">  
-      <div ui-view="content">
-      </div>
+            <img ng-src="{{profile.images[0].src || ('obdl5wmi.png'|image)}}" class="avatar-sidenav" alt="{{profile.images[0].alt}}" flex ng-if="profile.images[0]">
+
+            <img ng-src="{{ 'obdl5wmi.png'|image}}" class="avatar-sidenav" alt="Default Avatar" flex ng-if="!profile.images[0]">
+            <div layout="column">
+                <h2 class="companyName">{{profile.name}}</h2>
+                <a ui-sref="app.profile" href="">Editar Perfil</a>
+            </div>
+
+
+
+        </div>
+        <md-divider></md-divider>
+        <div class="webAppMenuOptions" layout="column" layout-align="space-between start">
+            <div><a ui-sref="app.dashboard"><i class="fa fa-user"></i>Mi Negocio</a></div>
+            <div><a ui-sref="app.daydashboard"><i class="fa fa-calendar-check-o"></i> Hoy</a></div>
+            <div><a ui-sref="app.employees"><i class="fa fa-users"></i> Empleados</a></div>
+            <div><a ui-sref="app.services"><i class="fa fa-tags"></i> Servicios</a></div>
+            <div><a ui-sref="app.ownpick" ><i class="fa fa-plus-circle"></i> Crear Pick</a></div>
+            <div><a ui-sref="app.promotions"><i class="fa fa-bullhorn"></i> Promociones</a></div>
+            <div><a ui-sref="app.stats"><i class="fa fa-line-chart"></i> Estadísticas</a></div>
+
+            <div><a ui-sref="app.settings"><i class="fa fa-cog"></i> Ajustes</a></div>
+            <div><a ui-sref="app.help"><i class="fa fa-question-circle"></i> Ayuda</a></div>
+            <div><button class="webAppMenuOptions" ng-click="logout()"><i class="fa fa-power-off"></i> Cerrar sesión</button></div>
+        </div>  
+    </md-sidenav>
+
+
+    <div flex id="content">
+        <div layout="column" class="container1">  
+            <div ui-view="content">
+            </div>
+        </div>
     </div>
-  </div>
-	
+
 </div>

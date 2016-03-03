@@ -366,10 +366,10 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
     display:flex;
 }
 .employeesCard > p{
-	margin-top: 4%;	
+    margin-top: 4%;	
 }
 .timetableHead, .tagsHead{
-	display:flex;	
+    display:flex;	
     margin-top: -2%;
 }
 .timetableHead > i, .tagsHead > i{
@@ -378,14 +378,14 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
     margin-right: 1%;
 }
 .employeeServices md-list-item{
-	margin-top: -3%;
+    margin-top: -3%;
     margin-left: 2%;
 }
 /*my promotions*/
 .promotions > img{
-	width:150px;
-	height:100px;
-	margin:2%;
+    width:150px;
+    height:100px;
+    margin:2%;
 }
 .promotions p{
     font-size: 25px;
@@ -394,13 +394,13 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
     margin-right: 2%;
 }
 .promotionActions{
-	margin-top: 15%;
-	margin-bottom: 2%;
+    margin-top: 15%;
+    margin-bottom: 2%;
 }
 .promotionActions > button{
-	background: transparent;
-	border: none;
-	display:inline;
+    background: transparent;
+    border: none;
+    display:inline;
     font-size: 22px;
 }
 
@@ -412,6 +412,7 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
     text-align: center;
     margin-left: 1.5%;
     margin-top: 1.5%;
+    position:fixed;
 }
 
 .toast-theme-warning{
@@ -419,7 +420,11 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
 }
 
 .toast-theme-error{
-        background-color:#FF5252;
+    background-color:#FF5252;
+}
+
+.toast-theme-success{
+    background-color:#8BC34A;
 }
 
 .fa-md {
@@ -428,5 +433,28 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
     color:#009688;
 }
 .fa-md-large{
-     font-size: 2em;
+    font-size: 2em;
+}
+.mb10{
+    margin-bottom: 10%;
+}
+.mb5{
+    margin-bottom: 5%;
+}
+
+.avatar-sidenav{
+    width: 100px;
+    height: 100px;
+
+    border-radius: 50%;
+    box-sizing: content-box;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+.webAppMenuInfo a:hover{
+   color: rgb(230, 217, 217);
 }

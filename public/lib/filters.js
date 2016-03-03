@@ -8,3 +8,9 @@ webAppFilter.image=function(ConfigService){
         return ConfigService.cdn + input;
     };
 };
+
+webAppFilter.firstword=function(){
+    return function(input){
+        return input.split(" ")[0];
+    }
+}

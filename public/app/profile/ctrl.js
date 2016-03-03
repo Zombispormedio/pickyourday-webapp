@@ -1,6 +1,6 @@
-webAppController.ProfileCtrl = function ($scope, CompanyService, SystemService,$mdDialog,   NgMap) {
+webAppController.ProfileCtrl = function ($rootScope,$scope, CompanyService, SystemService,$mdDialog, NgMap) {
 
-    $scope.editable=true;	
+    $scope.editable=false;	
 
     $scope.aux={phone:"",emailSecond:""};
     $scope.images={};
@@ -46,7 +46,7 @@ webAppController.ProfileCtrl = function ($scope, CompanyService, SystemService,$
         $scope.editable=true;
     }
     $scope.addPhone=function(){
-     
+
         if($scope.aux.phone!=""){
             $scope.profile.phone.push($scope.aux.phone);
             $scope.aux.phone="";
@@ -57,7 +57,7 @@ webAppController.ProfileCtrl = function ($scope, CompanyService, SystemService,$
         $scope.profile.phone.splice(index,1);
     }
     $scope.addEmailSecond=function(){
-     
+
         if($scope.aux.emailSecond!=""){
             $scope.profile.emailSecond.push($scope.aux.emailSecond);
             $scope.aux.emailSecond="";
@@ -83,22 +83,13 @@ webAppController.ProfileCtrl = function ($scope, CompanyService, SystemService,$
     $scope.saveChanges=function(){
         CompanyService.profile().update({},$scope.profile,function(result){
             if(result.error)
-                return console.log(result.error);
+                return  $rootScope.errorToast(result.error);
             $scope.profile=result.data;
-            $scope.showAlert();
+            $rootScope.sucessToast("Los datos se han guardado correctamente");
+            $scope.editable=false;
         }, function(){
 
         });
     }
-    $scope.showAlert = function() {
-        $mdDialog.show(
-            $mdDialog.alert()
-            .parent(angular.element(document.querySelector('#popupContainer')))
-            .clickOutsideToClose(true)
-            .title('')
-            .textContent('¡Los cambios han sido guardados!')
-            .ariaLabel('Alert Dialog Demo')
-            .ok('OK')
-        );
-    };
+
 };

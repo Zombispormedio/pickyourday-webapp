@@ -1,6 +1,6 @@
 <div class="head">
-    <i class="fa fa-user"></i>
-    <h1>Mi Negocio</h1>	
+
+    <h1> <i class="fa fa-user"></i> Mi Negocio</h1>	
 </div>
 <div id="formStyle">	
     <form name="userForm" class="form" layout="column">
@@ -42,9 +42,14 @@
             <textarea ng-model="profile.description" md-maxlength="300" rows="5" cols="10" md-select-on-focus ng-disabled="!editable" style="height:87px"></textarea>
 
         </md-input-container>
+        <div flex ng-cloak class="mb10">		
+            <h4>Keywords</h4>
+            <md-chips ng-model="profile.keywords" readonly="!editable"></md-chips>
+            <p ng-if="profile.keywords.length===0">No Keywords</p>
+        </div>
 
 
-        <div layout="column" flex>
+        <div layout="column" flex class="mb10">
             <h2 flex>Mi ubicación</h2>
             <md-input-container flex> 
                 <label>Dirección</label>
@@ -89,7 +94,7 @@
             </div>
 
             <ng-map zoom="20" center="[{{profile.location.geolocation.latitude}}, {{profile.location.geolocation.longitude}}]">
-                <marker position="[{{profile.location.geolocation.latitude}}, {{profile.location.geolocation.longitude}}]" title="drag me" draggable="true"></marker>
+                <marker position="[{{profile.location.geolocation.latitude}}, {{profile.location.geolocation.longitude}}]" title="drag me" draggable="{{editable}}"></marker>
 
             </ng-map>
 
@@ -98,7 +103,7 @@
 
 
 
-        <div layout="column" flex>
+        <div layout="column" flex class="mb5">
             <h2>Datos de Contacto</h2>
             <div layout="row" flex>
 
@@ -156,9 +161,12 @@
         </div>
 
 
-        <div layout="column">
-            <h2>Fotos</h2>
+        <div layout="column" class="mb5">
+            <div layout="row">
+                <h2 flex="80">Fotos</h2>
 
+                <md-button class="buttonStyleSimple" ng-if="editable" ng-click="addImages()" flex>+ añadir fotos</md-button>
+            </div>
 
             <md-input-container>  
 
@@ -169,7 +177,7 @@
                 <input id="newFile" type="file" name="images" base-sixty-four-input ng-model="images.data" ng-if="editable"  style="display:none;" >
 
             </md-input-container>
-            <md-button class="buttonStyleSimple" ng-if="editable" ng-click="addImages()">+ añadir fotos</md-button>
+
 
 
 

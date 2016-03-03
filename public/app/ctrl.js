@@ -17,7 +17,9 @@ webAppController.AppCtrl = function ($rootScope,$scope, $mdSidenav,CompanyServic
     CompanyService.profile().get({},function(result){
       if(result.error)
         return console.log(result.error);
+  
       $scope.profile=result.data;
+            $scope.profile.first_word="Q";
     }, function(){
 
     });
