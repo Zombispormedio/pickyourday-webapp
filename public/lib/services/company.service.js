@@ -21,10 +21,12 @@ webAppFactory.CompanyService= function(ApiService){
         promotion:function(){
             return ApiService.rest(this.base+"/promotion/:id",{
                 create:{method:"POST", params:{}},
+                get:{method:"GET", params:{}},
+                update:{method:"PUT", params:{}}
             });
         },
          promotions:function(){
-            return ApiService.rest(this.base+"/promotion/:id",{
+            return ApiService.rest(this.base+"/promotion/",{
                 get:{method:"GET", params:{}},
             });
         },       

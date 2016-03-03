@@ -17,4 +17,7 @@ webAppController.PromotionCtrl = function ($rootScope, $scope, CompanyService, S
 	$scope.goToNewPromotion=function(){
 		$rootScope.go("app.newPromotion");
 	}
+	$scope.edit=function(){
+		$rootScope.go("app.editPromotion");
+	}
 };

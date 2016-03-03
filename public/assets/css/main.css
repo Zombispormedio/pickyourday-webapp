@@ -226,7 +226,7 @@ p.phones{
     font-size:20px;
     background-color: #009688;
     margin-top: 5%;
-    width: 18%;
+    width: 12%;
 }
 .addService.md-fab, .addEmployee.md-fab{
     font-size:20px;
@@ -394,16 +394,27 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
     margin-right: 2%;
 }
 .promotionActions{
-    margin-top: 15%;
-    margin-bottom: 2%;
+	margin-top: 10%;
+	margin-bottom: 2%;
 }
 .promotionActions > button{
-    background: transparent;
-    border: none;
-    display:inline;
+	background: transparent;
+	border: none;
+	display:inline;
     font-size: 22px;
 }
+.dialogForm{
+    width: 400px;
+    height: 400px;
+}
+.dialogForm md-input-container {
+    display: flex;
+    width: 60%;
+    margin-left: 5%;
+    margin-top: 2%;
+}
 
+/*toast*/
 .message-toast{
     height: auto;
     font-weight: bold;
