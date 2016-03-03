@@ -112,11 +112,7 @@ button.webAppMenuOptions {
     background-color: rgba(222, 214, 214, 0.2);
 }
 /*Company profile*/
-.location md-input-container{
 
-    display: flex;
-    margin-left: 5%;
-}
 .form input{
     color:#000;
 }
@@ -125,7 +121,6 @@ button.webAppMenuOptions {
 }
 .form .md-input,#formStyle input:focus, #formStyle textarea, #formStyle input, #formStyle md-select, #formStyle md-option{
     border-color: rgba(0, 0, 0, 0.3);
-    width:60%;
 }
 
 .dtp > .dtp-content > .dtp-date-view > header.dtp-header, .dtp div.dtp-date, .dtp div.dtp-time, .dtp table.dtp-picker-days tr > td > a.selected,.dtp .dtp-picker-time > a.dtp-select-hour.selected,.dtp .dtp-hand.on, .dtp .dtp-actual-meridien a.selected{
@@ -295,7 +290,7 @@ margin-bottom: 5%;
 .buttonStyle,.buttonStyleSimple{
     background-color: none;
     color:#009688;
-    width:20%;
+
 }
 .buttonStyle2{
     background-color: #009688;
@@ -425,4 +420,13 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
 
 .toast-theme-error{
         background-color:#FF5252;
+}
+
+.fa-md {
+    height: auto;
+    font-size: 1.5em;
+    color:#009688;
+}
+.fa-md-large{
+     font-size: 2em;
 }

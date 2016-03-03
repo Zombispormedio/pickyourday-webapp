@@ -3,7 +3,7 @@ var webAppFactory = {};
 var webAppFilter = {};
 var webAppDirective = {};
 
-var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMaterial', 'ngMaterialDatePicker','ngLetterAvatar', 'naif.base64'])
+var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMaterial', 'ngMaterialDatePicker','ngLetterAvatar', 'naif.base64', 'ngMap'])
 .controller(webAppController)
 .factory(webAppFactory)
 .filter( webAppFilter)
