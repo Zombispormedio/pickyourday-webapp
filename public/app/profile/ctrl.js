@@ -33,7 +33,7 @@ webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, Sys
 			if(result.error)
 				return console.log(result.error);
 			$scope.profile=result.data;
-			console.log($scope.profile);
+			
 		}, function(){
 
 		});
