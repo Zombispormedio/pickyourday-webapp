@@ -9,17 +9,17 @@
   "moduleType": [],
   "license": "MIT",
   "dependencies": {
-    "angular": "~1.4.7",
-    "angular-ui-router": "~0.2.15",
-    "angular-resource": "~1.4.8",
-    "angular-material": "^1.0.5",
-    "jquery": "^2.2.0",
+    "angular": "1.4.7",
+    "angular-ui-router": "0.2.15",
+    "angular-resource": "1.4.8",
+    "angular-material": "1.0.5",
+    "jquery": "2.2.0",
     "font-awesome": "^4.5.0",
-    "angular-material-datetimepicker": "^1.3.0",
-    "ng-letter-avatar": "ngletteravatar#^4.0.0",
-    "angular-base64-upload": "^0.1.17",
-    "async": "^1.5.2",
-    "lodash": "^4.6.1",
-    "ngmap": "^1.16.7"
+    "angular-material-datetimepicker": "1.3.0",
+    "ng-letter-avatar": "ngletteravatar#4.0.0",
+    "angular-base64-upload": "0.1.17",
+    "async": "1.5.2",
+    "lodash": "4.6.1",
+    "ngmap": "1.16.7"
   }
 }
