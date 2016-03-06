@@ -419,22 +419,24 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
     height: auto;
     font-weight: bold;
     width: -24%;
-    font-size: 1.5em;
+ 
     text-align: center;
     margin-left: 1.5%;
     margin-top: 1.5%;
     position:fixed;
 }
-
-.toast-theme-warning{
+.md-toast-content{
+       font-size: 1.5em;
+}
+.toast-theme-warning .md-toast-content{
     background-color:#FBC02D;
 }
 
-.toast-theme-error{
+.toast-theme-error .md-toast-content{
     background-color:#FF5252;
 }
 
-.toast-theme-success{
+.toast-theme-success .md-toast-content{
     background-color:#8BC34A;
 }
 

@@ -172,7 +172,7 @@
 
                 <div class="companyImages" ng-repeat="image in profile.images">				
                     <img ng-src="{{image.src}}" alt="{{image.alt}}">
-                    <md-button class="md-fab fa fa-times deleteImageIcon" aria-label="delete" ng-click="deleteImage($index)"></md-button>
+                    <md-button class="md-fab fa fa-times deleteImageIcon" aria-label="delete" ng-click="deleteImage($index)" ng-if="editable"></md-button>
                 </div>
                 <input id="newFile" type="file" name="images" base-sixty-four-input ng-model="images.data" ng-if="editable"  style="display:none;" >
 
