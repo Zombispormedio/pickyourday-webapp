@@ -32,164 +32,218 @@
                 <md-icon class="fa fa-globe formIcon"></md-icon> 
                 <input name="website" ng-model="profile.web" ng-disabled="!editable">
             </md-input-container>	
-
-
         </div>
 
         <md-input-container flex  class="md-block">			
             <label>Descripción</label>			
             <md-icon class="fa fa-commenting-o formIcon"></md-icon> 
             <textarea ng-model="profile.description" md-maxlength="300" rows="5" cols="10" md-select-on-focus ng-disabled="!editable" style="height:87px"></textarea>
-
         </md-input-container>
-        <div flex ng-cloak class="mb10">		
-            <h4>Keywords</h4>
-            <md-chips ng-model="profile.keywords" readonly="!editable"></md-chips>
-            <p ng-if="profile.keywords.length===0">No Keywords</p>
-        </div>
-
-
-        <div layout="column" flex class="mb10">
-            <h2 flex>Mi ubicación</h2>
-            <md-input-container flex> 
-                <label>Dirección</label>
-                <md-icon class="fa fa-map-marker formIcon"></md-icon>
-                <input type="text" name="address" ng-model="profile.location.address" ng-disabled="!editable">
-            </md-input-container>
-
+      <!--  <div flex ng-cloak class="mb10">	
             <div layout="row">
-
-                <md-input-container flex="40"> 
-                    <label>País</label>
-                    <input type="text" name="country" ng-model="profile.location.country" ng-disabled="!editable">
-                </md-input-container> 
-                <md-input-container flex="45" flex-offset="10"> 
-                    <label>Provincia</label>
-                    <input type="text" name="province" ng-model="profile.location.province" ng-disabled="!editable"> 
-                </md-input-container> 
-
-            </div>
-            <div layout="row">
-                <md-input-container flex="40"> 
-                    <label>Ciudad</label>
-                    <input type="text" name="city" ng-model="profile.location.city" ng-disabled="!editable">
-                </md-input-container> 
-                <md-input-container flex="45" flex-offset="10">
-                    <label>Código postal</label>
-                    <input type="text" name="zipcode" ng-model="profile.location.zipcode" ng-disabled="!editable">	   
-                </md-input-container> 
-            </div>
-
-            <div layout="row">
-                <md-input-container flex="40">
-                    <label>Latitud</label>
-                    <input type="text" name="zipcode" ng-model="profile.location.geolocation.latitude" ng-disabled="!editable" >	
-
-                </md-input-container>
-                <md-input-container flex="45" flex-offset="10">
-                    <label>Longitud</label> 
-                    <input type="text" name="zipcode" ng-model="profile.location.geolocation.longitude" ng-disabled="!editable" >
-
-                </md-input-container> 
-            </div>
-
-            <ng-map zoom="20" center="[{{profile.location.geolocation.latitude}}, {{profile.location.geolocation.longitude}}]">
-                <marker position="[{{profile.location.geolocation.latitude}}, {{profile.location.geolocation.longitude}}]" title="drag me" draggable="{{editable}}"></marker>
-
-            </ng-map>
-
-
-        </div>
-
-
-
-        <div layout="column" flex class="mb5">
-            <h2>Datos de Contacto</h2>
-            <div layout="row" flex>
-
-                <md-list ng-cloak flex="50">
-                    <md-subheader>Teléfonos</md-subheader>
-                    <md-list-item ng-if="editable">
-                        <p class="phones"> 
-                            <i class="fa fa-phone"></i>                       
-                            <md-input-container>
-                                <input type="tel" name="phone" ng-model="aux.phone">
-                            </md-input-container>
-
-                            <md-button class="md-icon-button" aria-label="More">
-                                <md-icon md-font-icon="fa-plus-circle" class="fa fa-md fa-md-large"  aria-label="add" ng-click="addPhone()"></md-icon>
-                            </md-button>
-                        </p>
-                    </md-list-item>
-                    <md-list-item ng-repeat="phones in profile.phone">
-                        <p class="phones"> <i class="fa fa-phone"></i> {{phones}}</p>
-
-                        <md-button class="md-icon-button" aria-label="delete">
-                            <md-icon md-font-icon="fa-times" class="fa fa-md"  ng-if="editable" aria-label="add" ng-click="deletePhone($index)"></md-icon>
-                        </md-button>
-
-                    </md-list-item>
-                    <md-list-item ng-if="profile.phone.length==0" ><p>Ninguno Email añadido</p></md-list-item>
-                </md-list>
-
-                <md-list ng-cloak flex="50" flex-offset="10">
-                    <md-subheader>Emails secundarios</md-subheader>
-                    <md-list-item ng-if="editable">
-                        <p class="phones"> 
-                            <i class="fa fa-envelope-o emailSecond"></i>                       
-                            <md-input-container>
-                                <input type="email" ng-model="aux.emailSecond">
-                            </md-input-container>
-
-                            <md-button class="md-icon-button" aria-label="More">
-                                <md-icon md-font-icon="fa-plus-circle" class="fa fa-md fa-md-large"  aria-label="add" ng-click="addEmailSecond()"></md-icon>
-                            </md-button>
-                        </p>
-                    </md-list-item>
-                    <md-list-item ng-repeat="email in profile.emailSecond">
-                        <p class="phones"> <i class="fa fa-envelope-o emailSecond"></i> {{email}}</p>
-                        <md-button class="md-icon-button" aria-label="delete">
-                            <md-icon md-font-icon="fa-times" class="fa fa-md"  ng-if="editable" aria-label="add" ng-click="deleteEmailSecond($index)"></md-icon>
-                        </md-button>	
-                    </md-list-item>
-                    <md-list-item ng-if="profile.emailSecond.length==0" ><p>Ninguno Tel&eacute;fono añadido</p></md-list-item>
-                </md-list>
-
-
-
-            </div>
-        </div>
-
-
-        <div layout="column" class="mb5">
-            <div layout="row">
-                <h2 flex="80">Fotos</h2>
-
-                <md-button class="buttonStyleSimple" ng-if="editable" ng-click="addImages()" flex>+ añadir fotos</md-button>
-            </div>
-
-            <md-input-container>  
-
-                <div class="companyImages" ng-repeat="image in profile.images">				
-                    <img ng-src="{{image.src}}" alt="{{image.alt}}">
-                    <md-button class="md-fab fa fa-times deleteImageIcon" aria-label="delete" ng-click="deleteImage($index)" ng-if="editable"></md-button>
+                <h4 flex="40">Intervalos de Actividad</h4>
+                <div flex style="margin-top:1%">
+                    <md-button class="buttonStyleSimple" ng-click="addInterval()">+ añadir intervalo</md-button>
                 </div>
-                <input id="newFile" type="file" name="images" base-sixty-four-input ng-model="images.data" ng-if="editable"  style="display:none;" >
 
-            </md-input-container>
+            </div>	
+        
 
 
+                <div class="interval" ng-repeat="interval in profile.intervalTable">
+                    <md-datepicker ng-model="interval.initial" md-placeholder="Introduce fecha inicial"></md-datepicker>{{interval.initial | date: 'MMMM dd'}}
+                    -
+                    <md-datepicker ng-model="interval.end" md-placeholder="Introduce fecha inicial"></md-datepicker>{{interval.end |date: 'MMMM dd'}}
+
+
+
+                    <div layout="row" layout-align="space-between start" style="text-align:center; width: 120%; margin-left: -10%;">
+                        <div class="tile-day" ng-repeat="(key, value) in days"  layout="column" layout-align="start center" flex="15">
+                            <h4 flex>{{value}}</h4>
+                            <span flex class="tile-add" ng-click="addTime(interval, $index)"><i class="fa fa-plus-circle"></i></span>
+                        </div>
+                    </div>
+                    <div layout="row" layout-align="space-between start" style="width: 120%; margin-left: -10%;">
+                        <div   ng-repeat="week in interval.week" layout="column" flex="15">
+                            <div ng-repeat="time in week.times" layout="row" layout-align="space-between start">
+                                <md-input-container flex style="width:3em">
+                                    <input mdc-datetime-picker date="false" time="true" type="text" short-time="false"
+                                           min-date="minDate"
+                                           format="hh:mm"
+                                           ng-model="time.initial" style="width:3em">
+                                </md-input-container>
+
+                                <md-input-container flex >
+                                    <input mdc-datetime-picker date="false" time="true" type="text" short-time="false"
+                                           min-date="time.initial"
+                                           format="hh:mm"
+                                           ng-model="time.end" style="width:3em">
+                                </md-input-container>
+                                <md-divider ></md-divider>
+                            </div>
+                        </div>
+
+
+
+
+
+
+                    </div>
+                    <md-divider n-if="!$last"></md-divider>
+
+                    
+
+                </div>
+                <p ng-if="profile.intervalTable.length===0">No hay intervalos</p>
+        </div>-->
+                <div flex ng-cloak class="mb10">		
+                    <h4>Keywords</h4>
+                    <md-chips ng-model="profile.keywords" readonly="!editable"></md-chips>
+                    <p ng-if="profile.keywords.length===0">No Keywords</p>
+                </div>
+
+
+                <div layout="column" flex class="mb10">
+                    <h2 flex>Mi ubicación</h2>
+                    <md-input-container flex> 
+                        <label>Dirección</label>
+                        <md-icon class="fa fa-map-marker formIcon"></md-icon>
+                        <input type="text" name="address" ng-model="profile.location.address" ng-disabled="!editable">
+                    </md-input-container>
+
+                    <div layout="row">
+
+                        <md-input-container flex="40"> 
+                            <label>País</label>
+                            <input type="text" name="country" ng-model="profile.location.country" ng-disabled="!editable">
+                        </md-input-container> 
+                        <md-input-container flex="45" flex-offset="10"> 
+                            <label>Provincia</label>
+                            <input type="text" name="province" ng-model="profile.location.province" ng-disabled="!editable"> 
+                        </md-input-container> 
+
+                    </div>
+                    <div layout="row">
+                        <md-input-container flex="40"> 
+                            <label>Ciudad</label>
+                            <input type="text" name="city" ng-model="profile.location.city" ng-disabled="!editable">
+                        </md-input-container> 
+                        <md-input-container flex="45" flex-offset="10">
+                            <label>Código postal</label>
+                            <input type="text" name="zipcode" ng-model="profile.location.zipcode" ng-disabled="!editable">	   
+                        </md-input-container> 
+                    </div>
+
+                    <div layout="row">
+                        <md-input-container flex="40">
+                            <label>Latitud</label>
+                            <input type="text" name="zipcode" ng-model="profile.location.geolocation.latitude" ng-disabled="!editable" >	
+
+                        </md-input-container>
+                        <md-input-container flex="45" flex-offset="10">
+                            <label>Longitud</label> 
+                            <input type="text" name="zipcode" ng-model="profile.location.geolocation.longitude" ng-disabled="!editable" >
+
+                        </md-input-container> 
+                    </div>
+
+                    <ng-map zoom="20" center="[{{profile.location.geolocation.latitude}}, {{profile.location.geolocation.longitude}}]">
+                        <marker position="[{{profile.location.geolocation.latitude}}, {{profile.location.geolocation.longitude}}]" title="drag me" draggable="{{editable}}"></marker>
+
+                    </ng-map>
+
+
+                </div>
+
+
+
+                <div layout="column" flex class="mb5">
+                    <h2>Datos de Contacto</h2>
+                    <div layout="row" flex>
+
+                        <md-list ng-cloak flex="50">
+                            <md-subheader>Teléfonos</md-subheader>
+                            <md-list-item ng-if="editable">
+                                <p class="phones"> 
+                                    <i class="fa fa-phone"></i>                       
+                                    <md-input-container>
+                                        <input type="tel" name="phone" ng-model="aux.phone">
+                                    </md-input-container>
+
+                                    <md-button class="md-icon-button" aria-label="More">
+                                        <md-icon md-font-icon="fa-plus-circle" class="fa fa-md fa-md-large"  aria-label="add" ng-click="addPhone()"></md-icon>
+                                    </md-button>
+                                </p>
+                            </md-list-item>
+                            <md-list-item ng-repeat="phones in profile.phone">
+                                <p class="phones"> <i class="fa fa-phone"></i> {{phones}}</p>
+
+                                <md-button class="md-icon-button" aria-label="delete">
+                                    <md-icon md-font-icon="fa-times" class="fa fa-md"  ng-if="editable" aria-label="add" ng-click="deletePhone($index)"></md-icon>
+                                </md-button>
+
+                            </md-list-item>
+                            <md-list-item ng-if="profile.phone.length==0" ><p>Ninguno Email añadido</p></md-list-item>
+                        </md-list>
+
+                        <md-list ng-cloak flex="50" flex-offset="10">
+                            <md-subheader>Emails secundarios</md-subheader>
+                            <md-list-item ng-if="editable">
+                                <p class="phones"> 
+                                    <i class="fa fa-envelope-o emailSecond"></i>                       
+                                    <md-input-container>
+                                        <input type="email" ng-model="aux.emailSecond">
+                                    </md-input-container>
+
+                                    <md-button class="md-icon-button" aria-label="More">
+                                        <md-icon md-font-icon="fa-plus-circle" class="fa fa-md fa-md-large"  aria-label="add" ng-click="addEmailSecond()"></md-icon>
+                                    </md-button>
+                                </p>
+                            </md-list-item>
+                            <md-list-item ng-repeat="email in profile.emailSecond">
+                                <p class="phones"> <i class="fa fa-envelope-o emailSecond"></i> {{email}}</p>
+                                <md-button class="md-icon-button" aria-label="delete">
+                                    <md-icon md-font-icon="fa-times" class="fa fa-md"  ng-if="editable" aria-label="add" ng-click="deleteEmailSecond($index)"></md-icon>
+                                </md-button>	
+                            </md-list-item>
+                            <md-list-item ng-if="profile.emailSecond.length==0" ><p>Ninguno Tel&eacute;fono añadido</p></md-list-item>
+                        </md-list>
+
+
+
+                    </div>
+                </div>
+
+
+                <div layout="column" class="mb5">
+                    <div layout="row">
+                        <h2 flex="80">Fotos</h2>
+
+                        <md-button class="buttonStyleSimple" ng-if="editable" ng-click="addImages()" flex>+ añadir fotos</md-button>
+                    </div>
+
+                    <md-input-container>  
+
+                        <div class="companyImages" ng-repeat="image in profile.images">				
+                            <img ng-src="{{image.src}}" alt="{{image.alt}}">
+                            <md-button class="md-fab fa fa-times deleteImageIcon" aria-label="delete" ng-click="deleteImage($index)" ng-if="editable"></md-button>
+                        </div>
+                        <input id="newFile" type="file" name="images" base-sixty-four-input ng-model="images.data" ng-if="editable"  style="display:none;" >
+
+                    </md-input-container>
+
+
+
+
+                </div>
+
+
+
+
+                <md-button class="buttonStyle2" ng-if="editable" ng-click="saveChanges()">Guardar cambios</md-button>
+
+                <md-button class="md-fab fa fa-pencil" id="editProfile" ng-if="!editable" ng-click="edit()"aria-label="editProfile"></md-button>
+                </form>
 
 
         </div>
-
-
-
-
-        <md-button class="buttonStyle2" ng-if="editable" ng-click="saveChanges()">Guardar cambios</md-button>
-
-        <md-button class="md-fab fa fa-pencil" id="editProfile" ng-if="!editable" ng-click="edit()"aria-label="editProfile"></md-button>
-    </form>
-
-
-</div>

@@ -471,3 +471,22 @@ a{
 .webAppMenuInfo a:hover{
    color: rgb(230, 217, 217);
 }
+
+.mt1{
+    margin-top: 1%;
+}
+.tile-day{
+
+}
+
+.tile-day .tile-add{ 
+margin-top: -15%;
+}
+
+.interval .md-datepicker-input-container{
+    display: none;
+}
+
+.md-dialog-container{
+    position: fixed;
+}
