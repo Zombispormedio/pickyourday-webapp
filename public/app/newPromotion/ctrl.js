@@ -10,7 +10,7 @@ webAppController.newPromotionCtrl = function ($rootScope, $scope, CompanyService
 			$scope.promotion=result.data;
 			console.log($scope.promotion);
 			$scope.showAlert();
-			$rootScope.go("app.myPromotions");
+			$rootScope.go("app.promotions");
 		}, function(){		
 				
 		});			

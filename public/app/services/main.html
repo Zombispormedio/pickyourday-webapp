@@ -8,7 +8,7 @@
 	      <md-card-title-text>
 	      	<div class="serviceCardHead">
 		        <p class="serviceName">{{service.id_name.name}}</p>
-		        <md-button class="fa fa-trash-o buttonDeleteService" ng-click="deleteService()"></md-button> 
+		        <button class="fa fa-trash-o buttonDeleteService" ng-click="delete($index)"></button> 
 	        </div>   
 	      </md-card-title-text>
 	    </md-card-title>
@@ -19,7 +19,7 @@
 		            <p class="serviceInfo"><i class="fa fa-clock-o"></i>{{service.duration}} minutos</p>
 		            <p class="serviceInfo"><i class="fa fa-eur"></i>{{service.price}} euros</p>			
 		    </md-card-content>	    
-		    <md-button class="md-fab fa fa-user buttonViewResources" ng-click="resourcesView()"></md-button>
+		    <md-button class="md-fab fa fa-user buttonViewResources" ng-click="resourcesView($index)"></md-button>
 	    </div>	    
 	</md-card>
 </div>
@@ -28,9 +28,8 @@
 
 <md-sidenav md-component-id="right" class="md-sidenav-right resourcesServices">
 	<h2><i class="fa fa-users"></i> Empleados</h2>
-	<md-list-item>
-		<img ng-src="{{item.face}}?{{$index}}" class="face" alt="{{item.who}}">
-	    <p>hi</p>
+	<md-list-item ng-repeat="employee in employees">
+	   <p>{{employee}}</p>
 	   <md-checkbox class=""></md-checkbox>
 	  </md-list-item>
 </md-sidenav>

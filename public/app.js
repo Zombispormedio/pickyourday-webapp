@@ -128,7 +128,7 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
         }      
     })
         .state("app.editPromotion", {
-        url: '/editPromotion',
+        url: 'editPromotion/:id',
         onEnter: function ($rootScope) {
             if (!getJSONLocal("user")) {
 

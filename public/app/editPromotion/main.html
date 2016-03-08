@@ -39,22 +39,26 @@
 
         <md-checkbox ng-model="promotion.ownCustomers" aria-label="onlyClients" style="margin-left:0.25%;">Solo clientes</md-checkbox>
 
-        <p class=".md-subhead">Fotos</p>
+        <div layout="row">
+            <p flex="80">Fotos</p>
+            <input id="newFile" type="file" name="images" base-sixty-four-input ng-model="images.data" style="display:none;">        
+            <md-button class="buttonStyleSimple" ng-click="addImages()" style="margin-top: -6%;">+ añadir fotos</md-button>
+        </div>
+        
         <md-input-container>
             <div class="companyImages" ng-repeat="image in promotion.images">             
                  <img ng-src="{{image.src}}" alt="{{image.alt}}">
-                 <md-button class="md-fab fa fa-times deleteImageIcon" ng-if="editable" aria-label="delete" ng-click="deleteImage($index)"></md-button>
+                 <md-button class="md-fab fa fa-times deleteImageIcon" aria-label="delete" ng-click="deleteImage($index)"></md-button>
             </div>
         </md-input-container>
-        <input id="newFile" type="file" name="images" base-sixty-four-input ng-model="images.data" style="display:none;">        
-        <md-button class="buttonStyleSimple" ng-click="addImages()" style="margin-top: -6%;">+ añadir fotos</md-button>
+        
 
         <md-input-container style="margin-right: 10px;">
             <label>Servicios asociados</label>
             <md-select ng-model="promotion.services" multiple>
-                <md-option ng-value="service._id" ng-repeat="service in services">{{ service.id_name.name}}</md-option>
+                <md-option ng-value="service._id" ng-repeat="service in services">{{service.id_name.name}}</md-option>
             </md-select>
         </md-input-container>
-        <md-button class="buttonStyle2" ng-if="editable" ng-click="saveChanges()">Guardar cambios</md-button>
+        <md-button class="buttonStyle2" ng-click="saveChanges()">Guardar cambios</md-button>
     </form>   
 </div>

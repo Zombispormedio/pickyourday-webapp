@@ -16,13 +16,15 @@ webAppFactory.CompanyService= function(ApiService){
         services:function(){
             return ApiService.rest(this.base+"/service/:id",{
                 list:{method:"GET", params:{}},
+                delete:{method:"DELETE", params:{id:'@id'}}
             });
         },
         promotion:function(){
             return ApiService.rest(this.base+"/promotion/:id",{
                 create:{method:"POST", params:{}},
-                get:{method:"GET", params:{}},
-                update:{method:"PUT", params:{}}
+                get:{method:"GET", params:{id:'@id'}},
+                update:{method:"PUT", params:{id:'@id'}},
+                delete:{method:"DELETE", params:{id:'@id'}}
             });
         },
          promotions:function(){
@@ -36,12 +38,16 @@ webAppFactory.CompanyService= function(ApiService){
                 get:{method:"GET", params:{}},
             });
         },
-        
         servicesAsigned:function(){
             return ApiService.rest(this.base+"/serviceAsigned/",{
                 list:{method:"GET", params:{}},
             });
-        }
+        },
+        resourcesByServices:function(){
+            return ApiService.rest(this.base+"/resourcesByService/:id",{
+                list:{method:"GET", params:{id:'@id'}},
+            });
+        },
 
     };
 };
