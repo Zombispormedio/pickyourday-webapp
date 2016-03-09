@@ -24,7 +24,7 @@ webAppController.ServicesCtrl = function ($scope, CompanyService,  $mdSidenav, $
 	$scope.resourcesView = function(index) {
     	$mdSidenav('right').toggle();
       console.log($scope.services[index]._id);
-     // $scope.getResourcesByService(index);
+      $scope.getResourcesByService(index);
   };
   $scope.showTabDialog = function(ev) {
     $mdDialog.show({
