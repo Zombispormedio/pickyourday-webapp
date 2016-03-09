@@ -8,6 +8,7 @@
 	      <md-card-title-text>
 	      	<div class="serviceCardHead">
 		        <p class="serviceName">{{service.id_name.name}}</p>
+		        <button class="fa fa-pencil buttonEditService" ng-click="edit($index)"></button> 
 		        <button class="fa fa-trash-o buttonDeleteService" ng-click="delete($index)"></button> 
 	        </div>   
 	      </md-card-title-text>
@@ -28,8 +29,8 @@
 
 <md-sidenav md-component-id="right" class="md-sidenav-right resourcesServices">
 	<h2><i class="fa fa-users"></i> Empleados</h2>
-	<md-list-item ng-repeat="employee in employees">
-	   <p>{{employee}}</p>
-	   <md-checkbox class=""></md-checkbox>
-	  </md-list-item>
+	<md-list-item ng-repeat="resourceByService in resourcesByServices">
+	   <p>{{resourceByService.resource}}</p>
+	   <md-checkbox class="" ng-model="resourceByService.asigned" ng-change="toggle(resourceByService)"></md-checkbox>
+	</md-list-item>
 </md-sidenav>

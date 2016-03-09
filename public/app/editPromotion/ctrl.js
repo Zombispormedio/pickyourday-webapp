@@ -19,8 +19,8 @@ webAppController.editPromotionCtrl = function ($rootScope, $scope, CompanyServic
             if(result.error)
                 return console.log(result.error);
             $scope.promotion=result.data;
-           	$rootScope.sucessToast("Los datos se han guardado correctamente");
-           	$rootScope.go("app.promotions");       
+           	//$rootScope.sucessToast("Los datos se han guardado correctamente");
+           	$scope.showAlert();      
         }, function(){
 
         });
@@ -50,5 +50,15 @@ webAppController.editPromotionCtrl = function ($rootScope, $scope, CompanyServic
 		});
 	}	
 	this.getServices();
-
+	$scope.showAlert = function() {
+    $mdDialog.show(
+      	$mdDialog.alert()
+	        .parent(angular.element(document.querySelector('#popupContainer')))
+	        .clickOutsideToClose(true)
+	        .title('')
+	        .textContent('¡Promoción eliminada correctamente!')
+	        .ariaLabel('Alert Dialog Demo')
+	        .ok('OK')
+	    );
+  	};
 };

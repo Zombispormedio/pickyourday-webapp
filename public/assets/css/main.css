@@ -255,6 +255,9 @@ p.phones{
     width: 80%;
     padding-left: 2%;
 }
+.resourcesServices md-list-item {
+    height: 0%;
+}
 md-checkbox.md-checked .md-icon {
     background-color: #009688;
 }
@@ -270,12 +273,16 @@ margin-bottom: 5%;
 .companyServices md-card{
     width:50%;
 }
-.buttonDeleteService{
+.buttonDeleteService, .buttonEditService{
     color:white;
     font-size: 25px;
-    margin-right: 0;
+    margin-right: 5%;
     background:none;
     border:none;
+}
+.buttonEditService{
+    font-size: 20px;
+    font-weight:normal;
 }
 .serviceCardHead{
     display:flex;
@@ -407,14 +414,11 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
     font-size: 22px;
 }
 .dialogForm{
-    width: 400px;
-    height: 400px;
+    width: 600px;
 }
 .dialogForm md-input-container {
-    display: flex;
-    width: 60%;
+    
     margin-left: 5%;
-    margin-top: 2%;
 }
 
 /*toast*/

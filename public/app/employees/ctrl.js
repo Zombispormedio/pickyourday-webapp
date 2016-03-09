@@ -55,6 +55,7 @@ webAppController.EmployeesCtrl = function ($rootScope, $scope, CompanyService,  
 			if(result.error)
 				return console.log(result.error);
 			$scope.services=result.data;
+			console.log($scope.services);
 		}, function(){
 
 		});

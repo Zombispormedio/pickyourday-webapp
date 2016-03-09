@@ -1,6 +1,8 @@
 webAppController.ServicesCtrl = function ($scope, CompanyService,  $mdSidenav, $mdDialog) {
    
-    this.getServices=function(){
+  
+
+  this.getServices=function(){
 		CompanyService.services().get({},function(result){
 			if(result.error)
 				return console.log(result.error);
@@ -11,11 +13,23 @@ webAppController.ServicesCtrl = function ($scope, CompanyService,  $mdSidenav, $
 	}
 	this.getServices();
 
-  $scope.getResourcesByServices = function(index){
-    CompanyService.resourcesByServices().list({service:$scope.services[index]._id},function(result){
+  /*$scope.getServicesByCategory = function(){
+    CompanyService.servicesByCategory().get({category: $scope.profile},function(result){
       if(result.error)
         return console.log(result.error);
-      $scope.resourcesByServices=result.data;
+      $scope.servicesByCategory=result.data;
+    }, function(){
+
+    });
+  }
+  $scope.servicesByCategory();*/
+
+  $scope.getResourcesByServices = function(){
+    CompanyService.resourcesByServices().list({service:$scope.selectedService},function(result){
+      if(result.error)
+        return console.log(result.error);
+      $scope.resourcesByServices=result.data[0];
+      console.log($scope.resourcesByServices);
     },function(){
 
     });
@@ -24,8 +38,19 @@ webAppController.ServicesCtrl = function ($scope, CompanyService,  $mdSidenav, $
 	$scope.resourcesView = function(index) {
     	$mdSidenav('right').toggle();
       console.log($scope.services[index]._id);
-      $scope.getResourcesByServices(index);
+      $scope.selectedService = $scope.services[index]._id;
+      $scope.getResourcesByServices();
   };
+
+  $scope.toggle = function(resourceByService){
+    CompanyService.toggleService().change({},{resource:resourceByService.resource._id,service:$scope.selectedService},function(result){
+      if(result.error)
+        return console.log(result.error);
+      $scope.toggleService=result.data;
+      console.log($scope.toggleService);
+    })
+
+  }
   $scope.showTabDialog = function(ev) {
     $mdDialog.show({
       controller: DialogController,
@@ -58,7 +83,7 @@ webAppController.ServicesCtrl = function ($scope, CompanyService,  $mdSidenav, $
       
       if(result.error)
         return console.log(result.error);
-      //$scope.promotions.splice(index,1);
+      $scope.promotions.splice(index,1);
       $scope.showAlert();
       $rootScope.go("app.services");
     }, function(){    

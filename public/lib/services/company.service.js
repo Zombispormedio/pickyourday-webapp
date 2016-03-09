@@ -43,11 +43,20 @@ webAppFactory.CompanyService= function(ApiService){
                 list:{method:"GET", params:{}},
             });
         },
+        servicesByCategory:function(){
+            return ApiService.rest(this.base+"/serviceName/",{
+                list:{method:"GET", params:{}},
+            });
+        },
         resourcesByServices:function(){
             return ApiService.rest(this.base+"/resourcesByService/",{
                 list:{method:"GET", params:{}},
             });
         },
-
+        toggleService:function(){
+            return ApiService.rest(this.base+"/toggleService/",{
+                change:{method:"POST", params:{}},
+            });
+        },
     };
 };

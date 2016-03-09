@@ -24,7 +24,7 @@ webAppController.PromotionCtrl = function ($rootScope, $scope, CompanyService, S
 		CompanyService.promotion().delete({id:$scope.promotions[index]._id}, function(result){
 			if(result.error)
 				return console.log(result.error);
-			//$scope.promotions.splice(index,1);
+			$scope.promotions.splice(index,1);
 			$scope.showAlert();
 			$rootScope.go("app.promotions");
 		}, function(){		

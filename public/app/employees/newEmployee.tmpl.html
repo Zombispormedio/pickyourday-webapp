@@ -8,31 +8,37 @@
     <md-dialog-content class="dialogForm">
         <md-content class="md-padding">
           <form name="employeeForm" class="form" layout="column" >
-            <md-input-container>      
-              <label>Nombre</label>
-              <md-icon class="fa fa-user formIcon"></md-icon> 
-              <input name="name" ng-model="employee.name">
-            </md-input-container>
-            <md-input-container>              
-              <label>Apellidos</label>      
-              <input name="surname" type="text" ng-model="employee.surname"></input>
-            </md-input-container>
-            <md-input-container>              
-              <label>Descripcion</label>      
-              <md-icon class="fa fa-commenting-o formIcon"></md-icon> 
-              <input name="description" type="text" ng-model="employee.description"></input>
-            </md-input-container>
-            <md-input-container>              
-              <label>Teléfono</label>      
-              <md-icon class="fa fa-phone formIcon"></md-icon> 
-              <input name="phone" type="text" ng-model="employee.phone"></input>
-            </md-input-container>
-            <md-input-container style="margin-right: 10px;">
-              <label>Servicios</label>
-              <md-select ng-model="employee.services" multiple>
-                  <md-option ng-value="service._id" ng-repeat="service in services">{{ service.id_name.name}}</md-option>
-              </md-select>  
-            </md-input-container>
+            <div flex layout="row" layout-wrap>
+              <md-input-container>      
+                <label>Nombre</label>
+                <md-icon class="fa fa-user formIcon"></md-icon> 
+                <input name="name" ng-model="employee.name">
+              </md-input-container>
+              <md-input-container>              
+                <label>Apellidos</label>      
+                <input name="surname" type="text" ng-model="employee.surname"></input>
+              </md-input-container>
+            </div>
+            <div flex layout="row" layout-wrap>
+              <md-input-container>              
+                <label>Descripcion</label>      
+                <md-icon class="fa fa-commenting-o formIcon"></md-icon> 
+                <input name="description" type="text" ng-model="employee.description"></input>
+              </md-input-container>
+              <md-input-container>              
+                <label>Teléfono</label>      
+                <md-icon class="fa fa-phone formIcon"></md-icon> 
+                <input name="phone" type="text" ng-model="employee.phone"></input>
+              </md-input-container>
+            </div>
+            <div flex layout="row" layout-wrap>
+              <md-input-container style="margin-right: 10px;">
+                <label>Servicios</label>
+                <md-select ng-model="employee.services" multiple>
+                    <md-option ng-value="service._id" ng-repeat="service in services">{{service.id_name.name}}</md-option>
+                </md-select>  
+              </md-input-container>
+            </div>
           </form>
         </md-content>        
     </md-dialog-content>
