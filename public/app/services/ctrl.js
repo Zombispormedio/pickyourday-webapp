@@ -14,7 +14,7 @@ webAppController.ServicesCtrl = function ($scope, CompanyService,  $mdSidenav, $
 	this.getServices();
 
   /*$scope.getServicesByCategory = function(){
-    CompanyService.servicesByCategory().get({category: $scope.profile},function(result){
+    CompanyService.servicesByCategory().get({category: $scope.profile.category._id},function(result){
       if(result.error)
         return console.log(result.error);
       $scope.servicesByCategory=result.data;
@@ -22,7 +22,7 @@ webAppController.ServicesCtrl = function ($scope, CompanyService,  $mdSidenav, $
 
     });
   }
-  $scope.servicesByCategory();*/
+  $scope.getServicesByCategory();*/
 
   $scope.getResourcesByServices = function(){
     CompanyService.resourcesByServices().list({service:$scope.selectedService},function(result){
