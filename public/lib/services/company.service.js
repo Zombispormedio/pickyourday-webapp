@@ -44,8 +44,8 @@ webAppFactory.CompanyService= function(ApiService){
             });
         },
         resourcesByServices:function(){
-            return ApiService.rest(this.base+"/resourcesByService/:id",{
-                list:{method:"GET", params:{id:'@id'}},
+            return ApiService.rest(this.base+"/resourcesByService/",{
+                list:{method:"GET", params:{}},
             });
         },
 

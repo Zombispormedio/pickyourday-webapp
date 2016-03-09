@@ -12,7 +12,7 @@ webAppController.ServicesCtrl = function ($scope, CompanyService,  $mdSidenav, $
 	this.getServices();
 
   $scope.getResourcesByServices = function(index){
-    CompanyService.resourcesByServices().list({},{id:$scope.services[index]._id},function(result){
+    CompanyService.resourcesByServices().list({service:$scope.services[index]._id},function(result){
       if(result.error)
         return console.log(result.error);
       $scope.resourcesByServices=result.data;
@@ -24,7 +24,7 @@ webAppController.ServicesCtrl = function ($scope, CompanyService,  $mdSidenav, $
 	$scope.resourcesView = function(index) {
     	$mdSidenav('right').toggle();
       console.log($scope.services[index]._id);
-      $scope.getResourcesByService(index);
+      $scope.getResourcesByServices(index);
   };
   $scope.showTabDialog = function(ev) {
     $mdDialog.show({
