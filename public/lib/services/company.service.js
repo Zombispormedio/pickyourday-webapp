@@ -37,7 +37,8 @@ webAppFactory.CompanyService= function(ApiService){
                 /*list:{method:"GET", params:{}},*/
                 get:{method:"GET", params:{}},
                 create:{method:"POST", params:{}},
-                delete:{method:"DELETE", params:{}}
+                delete:{method:"DELETE", params:{}},
+                update:{method:"PUT", params:{}}
             });
         },
         servicesAsigned:function(){

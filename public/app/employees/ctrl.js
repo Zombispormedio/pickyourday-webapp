@@ -38,8 +38,6 @@ webAppController.EmployeesCtrl = function ($rootScope, $scope, CompanyService,  
          },
 	    })
         .then(function(employee) {
-
-
       		if(!update)self.createEmployee(employee);
 
         }, function() {
@@ -73,6 +71,7 @@ webAppController.EmployeesCtrl = function ($rootScope, $scope, CompanyService,  
 		});
 	}
 	this.getServices();
+
 	this.createEmployee = function(employee){
 		CompanyService.employees().create({},employee,function(result){
 			if(result.error)
@@ -84,8 +83,18 @@ webAppController.EmployeesCtrl = function ($rootScope, $scope, CompanyService,  
 		});
 	}
 
+	this.modifyEmployee = function(employee){
+		CompanyService.employees().update({},employee,function(result){
+			if(result.error)
+				return console.log(result.error);
+			console.log(result)
+			$scope.employees=result.data;
+		}, function(){
+
+		});
+	}
 	$scope.delete = function(employee){
-		CompanyService.employees().delete({id:employee}, function(result){
+		CompanyService.employees().delete({id:employee._id}, function(result){
             if(result.error)
                 return console.log(result.error);
             $scope.employees=result.data;
