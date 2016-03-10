@@ -5,8 +5,11 @@
 <md-list-item class="md-3-line employeesAvatar allEmployees" ng-repeat="employee in employees" ng-init="employee.open=false">
   <div class="employeesCard" ng-click="showInfo(employee)">
     <ng-letter-avatar data="{{employee.name}}" shape="round"></ng-letter-avatar>
-    <p>{{employee.name}} {{employee.surname}}</p>    
+    <p>{{employee.name}} {{employee.surname}}</p>
   </div> 
+    <button class="fa fa-pencil modifyButton" aria-label="edit" ng-click="showDialog($event, employee, true)"></button> 
+    <button class="fa fa-trash-o deleteButton" ng-click="delete(employee)"></button> 
+   
   <div ng-if="employee.open">
     <div class="infoEmployee">
       <div class="timetableHead">

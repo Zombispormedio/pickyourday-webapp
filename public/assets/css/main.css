@@ -391,6 +391,16 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
     margin-top: -3%;
     margin-left: 2%;
 }
+.modifyButton, .deleteButton{
+    background:transparent;
+    border:none;
+    float:right;
+    font-size: 18px;
+    margin-top: -50px;
+}
+.deleteButton{
+   margin-top: -15px; 
+}
 /*my promotions*/
 .promotions > img{
     width:150px;
