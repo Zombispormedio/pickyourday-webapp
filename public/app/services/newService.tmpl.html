@@ -8,7 +8,14 @@
     <md-dialog-content style="max-width:800px;max-height:810px; ">
    
         <md-content class="md-padding">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi.</p>
+          <div flex layout="row" layout-wrap>
+              <md-input-container style="margin-right: 10px;">
+                <label>Servicios</label>
+                <md-select ng-model="employee.services" multiple>
+                    <md-option ng-value="service._id" ng-repeat="service in services">{{service.id_name.name}}</md-option>
+                </md-select>  
+              </md-input-container>
+            </div>
         </md-content>        
     </md-dialog-content>
     <md-dialog-actions layout="row">

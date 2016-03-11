@@ -19,6 +19,11 @@ webAppFactory.CompanyService= function(ApiService){
                 delete:{method:"DELETE", params:{id:'@id'}}
             });
         },
+        service:function(){
+            return ApiService.rest(this.base+"/service",{
+                create:{method:"POST", params:{}}
+            });
+        },
         promotion:function(){
             return ApiService.rest(this.base+"/promotion/:id",{
                 create:{method:"POST", params:{}},
