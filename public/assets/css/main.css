@@ -430,6 +430,9 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
     
     margin-left: 5%;
 }
+.dialogForm md-select{
+    width:300%;
+}
 
 /*toast*/
 .message-toast{

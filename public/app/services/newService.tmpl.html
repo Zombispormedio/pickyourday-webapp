@@ -5,20 +5,22 @@
         <h2><i class="fa fa-tag"></i> Añadir servicio</h2>
       </div>
     </md-toolbar>
-    <md-dialog-content style="max-width:800px;max-height:810px; ">
+    <md-dialog-content class="dialogForm">
    
         <md-content class="md-padding">
           <div flex layout="row" layout-wrap>
               <md-input-container style="margin-right: 10px;">
                 <label>Servicios</label>
-                <md-select ng-model="employee.services" multiple>
-                    <md-option ng-value="service._id" ng-repeat="service in services">{{service.id_name.name}}</md-option>
+                <md-select ng-model="company.servicesByCategory">
+                {{servicesByCategory}}
+                    <md-option ng-value="service.id_name.name" ng-repeat="service in servicesByCategory">{{service.id_name.name}}</md-option>
                 </md-select>  
               </md-input-container>
             </div>
         </md-content>        
     </md-dialog-content>
     <md-dialog-actions layout="row">
+    
       <md-button class="buttonStyle" ng-click="answer()">Aceptar</md-button>
       <md-button style="margin-right:20px;" class="buttonStyle" ng-click="cancel()">Cancelar</md-button>
     </md-dialog-actions>

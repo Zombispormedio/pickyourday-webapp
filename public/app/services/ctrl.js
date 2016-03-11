@@ -68,7 +68,7 @@ webAppController.ServicesCtrl = function ($rootScope,$scope, CompanyService,  $m
 
         });
     }
-
+$scope.getServicesByCategory();
     $scope.showTabDialog = function(ev,update) {
         $scope.getServicesByCategory();
         $mdDialog.show({
@@ -78,7 +78,7 @@ webAppController.ServicesCtrl = function ($rootScope,$scope, CompanyService,  $m
             targetEvent: ev,
             clickOutsideToClose:true,
             locals: {
-            services: $scope.services
+            servicesByCategory: $scope.servicesByCategory
          },
         })
         .then(function(answer) {
