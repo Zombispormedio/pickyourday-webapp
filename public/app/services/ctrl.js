@@ -28,7 +28,7 @@ webAppController.ServicesCtrl = function ($rootScope,$scope, CompanyService,  $m
     
 
     $scope.getServicesByCategory = function(){
-        CompanyService.servicesByCategory().list({id: $scope.profile.category._id},function(result){
+        CompanyService.servicesByCategory().list({category: $scope.profile.category._id},function(result){
           if(result.error)
             return console.log(result.error);
           $scope.servicesByCategory=result.data;
