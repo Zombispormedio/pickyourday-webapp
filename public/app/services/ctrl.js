@@ -20,7 +20,7 @@ webAppController.ServicesCtrl = function ($rootScope,$scope, CompanyService,  $m
             if(result.error)
                 return console.log(result.error);
             $scope.services=result.data;
-            
+            $scope.getServicesByCategory();
         }, function(){
 
         });
@@ -68,9 +68,9 @@ webAppController.ServicesCtrl = function ($rootScope,$scope, CompanyService,  $m
 
         });
     }
-$scope.getServicesByCategory();
-    $scope.showTabDialog = function(ev,update) {
-        $scope.getServicesByCategory();
+
+    $scope.showTabDialog = function(ev,update) {      
+
         $mdDialog.show({
             controller: DialogController,
             templateUrl: 'app/services/newService.tmpl.html',
@@ -79,17 +79,19 @@ $scope.getServicesByCategory();
             clickOutsideToClose:true,
             locals: {
             servicesByCategory: $scope.servicesByCategory
-         },
+         },                 
         })
         .then(function(answer) {
             if(!update)$scope.createService();
         }, function() {
             $scope.status = 'You cancelled the dialog.';
         });
+
     };
 
-    function DialogController($scope, $mdDialog,servicesByCategory) {
+    function DialogController($scope, $mdDialog,servicesByCategory) {        
         $scope.servicesByCategory = servicesByCategory;
+
         $scope.hide = function() {
             $mdDialog.hide();
         };

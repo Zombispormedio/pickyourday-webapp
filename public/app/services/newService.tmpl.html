@@ -5,22 +5,36 @@
         <h2><i class="fa fa-tag"></i> Añadir servicio</h2>
       </div>
     </md-toolbar>
-    <md-dialog-content class="dialogForm">
-   
+    <md-dialog-content class="dialogForm">   
         <md-content class="md-padding">
           <div flex layout="row" layout-wrap>
-              <md-input-container style="margin-right: 10px;">
-                <label>Servicios</label>
-                <md-select ng-model="company.servicesByCategory">
-                {{servicesByCategory}}
-                    <md-option ng-value="service.id_name.name" ng-repeat="service in servicesByCategory">{{service.id_name.name}}</md-option>
-                </md-select>  
-              </md-input-container>
+             <form name="serviceForm" class="form" layout="column" >
+                <md-input-container style="margin-right: 10px;">
+                  <label>Servicios</label>
+                  <md-select ng-model="company.services">
+                      <md-option ng-value="service.name" ng-repeat="service in servicesByCategory">{{service.name}}</md-option>
+                  </md-select>  
+                </md-input-container>
+                <md-input-container>              
+                  <label>Descripcion</label>      
+                  <md-icon class="fa fa-commenting-o formIcon"></md-icon> 
+                  <input name="description" type="text" ng-model="service.description"></input>
+                </md-input-container>
+                <md-input-container>
+                  <label>Duración</label>
+                  <md-icon class="fa fa-users formIcon"></md-icon>
+                  <input ng-model="service.duration" name="duration" step="any" type="number">
+                </md-input-container>
+                <div flex ng-cloak class="mb10">    
+                  <label>Keywords</label>
+                  <md-chips ng-model="services.keywords" readonly="!editable"></md-chips>
+                  <p ng-if="profile.keywords.length===0">No Keywords</p>
+              </div>
+              </form>
             </div>
         </md-content>        
     </md-dialog-content>
-    <md-dialog-actions layout="row">
-    
+    <md-dialog-actions layout="row">    
       <md-button class="buttonStyle" ng-click="answer()">Aceptar</md-button>
       <md-button style="margin-right:20px;" class="buttonStyle" ng-click="cancel()">Cancelar</md-button>
     </md-dialog-actions>

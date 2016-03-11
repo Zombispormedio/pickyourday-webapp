@@ -426,13 +426,13 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
 .dialogForm{
     width: 600px;
 }
-.dialogForm md-input-container {
-    
-    margin-left: 5%;
+.dialogForm md-input-container {       
+    display:inline-block;
+    width:100%;
+    margin-left: 3%;
+    margin-right: 5%;
 }
-.dialogForm md-select{
-    width:300%;
-}
+
 
 /*toast*/
 .message-toast{

@@ -1,6 +1,6 @@
 <div class="head">
-
-    <h1> <i class="fa fa-user"></i> El Perfil de mi Negocio</h1>	
+    <i class="fa fa-user"></i>
+    <h2>Mi negocio</h2>	
 </div>
 <div id="formStyle">	
     <form name="userForm" class="form" layout="column">
@@ -19,13 +19,11 @@
         </div>
 
         <div flex layout="row" layout-wrap>
-
             <md-input-container flex="40">
                 <label>Email</label>
                 <md-icon class="fa fa-envelope-o formIcon"></md-icon> 
                 <input name="email" ng-model="profile.email" ng-disabled="true">
             </md-input-container>
-
 
             <md-input-container flex="45" flex-offset="10">
                 <label>Sitio web</label>
@@ -37,26 +35,24 @@
         <md-input-container flex  class="md-block">			
             <label>Descripción</label>			
             <md-icon class="fa fa-commenting-o formIcon"></md-icon> 
-            <textarea ng-model="profile.description" md-maxlength="300" rows="5" cols="10" md-select-on-focus ng-disabled="!editable" style="height:87px"></textarea>
+            <textarea ng-model="profile.description" md-maxlength="300" rows="5" cols="10" md-select-on-focus ng-disabled="!editable" style="height:87px;margin-left:4%;"></textarea>
         </md-input-container>
 
-                <div flex ng-cloak class="mb10">		
-                    <h4>Keywords</h4>
-                    <md-chips ng-model="profile.keywords" readonly="!editable"></md-chips>
-                    <p ng-if="profile.keywords.length===0">No Keywords</p>
-                </div>
+        <div flex ng-cloak class="mb10">		
+            <p>Keywords</p>
+            <md-chips ng-model="profile.keywords" readonly="!editable"></md-chips>
+            <p ng-if="profile.keywords.length===0">No Keywords</p>
+        </div>
 
+        <div layout="column" flex class="mb10">
+            <p flex>Mi ubicación</p>
+            <md-input-container flex> 
+                <label>Dirección</label>
+                <md-icon class="fa fa-map-marker formIcon"></md-icon>
+                <input type="text" name="address" ng-model="profile.location.address" ng-disabled="!editable">
+            </md-input-container>
 
-                <div layout="column" flex class="mb10">
-                    <h2 flex>Mi ubicación</h2>
-                    <md-input-container flex> 
-                        <label>Dirección</label>
-                        <md-icon class="fa fa-map-marker formIcon"></md-icon>
-                        <input type="text" name="address" ng-model="profile.location.address" ng-disabled="!editable">
-                    </md-input-container>
-
-                    <div layout="row">
-
+            <div layout="row">
                 <md-input-container flex="40"> 
                     <label>País</label>
                     <input type="text" name="country" ng-model="profile.location.country" ng-disabled="!editable">
@@ -65,7 +61,6 @@
                     <label>Provincia</label>
                     <input type="text" name="province" ng-model="profile.location.province" ng-disabled="!editable"> 
                 </md-input-container> 
-
             </div>
             <div layout="row">
                 <md-input-container flex="40"> 
@@ -91,20 +86,14 @@
                 </md-input-container> 
             </div>
 
-                    <ng-map zoom="20" center="[{{profile.location.geolocation.latitude}}, {{profile.location.geolocation.longitude}}]">
-                        <marker position="[{{profile.location.geolocation.latitude}}, {{profile.location.geolocation.longitude}}]" title="drag me" draggable="{{editable}}"></marker>
-
-                    </ng-map>
-
-
-                </div>
-
-
+            <ng-map zoom="20" center="[{{profile.location.geolocation.latitude}}, {{profile.location.geolocation.longitude}}]">
+                <marker position="[{{profile.location.geolocation.latitude}}, {{profile.location.geolocation.longitude}}]" title="drag me" draggable="{{editable}}"></marker>
+            </ng-map>
+        </div>
 
         <div layout="column" flex class="mb5">
-            <h2>Datos de Contacto</h2>
+            <p>Datos de Contacto</p>
             <div layout="row" flex>
-
                 <md-list ng-cloak flex="50">
                     <md-subheader>Teléfonos</md-subheader>
                     <md-list-item ng-if="editable">
@@ -152,42 +141,26 @@
                     </md-list-item>
                     <md-list-item ng-if="profile.emailSecond.length==0" ><p>Ninguno Tel&eacute;fono añadido</p></md-list-item>
                 </md-list>
-
-
-
             </div>
         </div>
 
 
         <div layout="column" class="mb5">
             <div layout="row">
-                <h2 flex="80">Fotos</h2>
+                <p flex="80">Fotos</p>
 
                 <md-button class="buttonStyleSimple" ng-if="editable" ng-click="addImages()" flex>+ añadir fotos</md-button>
             </div>
 
-            <md-input-container>  
-
+            <md-input-container> 
                 <div class="companyImages" ng-repeat="image in profile.images">				
                     <img ng-src="{{image.src}}" alt="{{image.alt}}">
                     <md-button class="md-fab fa fa-times deleteImageIcon" aria-label="delete" ng-click="deleteImage($index)" ng-if="editable"></md-button>
                 </div>
-                <input id="newFile" type="file" name="images" base-sixty-four-input ng-model="images.data" ng-if="editable"  style="display:none;" >
-
+                <input id="newFile" type="file" name="images" base-sixty-four-input ng-model="images.data" ng-if="editable"  style="display:none;">
             </md-input-container>
-
-
-
-
         </div>
-
-
-
-
         <md-button class="buttonStyle2" ng-if="editable" ng-click="saveChanges()">Guardar cambios</md-button>
-
-        <md-button class="md-fab fa fa-pencil" id="editProfile" ng-if="!editable" ng-click="edit()"aria-label="editProfile"></md-button>
     </form>
-
-
+    <md-button class="md-fab fa fa-pencil" id="editProfile" ng-if="!editable" ng-click="edit()"aria-label="editProfile"></md-button>
 </div>
