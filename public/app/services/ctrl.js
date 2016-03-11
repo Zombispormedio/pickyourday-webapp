@@ -56,11 +56,12 @@ webAppController.ServicesCtrl = function ($rootScope,$scope, CompanyService,  $m
         $scope.getResourcesByServices();
     };
     
-    $scope.$watch("isOpen()", function(){
+    $scope.$watch("isClose()", function(){
            $scope.selectedService=null;
     });
 
     $scope.toggle = function(resourceByService){
+     
         CompanyService.toggleService().change({},{resource:resourceByService.resource_id,service:$scope.selectedService},function(result){
             if(result.error)
                 return console.log(result.error);
