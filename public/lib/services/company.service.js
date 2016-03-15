@@ -16,7 +16,8 @@ webAppFactory.CompanyService= function(ApiService){
         services:function(){
             return ApiService.rest(this.base+"/service/:id",{
                 list:{method:"GET", params:{}},
-                delete:{method:"DELETE", params:{id:'@id'}}
+                delete:{method:"DELETE", params:{id:'@id'}},                
+                update:{method:"PUT", params:{id:'@id'}}
             });
         },
         service:function(){

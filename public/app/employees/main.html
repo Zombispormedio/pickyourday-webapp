@@ -7,24 +7,31 @@
     <ng-letter-avatar data="{{employee.name}}" shape="round"></ng-letter-avatar>
     <p>{{employee.name}} {{employee.surname}}</p>
   </div> 
-    <button class="fa fa-pencil modifyButton" aria-label="edit" ng-click="showDialog($event, employee, true)"></button> 
+    <button class="fa fa-pencil modifyButton" aria-label="edit" ng-click="showEditDialog($event, employee)"></button> 
     <button class="fa fa-trash-o deleteButton" ng-click="delete(employee)"></button> 
    
   <div ng-if="employee.open">
     <div class="infoEmployee">
       <div class="timetableHead">
-        <i class="fa fa-calendar" ></i> 
-        <p>Horario: </p>
-      </div>       
+        <i class="fa fa-commenting-o" ></i> 
+        <p>{{employee.description}}</p>
+      </div>  
+      <div class="timetableHead">
+        <i class="fa fa-phone" ></i> 
+        <p>{{employee.phone}}</p>
+        <p ng-if="employee.phone.length===0">Ningún teléfono añadido</p>
+      </div>     
       <div class="employeeServices">
         <div class="tagsHead">
           <i class="fa fa-tags" ></i>  
           <p>Servicios asignados</p>
         </div>
-          <md-list-item  ng-repeat="service in employee.services">
-            <p>{{service.id_name.name}}</p>
-            
-          </md-list-item>
+        <md-chips ng-model="employee.services" readonly="true">
+          <md-chip-template>
+              {{$chip.id_name.name}}
+          </md-chip-template>
+        </md-chips>
+        <p ng-if="employee.services.length===0">No tiene servicios asignados</p> 
       </div>
     </div>
   </div>

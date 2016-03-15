@@ -112,7 +112,10 @@ button.webAppMenuOptions {
     background-color: rgba(222, 214, 214, 0.2);
 }
 /*Company profile*/
-
+md-input-container>md-select{
+    margin-left: 9%;
+    margin-right: 3%;    
+}
 .form input{
     color:#000;
 }
@@ -242,6 +245,10 @@ p.phones{
 .servicesCardInfo{
     display:flex;
 }
+.servicesCardInfo md-card-actions{    
+    margin-top: 5%;
+    margin-left: -9%;
+}
 .services i{
     margin-right: 5%;
     font-size: 18px;	
@@ -287,6 +294,7 @@ margin-bottom: 5%;
 .serviceCardHead{
     display:flex;
 }
+
 .serviceCardHead p{
     width:100%;
 }
@@ -423,17 +431,13 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
 	display:inline;
     font-size: 22px;
 }
-.dialogForm{
-    width: 600px;
-}
 .dialogForm md-input-container {       
     display:inline-block;
     width:100%;
     margin-left: 3%;
     margin-right: 5%;
+    margin-top: 1%;
 }
-
-
 /*toast*/
 .message-toast{
     height: auto;
@@ -446,7 +450,7 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
     position:fixed;
 }
 .md-toast-content{
-       font-size: 1.5em;
+    font-size: 1.5em;
 }
 .toast-theme-warning .md-toast-content{
     background-color:#FBC02D;
@@ -509,4 +513,14 @@ margin-top: -15%;
 
 .md-dialog-container{
     position: fixed;
+}
+
+/***CHIPS***/
+md-chips .md-chip{
+    background: 0 1px #009688;
+    color:white;
+    margin-top: 5%;
+}
+.md-chips .md-chip .md-chip-remove md-icon {
+    color:white;
 }

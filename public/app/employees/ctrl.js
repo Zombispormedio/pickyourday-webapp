@@ -25,7 +25,7 @@ webAppController.EmployeesCtrl = function ($rootScope, $scope, CompanyService,  
 		}			
 	}
 
-	$scope.showDialog = function(ev, employees, update) {
+	$scope.showDialog = function(ev, employees,services) {
 	    $mdDialog.show({
 	      controller: DialogController,
 	      templateUrl: 'app/employees/newEmployee.tmpl.html',
@@ -38,8 +38,26 @@ webAppController.EmployeesCtrl = function ($rootScope, $scope, CompanyService,  
          },
 	    })
         .then(function(employee) {
-      		if(!update)self.createEmployee(employee);
+      		self.createEmployee(employee);
+        }, function() {
+          $scope.status = 'You cancelled the dialog.';
+        });
+  	}
 
+  	$scope.showEditDialog = function(ev, employees) {
+	    $mdDialog.show({
+	      controller: EditDialogController,
+	      templateUrl: 'app/employees/editEmployee.tmpl.html',
+	      parent: angular.element(document.body),
+	      targetEvent: ev,
+	      clickOutsideToClose:true,
+	       locals: {
+           	services: $scope.services,
+           	employee: employees||{}
+         },
+	    })
+        .then(function(employee) {
+      		self.modifyEmployee(employee);
         }, function() {
           $scope.status = 'You cancelled the dialog.';
         });
@@ -56,10 +74,25 @@ webAppController.EmployeesCtrl = function ($rootScope, $scope, CompanyService,  
 		$scope.cancel = function() {
 			$mdDialog.cancel();
 		};
-		$scope.answer = function() {
+		$scope.answer = function(employee) {
 			$mdDialog.hide($scope.employee);
 		};
 	}
+	function EditDialogController($scope, $mdDialog,employee,services) {
+		$scope.employee = employee;
+		$scope.services=services;
+
+		$scope.hide = function() {
+			$mdDialog.hide();
+		};
+		$scope.cancel = function() {
+			$mdDialog.cancel();
+		};
+		$scope.answer = function(employee) {
+			$mdDialog.hide($scope.employee);
+		};
+	}
+
 	this.getServices=function(){
 		CompanyService.services().get({},function(result){
 			if(result.error)
@@ -84,7 +117,7 @@ webAppController.EmployeesCtrl = function ($rootScope, $scope, CompanyService,  
 	}
 
 	this.modifyEmployee = function(employee){
-		CompanyService.employees().update({},employee,function(result){
+		CompanyService.employees().update({id:employee._id},employee,function(result){
 			if(result.error)
 				return console.log(result.error);
 			console.log(result)

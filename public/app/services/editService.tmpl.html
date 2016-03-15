@@ -3,20 +3,14 @@
   <form>
     <md-toolbar>
       <div class="md-toolbar-tools addServiceToolbar">
-        <h2><i class="fa fa-tag"></i> Añadir servicio</h2>
+        <h2><i class="fa fa-tag"></i> {{service.id_name.name}}</h2>
       </div>
     </md-toolbar>
     <md-dialog-content class="dialogForm" >   
       <md-content class="md-padding">
         <form name="serviceForm" class="form" layout="column">
-          <div flex layout="row" layout-wrap>
-              <md-input-container style="margin-right: 10px;">               
-                <label>Servicios</label>
-                <md-icon class="fa fa-tags formIcon"></md-icon> 
-                <md-select ng-model="company.services">
-                    <md-option ng-value="service.name" ng-repeat="service in servicesByCategory">{{service.name}}</md-option>
-                </md-select>  
-              </md-input-container>
+          <div flex layout="row" layout-wrap>  
+          {{service.name}}            
               <md-input-container>              
                 <label>Descripción</label>      
                 <md-icon class="fa fa-commenting-o formIcon"></md-icon> 
@@ -32,16 +26,10 @@
               <md-icon class="fa fa-eur formIcon"></md-icon>
               <input ng-model="service.price" name="price" step="any" type="number">
             </md-input-container>
-            <div flex ng-cloak style="margin-left:5%;margin-right:5%;"> 
+            <md-input-container>
                 <label>Keywords</label>
-                <md-chips ng-model="service.keywords"
-                  readonly="false"
-                  placeholder="Enter a tag"
-                  delete-button-label="Remove Tag"
-                  delete-hint="Press delete to remove tag"
-                  secondary-placeholder="+Tag">
-                </md-chips>            
-            </div>
+                <!--<md-chips ng-model="service.keywords" readonly=""></md-chips>-->
+            </md-input-container>
           </div>
         </form>
       </md-content>        

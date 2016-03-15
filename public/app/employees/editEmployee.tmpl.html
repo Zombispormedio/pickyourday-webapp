@@ -1,12 +1,12 @@
-<md-dialog ng-cloak style="max-width:800px;">
+<md-dialog ng-cloak style="max-width:800px;max-height:810px;">
 <div id="formStyle">
   <form class="form">
     <md-toolbar>
       <div class="md-toolbar-tools addServiceToolbar">
-        <h2><i class="fa fa-user"></i>  Nuevo empleado</h2>
+        <h2><i class="fa fa-user"></i>  Editar empleado</h2>
       </div>
     </md-toolbar>
-    <md-dialog-content class="dialogForm" >
+    <md-dialog-content class="dialogForm">
         <md-content class="md-padding">
           <form name="employeeForm" class="form" layout="column" >
             <div flex layout="row" layout-wrap>
@@ -15,7 +15,7 @@
                 <md-icon class="fa fa-user formIcon" style="margin-top: 10%;"></md-icon> 
                 <input name="name" ng-model="employee.name">
               </md-input-container>
-              <md-input-container style="margin-left:11%;">             
+              <md-input-container style="margin-left:7.5%;">             
                 <label>Apellidos</label>      
                 <input name="surname" type="text" ng-model="employee.surname"></input>
               </md-input-container>
@@ -32,14 +32,18 @@
                 <input name="phone" type="text" ng-model="employee.phone"></input>
               </md-input-container>
             </div>
-            <div flex layout="row" layout-wrap>
-              <md-input-container style="margin-right: 10px;">
-                <md-icon class="fa fa-tags formIcon"></md-icon> 
-                <label>Servicios</label>
-                <md-select ng-model="employee.services" multiple>
+             <div flex ng-cloak style="margin-left:5%;margin-right:5%;">                
+              <md-icon class="fa fa-tags formIcon" style="color:black;"></md-icon> 
+              <label>Servicios</label>                               
+                <!--<md-chips ng-model="employee.services" readonly="false">
+                      <md-chip-template>
+                          {{$chip.id_name.name}}
+                      </md-chip-template>
+                  </md-chips>  -->
+                  <md-select ng-model="employee.services" multiple placeholder="servicios">
                     <md-option ng-value="service._id" ng-repeat="service in services">{{service.id_name.name}}</md-option>
-                </md-select>  
-              </md-input-container>
+                </md-select>
+                <p ng-if="employee.services.length===0">No tiene servicios asignados</p>   
             </div>
           </form>
         </md-content>        

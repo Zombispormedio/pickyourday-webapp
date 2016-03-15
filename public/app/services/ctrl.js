@@ -1,5 +1,7 @@
 webAppController.ServicesCtrl = function ($rootScope,$scope, CompanyService,  $mdSidenav, $mdDialog, $mdComponentRegistry) {
 
+    var self=this;
+
     $scope.isOpen = function() { return $mdSidenav('right').isOpen(); };
     
     $scope.getProfile=function(){
@@ -69,8 +71,7 @@ webAppController.ServicesCtrl = function ($rootScope,$scope, CompanyService,  $m
         });
     }
 
-    $scope.showTabDialog = function(ev,update) {      
-
+    $scope.showDialog = function(ev,services){      
         $mdDialog.show({
             controller: DialogController,
             templateUrl: 'app/services/newService.tmpl.html',
@@ -78,19 +79,38 @@ webAppController.ServicesCtrl = function ($rootScope,$scope, CompanyService,  $m
             targetEvent: ev,
             clickOutsideToClose:true,
             locals: {
-            servicesByCategory: $scope.servicesByCategory
+            servicesByCategory: $scope.servicesByCategory,
+            service: services||{}
          },                 
         })
-        .then(function(answer) {
-            if(!update)$scope.createService();
+        .then(function(service) {          
+                self.createService(service);               
         }, function() {
             $scope.status = 'You cancelled the dialog.';
         });
-
     };
 
-    function DialogController($scope, $mdDialog,servicesByCategory) {        
+    $scope.showEditDialog = function(ev,services){      
+        $mdDialog.show({
+            controller: EditDialogController,
+            templateUrl: 'app/services/editService.tmpl.html',
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose:true,
+            locals: {
+            service: services||{}
+         },                 
+        })
+        .then(function(service) {
+            self.modifyService(service);
+        }, function() {
+            $scope.status = 'You cancelled the dialog.';
+        });
+    };
+
+    function DialogController($scope, $mdDialog,servicesByCategory,service) {        
         $scope.servicesByCategory = servicesByCategory;
+        $scope.service = service;
 
         $scope.hide = function() {
             $mdDialog.hide();
@@ -99,15 +119,41 @@ webAppController.ServicesCtrl = function ($rootScope,$scope, CompanyService,  $m
             $mdDialog.cancel();
         };
         $scope.answer = function() {
-            $mdDialog.hide();
+            $mdDialog.hide($scope.service);
         };
     }
-    this.createService = function(){
-        CompanyService.service().create({},function(result){
+
+    function EditDialogController($scope, $mdDialog,service) {        
+        $scope.service = service;
+
+        $scope.hide = function() {
+            $mdDialog.hide();
+        };
+        $scope.cancel = function() {
+            $mdDialog.cancel();
+        };
+        $scope.answer = function() {
+            $mdDialog.hide($scope.service);
+        };
+    }
+
+    this.createService = function(service){
+        CompanyService.service().create({id:service._id},service, function(result){
             if(result.error)
                 return console.log(result.error);
             console.log(result)
             $scope.service=result.data;
+        }, function(){
+
+        });
+    }
+    this.modifyService = function(service){
+        console.log(service._id);
+        CompanyService.services().update({id:service._id},service,function(result){
+            if(result.error)
+                return console.log(result.error);
+            console.log(result)
+            $scope.services=result.data;
         }, function(){
 
         });
