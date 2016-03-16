@@ -52,23 +52,33 @@
                 <md-button class="buttonStyleSimple" ng-if="editable" ng-click="addSchedule()" flex>+ añadir Horario</md-button>
 
             </div>
-            <md-card ng-repeat="schedule in profile.scheduleActivity">
+            <md-card ng-repeat="schedule in profile.scheduleActivity" ng-init="schedule.show=false">
                 <md-card-header>
-                    <md-card-header-text>
-                        <md-datepicker ng-model="schedule.initial" md-placeholder="Introduce fecha inicial" class="only-button-date"></md-datepicker>{{schedule.initial | date: 'MMMM dd'}}
-                        -
-                        <md-datepicker ng-model="schedule.end" md-placeholder="Introduce fecha inicial" class="only-button-date"></md-datepicker>{{schedule.end |date: 'MMMM dd'}}
+                    <md-card-header-text layout="row" layout-align="space-between center">
+                        <div flex="100">
+                            <md-datepicker ng-model="schedule.initial" md-placeholder="Introduce fecha inicial" class="only-button-date"></md-datepicker>{{schedule.initial | date: 'MMMM dd'}}
+                            -
+                            <md-datepicker ng-model="schedule.end" md-placeholder="Introduce fecha inicial" class="only-button-date"></md-datepicker>{{schedule.end |date: 'MMMM dd'}}
+                        </div>
 
-
+                        <span flex="5" class="collapse-icon" ng-click="schedule.show=!schedule.show">
+                            <i class="fa fa-angle-right" ng-if="!schedule.show"></i>
+                            <i class="fa fa-angle-down" ng-if="schedule.show"></i>
+                            
+                        </span>
                     </md-card-header-text>
                 </md-card-header>
-                <md-card-content>
+                <md-card-content ng-if="schedule.show">
                     <md-list class="md-dense" >
                         <md-subheader class="md-no-sticky">Week</md-subheader>
                         <md-list-item class="md-3-line" ng-repeat="daytime in schedule.week">
                             <div class="md-list-item-text" layout="column" >
                                 <h3 flex>{{daytime.day}}</h3>
-                                <md-chips ng-model="daytime.times" md-on-add="checkTime(daytime)" readonly="!editable" flex></md-chips>
+                                <md-chips ng-model="daytime.times" md-on-add="checkTime(daytime)" readonly="!editable" flex>
+                                </md-chips>
+                                <p class="note" ng-if="daytime.times==0">
+                                    Cerrado
+                                </p>
                             </div>
 
                         </md-list-item>

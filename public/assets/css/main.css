@@ -524,3 +524,7 @@ md-chips .md-chip{
 .md-chips .md-chip .md-chip-remove md-icon {
     color:white;
 }
+
+.collapse-icon{
+    font-size:2em;
+}
