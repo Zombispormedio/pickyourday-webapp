@@ -1,6 +1,6 @@
 webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, SystemService,$mdDialog, NgMap) {
 
-    $scope.editable=true;	
+    $scope.editable=false;	
 
     $scope.days={"Monday":"Lunes", "Tuesday": "Martes", "Wednesday":"Miércoles", "Thursday": "Jueves", "Friday":"Viernes", "Saturday":"Sábado", "Sunday":"Domingo"};
 
@@ -14,7 +14,7 @@ webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, Sys
     $scope.images={};
     $scope.dateTime=new Date();
     $scope.date=new Date();
-   
+
 
 
     NgMap.getMap().then(function(map) {
@@ -37,10 +37,10 @@ webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, Sys
     });
 
     this.getProfile=function(){
-       $rootScope.getProfile(function(data){
-          $scope.profile=data;
-            
-      });
+        $rootScope.getProfile(function(data){
+            $scope.profile=data;
+
+        });
     }
     this.getProfile();
 
@@ -86,7 +86,10 @@ webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, Sys
         CompanyService.profile().update({},$scope.profile,function(result){
             if(result.error)
                 return console.log(result.error);
-            $scope.profile=result.data;
+            $rootScope.formatProfile(result.data,function(data){
+                $scope.profile=data;
+            });
+            
             $rootScope.sucessToast("Los datos se han guardado correctamente");
             $scope.editable=false;
         }, function(){
@@ -117,18 +120,7 @@ webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, Sys
 
     }
 
-    $scope.addTime=function(interval, index){
-        var initHour=new Date();
-        initHour.setHours(8);
-        initHour.setMinutes(0);
-        var endHour=new Date();
-        endHour.setHours(17);
-        endHour.setMinutes(0);
 
-        var t={initial:initHour, end: endHour};
-
-        interval.week[index].times.push(t);
-    }
 
     $scope.checkSchedules=function(){
         var empty=true;
@@ -165,9 +157,38 @@ webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, Sys
         return empty;
     }
 
-    
+
     $scope.checkTime=function(daytime){
-        console.log(daytime);
+        var regexHour="(2[0-3]|1[0-9]|0[0-9]|[0-9]):([0-5][0-9])";
+        var current=daytime.times.pop();
+
+        var valid=(new RegExp("^"+regexHour+"-"+regexHour+"$")).test(current);
+        
+        var elems=current.split("-");
+        valid=valid&&compareHourString(elems[0], elems[1]);
+     
+        if(valid){
+            var len=daytime.times.length;
+            if(len>0){
+
+                var last=daytime.times[len-1].match(new RegExp(regexHour+"$"))[0];
+                
+
+                var current_d=current.match(new RegExp("^"+regexHour))[0];
+             
+               
+                if(compareHourString(last, current_d)){
+                
+                    daytime.times.push(current);
+                }
+
+            }else{
+                daytime.times.push(current);
+            }
+
+
+
+        }
     }
 
 
