@@ -40,8 +40,43 @@
 
         <div flex ng-cloak class="mb10">		
             <p>Keywords</p>
-            <md-chips ng-model="profile.keywords" readonly="!editable"></md-chips>
-            <p ng-if="profile.keywords.length===0">No Keywords</p>
+            <md-chips ng-if="checkKeywords()" ng-model="profile.keywords" readonly="!editable"></md-chips>
+            <p ng-if="!checkKeywords()">No Keywords</p>
+        </div>
+
+
+        <div flex ng-cloak class="mb10">
+            <div layout="row">
+                <p flex="80">Horarios programados para este año</p>
+
+                <md-button class="buttonStyleSimple" ng-if="editable" ng-click="addSchedule()" flex>+ añadir Horario</md-button>
+
+            </div>
+            <md-card ng-repeat="schedule in profile.scheduleActivity">
+                <md-card-header>
+                    <md-card-header-text>
+                        <md-datepicker ng-model="schedule.initial" md-placeholder="Introduce fecha inicial" class="only-button-date"></md-datepicker>{{schedule.initial | date: 'MMMM dd'}}
+                        -
+                        <md-datepicker ng-model="schedule.end" md-placeholder="Introduce fecha inicial" class="only-button-date"></md-datepicker>{{schedule.end |date: 'MMMM dd'}}
+
+
+                    </md-card-header-text>
+                </md-card-header>
+                <md-card-content>
+                    <md-list class="md-dense" >
+                        <md-subheader class="md-no-sticky">Week</md-subheader>
+                        <md-list-item class="md-3-line" ng-repeat="daytime in schedule.week">
+                            <div class="md-list-item-text" layout="column" >
+                                <h3 flex>{{daytime.day}}</h3>
+                                <md-chips ng-model="daytime.times" md-on-add="checkTime(daytime)" readonly="!editable" flex></md-chips>
+                            </div>
+
+                        </md-list-item>
+                    </md-list>
+
+                </md-card-content>
+            </md-card>
+            <span ng-if="!checkSchedules()">No hay horarios</span>
         </div>
 
         <div layout="column" flex class="mb10">

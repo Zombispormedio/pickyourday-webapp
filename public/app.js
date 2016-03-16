@@ -18,7 +18,7 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
         onEnter: function ($rootScope) {
             if (getJSONLocal("user")) {
 
-                $rootScope.go("app.dashboard");
+                $rootScope.go("app.daydashboard");
             }
         },
         templateUrl: 'app/login/main.html',
@@ -158,7 +158,7 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
             }
         }      
     })
-    .state("app.help", {
+        .state("app.help", {
         url: 'help',
         onEnter: function ($rootScope) {
             if (!getJSONLocal("user")) {
@@ -173,7 +173,7 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
             }
         }      
     })
-    .state("app.ownpick", {
+        .state("app.ownpick", {
         url: 'ownpick',
         onEnter: function ($rootScope) {
             if (!getJSONLocal("user")) {
@@ -203,7 +203,7 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
             }
         }      
     })
-    .state("app.stats", {
+        .state("app.stats", {
         url: 'stats',
         onEnter: function ($rootScope) {
             if (!getJSONLocal("user")) {
@@ -226,7 +226,7 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
 
 })
 
-.run(function ($rootScope, $state, $mdToast) {
+.run(function ($rootScope, $state, $mdToast,CompanyService) {
 
     $rootScope.go = function (state, params) {
         $state.go(state, params);
@@ -251,10 +251,38 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
         if(typeof message==="object")message=JSON.stringify(message);
         $rootScope.showMessageToast(message, "error");
     };
-    
+
     $rootScope.sucessToast=function(message){
-        
+
         if(typeof message==="object")message=JSON.stringify(message);
         $rootScope.showMessageToast(message, "success");
     };
+
+
+    $rootScope.getProfile=function(fn){
+        CompanyService.profile().get({},function(result){
+            if(result.error)
+                return console.log(result.error);
+            
+            $rootScope.formatProfile(result.data, fn);
+
+        }, function(){
+
+        });
+    }
+
+
+    $rootScope.formatProfile=function(data, fn){
+
+
+        if(data.scheduleActivity){
+            data.scheduleActivity.forEach(function(schedule){
+                schedule.initial=new Date(schedule.initial);
+                schedule.end=new Date(schedule.end);
+
+            });
+        }
+        fn(data);
+
+    }
 });

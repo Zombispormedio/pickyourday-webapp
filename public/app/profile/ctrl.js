@@ -1,7 +1,7 @@
 webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, SystemService,$mdDialog, NgMap) {
 
-    $scope.editable=false;	
-    
+    $scope.editable=true;	
+
     $scope.days={"Monday":"Lunes", "Tuesday": "Martes", "Wednesday":"Miércoles", "Thursday": "Jueves", "Friday":"Viernes", "Saturday":"Sábado", "Sunday":"Domingo"};
 
     var submitInitDate=function(){
@@ -14,7 +14,7 @@ webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, Sys
     $scope.images={};
     $scope.dateTime=new Date();
     $scope.date=new Date();
-
+   
 
 
     NgMap.getMap().then(function(map) {
@@ -37,14 +37,10 @@ webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, Sys
     });
 
     this.getProfile=function(){
-        CompanyService.profile().get({},function(result){
-            if(result.error)
-                return console.log(result.error);
-            $scope.profile=result.data;
-
-        }, function(){
-
-        });
+       $rootScope.getProfile(function(data){
+          $scope.profile=data;
+            
+      });
     }
     this.getProfile();
 
@@ -98,7 +94,7 @@ webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, Sys
         });
     }
 
-    $scope.addInterval=function(){
+    $scope.addSchedule=function(){
         var week=['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
 
@@ -108,18 +104,19 @@ webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, Sys
 
         var end=new Date();
         end.setMonth(11);
-        end.setDate(1);
-        
-        
+        end.setDate(31);
+
+
         var obj={
             initial:init, end:end,
             week:week.map(function(a){return {times: [], day:a};})
         };
 
-        $scope.profile.intervalTable.push(obj);
+        if(!$scope.profile.scheduleActivity)  $scope.profile.scheduleActivity=[];
+        $scope.profile.scheduleActivity.push(obj);
 
     }
-    
+
     $scope.addTime=function(interval, index){
         var initHour=new Date();
         initHour.setHours(8);
@@ -127,10 +124,50 @@ webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, Sys
         var endHour=new Date();
         endHour.setHours(17);
         endHour.setMinutes(0);
-        
+
         var t={initial:initHour, end: endHour};
-        
+
         interval.week[index].times.push(t);
+    }
+
+    $scope.checkSchedules=function(){
+        var empty=true;
+        if($scope.profile){
+            if(!$scope.profile.scheduleActivity){
+                empty=false;
+            }else{
+                if($scope.profile.scheduleActivity.length===0){
+                    empty=false;
+                }
+            } 
+        }else{
+            empty=false;
+        }
+
+
+
+        return empty;
+    }
+
+    $scope.checkKeywords=function(){
+        var empty=true;
+        if($scope.profile){
+            if(!$scope.profile.keywords){
+                empty=false;
+            }else{
+                if($scope.profile.keywords.length===0){
+                    empty=false;
+                }
+            } 
+        }else{
+            empty=false;
+        }
+        return empty;
+    }
+
+    
+    $scope.checkTime=function(daytime){
+        console.log(daytime);
     }
 
 

@@ -452,15 +452,15 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
 .md-toast-content{
     font-size: 1.5em;
 }
-.toast-theme-warning .md-toast-content{
+.toast-theme-warning {
     background-color:#FBC02D;
 }
 
-.toast-theme-error .md-toast-content{
+.toast-theme-error{
     background-color:#FF5252;
 }
 
-.toast-theme-success .md-toast-content{
+.toast-theme-success {
     background-color:#8BC34A;
 }
 
@@ -507,7 +507,7 @@ a{
 margin-top: -15%;
 }
 
-.interval .md-datepicker-input-container{
+.only-button-date .md-datepicker-input-container{
     display: none;
 }
 

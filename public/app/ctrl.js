@@ -14,15 +14,11 @@ webAppController.AppCtrl = function ($rootScope,$scope, $mdSidenav,CompanyServic
   };
 
   this.getProfile=function(){
-    CompanyService.profile().get({},function(result){
-      if(result.error)
-        return console.log(result.error);
-  
-      $scope.profile=result.data;
+      
+      $rootScope.getProfile(function(data){
+          $scope.profile=data;
             $scope.profile.first_word="Q";
-    }, function(){
-
-    });
+      });
   }
   this.getProfile();
 };
