@@ -2,12 +2,12 @@
 	<h3 id="date"></h3>
 </div>	
 <md-list-item class="md-3-line employeesAvatar dayEmployee" ng-repeat="employee in employees">
-<ng-letter-avatar data="{{employee.name}}" shape="round"></ng-letter-avatar>
+  <ng-letter-avatar data="{{employee.name}}" shape="round"></ng-letter-avatar>
   <div class="md-list-item-text actualPick">
     <h3>{{employee.name}} {{employee.surname}}</h3>
     <h4>Cita actual</h4>     
   </div>
-  <div class="md-list-item-text nextPick">
+  <div class="md-list-item-text nextPick" >
     <h3>Cliente siguiente</h3>
     <h4>Servicios</h4>     
     <h4>Tiempo restante</h4> 
@@ -20,4 +20,7 @@
   </div>
   <md-divider></md-divider>
 </md-list-item>
-	
+
+
+
+ 

@@ -58,6 +58,15 @@ button.webAppMenuOptions {
 .ng-scope{
     height:100%;
 }
+/*Dashboard*/
+.timeline{
+    display:flex;
+    padding-left:2%;
+    padding-right:2%;
+}
+.timelineNames{
+    display:flex;
+}
 /*Login*/
 .contactIcon,.contact{
     color: white;

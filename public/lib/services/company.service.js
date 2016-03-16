@@ -67,5 +67,10 @@ webAppFactory.CompanyService= function(ApiService){
                 change:{method:"POST", params:{}},
             });
         },
+        timeline:function(){
+            return ApiService.rest(this.base+"/timeline/",{
+                get:{method:"GET", params:{}},
+            });
+        }
     };
 };
