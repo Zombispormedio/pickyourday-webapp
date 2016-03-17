@@ -41,10 +41,10 @@ button.webAppMenuOptions {
 }
 .container1{
     background-color: white;
-    width:65%;
+    width:75%;
     margin: 0 auto;
     margin-bottom: 5%;
-    margin-top: 4%;
+    margin-top: 3%;
     -webkit-box-shadow: 0px 0px 0px 10px rgba(203,200,194,0.52);
     -moz-box-shadow: 0px 0px 0px 10px rgba(203,200,194,0.52);
     box-shadow: 0px 0px 0px 10px rgba(203,200,194,0.52);
@@ -60,13 +60,119 @@ button.webAppMenuOptions {
 }
 /*Dashboard*/
 .timeline{
-    display:flex;
-    padding-left:2%;
-    padding-right:2%;
+    /*overflow-x:scroll; */
+    margin-top: 2%;
 }
-.timelineNames{
-    display:flex;
+.timelineContent{
+     display:flex;
 }
+.timelineHours{
+    display: flex;
+    width: 100%;
+}
+
+.timelineHours .left{
+    width: 150px;
+    /*background-color: #cdc;*/
+}
+
+.timelineHours .right{
+    display:flex;
+    flex: 1;
+    /*background-color: #dcd;
+    color: #fff;*/
+    position: relative;
+}
+
+.timelineHours .right div{
+    text-align: center;
+    /*border-right: 1px solid #ddd;*/
+    flex: 1;
+}
+
+.timelineHours .right .lastHour{
+    position: absolute;
+    right: 0;
+    top: 0;
+    border: 0;
+}
+
+.timelineHours .right .lastHour .hour{
+    /*transform: translate(15px, -30px);*/
+    transform: translate(15px, -10px);
+    -webkit-transform: translate(15px, -10px);
+    -moz-transform: translate(15px, -10px);
+    -o-transform: translate(15px, -10px);
+    transform: translate(15px, -10px);
+}
+
+.timelineHours .right .hour{
+    /*transform: translate(-30px, -30px);*/
+    transform: translate(-30px, -10px);
+    -webkit-transform: translate(-30px, -10px);
+    -moz-transform: translate(-30px, -10px);
+    -o-transform: translate(-30px, -10px);
+    transform: translate(-30px, -10px);
+    display: inline-block;
+    font-size: 15px;
+    /*color: #666;*/
+    color: #00796B;
+    font-weight: 500;
+}
+
+.timelineContent .timelineNames{    
+    width: 150px;
+    height: 40px;
+    /*background-color: #ddd;*/
+    text-align: center;
+    /*color: #fff;*/
+    margin: 0;
+
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    padding-top: 3%;
+    font-size: 14px;
+    color: #00796B;
+}
+
+.timelineNames p {
+    text-align: center;
+}
+.timelinePicks_container{
+    display:flex;
+    flex: 1;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.timelinePicks{
+    -webkit-flex: 1;
+    -moz-flex: 1;
+    -ms-flex: 1;
+    -o-flex: 1;
+    flex: 1;
+    border: 0;
+    height: 66px;
+    /*height: 40px;
+    border-style: solid;
+    border-width: 0 0 0.5px 0.5px;
+    border-color:#e1e1e1;*/
+}
+
+.timelinePicks div{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.timelinePicks:nth-child(6n){
+    border-right: 1px solid #ddd;
+}
+
+/*.timelinePicks div{
+    width: 150px;
+    height: 150px;
+    background-color: blue;
+}*/
 /*Login*/
 .contactIcon,.contact{
     color: white;
@@ -121,8 +227,8 @@ button.webAppMenuOptions {
     background-color: rgba(222, 214, 214, 0.2);
 }
 /*Company profile*/
-md-input-container>md-select{
-    margin-left: 9%;
+.form md-input-container>md-select{
+    margin-left: 4%;
     margin-right: 3%;    
 }
 .form input{
@@ -238,9 +344,9 @@ p.phones{
     font-size:20px;
     background-color: #009688;
     margin-top: 5%;
-    width: 60px;
     height: 50px;
     line-height: 2px;
+    margin-right: 3%;
 }
 .addService.md-fab, .addEmployee.md-fab{
     font-size:20px;
@@ -287,7 +393,8 @@ margin-bottom: 5%;
     display:flex;
 }
 .companyServices md-card{
-    width:50%;
+   /* width:50%;*/
+   width:40%;
 }
 .buttonDeleteService, .buttonEditService{
     color:white;
@@ -358,8 +465,10 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
 }
 /*DayDashboard*/
 .employeesAvatar img{
-    margin-top: 2.5%;
-    margin-right: 2%;
+    /*margin-top: 2.5%;
+    margin-right: 2%;*/
+    border-radius: 50px;   
+    margin-top: 2%;
 }
 .dayEmployee{
     margin-top: 2%;
@@ -390,10 +499,24 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
     display:block;
 }
 .employeesCard{
-    display:flex;
+    /*display:flex;*/
+    display:inline;
 }
-.employeesCard > p{
-    margin-top: 4%;	
+.employeesCard p{
+    display: inline;
+    margin-left: 2%;
+    margin-top: 3%;
+    position: absolute;
+}
+.employeesActions{
+    float:right;
+    margin-top: 4%;
+}
+.employeesActions > button{
+    background: transparent;
+    border: none;
+    display:inline;
+    font-size: 22px;
 }
 .timetableHead, .tagsHead{
     display:flex;	
@@ -457,20 +580,24 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
     margin-left: 1.5%;
     margin-top: 1.5%;
     position:fixed;
+    color:white;
 }
 .md-toast-content{
     font-size: 1.5em;
 }
 .toast-theme-warning {
-    background-color:#FBC02D;
+    /*background-color:#FBC02D;*/
+    background-color: #009688;
 }
 
 .toast-theme-error{
-    background-color:#FF5252;
+    /*background-color:#FF5252;*/
+    background-color: #009688;
 }
 
 .toast-theme-success {
-    background-color:#8BC34A;
+    /*background-color:#8BC34A;*/
+    background-color: #009688;
 }
 
 .fa-md {
@@ -502,7 +629,7 @@ a{
 }
 
 .webAppMenuInfo a:hover{
-   color: rgb(230, 217, 217);
+   color: white;
 }
 
 .mt1{
@@ -528,7 +655,11 @@ margin-top: -15%;
 md-chips .md-chip{
     background: 0 1px #009688;
     color:white;
-    margin-top: 5%;
+}
+.md-chips .md-chip{    
+    margin-top: 0%;
+    margin-bottom: 1%;
+    margin-left: 2%
 }
 .md-chips .md-chip .md-chip-remove md-icon {
     color:white;

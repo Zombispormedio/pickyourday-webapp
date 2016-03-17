@@ -1,11 +1,30 @@
-<h2>Dashboard</h2>
-<div style="overflow-x:scroll;" ng-cloak>
-	<div class="timelineNames" ng-repeat="t in timeline[0].timeLine">
-	 	<p>{{t.resource.name}}</p>		
-	    <div class="timeline" ng-repeat="r in t.steps track by $index">
-	      <p ng-if="r == 0">{{r}}</p>
-	      <p ng-if="r == 1" style="background-color: #009688;">{{r}}</p>
-	    </div>
+<div class="head">
+	<i class="fa fa-calendar-check-o"></i>
+	<h2>Dashboard</h2>
+</div>
+
+<div ng-cloak class="timeline">
+	<div class="timelineHours">
+		<div class="left"></div>
+		<div class="right">
+			<div ng-repeat="space in spaces track by $index">
+				<span class="hour">{{space}}</span>
+			</div>
+			<div class="lastHour">
+				<span class="hour">{{lastHour}}</span>
+			</div>
+		</div>
 	</div>
-	<md-divider></md-divider>
+
+	<div class="timelineContent" ng-repeat="t in timeline[0].timeLine">
+	 	<p class="timelineNames">
+	 		{{t.resource.name}} {{t.resource.surname}}
+	 	</p>		
+	 	<div class="timelinePicks_container">
+		    <div class="timelinePicks" ng-repeat="r in t.steps track by $index">
+		      <div ng-if="r == 0"></div>
+		      <div ng-if="r == 1" style="background-color:#009688;"></div>
+		    </div>
+		</div>
+	</div>
 </div>

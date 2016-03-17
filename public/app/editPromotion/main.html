@@ -22,11 +22,11 @@
           <input ng-model="promotion.useLimit" name="units" step="any" type="number">
         </md-input-container>
 
-        <md-input-container>
+       <!-- <md-input-container>
             <label>Descuento</label>
             <md-icon class="fa fa-percent formIcon"></md-icon>
             <input type="number" step="any" name="discount" ng-model="promotion.discount" min="0" max="100"/>     
-        </md-input-container>
+        </md-input-container>-->
 
         <md-input-container>  
             <md-icon class="fa fa-calendar formIcon"></md-icon>      
@@ -53,12 +53,13 @@
         </md-input-container>
         
 
-        <md-input-container style="margin-right: 10px;">
+        <md-input-container>
             <label>Servicios asociados</label>
+            <md-icon class="fa fa-tags formIcon"></md-icon>
             <md-select ng-model="promotion.services" multiple>
                 <md-option ng-value="service._id" ng-repeat="service in services">{{service.id_name.name}}</md-option>
             </md-select>
         </md-input-container>
-        <md-button class="buttonStyle2" ng-click="saveChanges()">Guardar cambios</md-button>
+        <md-button class="buttonStyle2" ng-click="saveChanges(promotion)">Guardar cambios</md-button>
     </form>   
 </div>

@@ -9,17 +9,13 @@
 <div flex layout="row">	 
     <md-sidenav md-component-id="left" class="md-sidenav-left">
         <div class="webAppMenuInfo" layout="row">
+            <img ng-src="{{profile.images[0].src || ('logo.png'|image)}}" class="avatar-sidenav" alt="{{profile.images[0].alt}}" flex="30" ng-if="profile.images[0]" ui-sref="app.dashboard">
 
-            <img ng-src="{{profile.images[0].src || ('obdl5wmi.png'|image)}}" class="avatar-sidenav" alt="{{profile.images[0].alt}}" flex="30" ng-if="profile.images[0]">
-
-            <img ng-src="{{ 'obdl5wmi.png'|image}}" class="avatar-sidenav" alt="Default Avatar" flex="30" ng-if="!profile.images[0]">
+            <img ng-src="{{ 'logo.png'|image}}" class="avatar-sidenav" alt="Default Avatar" flex="30" ng-if="!profile.images[0]" ui-sref="app.dashboard">
             <div layout="column" flex>
                 <h2 class="companyName">{{profile.name}}</h2>
                 <a ui-sref="app.profile" href="">Editar Perfil</a>
             </div>
-
-
-
         </div>
         <md-divider></md-divider>
         <div class="webAppMenuOptions" layout="column" layout-align="space-between start">

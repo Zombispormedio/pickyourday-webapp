@@ -1,12 +1,12 @@
-<md-dialog ng-cloak style="max-width:800px;overflow: hidden;">
+<md-dialog ng-cloak style="max-width:800px;    overflow: hidden;">
 <div id="formStyle">
   <form class="form">
     <md-toolbar>
       <div class="md-toolbar-tools addServiceToolbar">
-        <h2><i class="fa fa-user"></i>  Nuevo empleado</h2>
+        <h2><i class="fa fa-user"></i>  Editar empleado</h2>
       </div>
     </md-toolbar>
-    <md-dialog-content class="dialogForm" >
+    <md-dialog-content class="dialogForm">
         <md-content class="md-padding" style="margin-top:2%;padding:0%;padding-top:2%;">
           <form name="employeeForm" class="form" layout="column" >
             <div flex layout="row" layout-wrap>
@@ -32,7 +32,7 @@
                 <input name="phone" type="text" ng-model="employee.phone"></input>
               </md-input-container>
             </div>
-            <div flex layout="row" layout-wrap>
+             <div flex layout="row" layout-wrap>
               <md-input-container style="margin-right: 10px;">
                 <md-icon class="fa fa-tags formIcon"></md-icon> 
                 <label>Servicios</label>
@@ -47,7 +47,3 @@
     <md-dialog-actions layout="row">
       <md-button class="buttonStyle" ng-click="answer()">Aceptar</md-button>
       <md-button style="margin-right:20px;" class="buttonStyle" ng-click="cancel()">Cancelar</md-button>
-    </md-dialog-actions>
-  </form>
-</div>
-</md-dialog>

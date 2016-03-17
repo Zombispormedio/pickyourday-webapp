@@ -2,39 +2,45 @@
   <i class="fa fa-users"></i>
   <h2>Empleados</h2>  
 </div>
-<md-list-item class="md-3-line employeesAvatar allEmployees" ng-repeat="employee in employees" ng-init="employee.open=false">
-  <div class="employeesCard" ng-click="showInfo(employee)">
-    <ng-letter-avatar data="{{employee.name}}" shape="round"></ng-letter-avatar>
-    <p>{{employee.name}} {{employee.surname}}</p>
-  </div> 
-    <button class="fa fa-pencil modifyButton" aria-label="edit" ng-click="showEditDialog($event, employee)"></button> 
-    <button class="fa fa-trash-o deleteButton" ng-click="delete(employee)"></button> 
-   
-  <div ng-if="employee.open">
-    <div class="infoEmployee">
-      <div class="timetableHead">
-        <i class="fa fa-commenting-o" ></i> 
-        <p>{{employee.description}}</p>
-      </div>  
-      <div class="timetableHead">
-        <i class="fa fa-phone" ></i> 
-        <p>{{employee.phone}}</p>
-        <p ng-if="employee.phone.length===0">Ningún teléfono añadido</p>
-      </div>     
-      <div class="employeeServices">
-        <div class="tagsHead">
-          <i class="fa fa-tags" ></i>  
-          <p>Servicios asignados</p>
+
+  <md-list-item class="md-3-line employeesAvatar allEmployees" ng-repeat="employee in employees" ng-init="employee.open=false">  
+    <div class="employee">
+      <div class="employeesCard" ng-click="showInfo(employee)">
+        <ng-letter-avatar data="{{employee.name}}" shape="round"></ng-letter-avatar>
+        <p>{{employee.name}} {{employee.surname}}</p>
+       </div>
+
+      <div class="employeesActions">
+        <button class="fa fa-pencil" aria-label="edit" ng-click="showEditDialog($event, employee)"></button> 
+        <button class="fa fa-trash-o" ng-click="delete(employee)"></button>
+      </div> 
+    </div>
+    <div ng-if="employee.open">
+      <div class="infoEmployee">
+        <div class="timetableHead">
+          <i class="fa fa-commenting-o" ></i> 
+          <p>{{employee.description}}</p>
+        </div>  
+        <div class="timetableHead">
+          <i class="fa fa-phone" ></i> 
+          <p>{{employee.phone}}</p>
+          <p ng-if="employee.phone.length===0">Ningún teléfono añadido</p>
+        </div>     
+        <div class="employeeServices">
+          <div class="tagsHead">
+            <i class="fa fa-tags" ></i>  
+            <p>Servicios asignados</p>
+          </div>
+          <md-chips ng-model="employee.services" readonly="true">
+            <md-chip-template>
+                {{$chip.id_name.name}}
+            </md-chip-template>
+          </md-chips>
+          <p ng-if="employee.services.length===0">No tiene servicios asignados</p> 
         </div>
-        <md-chips ng-model="employee.services" readonly="true">
-          <md-chip-template>
-              {{$chip.id_name.name}}
-          </md-chip-template>
-        </md-chips>
-        <p ng-if="employee.services.length===0">No tiene servicios asignados</p> 
       </div>
     </div>
-  </div>
   <md-divider></md-divider>  
 </md-list-item>
+
 <md-button class="md-fab fa fa-plus addEmployee" ng-click="showDialog($event)"></md-button>

@@ -14,13 +14,14 @@ webAppController.editPromotionCtrl = function ($rootScope, $scope, CompanyServic
 	}
 	this.getPromotion(); 
 
-	$scope.saveChanges=function(){
-        CompanyService.promotion().update({id:$scope.promotion._id},$scope.promotion,function(result){
+	$scope.saveChanges=function(promotion){
+        CompanyService.promotion().update({id:promotion._id},promotion,function(result){
             if(result.error)
                 return console.log(result.error);
             $scope.promotion=result.data;
            	//$rootScope.sucessToast("Los datos se han guardado correctamente");
-           	$scope.showAlert();      
+           	$scope.showAlert(); 
+           	$rootScope.go("app.promotions");  
         }, function(){
 
         });
@@ -51,14 +52,13 @@ webAppController.editPromotionCtrl = function ($rootScope, $scope, CompanyServic
 	}	
 	this.getServices();
 	$scope.showAlert = function() {
-    $mdDialog.show(
-      	$mdDialog.alert()
-	        .parent(angular.element(document.querySelector('#popupContainer')))
-	        .clickOutsideToClose(true)
-	        .title('')
-	        .textContent('¡Promoción eliminada correctamente!')
-	        .ariaLabel('Alert Dialog Demo')
-	        .ok('OK')
-	    );
-  	};
-};
+        $mdDialog.show(
+            $mdDialog.alert()
+            .parent(angular.element(document.querySelector('#popupContainer')))
+            .clickOutsideToClose(true)
+            .title('')
+            .textContent('Promoción modificada correctamente!')
+            .ariaLabel('Alert Dialog Demo')
+            .ok('OK')
+        );
+    };};
