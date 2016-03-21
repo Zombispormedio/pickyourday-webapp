@@ -614,6 +614,9 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
 .mb5{
     margin-bottom: 5%;
 }
+.mb1comma5{
+    margin-bottom: 1.5%!important;
+}
 
 .avatar-sidenav{
     width: 100px;

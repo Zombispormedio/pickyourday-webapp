@@ -5,7 +5,7 @@ webAppController.DayDashboardCtrl = function ($scope, CompanyService) {
 			if(result.error)
 				return console.log(result.error);
 			$scope.employees=result.data;
-			$scope.getTimeline();
+			
 		}, function(){
 
 		});

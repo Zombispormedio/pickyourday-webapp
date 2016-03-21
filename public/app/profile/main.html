@@ -73,7 +73,7 @@
                         <md-subheader class="md-no-sticky">Week</md-subheader>
                         <md-list-item class="md-3-line" ng-repeat="daytime in schedule.week">
                             <div class="md-list-item-text" layout="column" >
-                                <h3 flex>{{daytime.day}}</h3>
+                                <h3 class="mb1comma5" flex>{{daytime.day}}</h3>
                                 <md-chips ng-model="daytime.times" md-on-add="checkTime(daytime)" readonly="!editable" flex>
                                 </md-chips>
                                 <p class="note" ng-if="daytime.times==0">
