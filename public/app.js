@@ -18,7 +18,7 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
         onEnter: function ($rootScope) {
             if (getJSONLocal("user")) {
 
-                $rootScope.go("app.daydashboard");
+                $rootScope.go("app.dashboard");
             }
         },
         templateUrl: 'app/login/main.html',
