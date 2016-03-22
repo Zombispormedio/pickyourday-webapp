@@ -1,0 +1,50 @@
+<div layout="column" ng-cloak id="settings">
+    <div class="head">
+        <i class="fa fa-cog"></i>
+        <h2>Configuraci&oacute;n </h2>
+    </div>
+    <md-content flex layout-padding>
+        <section>
+            <h3>Administrador de la API</h3>
+
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="Credenciales">
+                    <md-content class="md-padding" layout="row"   layout-align="space-between start">
+                        <p flex ng-if="!credentials">No tienes credenciales</p>
+
+                        <div layout="column" flex ng-if="credentials">
+                            <md-input-container flex>
+                                <label>Access Token</label>
+
+                                <md-icon md-font-icon="fa-clipboard" class="fa copy-icon" title="Copy Access Token" ng-click="clickHandler(credentials.access_token)"></md-icon>
+
+                                <input ng-model="credentials.access_token" type="text" ng-disabled="true">
+                            </md-input-container>
+                            <md-input-container flex>
+                                <label>Secret Token</label>
+                                <md-icon md-font-icon="fa-clipboard" class="fa copy-icon" title="Copy Secret Token" ng-click="clickHandler(credentials.secret_token)"></md-icon>
+                                <input ng-model="credentials.secret_token" type="text" ng-disabled="true">
+                            </md-input-container>
+                        </div>
+
+                        <md-button flex="25" class="md-pick-button md-raised md-primary " ng-click="createOrUpdate()">
+                            {{credentials && 'Actualizar' || 'Crear'}} Credenciales
+                        </md-button>
+
+                    </md-content>
+                </md-tab>
+
+                <md-tab label="Exportar Calendario" ng-if="credentials">
+                    <md-content>
+                        <p>https://pickyourday.herokuapp.com/api/developer/calendar?access_token={{credentials.access_token}}&secret_token={{credentials.secret_token}}</p>
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+
+
+        </section>
+
+
+    </md-content>
+
+</div>

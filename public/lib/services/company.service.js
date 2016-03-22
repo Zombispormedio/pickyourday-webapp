@@ -35,7 +35,7 @@ webAppFactory.CompanyService= function(ApiService){
         },
          promotions:function(){
             return ApiService.rest(this.base+"/promotion/",{
-                get:{method:"GET", params:{}},
+                get:{method:"GET", params:{}}
             });
         },       
         employees:function(){
@@ -49,27 +49,34 @@ webAppFactory.CompanyService= function(ApiService){
         },
         servicesAsigned:function(){
             return ApiService.rest(this.base+"/serviceAsigned/",{
-                list:{method:"GET", params:{}},
+                list:{method:"GET", params:{}}
             });
         },
         servicesByCategory:function(){
             return ApiService.rest(this.base+"/serviceName/",{
-                list:{method:"GET", params:{}},
+                list:{method:"GET", params:{}}
             });
         },
         resourcesByServices:function(){
             return ApiService.rest(this.base+"/resourcesByService/",{
-                list:{method:"GET", params:{}},
+                list:{method:"GET", params:{}}
             });
         },
         toggleService:function(){
             return ApiService.rest(this.base+"/toggleService/",{
-                change:{method:"POST", params:{}},
+                change:{method:"POST", params:{}}
             });
         },
         timeline:function(){
             return ApiService.rest(this.base+"/timeline/",{
+                get:{method:"GET", params:{}}
+            });
+        },
+        
+        developer:function(){
+            return ApiService.rest(this.base+"/developer/",{
                 get:{method:"GET", params:{}},
+                updateOrCreate:{method:"POST", params:{}}
             });
         }
     };

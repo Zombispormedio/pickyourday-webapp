@@ -64,7 +64,7 @@ button.webAppMenuOptions {
     margin-top: 2%;
 }
 .timelineContent{
-     display:flex;
+    display:flex;
 }
 .timelineHours{
     display: flex;
@@ -169,9 +169,9 @@ button.webAppMenuOptions {
 }
 
 /*.timelinePicks div{
-    width: 150px;
-    height: 150px;
-    background-color: blue;
+width: 150px;
+height: 150px;
+background-color: blue;
 }*/
 /*Login*/
 .contactIcon,.contact{
@@ -393,8 +393,8 @@ margin-bottom: 5%;
     display:flex;
 }
 .companyServices md-card{
-   /* width:50%;*/
-   width:40%;
+    /* width:50%;*/
+    width:40%;
 }
 .buttonDeleteService, .buttonEditService{
     color:white;
@@ -539,7 +539,7 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
     margin-top: -50px;
 }
 .deleteButton{
-   margin-top: -15px; 
+    margin-top: -15px; 
 }
 /*my promotions*/
 .promotions > img{
@@ -554,13 +554,13 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
     margin-right: 2%;
 }
 .promotionActions{
-	margin-top: 10%;
-	margin-bottom: 2%;
+    margin-top: 10%;
+    margin-bottom: 2%;
 }
 .promotionActions > button{
-	background: transparent;
-	border: none;
-	display:inline;
+    background: transparent;
+    border: none;
+    display:inline;
     font-size: 22px;
 }
 .dialogForm md-input-container {       
@@ -575,7 +575,7 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
     height: auto;
     font-weight: bold;
     width: -24%;
- 
+
     text-align: center;
     margin-left: 1.5%;
     margin-top: 1.5%;
@@ -632,7 +632,7 @@ a{
 }
 
 .webAppMenuInfo a:hover{
-   color: white;
+    color: white;
 }
 
 .mt1{
@@ -643,7 +643,7 @@ a{
 }
 
 .tile-day .tile-add{ 
-margin-top: -15%;
+    margin-top: -15%;
 }
 
 .only-button-date .md-datepicker-input-container{
@@ -670,4 +670,15 @@ md-chips .md-chip{
 
 .collapse-icon{
     font-size:2em;
+}
+.copy-icon{
+    font-size: 1.5em;
+}
+.copy-icon:hover{
+    color: rgba(0,0,0,0.5);
+}
+
+.md-pick-button{
+    background-color: #009688 !important;
+   
 }
