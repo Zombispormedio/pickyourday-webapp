@@ -34,8 +34,6 @@ webAppController.ServicesCtrl = function ($rootScope,$scope, CompanyService,  $m
           if(result.error)
             return console.log(result.error);
           $scope.servicesByCategory=result.data;
-          console.log($scope.servicesByCategory);
-
         }, function(){
 
         });
@@ -80,7 +78,9 @@ webAppController.ServicesCtrl = function ($rootScope,$scope, CompanyService,  $m
             clickOutsideToClose:true,
             locals: {
             servicesByCategory: $scope.servicesByCategory,
-            service: services||{}
+            service: services||{
+                keywords:[]
+            }
          },                 
         })
         .then(function(service) {          
@@ -119,7 +119,8 @@ webAppController.ServicesCtrl = function ($rootScope,$scope, CompanyService,  $m
             $mdDialog.cancel();
         };
         $scope.answer = function() {
-            $mdDialog.hide($scope.service);
+            $mdDialog.hide($scope.service)
+            console.log($scope.service);
         };
     }
 
@@ -138,7 +139,7 @@ webAppController.ServicesCtrl = function ($rootScope,$scope, CompanyService,  $m
     }
 
     this.createService = function(service){
-        CompanyService.service().create({id:service._id},service, function(result){
+        CompanyService.service().create(service, function(result){
             if(result.error)
                 return console.log(result.error);
             console.log(result)

@@ -114,7 +114,7 @@ button.webAppMenuOptions {
     -o-transform: translate(-30px, -10px);
     transform: translate(-30px, -10px);
     display: inline-block;
-    font-size: 15px;
+    font-size: 10px;
     /*color: #666;*/
     color: #00796B;
     font-weight: 500;
@@ -451,6 +451,15 @@ md-input-container:not(.md-input-invalid).md-input-focused .formIcon, md-input-c
     margin-bottom: 1%;
     margin-right: 2%;
 }
+/*desplegable*/
+ md-select .md-select-value.md-select-placeholder {
+    /* color: rgba(0, 0, 0, 0.3); */
+    border-color: rgba(0, 0, 0, 0.3);
+}
+md-select .md-select-value.md-select-placeholder span{
+    color:rgba(0, 0, 0, 0.5);
+}
+/* ** */
 md-select:not([disabled]):focus .md-select-value {
     border-bottom-color: #009688;
 }
@@ -667,7 +676,12 @@ md-chips .md-chip{
 .md-chips .md-chip .md-chip-remove md-icon {
     color:white;
 }
-
+md-chips .md-chip.md-focused {
+    background: #00796B;
+}
+md-chips .md-chips.md-focused{
+    box-shadow: 0 2px rgba(0,0,0,0.3);
+}
 .collapse-icon{
     font-size:2em;
 }
