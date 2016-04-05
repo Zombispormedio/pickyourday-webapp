@@ -15,9 +15,7 @@
                         <div layout="column" flex ng-if="credentials">
                             <md-input-container flex>
                                 <label>Access Token</label>
-
                                 <md-icon md-font-icon="fa-clipboard" class="fa copy-icon" title="Copy Access Token" ng-click="clickHandler(credentials.access_token)"></md-icon>
-
                                 <input ng-model="credentials.access_token" type="text" ng-disabled="true">
                             </md-input-container>
                             <md-input-container flex>
@@ -35,8 +33,14 @@
                 </md-tab>
 
                 <md-tab label="Exportar Calendario" ng-if="credentials">
-                    <md-content>
-                        <p>https://pickyourday.herokuapp.com/api/developer/calendar?access_token={{credentials.access_token}}&secret_token={{credentials.secret_token}}</p>
+                    <md-content layout="row">
+
+                        <md-input-container flex>
+                            <label>Secret Token</label>
+                            <md-icon md-font-icon="fa-clipboard" class="fa copy-icon" title="Copy Secret Token" ng-click="clickHandler('https://pickyourday.herokuapp.com/api/developer/calendar?access_token='+credentials.access_token+'&secret_token='+credentials.secret_token)"></md-icon>
+                            <input type="text" ng-disabled="true" placeholder="https://pickyourday.herokuapp.com/api/developer/calendar?access_token={{credentials.access_token}}&secret_token={{credentials.secret_token}}">
+                        </md-input-container>
+                    
                     </md-content>
                 </md-tab>
             </md-tabs>
