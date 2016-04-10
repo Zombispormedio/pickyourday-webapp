@@ -7,6 +7,7 @@
     "test": "test"
   },
   "dependencies": {
+    "angular-material-calendar": "0.2.14",
     "body-parser": "1.0.2",
     "bower": "1.7.7",
     "compression": "1.6.1",

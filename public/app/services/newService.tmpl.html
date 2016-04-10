@@ -13,7 +13,7 @@
               <md-input-container style="margin-right: 10px;">               
                 <md-icon class="fa fa-tags formIcon"></md-icon> <label>Servicios</label>
                 
-                <md-select ng-model="service.id_name" style="margin-left: 9%;">
+                <md-select ng-model="service.id_name" style="margin-left: 0%;">
                     <md-option ng-value="default_service._id" ng-repeat="default_service in servicesByCategory">{{default_service.name}}</md-option>
                 </md-select>  
               </md-input-container>
@@ -22,23 +22,23 @@
                 <md-icon class="fa fa-commenting-o formIcon"></md-icon> 
                 <input name="description" type="text" ng-model="service.description"></input>
               </md-input-container>
-            <md-input-container style="margin-top:-5%;">
+            <md-input-container>
               <label>Duración</label>
               <md-icon class="fa fa-clock-o formIcon"></md-icon>
               <input ng-model="service.duration" name="duration" step="any" type="number">
             </md-input-container>
-            <md-input-container style="margin-top:-5%;">
+            <md-input-container>
               <label>Precio</label>
               <md-icon class="fa fa-eur formIcon"></md-icon>
               <input ng-model="service.price" name="price" step="any" type="number">
             </md-input-container>
-            <div flex ng-cloak style="margin-left:5%;margin-right:5%;margin-top:-4%;">           
+            <div flex ng-cloak style="margin-left:5%;margin-right:5%;margin-top:-3%;">           
                 <md-chips ng-model="service.keywords"
                   readonly="false"
-                  placeholder="Keywords"
+                  placeholder="Palabras clave"
                   delete-button-label="eliminar keyword"
                   delete-hint="Press delete to remove tag"
-                  secondary-placeholder="+keyword">
+                  secondary-placeholder="Palabras clave">
                 </md-chips>            
             </div>
           </div>

@@ -16,19 +16,19 @@
                 <md-icon class="fa fa-commenting-o formIcon"></md-icon> 
                 <input name="description" type="text" ng-model="service.description"></input>
               </md-input-container>
-            <md-input-container style="margin-top:-5%;">
+            <md-input-container>
               <label>Duración</label>
               <md-icon class="fa fa-clock-o formIcon"></md-icon>
               <input ng-model="service.duration" name="duration" step="any" type="number">
             </md-input-container>
-            <md-input-container style="margin-top:-5%;">
+            <md-input-container>
               <label>Precio</label>
               <md-icon class="fa fa-eur formIcon"></md-icon>
               <input ng-model="service.price" name="price" step="any" type="number">
             </md-input-container>
-            <div flex ng-cloak style="margin-left:5%;margin-right:5%;margin-top:-4%;">           
+            <div flex ng-cloak style="margin-left:5%;margin-right:5%;margin-top:-3%;">           
                 <md-chips ng-if="checkKeywords()" ng-model="service.keywords" readonly="false"></md-chips>
-                <p ng-if="!checkKeywords()">No Keywords</p>        
+                <p ng-if="!checkKeywords()">No hay palabras clave</p>        
             </div>
           </div>
         </form>
