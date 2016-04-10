@@ -17,12 +17,12 @@ webAppController.ServicesCtrl = function ($rootScope,$scope, CompanyService,  $m
     $scope.getProfile();
 
     $scope.getServices=function(){
-        console.log($scope.profile.category._id);
         CompanyService.services().get({},function(result){
             if(result.error)
                 return console.log(result.error);
             $scope.services=result.data;
             $scope.getServicesByCategory();
+            console.log($scope.services);
         }, function(){
 
         });
@@ -98,7 +98,10 @@ webAppController.ServicesCtrl = function ($rootScope,$scope, CompanyService,  $m
             targetEvent: ev,
             clickOutsideToClose:true,
             locals: {
-            service: services||{}
+
+            service: services||{
+                 keywords: [service.keywords]
+            }
          },                 
         })
         .then(function(service) {
@@ -107,6 +110,23 @@ webAppController.ServicesCtrl = function ($rootScope,$scope, CompanyService,  $m
             $scope.status = 'You cancelled the dialog.';
         });
     };
+
+    $scope.checkKeywords=function(){
+        var empty=true;
+        if($scope.services){
+            if(!$scope.services.keywords){
+                empty=false;
+            }else{
+                if($scope.services.keywords.length===0){
+                    empty=false;
+                }
+            } 
+        }else{
+            empty=false;
+        }
+        return empty;
+    }
+
 
     function DialogController($scope, $mdDialog,servicesByCategory,service) {        
         $scope.servicesByCategory = servicesByCategory;
@@ -144,6 +164,7 @@ webAppController.ServicesCtrl = function ($rootScope,$scope, CompanyService,  $m
                 return console.log(result.error);
             console.log(result)
             $scope.service=result.data;
+            $rootScope.go("app.services");
         }, function(){
 
         });
@@ -154,7 +175,7 @@ webAppController.ServicesCtrl = function ($rootScope,$scope, CompanyService,  $m
             if(result.error)
                 return console.log(result.error);
             console.log(result)
-            $scope.services=result.data;
+            $scope.service=result.data;
         }, function(){
 
         });

@@ -13,8 +13,8 @@
               <md-input-container style="margin-right: 10px;">               
                 <md-icon class="fa fa-tags formIcon"></md-icon> <label>Servicios</label>
                 
-                <md-select ng-model="service.name" style="margin-left: 9%;">
-                    <md-option ng-value="service.name" ng-repeat="service in servicesByCategory">{{service.name}}</md-option>
+                <md-select ng-model="service.id_name" style="margin-left: 9%;">
+                    <md-option ng-value="default_service._id" ng-repeat="default_service in servicesByCategory">{{default_service.name}}</md-option>
                 </md-select>  
               </md-input-container>
               <md-input-container>              

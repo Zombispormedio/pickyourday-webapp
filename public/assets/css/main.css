@@ -1,3 +1,6 @@
+body{
+    font-family: roboto;
+}
 .companyName{
     font-size: 25px;
     color: white;
@@ -344,7 +347,7 @@ p.phones{
 .head > i{
     font-size: 30px;
     padding-top: 2%;
-    padding-right: 2%;
+    padding-right: 1%;
 }
 .services{
     width:90%;
@@ -417,8 +420,8 @@ margin-bottom: 5%;
     display:flex;
 }
 .companyServices md-card{
-    /* width:50%;*/
-    width:40%;
+    /* width:40%;*/
+    width:33%;
 }
 .buttonDeleteService, .buttonEditService{
     color:white;

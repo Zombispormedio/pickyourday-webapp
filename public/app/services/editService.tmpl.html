@@ -26,10 +26,10 @@
               <md-icon class="fa fa-eur formIcon"></md-icon>
               <input ng-model="service.price" name="price" step="any" type="number">
             </md-input-container>
-            <md-input-container>
-                <label>Keywords</label>
-                <!--<md-chips ng-model="service.keywords" readonly=""></md-chips>-->
-            </md-input-container>
+            <div flex ng-cloak style="margin-left:5%;margin-right:5%;margin-top:-4%;">           
+                <md-chips ng-if="checkKeywords()" ng-model="service.keywords" readonly="false"></md-chips>
+                <p ng-if="!checkKeywords()">No Keywords</p>        
+            </div>
           </div>
         </form>
       </md-content>        

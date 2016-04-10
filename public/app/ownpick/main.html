@@ -1,14 +1,16 @@
-<h2>Nuevo pick</h2>
-
-<md-input-container style="margin-right: 10px;">
-<label>Servicio</label>
-    <md-select ng-model="services">
-        <md-option ng-value="service._id" ng-repeat="service in services">{{service.id_name.name}}</md-option>
-    </md-select>
+<div class="head">	
+	<i class="fa fa-plus-circle"></i>
+	<h1>Nuevo pick</h1>
+</div>
+<md-input-container style="width: 20%;margin-right: 10px;">
+	<label>Servicio</label>
+	    <md-select ng-model="services">
+	        <md-option ng-value="service._id" ng-repeat="service in services">{{service.id_name.name}}</md-option>
+	    </md-select>
 </md-input-container>
 
-<md-input-container style="margin-right: 10px;">
-<label>Empleado</label>
+<md-input-container style="width: 20%;margin-right: 10px;">
+	<label>Empleado</label>
     <md-select ng-model="employees">
         <md-option ng-value="employee.name" ng-repeat="employee in employees">{{employee.name}} {{employee.surname}}</md-option>
     </md-select>
