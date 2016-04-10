@@ -7,7 +7,7 @@ webAppController.DashboardCtrl = function ($scope, CompanyService) {
 	        return console.log(result.error);
 	      $scope.timeline=result.data;
 		console.log(result.data);
-	      $scope.calcSpaces(result.data[0].metadata.open, result.data[0].metadata.close);
+	     $scope.calcSpaces(result.data[0].metadata.open, result.data[0].metadata.close);
 	      
 	    }, function(){
 

@@ -35,17 +35,17 @@
         <md-input-container flex  class="md-block">			
             <label>Descripción</label>			
             <md-icon class="fa fa-commenting-o formIcon"></md-icon> 
-            <textarea ng-model="profile.description" md-maxlength="300" rows="5" cols="10" md-select-on-focus ng-disabled="!editable" style="height:87px;margin-left:4%;"></textarea>
+            <textarea ng-model="profile.description" md-maxlength="300" rows="5" cols="10" md-select-on-focus ng-disabled="!editable" style="height:8px;"></textarea>
         </md-input-container>
 
-        <div flex ng-cloak class="mb10">		
-            <p>Keywords</p>
+        <div flex ng-cloak class="mb5">		
+            <p>Palabras clave</p>
             <md-chips ng-if="checkKeywords()" ng-model="profile.keywords" readonly="!editable"></md-chips>
-            <p ng-if="!checkKeywords()">No Keywords</p>
+            <p ng-if="!checkKeywords()">No hay palabras clave</p>
         </div>
 
 
-        <div flex ng-cloak class="mb10">
+        <div flex ng-cloak class="mb5">
             <div layout="row">
                 <p flex="80">Horarios programados para este año</p>
 
