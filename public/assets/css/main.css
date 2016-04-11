@@ -104,11 +104,11 @@ button.webAppMenuOptions {
 
 .timelineHours .right .lastHour .hour{
     /*transform: translate(15px, -30px);*/
-    transform: translate(15px, -10px);
-    -webkit-transform: translate(15px, -10px);
-    -moz-transform: translate(15px, -10px);
-    -o-transform: translate(15px, -10px);
-    transform: translate(15px, -10px);
+    transform: translate(7px, -10px);
+    -webkit-transform: translate(7px, -10px);
+    -moz-transform: translate(7px, -10px);
+    -o-transform: translate(7px, -10px);
+    transform: translate(7px, -10px);
 }
 
 .timelineHours .right .hour{
@@ -755,9 +755,24 @@ md-chips .md-chips.md-focused{
 }
 .calendar{
     margin-top: 1.4%;
-    float:right;
 }
 .md-datepicker-expand-triangle {
     color:white;
 }
 
+md-input-container:not(.md-input-invalid).md-input-focused label{
+    color:#009688;
+}
+.md-calendar-date.md-calendar-date-today .md-calendar-date-selection-indicator{
+    border: 1px solid #009688;
+}
+.md-calendar-date.md-focus .md-calendar-date-selection-indicator,.md-calendar-date.md-focus.md-calendar-selected-date .md-calendar-date-selection-indicator{
+    background: #009688;
+    color:white;
+}
+.md-datepicker-open .md-datepicker-calendar-icon{
+    fill: rgba(0,0,0,0.54);
+}
+.md-datepicker-input-container.md-datepicker-focused{
+    border-bottom-color: #009688;
+}

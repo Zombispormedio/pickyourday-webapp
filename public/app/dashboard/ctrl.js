@@ -6,7 +6,7 @@ webAppController.DashboardCtrl = function ($scope, CompanyService) {
 	      if(result.error)
 	        return console.log(result.error);
 	      $scope.timeline=result.data;
-		console.log(result.data);
+		  console.log(result.data);
 	     $scope.calcSpaces(result.data[0].metadata.open, result.data[0].metadata.close);
 	      
 	    }, function(){
@@ -36,7 +36,7 @@ webAppController.DashboardCtrl = function ($scope, CompanyService) {
   			if(i>0)
   				open.setMinutes(open.getMinutes() + 30);
 
-  			if(i<spaces-2)
+  		  if(i<spaces-2)
   				aux.push(open.toTimeString().replace(/.*(\d{2}:\d{2})(:\d{2}).*/, "$1"));
   			else
   				$scope.lastHour = open.toTimeString().replace(/.*(\d{2}:\d{2})(:\d{2}).*/, "$1");

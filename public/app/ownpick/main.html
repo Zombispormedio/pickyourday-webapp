@@ -2,21 +2,48 @@
 	<i class="fa fa-plus-circle"></i>
 	<h1>Nuevo pick</h1>
 </div>
-<div style="display:flex;">
-	<div style="display:flex;flex: 1;">
-		<md-input-container style="width: 25%;margin-right: 10px;">
+<div style="display:flex;flex:1;">
+		<md-input-container style="width: 30%;" required>
 			<label>Servicio</label>
-			    <md-select ng-model="services">
-			        <md-option ng-value="service._id" ng-repeat="service in services">{{service.id_name.name}}</md-option>
+			    <md-select ng-model="service.id_name._id">
+			        <md-option ng-value="service.id_name._id" ng-repeat="service in services">{{service.id_name.name}}</md-option>
 			    </md-select>
 		</md-input-container>
 
-		<md-input-container style="width: 25%;margin-right: 10px;">
+		<md-input-container style="width: 30%;margin-left: 3%;">
 			<label>Empleado</label>
-		    <md-select ng-model="employees">
-		        <md-option ng-value="employee.name" ng-repeat="employee in employees">{{employee.name}} {{employee.surname}}</md-option>
+		    <md-select ng-model="employee._id">
+		        <md-option ng-value="employee._id" ng-repeat="employee in employees">{{employee.name}} {{employee.surname}}</md-option>
 		    </md-select>
 		</md-input-container>
-	</div> 
+	
 	<md-datepicker class="calendar" ng-model="myDate" md-placeholder="Selecciona un dia"></md-datepicker>
+	<md-button class="md-fab fa fa-refresh md-mini addService" style="margin-top: 1%;margin-left: 10%;" ng-click="getTimeline(service, employee, myDate)"></md-button>	
+</div>
+
+<div ng-cloak class="timeline">
+	<div class="timelineHours">
+		<div class="left"></div>
+		<div class="right">
+			<div ng-repeat="space in spaces track by $index">
+				<span class="hour">{{space}}</span>
+			</div>
+			<div class="lastHour">
+				<span class="hour">{{lastHour}}</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="timelineContent" ng-repeat="t in timeline[0].timeLine">
+	 	<p class="timelineNames">
+	 		{{t.resource.name}} {{t.resource.surname}}
+	 	</p>		
+	 	<div class="timelinePicks_container">
+		    <div class="timelinePicks" ng-repeat="r in t.steps track by $index">
+		      <div ng-if="r == 0"></div>
+		      <div ng-if="r == 1" style="background-color:#009688;"></div>
+		      <div ng-if="r == 2" style="background-color:#424242;" title="This is my tooltip"></div>
+		    </div>
+		</div>
+	</div>
 </div>
