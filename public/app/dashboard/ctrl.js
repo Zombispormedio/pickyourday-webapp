@@ -22,7 +22,8 @@ webAppController.DashboardCtrl = function ($scope, CompanyService) {
   		var open = new Date(o);
   		var close = new Date(c);
 
-
+      open.setHours(open.getHours());
+      
   		var openH = open.getHours();
   		var openM = open.getMinutes();
   		var closeH = close.getHours();

@@ -23,24 +23,38 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService){
 	this.getEmployees();
 
 
-
+	var nullService=false;
 	$scope.getTimeline = function (service, employee, date){
 		console.log(service);
-		console.log(employee._id);
-		console.log(date)
-		if(service!=null && employee!=null && date!=null){
-		  	CompanyService.timeline().get({service:service.id_name.name, resource:employee._id,rangeDays:1},function(result){
-		  		
-		      if(result.error)
-		        return console.log(result.error);
-		      $scope.timeline=result.data;
-			console.log(result.data);
-		     $scope.calcSpaces(result.data[0].metadata.open, result.data[0].metadata.close);
-		      
-		    }, function(){
-
-		    });
-	  	}
+		if(service!=null){
+			if(employee!=null){
+				CompanyService.timeline().get({service:service._id, resource:employee._id,rangeDays:1},function(result){
+			  		if(result.error)
+				    	return console.log(result.error);
+				    $scope.timeline=result.data;
+					console.log(result.data);
+				    $scope.calcSpaces(result.data[0].metadata.open, result.data[0].metadata.close);	
+				    
+				    if(nullService==true)
+				    	$("#selectService").children().css("border-bottom-color", "rgba(0, 0, 0, 0.12)");	      
+			    	}, function(){ });
+			}else{
+				CompanyService.timeline().get({service:service._id,rangeDays:1},function(result){
+			  		if(result.error)
+				    	return console.log(result.error);
+				    $scope.timeline=result.data;
+					console.log(result.data);
+				    $scope.calcSpaces(result.data[0].metadata.open, result.data[0].metadata.close);	
+				    
+				    if(nullService==true)
+				    	$("#selectService").children().css("border-bottom-color", "rgba(0, 0, 0, 0.12)");	      
+		    	}, function(){ });
+			}
+		  	
+		}else{
+			nullService=true;
+			$("#selectService").children().css("border-bottom-color", "red");
+		}
   	}	
 
 	$scope.spaces = [];

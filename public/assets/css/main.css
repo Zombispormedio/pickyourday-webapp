@@ -776,3 +776,12 @@ md-input-container:not(.md-input-invalid).md-input-focused label{
 .md-datepicker-input-container.md-datepicker-focused{
     border-bottom-color: #009688;
 }
+.label{
+    opacity: 0;
+    position:absolute;
+    background-color: white;
+    padding:2%;
+}
+.infoPick:hover .label{
+    opacity:1;
+}
