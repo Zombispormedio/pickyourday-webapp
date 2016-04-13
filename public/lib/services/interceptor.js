@@ -7,7 +7,7 @@ webAppFactory.AuthInterceptor = function($q, $location){
             if (!config.headers.Authorization && user) {
                 config.headers.Authorization = user.token;
             }
-			config.headers.OriginSource="webapp";
+			
             return config;
         },
         requestError: function(rejection) {
