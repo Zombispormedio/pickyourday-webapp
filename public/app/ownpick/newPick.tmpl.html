@@ -1,0 +1,34 @@
+<md-dialog ng-cloak style="max-width:800px;overflow: hidden;">
+<div id="formStyle">
+  <form class="form">
+    <md-toolbar>
+      <div class="md-toolbar-tools addServiceToolbar">
+        <h2><i class="fa fa-plus-circle"></i>  Nuevo pick</h2>
+      </div>
+    </md-toolbar>
+    <md-dialog-content class="dialogForm" >
+        <md-content class="md-padding" style="margin-top:2%;padding:0%;padding-top:2%;">
+          <form name="pickForm" class="form" layout="column" >
+            <div flex layout="row" layout-wrap>
+              <md-input-container>      
+                <label>Nombre</label>
+                <md-icon class="fa fa-user formIcon"></md-icon> 
+                <input name="name" ng-model="client.name">
+              </md-input-container>
+
+              <md-input-container>              
+                <label>Teléfono</label>      
+                <md-icon class="fa fa-phone formIcon"></md-icon> 
+                <input name="phone" type="text" ng-model="client.phone"></input>
+              </md-input-container>
+            </div>
+          </form>
+        </md-content>        
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <md-button class="buttonStyle" ng-click="answer(client)">Aceptar</md-button>
+      <md-button style="margin-right:20px;" class="buttonStyle" ng-click="cancel()">Cancelar</md-button>
+    </md-dialog-actions>
+  </form>
+</div>
+</md-dialog>

@@ -21,10 +21,10 @@
 	 		{{t.resource.name}} {{t.resource.surname}}
 	 	</p>		
 	 	<div class="timelinePicks_container">
-		    <div class="timelinePicks" ng-repeat="r in t.steps track by $index">
+		    <div class="timelinePicks" ng-repeat="r in t.steps[0] track by $index">
 		      <div ng-if="r == 0"></div>
 		      <div ng-if="r == 1" style="background-color:#009688;"></div>
-		      <div ng-if="r == 2" style="background-color:#424242;"></div>
+		      <div ng-if="r == 2" style="background-color:#424242;" title="Cerrado"></div>		     
 		    </div>
 		</div>
 	</div>

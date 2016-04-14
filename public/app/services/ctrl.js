@@ -1,6 +1,7 @@
 webAppController.ServicesCtrl = function ($rootScope,$scope, CompanyService,  $mdSidenav, $mdDialog, $mdComponentRegistry) {
 
     var self=this;
+    $scope.servicesByCategoryArray=[];
 
     $scope.isOpen = function() { return $mdSidenav('right').isOpen(); };
     
@@ -34,7 +35,9 @@ webAppController.ServicesCtrl = function ($rootScope,$scope, CompanyService,  $m
           if(result.error)
             return console.log(result.error);
           $scope.servicesByCategory=result.data;
-        }, function(){
+          $scope.servicesByCategoryArray = $scope.servicesByCategory;
+          console.log($scope.servicesByCategoryArray);
+;        }, function(){
 
         });
     }
@@ -203,4 +206,13 @@ webAppController.ServicesCtrl = function ($rootScope,$scope, CompanyService,  $m
             .ok('OK')
         );
     };
+
+    $scope.update = function(idService){
+        console.log("idService");
+        for(var i=0; i<$scope.servicesByCategoryArray;i++){
+            if(i._id == idService){
+                console.log(i.name);
+            }
+        }
+    }
 }

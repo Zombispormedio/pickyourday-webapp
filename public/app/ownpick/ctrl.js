@@ -1,4 +1,7 @@
-webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService){
+webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdDialog){
+	
+	$scope.client={};
+
 	this.getServices=function(){
 		CompanyService.services().get({},function(result){
 			if(result.error)
@@ -25,10 +28,9 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService){
 
 	var nullService=false;
 	$scope.getTimeline = function (service, employee, date){
-		console.log(service);
 		if(service!=null){
 			if(employee!=null){
-				CompanyService.timeline().get({service:service._id, resource:employee._id,rangeDays:1},function(result){
+				CompanyService.timeline().get({service:service._id, resource:employee._id,rangeDays:1,date:date},function(result){
 			  		if(result.error)
 				    	return console.log(result.error);
 				    $scope.timeline=result.data;
@@ -39,7 +41,7 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService){
 				    	$("#selectService").children().css("border-bottom-color", "rgba(0, 0, 0, 0.12)");	      
 			    	}, function(){ });
 			}else{
-				CompanyService.timeline().get({service:service._id,rangeDays:1},function(result){
+				CompanyService.timeline().get({service:service._id,rangeDays:1,date:date},function(result){
 			  		if(result.error)
 				    	return console.log(result.error);
 				    $scope.timeline=result.data;
@@ -87,4 +89,41 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService){
   		$scope.spaces = aux;
   		console.log(spaces);
   	}	
+
+  	
+  	$scope.showDialog = function(ev, date) {
+	    $mdDialog.show({
+	      controller: DialogController,
+	      templateUrl: 'app/ownpick/newPick.tmpl.html',
+	      parent: angular.element(document.body),
+	      targetEvent: ev,
+	      clickOutsideToClose:true,
+	       locals: {
+           	
+         },
+	    })
+        .then(function(client) {
+        	console.log(client);
+      		$scope.createPick(date, client);
+        }, function() {
+          $scope.status = 'You cancelled the dialog.';
+        });
+  	}
+
+  	function DialogController($scope, $mdDialog) {
+
+		$scope.hide = function() {
+			$mdDialog.hide();
+		};
+		$scope.cancel = function() {
+			$mdDialog.cancel();
+		};
+		$scope.answer = function(client) {
+			$mdDialog.hide($scope.client);
+		};
+	}
+
+	$scope.createPick = function (){
+
+  	}
 }

@@ -13,7 +13,7 @@
               <md-input-container style="margin-right: 10px;">               
                 <md-icon class="fa fa-tags formIcon"></md-icon> <label>Servicios</label>
                 
-                <md-select ng-model="service.id_name" style="margin-left: 0%;">
+                <md-select ng-model="service._id" style="margin-left: 0%;" ng-click="update(service)">
                     <md-option ng-value="default_service._id" ng-repeat="default_service in servicesByCategory">{{default_service.name}}</md-option>
                 </md-select>  
               </md-input-container>
@@ -25,7 +25,7 @@
             <md-input-container>
               <label>Duración</label>
               <md-icon class="fa fa-clock-o formIcon"></md-icon>
-              <input ng-model="service.duration" name="duration" step="any" type="number">
+              <input ng-model="service.duration" name="duration" step="5" type="number">
             </md-input-container>
             <md-input-container>
               <label>Precio</label>
