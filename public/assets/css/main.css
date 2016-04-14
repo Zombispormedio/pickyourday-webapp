@@ -232,26 +232,26 @@ background-color: blue;
     background-color: rgba(222, 214, 214, 0.2);
 }
 /*tabs*/
-md-tabs{
+#login-tab{
     width: 30%;
 }
-md-tabs .md-tab.md-active{
+#login-tab .md-tab.md-active{
     color:white;
 }
-md-tabs .md-tab .md-ripple-container {
+#login-tab .md-tab .md-ripple-container {
     color: #00796B; 
 }
 
-md-tabs .md-tab {
+#login-tab .md-tab {
     color: #E0E0E0;
     border-bottom-color: red;
     font-size: 15px;
     font-weight: bolder;
 }
-md-tabs md-ink-bar {
+#login-tab md-ink-bar {
     background: rgb(233, 0, 80);
 }
-md-tabs-canvas {
+#login-tab md-tabs-canvas {
     height:60px;
 }
 /*Company profile*/
