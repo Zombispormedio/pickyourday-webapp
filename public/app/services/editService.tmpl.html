@@ -9,7 +9,8 @@
     <md-dialog-content class="dialogForm" >   
       <md-content class="md-padding">
         <form name="serviceForm" class="form" layout="column">
-          <div flex layout="row" layout-wrap>  
+          <div flex layout="row" layout-wrap style="margin-top: 5%;margin-bottom: -3%;
+">  
           {{service.name}}            
               <md-input-container>              
                 <label>Descripción</label>      
@@ -26,10 +27,10 @@
               <md-icon class="fa fa-eur formIcon"></md-icon>
               <input ng-model="service.price" name="price" step="any" type="number">
             </md-input-container>
-            <div flex ng-cloak style="margin-left:5%;margin-right:5%;margin-top:-3%;">           
+            <!--<div flex ng-cloak style="margin-left:5%;margin-right:5%;margin-top:-3%;">         
                 <md-chips ng-if="checkKeywords()" ng-model="service.keywords" readonly="false"></md-chips>
                 <p ng-if="!checkKeywords()">No hay palabras clave</p>        
-            </div>
+            </div>-->
           </div>
         </form>
       </md-content>        

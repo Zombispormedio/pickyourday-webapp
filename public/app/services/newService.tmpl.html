@@ -9,11 +9,12 @@
     <md-dialog-content class="dialogForm" >   
       <md-content class="md-padding">
         <form name="serviceForm" class="form" layout="column">
-          <div flex layout="row" layout-wrap>
-              <md-input-container style="margin-right: 10px;">               
+          <div flex layout="row" layout-wrap style="margin-top: 5%;margin-bottom: -5%;
+">
+              <md-input-container style="margin-right: 10px;margin-bottom: 8%;">               
                 <md-icon class="fa fa-tags formIcon"></md-icon> <label>Servicios</label>
                 
-                <md-select ng-model="service._id" style="margin-left: 0%;" ng-click="update(service)">
+                <md-select ng-model="service._id" style="margin-left: 0%;" ng-change="update(service._id)">
                     <md-option ng-value="default_service._id" ng-repeat="default_service in servicesByCategory">{{default_service.name}}</md-option>
                 </md-select>  
               </md-input-container>
@@ -32,7 +33,7 @@
               <md-icon class="fa fa-eur formIcon"></md-icon>
               <input ng-model="service.price" name="price" step="any" type="number">
             </md-input-container>
-            <div flex ng-cloak style="margin-left:5%;margin-right:5%;margin-top:-3%;">           
+            <!--<div flex ng-cloak style="margin-left:5%;margin-right:5%;margin-top:-3%;">         
                 <md-chips ng-model="service.keywords"
                   readonly="false"
                   placeholder="Palabras clave"
@@ -40,7 +41,7 @@
                   delete-hint="Press delete to remove tag"
                   secondary-placeholder="Palabras clave">
                 </md-chips>            
-            </div>
+            </div>-->
           </div>
         </form>
       </md-content>        

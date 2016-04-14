@@ -1,6 +1,7 @@
 webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdDialog){
 	
 	$scope.client={};
+	$scope.dateSelected="";
 
 	this.getServices=function(){
 		CompanyService.services().get({},function(result){
@@ -25,9 +26,13 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 	}
 	this.getEmployees();
 
-
+	var serviceSelected = "";
 	var nullService=false;
+
 	$scope.getTimeline = function (service, employee, date){
+		serviceSelected = service._id;
+		dateSelected = date;
+
 		if(service!=null){
 			if(employee!=null){
 				CompanyService.timeline().get({service:service._id, resource:employee._id,rangeDays:1,date:date},function(result){
@@ -66,7 +71,6 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
   		var open = new Date(o);
   		var close = new Date(c);
 
-
   		var openH = open.getHours();
   		var openM = open.getMinutes();
   		var closeH = close.getHours();
@@ -85,26 +89,20 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
   			else
   				$scope.lastHour = open.toTimeString().replace(/.*(\d{2}:\d{2})(:\d{2}).*/, "$1");
   		}
-
   		$scope.spaces = aux;
-  		console.log(spaces);
   	}	
-
   	
-  	$scope.showDialog = function(ev, date) {
+  	$scope.showDialog = function(ev, r) {
+  		console.log("r" + r)
 	    $mdDialog.show({
 	      controller: DialogController,
 	      templateUrl: 'app/ownpick/newPick.tmpl.html',
 	      parent: angular.element(document.body),
 	      targetEvent: ev,
-	      clickOutsideToClose:true,
-	       locals: {
-           	
-         },
+	      clickOutsideToClose:true
 	    })
         .then(function(client) {
-        	console.log(client);
-      		$scope.createPick(date, client);
+      		$scope.createPick(client);
         }, function() {
           $scope.status = 'You cancelled the dialog.';
         });
@@ -123,7 +121,16 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 		};
 	}
 
-	$scope.createPick = function (){
+	$scope.createPick = function (client){
+		var nameCli=client.name;
+		var phoneCli=client.phone;
 
+		console.log(dateSelected);
+		CompanyService.pick().create({service: serviceSelected,initDate:dateSelected,nameCli,phoneCli},function(result){
+			if(result.error)
+				return console.log(result.error);
+		}, function(){
+
+		});
   	}
 }

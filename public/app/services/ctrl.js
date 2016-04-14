@@ -1,7 +1,8 @@
 webAppController.ServicesCtrl = function ($rootScope,$scope, CompanyService,  $mdSidenav, $mdDialog, $mdComponentRegistry) {
 
     var self=this;
-    $scope.servicesByCategoryArray=[];
+    var servicesByCategoryArray=[];
+    $scope.serviceSelected = {};
 
     $scope.isOpen = function() { return $mdSidenav('right').isOpen(); };
     
@@ -35,8 +36,9 @@ webAppController.ServicesCtrl = function ($rootScope,$scope, CompanyService,  $m
           if(result.error)
             return console.log(result.error);
           $scope.servicesByCategory=result.data;
-          $scope.servicesByCategoryArray = $scope.servicesByCategory;
-          console.log($scope.servicesByCategoryArray);
+          
+          servicesByCategoryArray = $scope.servicesByCategory;
+          console.log(servicesByCategoryArray);
 ;        }, function(){
 
         });
@@ -145,6 +147,15 @@ webAppController.ServicesCtrl = function ($rootScope,$scope, CompanyService,  $m
             $mdDialog.hide($scope.service)
             console.log($scope.service);
         };
+        $scope.update = function(idService){
+            console.log(idService);
+            var serviceSelected = _.find(servicesByCategoryArray, function(item){
+                return item._id == idService;
+            })
+            service.price = serviceSelected.price;
+            service.duration = serviceSelected.duration;
+            service.id_name = serviceSelected._id;
+        };
     }
 
     function EditDialogController($scope, $mdDialog,service) {        
@@ -162,6 +173,7 @@ webAppController.ServicesCtrl = function ($rootScope,$scope, CompanyService,  $m
     }
 
     this.createService = function(service){
+        console.log(service.name);
         CompanyService.service().create(service, function(result){
             if(result.error)
                 return console.log(result.error);
@@ -207,12 +219,5 @@ webAppController.ServicesCtrl = function ($rootScope,$scope, CompanyService,  $m
         );
     };
 
-    $scope.update = function(idService){
-        console.log("idService");
-        for(var i=0; i<$scope.servicesByCategoryArray;i++){
-            if(i._id == idService){
-                console.log(i.name);
-            }
-        }
-    }
+    
 }

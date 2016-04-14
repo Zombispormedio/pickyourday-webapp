@@ -425,7 +425,7 @@ margin-bottom: 5%;
     display:flex;
 }
 .companyServices md-card{
-    width:40%;
+    width:50%;
 }
 .buttonDeleteService, .buttonEditService{
     color:white;
@@ -608,7 +608,7 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
     width:100%;
     margin-left: 3%;
     margin-right: 5%;
-    margin-top: 1%;
+    margin-top: -2%;
 }
 /*toast*/
 .message-toast{
