@@ -15,30 +15,30 @@ webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, Sys
     $scope.dateTime=new Date();
     $scope.date=new Date();
 
-
-
     NgMap.getMap().then(function(map) {
         var marker=map.markers[0];
-
-
         marker.addListener('dragend', function() {
-
             var loc=marker.getPosition();
-
             $scope.$apply(function () {
                 $scope.profile.location.geolocation.latitude=loc.lat();
                 $scope.profile.location.geolocation.longitude=loc.lng();
             });
-
-
-
         });
-
     });
 
     this.getProfile=function(){
         $rootScope.getProfile(function(data){
-            $scope.profile=data;
+        $scope.profile=data;
+        console.log($scope.profile.state);
+        if($scope.profile.state == "active"){
+            document.getElementById("state").className="fa fa-check";
+        }else if($scope.profile.state == "demo"){
+            document.getElementById("state").className="fa fa-eye";
+        }else if($scope.profile.state == "pending"){
+            document.getElementById("state").className="fa fa-clock-o";
+        }else if($scope.profile.state == "refused"){
+            document.getElementById("state").className="fa fa-ban";
+        }
 
         });
     }
@@ -47,30 +47,33 @@ webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, Sys
     $scope.edit=function(){
         $scope.editable=true;
     }
-    $scope.addPhone=function(){
 
+    $scope.addPhone=function(){
         if($scope.aux.phone!=""){
             $scope.profile.phone.push($scope.aux.phone);
             $scope.aux.phone="";
         }
-
     }
+
     $scope.deletePhone=function(index){
         $scope.profile.phone.splice(index,1);
     }
-    $scope.addEmailSecond=function(){
 
+    $scope.addEmailSecond=function(){
         if($scope.aux.emailSecond!=""){
             $scope.profile.emailSecond.push($scope.aux.emailSecond);
             $scope.aux.emailSecond="";
         }
     }
+
     $scope.deleteEmailSecond=function(index){
         $scope.profile.emailSecond.splice(index,1);
     }
+
     $scope.addImages=function(){
         document.getElementById("newFile").click();		
     }
+
     $scope.$watch("images.data",function(){
         var data=$scope.images.data;     
         if(data){
@@ -79,9 +82,11 @@ webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, Sys
             })
         }   
     })
+
     $scope.deleteImage=function(index){
         $scope.profile.images.splice(index,1);
     }
+
     $scope.saveChanges=function(){
         CompanyService.profile().update({},$scope.profile,function(result){
             if(result.error)
@@ -100,7 +105,6 @@ webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, Sys
     $scope.addSchedule=function(){
         var week=['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
-
         var init=new Date();
         init.setMonth(0);
         init.setDate(1);
@@ -108,7 +112,6 @@ webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, Sys
         var end=new Date();
         end.setMonth(11);
         end.setDate(31);
-
 
         var obj={
             initial:init, end:end,
@@ -119,8 +122,6 @@ webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, Sys
         $scope.profile.scheduleActivity.push(obj);
 
     }
-
-
 
     $scope.checkSchedules=function(){
         var empty=true;
@@ -135,9 +136,6 @@ webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, Sys
         }else{
             empty=false;
         }
-
-
-
         return empty;
     }
 
@@ -157,7 +155,6 @@ webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, Sys
         return empty;
     }
 
-
     $scope.checkTime=function(daytime){
         var regexHour="(2[0-3]|1[0-9]|0[0-9]|[0-9]):([0-5][0-9])";
         var current=daytime.times.pop();
@@ -171,25 +168,15 @@ webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, Sys
             var len=daytime.times.length;
             if(len>0){
 
-                var last=daytime.times[len-1].match(new RegExp(regexHour+"$"))[0];
-                
-
-                var current_d=current.match(new RegExp("^"+regexHour))[0];
-             
+                var last=daytime.times[len-1].match(new RegExp(regexHour+"$"))[0];  
+                var current_d=current.match(new RegExp("^"+regexHour))[0];            
                
-                if(compareHourString(last, current_d)){
-                
+                if(compareHourString(last, current_d)){                
                     daytime.times.push(current);
                 }
-
             }else{
                 daytime.times.push(current);
             }
-
-
-
         }
     }
-
-
 };

@@ -40,12 +40,12 @@
 	 	</p>		
 	 	<div class="timelinePicks_container">
 		    <div class="timelinePicks" ng-repeat="r in t.steps[0] track by $index">
-	      	<div ng-if="r!=1 && r!=2" title="Libre" ng-click="showDialog($event,r)"></div>
-	      	<div ng-if="r == 1" style="background-color:#009688;" class="infoPick">
-		      	<span class="label">holi</span>
-		  	</div>
-		    <div ng-if="r == 2" style="background-color:#424242;" title="Cerrado">
-		      	
+		 		<div ng-if="r == 0" style="background-color:#A2A9A9;" title="No disponible"></div>
+		      	<div ng-if="r!=0 && r!=1 && r!=2" title="Libre" ng-click="showDialog($event,r)" style="background-color:#009688;"></div>
+		      	<div ng-if="r == 1" style="background-color:#009688;" class="infoPick">
+			      	<span class="label">holi</span>
+			  	</div>
+			    <div ng-if="r == 2" style="background-color:#424242;" title="Cerrado">			      	
 		    </div>
 		</div>
 	</div>
