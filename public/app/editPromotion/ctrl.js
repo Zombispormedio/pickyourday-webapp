@@ -51,14 +51,20 @@ webAppController.editPromotionCtrl = function ($rootScope, $scope, CompanyServic
 		});
 	}	
 	this.getServices();
-	$scope.showAlert = function() {
+	$scope.showEditAlert = function(){
         $mdDialog.show(
             $mdDialog.alert()
             .parent(angular.element(document.querySelector('#popupContainer')))
             .clickOutsideToClose(true)
             .title('')
-            .textContent('Promoción modificada correctamente!')
+            .textContent('¡Promoción modificada correctamente!')
             .ariaLabel('Alert Dialog Demo')
             .ok('OK')
-        );
-    };};
+        )
+        .then(function() {          
+           window.location.reload();
+        }, function() {
+            $scope.status = 'You cancelled the dialog.';
+        });
+    }
+};

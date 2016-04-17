@@ -1,10 +1,13 @@
+<div class="head">
+  <i class="fa fa-calendar-check-o"></i>
+  <h1>Picks actuales</h1>
+</div>
 <md-list-item class="md-3-line employeesAvatar allEmployees" ng-repeat="employee in employees" ng-init="employee.open=false">  
     <div class="employee">
       <div class="employeesCard" ng-click="showInfo(employee)">
         <ng-letter-avatar data="{{employee.name}}" shape="round"></ng-letter-avatar>
         <p>{{employee.name}} {{employee.surname}}</p>
-       </div>
-
+      </div>
       <div class="employeesActions">
         <button class="fa fa-arrow-right" aria-label="edit" ng-click="nextPick()"></button> 
         <button class="fa fa-times" ng-click="cancelPick()"></button>
@@ -37,5 +40,3 @@
     </div>
   <md-divider></md-divider>  
 </md-list-item>
-
-<md-button class="md-fab fa fa-plus addEmployee" ng-click="showDialog($event)"></md-button>

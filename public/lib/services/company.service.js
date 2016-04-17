@@ -83,6 +83,11 @@ webAppFactory.CompanyService= function(ApiService){
             return ApiService.rest(this.base+"/pick/",{
                 create:{method:"POST", params:{}}
             });
+        },
+        cancelPick:function(){
+            return ApiService.rest(this.base+"/cancelPick/:id",{
+                delete:{method:"DELETE", params:{}}
+            });
         }
     };
 };

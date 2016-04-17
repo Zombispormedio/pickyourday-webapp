@@ -70,10 +70,38 @@ webAppController.ServicesCtrl = function ($rootScope,$scope, CompanyService,  $m
         CompanyService.toggleService().change({},{resource:resourceByService.resource_id,service:$scope.selectedService},function(result){
             if(result.error)
                 return console.log(result.error);
-
         });
     }
 
+    
+    /*New Service*/
+    this.createService = function(service){
+        CompanyService.service().create(service, function(result){
+            if(result.error)
+                return console.log(result.error);
+            console.log(result)
+            $scope.service=result.data;
+            $scope.showCreateAlert();            
+        }, function(){});
+    }
+
+    $scope.showCreateAlert = function(){
+        $mdDialog.show(
+            $mdDialog.alert()
+            .parent(angular.element(document.querySelector('#popupContainer')))
+            .clickOutsideToClose(true)
+            .title('')
+            .textContent('¡Servicio creado correctamente!')
+            .ariaLabel('Alert Dialog Demo')
+            .ok('OK')
+        )
+        .then(function() {          
+           window.location.reload();
+        }, function() {
+            $scope.status = 'You cancelled the dialog.';
+        });
+    }
+    
     $scope.showDialog = function(ev,services){      
         $mdDialog.show({
             controller: DialogController,
@@ -83,55 +111,15 @@ webAppController.ServicesCtrl = function ($rootScope,$scope, CompanyService,  $m
             clickOutsideToClose:true,
             locals: {
             servicesByCategory: $scope.servicesByCategory,
-            service: services||{
-                keywords:[]
-            }
+            service: services||{}
          },                 
         })
         .then(function(service) {          
-                self.createService(service);               
+            self.createService(service);                                   
         }, function() {
             $scope.status = 'You cancelled the dialog.';
         });
     };
-
-    $scope.showEditDialog = function(ev,services){      
-        $mdDialog.show({
-            controller: EditDialogController,
-            templateUrl: 'app/services/editService.tmpl.html',
-            parent: angular.element(document.body),
-            targetEvent: ev,
-            clickOutsideToClose:true,
-            locals: {
-
-            service: services||{
-                 keywords: [service.keywords]
-            }
-         },                 
-        })
-        .then(function(service) {
-            self.modifyService(service);
-        }, function() {
-            $scope.status = 'You cancelled the dialog.';
-        });
-    };
-
-    $scope.checkKeywords=function(){
-        var empty=true;
-        if($scope.services){
-            if(!$scope.services.keywords){
-                empty=false;
-            }else{
-                if($scope.services.keywords.length===0){
-                    empty=false;
-                }
-            } 
-        }else{
-            empty=false;
-        }
-        return empty;
-    }
-
 
     function DialogController($scope, $mdDialog,servicesByCategory,service) {        
         $scope.servicesByCategory = servicesByCategory;
@@ -144,7 +132,7 @@ webAppController.ServicesCtrl = function ($rootScope,$scope, CompanyService,  $m
             $mdDialog.cancel();
         };
         $scope.answer = function() {
-            $mdDialog.hide($scope.service)
+            $mdDialog.hide($scope.service);
             console.log($scope.service);
         };
         $scope.update = function(idService){
@@ -155,8 +143,40 @@ webAppController.ServicesCtrl = function ($rootScope,$scope, CompanyService,  $m
             service.price = serviceSelected.price;
             service.duration = serviceSelected.duration;
             service.id_name = serviceSelected._id;
-        };
+        };        
     }
+
+    /*Modify service*/
+    this.modifyService = function(service){
+        console.log(service._id);
+        CompanyService.services().update({id:service._id},service,function(result){
+            if(result.error)
+                return console.log(result.error);
+            console.log(result)
+            $scope.service=result.data;
+            $scope.showEditAlert();
+        }, function(){
+
+        });
+    }
+
+    $scope.showEditDialog = function(ev,services){      
+        $mdDialog.show({
+            controller: EditDialogController,
+            templateUrl: 'app/services/editService.tmpl.html',
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose:true,
+            locals: {
+            service: services||{}
+         },                 
+        })
+        .then(function(service) {
+            self.modifyService(service);
+        }, function() {
+            $scope.status = 'You cancelled the dialog.';
+        });
+    };
 
     function EditDialogController($scope, $mdDialog,service) {        
         $scope.service = service;
@@ -169,45 +189,34 @@ webAppController.ServicesCtrl = function ($rootScope,$scope, CompanyService,  $m
         };
         $scope.answer = function() {
             $mdDialog.hide($scope.service);
+        };        
+    }
+
+    $scope.showEditAlert = function() {
+            $mdDialog.show(
+                $mdDialog.alert()
+                .parent(angular.element(document.querySelector('#popupContainer')))
+                .clickOutsideToClose(true)
+                .title('')
+                .textContent('¡Servicio modificado correctamente!')
+                .ariaLabel('Alert Dialog Demo')
+                .ok('OK')
+            );
         };
-    }
-
-    this.createService = function(service){
-        console.log(service.name);
-        CompanyService.service().create(service, function(result){
-            if(result.error)
-                return console.log(result.error);
-            console.log(result)
-            $scope.service=result.data;
-            $rootScope.go("app.services");
-        }, function(){
-
-        });
-    }
-    this.modifyService = function(service){
-        console.log(service._id);
-        CompanyService.services().update({id:service._id},service,function(result){
-            if(result.error)
-                return console.log(result.error);
-            console.log(result)
-            $scope.service=result.data;
-        }, function(){
-
-        });
-    }
+    
+    /*Delete*/      
     $scope.delete=function(index){
         CompanyService.services().delete({id:$scope.services[index]._id}, function(result){
-
             if(result.error)
                 return console.log(result.error);
-            $scope.promotions.splice(index,1);
-            $scope.showAlert();
-            $rootScope.go("app.services");
+            $scope.services.splice(index,1);
+            $scope.showDeleteAlert();            
         }, function(){    
 
         });
     }
-    $scope.showAlert = function() {
+
+    $scope.showDeleteAlert = function() {
         $mdDialog.show(
             $mdDialog.alert()
             .parent(angular.element(document.querySelector('#popupContainer')))
@@ -218,6 +227,10 @@ webAppController.ServicesCtrl = function ($rootScope,$scope, CompanyService,  $m
             .ok('OK')
         );
     };
+
+    
+    
+
 
     
 }

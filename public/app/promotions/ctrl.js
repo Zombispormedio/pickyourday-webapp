@@ -7,8 +7,11 @@ webAppController.PromotionCtrl = function ($rootScope, $scope, CompanyService, S
 		CompanyService.promotions().get({}, function(result){
 			if(result.error)
 				return console.log(result.error);
-			$scope.promotions=result.data;
-			console.log(result.data);
+
+			$scope.promotions=result.data.map(function(item){
+				return item.promotions;
+			});
+			console.log($scope.promotions);
 		}, function(){		
 				
 		});			

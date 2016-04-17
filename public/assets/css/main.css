@@ -615,6 +615,12 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
     margin-right: 5%;
     margin-top: -2%;
 }
+.statePromotion{
+    margin-right: -7%;
+}
+.statePromotion p{
+    font-size: 15px;
+}
 /*toast*/
 .message-toast{
     height: auto;
@@ -789,4 +795,8 @@ md-input-container:not(.md-input-invalid).md-input-focused label{
 }
 .infoPick:hover .label{
     opacity:1;
+}
+.avaliablePick:hover{
+    background-color: #00796B;
+    padding:1%;
 }

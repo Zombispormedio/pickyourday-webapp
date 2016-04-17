@@ -26,11 +26,12 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 	this.getEmployees();
 
 	var serviceSelected = "";
+	var resourceSelected = "";
 	var nullService=false;
 
 	$scope.getTimeline = function (service, employee, date){
 		serviceSelected = service._id;
-		console.log("Fecha "+date);
+		
 		if(service!=null){
 			if(employee!=null){
 				CompanyService.timeline().get({service:service._id, resource:employee._id,rangeDays:30,date:date},function(result){
@@ -39,7 +40,7 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 				    	return console.log(result.error);
 				    $scope.timeline=result.data;
 					console.log(result.data);
-				    $scope.calcSpaces(result.data[0].metadata.open, result.data[0].metadata.close);	
+				    $scope.calcSpaces(result.data[0].metadata.schedule[0].open, result.data[0].metadata.schedule[0].close);	
 				    if(nullService==true)
 				    	$("#selectService").children().css("border-bottom-color", "rgba(0, 0, 0, 0.12)");	      
 			    	}, function(){ });
@@ -49,7 +50,7 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 				    	return console.log(result.error);
 				    $scope.timeline=result.data;
 					console.log(result.data);
-				    $scope.calcSpaces(result.data[0].metadata.open, result.data[0].metadata.close);	
+				    $scope.calcSpaces(result.data[0].metadata.schedule[0].open, result.data[0].metadata.schedule[0].close);	
 				    
 				    if(nullService==true)
 				    	$("#selectService").children().css("border-bottom-color", "rgba(0, 0, 0, 0.12)");	      
@@ -90,7 +91,8 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
   		$scope.spaces = aux;
   	}	
   	
-  	$scope.showDialog = function(ev, r) {
+  	$scope.showDialog = function(ev, r, employee) {
+  		resourceSelected = employee.id;
 	    $mdDialog.show({
 	      controller: DialogController,
 	      templateUrl: 'app/ownpick/newPick.tmpl.html',
@@ -121,11 +123,24 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 	$scope.createPick = function (datePick,client){
 		var nameCli=client.name;
 		var phoneCli=client.phone;
-		CompanyService.pick().create({service: serviceSelected,initDate:datePick,nameCli,phoneCli},function(result){
+		CompanyService.pick().create({service: serviceSelected,initDate:datePick,nameCli,phoneCli,resource:resourceSelected},function(result){
 			if(result.error)
 				return console.log(result.error);
+			$scope.showAlert();
 		}, function(){
 
 		});
   	}
+
+  	$scope.showAlert = function() {
+        $mdDialog.show(
+            $mdDialog.alert()
+            .parent(angular.element(document.querySelector('#popupContainer')))
+            .clickOutsideToClose(true)
+            .title('')
+            .textContent('¡Pick creado correctamente!')
+            .ariaLabel('Alert Dialog Demo')
+            .ok('OK')
+        );
+    };
 }
