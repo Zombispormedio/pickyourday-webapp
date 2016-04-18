@@ -800,3 +800,9 @@ md-input-container:not(.md-input-invalid).md-input-focused label{
     background-color: #00796B;
     padding:1%;
 }
+
+
+canvas{
+       border-radius: 11px; 
+    border: solid 6px #107576;
+}
