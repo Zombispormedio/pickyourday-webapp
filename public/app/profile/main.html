@@ -45,19 +45,24 @@
             <textarea ng-model="profile.description" md-maxlength="300" rows="5" cols="10" md-select-on-focus ng-disabled="!editable" style="height:8px;"></textarea>
         </md-input-container>
 
-        <div flex ng-cloak class="mb5">		
-            <p>Palabras clave</p>
+        <div ng-cloak>		
+             <md-input-container style="width: 100%;">        
+                    <label>Palabras clave</label>          
+                    <md-icon class="fa fa-key formIcon"></md-icon> 
+                </md-input-container>
             <md-chips ng-if="checkKeywords()" ng-model="profile.keywords" readonly="!editable"></md-chips>
             <p ng-if="!checkKeywords()">No hay palabras clave</p>
         </div>
 
+        
 
-        <div flex ng-cloak class="mb5">
-            <div layout="row">
-                <p flex="80">Horarios programados para este año</p>
-
-                <md-button class="buttonStyleSimple" ng-if="editable" ng-click="addSchedule()" flex>+ añadir Horario</md-button>
-
+        <div flex ng-cloak>
+            <div >               
+                <md-input-container >        
+                    <label>Horario</label>          
+                    <md-icon class="fa fa-calendar formIcon"></md-icon> 
+                </md-input-container>
+                <md-button style="float:right;" class="buttonStyleSimple" ng-if="editable" ng-click="addSchedule()" flex>+ añadir Horario</md-button>
             </div>
             <md-card ng-repeat="schedule in profile.scheduleActivity" ng-init="schedule.show=false">
                 <md-card-header>
@@ -77,9 +82,9 @@
                 </md-card-header>
                 <md-card-content ng-if="schedule.show">
                     <md-list class="md-dense" >
-                        <md-subheader class="md-no-sticky">Week</md-subheader>
+                        <md-subheader class="md-no-sticky">Semana</md-subheader>
                         <md-list-item class="md-3-line" ng-repeat="daytime in schedule.week">
-                            <div class="md-list-item-text" layout="column" >
+                            <div class="md-list-item-text" layout="column" style="margin-bottom: 1%;" >
                                 <h3 class="mb1comma5" flex>{{daytime.day}}</h3>
                                 <md-chips ng-model="daytime.times" md-on-add="checkTime(daytime)" readonly="!editable" flex>
                                 </md-chips>
@@ -93,11 +98,10 @@
 
                 </md-card-content>
             </md-card>
-            <span ng-if="!checkSchedules()">No hay horarios</span>
+            <p ng-if="!checkSchedules()">No hay horarios</p>
         </div>
 
-        <div layout="column" flex class="mb10">
-            <p flex>Mi ubicación</p>
+        <div layout="column" flex >
             <md-input-container flex> 
                 <label>Dirección</label>
                 <md-icon class="fa fa-map-marker formIcon"></md-icon>
@@ -143,12 +147,12 @@
             </ng-map>
         </div>
 
-        <div layout="column" flex class="mb5">
-            <p>Datos de Contacto</p>
-            <div layout="row" flex>
+        <div layout="column" flex style="margin-top:2%;">
+            <label>Datos de Contacto</label>
+            <div layout="row">
                 <md-list ng-cloak flex="50">
                     <md-subheader>Teléfonos</md-subheader>
-                    <md-list-item ng-if="editable">
+                    <md-list-item ng-if="editable" style="height: 25px;">
                         <p class="phones"> 
                             <i class="fa fa-phone"></i>                       
                             <md-input-container>
@@ -160,7 +164,7 @@
                             </md-button>
                         </p>
                     </md-list-item>
-                    <md-list-item ng-repeat="phones in profile.phone">
+                    <md-list-item ng-repeat="phones in profile.phone" style="width: 70%;">
                         <p class="phones"> <i class="fa fa-phone"></i> {{phones}}</p>
 
                         <md-button class="md-icon-button" aria-label="delete">
@@ -168,12 +172,12 @@
                         </md-button>
 
                     </md-list-item>
-                    <md-list-item ng-if="profile.phone.length==0" ><p>Ninguno Email añadido</p></md-list-item>
+                    <md-list-item ng-if="profile.phone.length==0" ><p>Ninguno teléfono añadido</p></md-list-item>
                 </md-list>
 
                 <md-list ng-cloak flex="50" flex-offset="10">
                     <md-subheader>Emails secundarios</md-subheader>
-                    <md-list-item ng-if="editable">
+                    <md-list-item ng-if="editable"  style="height: 25px;">
                         <p class="phones"> 
                             <i class="fa fa-envelope-o emailSecond"></i>                       
                             <md-input-container>
@@ -185,19 +189,19 @@
                             </md-button>
                         </p>
                     </md-list-item>
-                    <md-list-item ng-repeat="email in profile.emailSecond">
+                    <md-list-item ng-repeat="email in profile.emailSecond"  style="width: 70%;">
                         <p class="phones"> <i class="fa fa-envelope-o emailSecond"></i> {{email}}</p>
                         <md-button class="md-icon-button" aria-label="delete">
                             <md-icon md-font-icon="fa-times" class="fa fa-md"  ng-if="editable" aria-label="add" ng-click="deleteEmailSecond($index)"></md-icon>
                         </md-button>	
                     </md-list-item>
-                    <md-list-item ng-if="profile.emailSecond.length==0" ><p>Ninguno Tel&eacute;fono añadido</p></md-list-item>
+                    <md-list-item ng-if="profile.emailSecond.length==0" ><p>Ninguno email añadido</p></md-list-item>
                 </md-list>
             </div>
         </div>
 
 
-        <div layout="column" class="mb5">
+        <div layout="column" >
             <div layout="row">
                 <p flex="80">Fotos</p>
 

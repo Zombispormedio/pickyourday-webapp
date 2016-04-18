@@ -325,7 +325,7 @@ background-color: blue;
 }
 p.phones{
     color:black;
-    margin-left: 4%;
+    /*margin-left: 4%;*/
 }
 .phoneList{
     margin-top: -1%;
