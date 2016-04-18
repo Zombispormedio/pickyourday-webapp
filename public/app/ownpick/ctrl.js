@@ -141,6 +141,11 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
             .textContent('¡Pick creado correctamente!')
             .ariaLabel('Alert Dialog Demo')
             .ok('OK')
-        );
+         )
+        .then(function() {          
+           window.location.reload();
+        }, function() {
+            $scope.status = 'You cancelled the dialog.';
+        });
     };
 }
