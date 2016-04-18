@@ -9,9 +9,12 @@
     <md-dialog-content class="dialogForm" >   
       <md-content class="md-padding">
         <form name="serviceForm" class="form" layout="column">
-          <div flex layout="row" layout-wrap style="margin-top: 5%;margin-bottom: -3%;
-">  
-          {{service.name}}            
+          <div flex layout="row" layout-wrap style="margin-top: 5%;margin-bottom: -3%;">  
+              <md-input-container>              
+                <label>Nombre</label>      
+                <md-icon class="fa fa-tag formIcon"></md-icon> 
+                <input name="name" type="text" ng-model="service.id_name.name"></input>
+              </md-input-container>            
               <md-input-container>              
                 <label>Descripción</label>      
                 <md-icon class="fa fa-commenting-o formIcon"></md-icon> 

@@ -21,9 +21,10 @@
     	<button class="fa fa-pencil" aria-label="edit" ng-click="edit($index)"></button>
 			<button class="fa fa-times" aria-label="delete" ng-click="delete($index)"></button>
     </div>
-    <div ng-if="promotions.length==0" >
-	    <p>Ninguna promoción</p>
-	</div>    
+       
 		<md-divider ></md-divider>
 </md-list-item>
+<div ng-if="promotions.length==0" >
+      <p>¡Actualmente no existe ninguna promoción!</p>
+  </div> 
 <md-button class="md-fab fa fa-plus addService" ng-click="goToNewPromotion()"></md-button>

@@ -143,6 +143,7 @@ webAppController.ServicesCtrl = function ($rootScope,$scope, CompanyService,  $m
             service.price = serviceSelected.price;
             service.duration = serviceSelected.duration;
             service.id_name = serviceSelected._id;
+            service.name = serviceSelected.name;
         };        
     }
 
@@ -180,7 +181,6 @@ webAppController.ServicesCtrl = function ($rootScope,$scope, CompanyService,  $m
 
     function EditDialogController($scope, $mdDialog,service) {        
         $scope.service = service;
-
         $scope.hide = function() {
             $mdDialog.hide();
         };
