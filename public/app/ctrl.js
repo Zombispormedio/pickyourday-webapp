@@ -4,6 +4,9 @@ webAppController.AppCtrl = function ($rootScope,$scope, $mdSidenav,CompanyServic
     $mdSidenav('left').toggle();
   };
 
+  $scope.closeLeftMenu = function(){
+     $mdSidenav('left').close();
+  }
   $scope.logout = function () {        
         deleteLocal("user");
         $rootScope.go("login");      

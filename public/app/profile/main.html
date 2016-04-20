@@ -216,7 +216,10 @@
                 <input id="newFile" type="file" name="images" base-sixty-four-input ng-model="images.data" ng-if="editable"  style="display:none;">
             </md-input-container>
         </div>
-        <md-button class="buttonStyle2" ng-if="editable" ng-click="saveChanges()">Guardar cambios</md-button>
+        <div style="display:flex;">
+            <md-button class="buttonStyle2" ng-if="editable" ng-click="saveChanges()">Guardar cambios</md-button>
+            <md-button class="buttonStyle2" ng-if="editable" ng-click="cancel()">Cancelar</md-button>
+        </div>
     </form>
     <md-button class="md-fab fa fa-pencil" id="editProfile" ng-if="!editable" ng-click="edit()"aria-label="editProfile"></md-button>
 </div>

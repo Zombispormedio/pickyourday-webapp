@@ -53,21 +53,6 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
             }
         }  
     })
-        .state("app.daydashboard", {
-        url: 'today',
-        onEnter: function ($rootScope) {
-            if (!getJSONLocal("user")) {
-
-                $rootScope.go("login");
-            }
-        },
-        views: {
-            content: {
-                templateUrl: 'app/daydashboard/main.html',
-                controller: 'DayDashboardCtrl'
-            }
-        }
-    })
         .state("app.profile", {
         url: 'profile',
         onEnter: function ($rootScope) {

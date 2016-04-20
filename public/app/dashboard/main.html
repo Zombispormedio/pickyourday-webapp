@@ -1,5 +1,6 @@
+<div ng-cloack>
 <div class="head">
-	<i class="fa fa-calendar-check-o"></i>
+	<i class="fa fa-calendar"></i>
 	<h1>Dashboard</h1>
 </div>
 
@@ -22,10 +23,55 @@
 	 	</p>		
 	 	<div class="timelinePicks_container">
 		    <div class="timelinePicks" ng-repeat="r in t.steps[0] track by $index">
-		      <div ng-if="r == 0" style="background-color:#A2A9A9;" title="No disponible"></div>
+		      <div ng-if="r == 0" style="background-color:white;" title="Libre"></div>
 		      <div ng-if="r == 1" style="background-color:#009688;"></div>
 		      <div ng-if="r == 2" style="background-color:#424242;" title="Cerrado"></div>		     
 		    </div>
 		</div>
 	</div>
+</div>
+
+
+<div class="head">
+  <i class="fa fa-calendar-check-o"></i>
+  <h1>Picks actuales</h1>
+</div>
+<md-list-item class="md-3-line employeesAvatar allEmployees" ng-repeat="employee in employees" ng-init="employee.open=false">  
+    <div class="employee">
+      <div class="employeesCard" ng-click="showInfo(employee)">
+        <ng-letter-avatar data="{{employee.name}}" shape="round"></ng-letter-avatar>
+        <p>{{employee.name}} {{employee.surname}}</p>
+      </div>
+      <div class="employeesActions">
+        <button class="fa fa-arrow-right" aria-label="edit" ng-click="nextPick()"></button> 
+        <button class="fa fa-times" ng-click="cancelPick()"></button>
+      </div> 
+    </div>
+    <div ng-if="employee.open">
+      <div class="infoEmployee">
+        <div class="timetableHead">
+          <i class="fa fa-commenting-o" ></i> 
+          <p>{{employee.description}}</p>
+        </div>  
+        <div class="timetableHead">
+          <i class="fa fa-phone" ></i> 
+          <p>{{employee.phone}}</p>
+          <p ng-if="employee.phone.length===0">Ningún teléfono añadido</p>
+        </div>     
+        <div class="employeeServices">
+          <div class="tagsHead">
+            <i class="fa fa-tags" ></i>  
+            <p>Servicios asignados</p>
+          </div>
+          <md-chips ng-model="employee.services" readonly="true">
+            <md-chip-template>
+                {{$chip.id_name.name}}
+            </md-chip-template>
+          </md-chips>
+          <p ng-if="employee.services.length===0">No tiene servicios asignados</p> 
+        </div>
+      </div>
+    </div>
+  <md-divider></md-divider>  
+</md-list-item>
 </div>

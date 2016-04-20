@@ -19,16 +19,15 @@
         </div>
         <md-divider></md-divider>
         <div class="webAppMenuOptions" layout="column" layout-align="space-between start">
-            <div><a ui-sref="app.dashboard"><i class="fa fa-user"></i> Mi Negocio</a></div>
-            <div><a ui-sref="app.daydashboard"><i class="fa fa-calendar-check-o"></i> Picks actuales</a></div>
-            <div><a ui-sref="app.employees"><i class="fa fa-users"></i> Empleados</a></div>
-            <div><a ui-sref="app.services"><i class="fa fa-tags"></i> Servicios</a></div>
-            <div><a ui-sref="app.ownpick" ><i class="fa fa-plus-circle"></i> Crear Pick</a></div>
-            <div><a ui-sref="app.promotions"><i class="fa fa-bullhorn"></i> Promociones</a></div>
-            <div><a ui-sref="app.stats"><i class="fa fa-line-chart"></i> Estadísticas</a></div>
+            <div ng-click="closeLeftMenu()"><a ui-sref="app.dashboard"><i class="fa fa-user"></i> Mi Negocio</a></div>
+            <div ng-click="closeLeftMenu()"><a ui-sref="app.employees"><i class="fa fa-users"></i> Empleados</a></div>
+            <div ng-click="closeLeftMenu()"><a ui-sref="app.services"><i class="fa fa-tags"></i> Servicios</a></div>
+            <div ng-click="closeLeftMenu()"><a ui-sref="app.ownpick" ><i class="fa fa-plus-circle"></i> Crear Pick</a></div>
+            <div ng-click="closeLeftMenu()"><a ui-sref="app.promotions"><i class="fa fa-bullhorn"></i> Promociones</a></div>
+            <div ng-click="closeLeftMenu()"><a ui-sref="app.stats"><i class="fa fa-line-chart"></i> Estadísticas</a></div>
 
-            <div><a ui-sref="app.settings"><i class="fa fa-cog"></i> Configuración</a></div>
-            <div><a ui-sref="app.help"><i class="fa fa-question-circle"></i> Ayuda</a></div>
+            <div ng-click="closeLeftMenu()"><a ui-sref="app.settings"><i class="fa fa-cog"></i> Configuración</a></div>
+            <div ng-click="closeLeftMenu()"><a ui-sref="app.help"><i class="fa fa-question-circle"></i> Ayuda</a></div>
             <div><button class="webAppMenuOptions" ng-click="logout()"><i class="fa fa-power-off"></i> Cerrar sesión</button></div>
         </div>  
     </md-sidenav>

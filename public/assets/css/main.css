@@ -601,6 +601,7 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
 .promotionActions{
     margin-top: 10%;
     margin-bottom: 2%;
+    display:flex;
 }
 .promotionActions > button{
     background: transparent;

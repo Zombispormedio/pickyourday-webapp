@@ -1,5 +1,5 @@
 webAppController.DashboardCtrl = function ($scope, CompanyService) {
-	
+	var self = this;
     this.getTimeline = function (){
 	  	CompanyService.timeline().get({rangeDays:1},function(result){
 	  		
@@ -13,7 +13,11 @@ webAppController.DashboardCtrl = function ($scope, CompanyService) {
 
 	    });
   	}	
-  	this.getTimeline();  
+ 	this.getTimeline();  
+
+   /*$interval(function(){
+      self.getTimeline();
+    },10000)*/
 
   	$scope.spaces = [];
 
@@ -45,5 +49,32 @@ webAppController.DashboardCtrl = function ($scope, CompanyService) {
 
   		$scope.spaces = aux;
   		console.log(spaces);
-  	}	
+  	}
+
+    /*Day dashboard*/
+
+    this.getEmployees=function(){
+    CompanyService.employees().get({},function(result){
+      if(result.error)
+        return console.log(result.error);
+      $scope.employees=result.data;
+      console.log($scope.employees);
+    }, function(){
+
+    });
+  }
+  this.getEmployees();
+
+    $scope.showInfo=function(employee){
+    
+    if(employee.open==true){
+      employee.open=false;
+    }else{
+      $scope.employees.forEach(function(e){
+        e.open=false;
+      })
+      employee.open=true;
+    }     
+  }	
+  /**************************************/
 };
