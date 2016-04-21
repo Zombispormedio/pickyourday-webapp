@@ -28,7 +28,7 @@
 			<div ng-repeat="space in spaces track by $index">
 				<span class="hour">{{space}}</span>
 			</div>
-			<div class="lastHour">
+			<div class="lastHour" style="margin-right: -1.5%;">
 				<span class="hour">{{lastHour}}</span>
 			</div>
 		</div>
@@ -41,9 +41,11 @@
 	 	<div class="timelinePicks_container">
 		    <div class="timelinePicks" ng-repeat="r in t.steps[0] track by $index">
 		 		<div ng-if="r == 0" style="background-color:#A2A9A9;" title="No disponible"></div>
-		      	<div class="avaliablePick" ng-if="r!=0 && r!=1 && r!=2" title="Libre" ng-click="showDialog($event,r,t.resource)" style="background-color:white;"></div>
-		      	<div ng-if="r == 1" style="background-color:purple;" class="infoPick">
-			      	<span class="label">holi</span>
+		      	<div class="avaliablePick" ng-if="isObject(r) == 'string'" title="Libre" ng-click="showDialog($event,r,t.resource)" style="background-color:white;"></div>
+		      	<div ng-if="isObject(r) == 'object'" style="background-color:#009688;" class="infoPick">
+			      	<span class="label">{{r.customer}}</span>
+		            <span class="label">{{r.phone}}</span>
+		            <span class="label">{{r.service}}</span>
 			  	</div>
 			    <div ng-if="r == 2" style="background-color:#424242;" title="Cerrado"></div>
 			</div>

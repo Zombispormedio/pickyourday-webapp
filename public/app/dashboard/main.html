@@ -11,7 +11,7 @@
 			<div ng-repeat="space in spaces track by $index">
 				<span class="hour">{{space}}</span>
 			</div>
-			<div class="lastHour">
+			<div class="lastHour" style="margin-right: -1.5%;">
 				<span class="hour">{{lastHour}}</span>
 			</div>
 		</div>
@@ -24,7 +24,13 @@
 	 	<div class="timelinePicks_container">
 		    <div class="timelinePicks" ng-repeat="r in t.steps[0] track by $index">
 		      <div ng-if="r == 0" style="background-color:white;" title="Libre"></div>
-		      <div ng-if="r == 1" style="background-color:#009688;"></div>
+		      <div ng-if="r!=0 && r!=2" style="background-color:#009688;" class="infoPick">
+                <ul class="label">
+                  <li ng-if="r.customer!=''">{{r.customer}}</li>
+                  <li ng-if="r.phone!=''">{{r.phone}}</li>
+                  <li ng-if="r.service!=''">{{r.service}}</li>
+                </ul>
+          </div>
 		      <div ng-if="r == 2" style="background-color:#424242;" title="Cerrado"></div>		     
 		    </div>
 		</div>

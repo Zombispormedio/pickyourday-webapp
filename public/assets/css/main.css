@@ -92,7 +92,7 @@ button.webAppMenuOptions {
     text-align: center;
     /*border-right: 1px solid #ddd;*/
     flex: 1;        
-
+    margin-right: 3%;
 }
 
 .timelineHours .right .lastHour{
@@ -103,26 +103,30 @@ button.webAppMenuOptions {
 }
 
 .timelineHours .right .lastHour .hour{
-    /*transform: translate(15px, -30px);*/
+    /*transform: translate(15px, -30px);
     transform: translate(7px, -10px);
     -webkit-transform: translate(7px, -10px);
     -moz-transform: translate(7px, -10px);
     -o-transform: translate(7px, -10px);
-    transform: translate(7px, -10px);
+    transform: translate(7px, -10px);*/
+    writing-mode: vertical-rl;
+    transform: rotate(220deg);
 }
 
 .timelineHours .right .hour{
-    /*transform: translate(-30px, -30px);*/
+    /*transform: translate(-30px, -30px);
     transform: translate(-30px, -10px);
     -webkit-transform: translate(-30px, -10px);
     -moz-transform: translate(-30px, -10px);
     -o-transform: translate(-30px, -10px);
-    transform: translate(-30px, -10px);
+    transform: translate(-30px, -10px);*/
     display: inline-block;
     font-size: 10px;
     /*color: #666;*/
     color: #00796B;
     font-weight: 500;
+    writing-mode: vertical-rl;
+    transform: rotate(220deg);
 }
 
 .timelineContent .timelineNames{    
@@ -792,7 +796,11 @@ md-input-container:not(.md-input-invalid).md-input-focused label{
     opacity: 0;
     position:absolute;
     background-color: white;
-    padding:2%;
+    padding:1%;
+    border-color: #009688;
+}
+.label li{
+    list-style:none; 
 }
 .infoPick:hover .label{
     opacity:1;

@@ -37,11 +37,11 @@ webAppController.DashboardCtrl = function ($scope, CompanyService) {
 
   		var aux = [];
 
-  		for(var i=0; i<spaces-1; i++){
+  		for(var i=0; i<=spaces; i++){
   			if(i>0)
   				open.setMinutes(open.getMinutes() + 30);
 
-  		  if(i<spaces-2)
+  		  if(i<=spaces-1)
   				aux.push(open.toTimeString().replace(/.*(\d{2}:\d{2})(:\d{2}).*/, "$1"));
   			else
   				$scope.lastHour = open.toTimeString().replace(/.*(\d{2}:\d{2})(:\d{2}).*/, "$1");

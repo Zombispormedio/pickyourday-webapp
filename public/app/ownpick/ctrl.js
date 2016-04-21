@@ -28,13 +28,14 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 	var serviceSelected = "";
 	var resourceSelected = "";
 	var nullService=false;
+	var dateSelected = "";
 
 	$scope.getTimeline = function (service, employee, date){
 		serviceSelected = service._id;
-		
+		console.log(date);
 		if(service!=null){
 			if(employee!=null){
-				CompanyService.timeline().get({service:service._id, resource:employee._id,rangeDays:30,date:date},function(result){
+				CompanyService.timeline().get({service:service._id, resource:employee._id,rangeDays:1,date:date},function(result){
 			  		
 			  		if(result.error)
 				    	return console.log(result.error);
@@ -45,7 +46,7 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 				    	$("#selectService").children().css("border-bottom-color", "rgba(0, 0, 0, 0.12)");	      
 			    	}, function(){ });
 			}else{
-				CompanyService.timeline().get({service:service._id,rangeDays:30,date:date},function(result){
+				CompanyService.timeline().get({service:service._id,rangeDays:1,date:date},function(result){
 			  		if(result.error)
 				    	return console.log(result.error);
 				    $scope.timeline=result.data;
@@ -63,12 +64,18 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 		}
   	}	
 
+  	$scope.isObject= function(r){
+  		return typeof(r);
+  	}
+
 	$scope.spaces = [];
 
   	$scope.calcSpaces = function(o, c){
 
   		var open = new Date(o);
   		var close = new Date(c);
+
+  		open.setHours(open.getHours());
 
   		var openH = open.getHours();
   		var openM = open.getMinutes();
@@ -79,11 +86,11 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 
   		var aux = [];
 
-  		for(var i=0; i<spaces-1; i++){
+  		for(var i=0; i<=spaces; i++){
   			if(i>0)
   				open.setMinutes(open.getMinutes() + 30);
 
-  		  if(i<spaces-2)
+  		  if(i<=spaces-1)
   				aux.push(open.toTimeString().replace(/.*(\d{2}:\d{2})(:\d{2}).*/, "$1"));
   			else
   				$scope.lastHour = open.toTimeString().replace(/.*(\d{2}:\d{2})(:\d{2}).*/, "$1");
@@ -91,7 +98,7 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
   		$scope.spaces = aux;
   	}	
   	
-  	$scope.showDialog = function(ev, r, employee) {
+  	$scope.showDialog = function(ev, date, employee) {
   		resourceSelected = employee.id;
 	    $mdDialog.show({
 	      controller: DialogController,
@@ -101,7 +108,7 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 	      clickOutsideToClose:true
 	    })
         .then(function(client) {
-      		$scope.createPick(r,client);
+      		$scope.createPick(date,client);
         }, function() {
           $scope.status = 'You cancelled the dialog.';
         });
@@ -119,13 +126,17 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 			$mdDialog.hide($scope.client);
 		};
 	}
-
+	
+	
 	$scope.createPick = function (datePick,client){
 		var nameCli=client.name;
 		var phoneCli=client.phone;
-		CompanyService.pick().create({service: serviceSelected,initDate:datePick,nameCli,phoneCli,resource:resourceSelected},function(result){
+		dateSelected = datePick;
+
+		CompanyService.pick().create({service: serviceSelected,initDate:dateSelected,nameCli,phoneCli,resource:resourceSelected},function(result){
 			if(result.error)
 				return console.log(result.error);
+			else
 			$scope.showAlert();
 		}, function(){
 
@@ -143,7 +154,10 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
             .ok('OK')
          )
         .then(function() {          
-           window.location.reload();
+           $scope.getTimeline(serviceSelected,resourceSelected,dateSelected);
+           console.log(service);
+           console.log(employee);
+           console.log(date);
         }, function() {
             $scope.status = 'You cancelled the dialog.';
         });
