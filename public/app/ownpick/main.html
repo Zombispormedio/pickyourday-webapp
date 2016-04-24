@@ -1,54 +1,57 @@
-<div class="head">	
-	<i class="fa fa-plus-circle"></i>
-	<h1>Nuevo pick</h1>
-</div>
-<div style="display:flex;flex:1;">
-	<md-input-container style="width: 30%;">
-		<label>Servicio</label>
-		    <md-select ng-model="service._id" id="selectService">
-		        <md-option ng-value="service._id" ng-repeat="service in services">{{service.id_name.name}}</md-option>
+	<div class="head">	
+		<i class="fa fa-plus-circle"></i>
+		<h1>Nuevo pick</h1>
+	</div>
+	<div style="display:flex;flex:1;">
+		<md-input-container style="width: 30%;">
+			<label>Servicio</label>
+			    <md-select ng-model="service._id" id="selectService" ng-change="getEmployees(service._id)">
+			        <md-option ng-value="service._id" ng-repeat="service in services" >{{service.id_name.name}}</md-option>
+			    </md-select>
+		</md-input-container>
+
+		<md-input-container style="width: 30%;margin-left: 3%;">
+			<label>Empleado</label>
+		    <md-select ng-model="employee.resource_id">
+		    	<md-option value="">Empleado</md-option>
+		        <md-option ng-value="employee.resource_id" ng-repeat="employee in employees">{{employee.resource}}</md-option>
 		    </md-select>
-	</md-input-container>
+		</md-input-container>
+		
+		<md-datepicker class="calendar" ng-model="myDate" md-placeholder="Selecciona un dia"></md-datepicker>
+		<md-button class="md-fab fa fa-refresh md-mini addService" id="reloadOwnPickButton" style="margin-top: 1%;margin-left: 10%;" ng-click="getTimeline(service, employee, myDate)"></md-button>	
+	</div>
 
-	<md-input-container style="width: 30%;margin-left: 3%;">
-		<label>Empleado</label>
-	    <md-select ng-model="employee._id">
-	        <md-option ng-value="employee._id" ng-repeat="employee in employees">{{employee.name}} {{employee.surname}}</md-option>
-	    </md-select>
-	</md-input-container>
-	
-	<md-datepicker class="calendar" ng-model="myDate" md-placeholder="Selecciona un dia"></md-datepicker>
-	<md-button class="md-fab fa fa-refresh md-mini addService" id="reloadOwnPickButton" style="margin-top: 1%;margin-left: 10%;" ng-click="getTimeline(service, employee, myDate)"></md-button>	
-</div>
-
-<div ng-cloak class="timeline">
-	<div class="timelineHours">
-		<div class="left"></div>
-		<div class="right">
-			<div ng-repeat="space in spaces track by $index">
-				<span class="hour">{{space}}</span>
+	<div ng-cloak class="timeline">
+		<div class="timelineHours">
+			<div class="left"></div>
+			<div class="right">
+				<div ng-repeat="space in spaces track by $index">
+					<span class="hour">{{space}}</span>
+				</div>
+				<div class="lastHour" style="margin-right: -1.5%;">
+					<span class="hour">{{lastHour}}</span>
+				</div>
 			</div>
-			<div class="lastHour" style="margin-right: -1.5%;">
-				<span class="hour">{{lastHour}}</span>
+		</div>
+
+		<div class="timelineContent" ng-repeat="t in timeline[0].timeLine">
+		 	<p class="timelineNames">
+		 		{{t.resource.name}} {{t.resource.surname}}
+		 	</p>		
+		 	<div class="timelinePicks_container">
+			    <div class="timelinePicks" ng-repeat="r in t.steps[0] track by $index">
+			 		<div ng-if="r == 0" style="background-color:#A2A9A9;" title="No disponible"></div>
+			      	<div class="avaliablePick" ng-if="isObject(r) == 'string'" title="Libre" ng-click="showDialog($event,r,t.resource)" style="background-color:white;"></div>
+			      	<div ng-if="isObject(r) == 'object'" style="background-color:#009688;" class="infoPick">
+					    <ul class="label">
+		                  <li ng-if="r.customer!=''">{{r.customer}}</li>
+		                  <li ng-if="r.phone!=''">{{r.phone}}</li>
+		                  <li ng-if="r.service!=''">{{r.service}}</li>
+		                </ul>
+				  	</div>
+				    <div ng-if="r == 2" style="background-color:#424242;" title="Cerrado"></div>
+				</div>
 			</div>
 		</div>
 	</div>
-
-	<div class="timelineContent" ng-repeat="t in timeline[0].timeLine">
-	 	<p class="timelineNames">
-	 		{{t.resource.name}} {{t.resource.surname}}
-	 	</p>		
-	 	<div class="timelinePicks_container">
-		    <div class="timelinePicks" ng-repeat="r in t.steps[0] track by $index">
-		 		<div ng-if="r == 0" style="background-color:#A2A9A9;" title="No disponible"></div>
-		      	<div class="avaliablePick" ng-if="isObject(r) == 'string'" title="Libre" ng-click="showDialog($event,r,t.resource)" style="background-color:white;"></div>
-		      	<div ng-if="isObject(r) == 'object'" style="background-color:#009688;" class="infoPick">
-			      	<span class="label">{{r.customer}}</span>
-		            <span class="label">{{r.phone}}</span>
-		            <span class="label">{{r.service}}</span>
-			  	</div>
-			    <div ng-if="r == 2" style="background-color:#424242;" title="Cerrado"></div>
-			</div>
-		</div>
-	</div>
-</div>

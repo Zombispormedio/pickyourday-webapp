@@ -9,7 +9,7 @@
 		<div class="left"></div>
 		<div class="right">
 			<div ng-repeat="space in spaces track by $index">
-				<span class="hour">{{space}}</span>
+				<span class="hour">{{space}}</span>      
 			</div>
 			<div class="lastHour" style="margin-right: -1.5%;">
 				<span class="hour">{{lastHour}}</span>
@@ -17,13 +17,14 @@
 		</div>
 	</div>
 
-	<div class="timelineContent" ng-repeat="t in timeline[0].timeLine">
+	<div class="timelineContent" ng-repeat="t in timeline[0].timeLine">    
 	 	<p class="timelineNames">
 	 		{{t.resource.name}} {{t.resource.surname}}
-	 	</p>		
+	 	</p>	 
 	 	<div class="timelinePicks_container">
 		    <div class="timelinePicks" ng-repeat="r in t.steps[0] track by $index">
-		      <div ng-if="r == 0" style="background-color:white;" title="Libre"></div>
+		      <div ng-if="$index == actualHour*6" style="border-left:0.2px solid red;height: 75px;width: 1px;position: absolute;margin-top:-0.5%;">{{}}</div>
+          <div ng-if="r == 0" style="background-color:white;" title="Libre"></div>          
 		      <div ng-if="r!=0 && r!=2" style="background-color:#009688;" class="infoPick">
                 <ul class="label">
                   <li ng-if="r.customer!=''">{{r.customer}}</li>
@@ -31,8 +32,9 @@
                   <li ng-if="r.service!=''">{{r.service}}</li>
                 </ul>
           </div>
-		      <div ng-if="r == 2" style="background-color:#424242;" title="Cerrado"></div>		     
-		    </div>
+		      <div ng-if="r == 2" style="background-color:#424242;" title="Cerrado"></div>	
+
+		    </div>       
 		</div>
 	</div>
 </div>
@@ -48,36 +50,44 @@
         <ng-letter-avatar data="{{employee.name}}" shape="round"></ng-letter-avatar>
         <p>{{employee.name}} {{employee.surname}}</p>
       </div>
-      <div class="employeesActions">
-        <button class="fa fa-arrow-right" aria-label="edit" ng-click="nextPick()"></button> 
-        <button class="fa fa-times" ng-click="cancelPick()"></button>
-      </div> 
+        
     </div>
-    <div ng-if="employee.open">
-      <div class="infoEmployee">
-        <div class="timetableHead">
-          <i class="fa fa-commenting-o" ></i> 
-          <p>{{employee.description}}</p>
-        </div>  
-        <div class="timetableHead">
-          <i class="fa fa-phone" ></i> 
-          <p>{{employee.phone}}</p>
-          <p ng-if="employee.phone.length===0">Ningún teléfono añadido</p>
-        </div>     
-        <div class="employeeServices">
-          <div class="tagsHead">
-            <i class="fa fa-tags" ></i>  
-            <p>Servicios asignados</p>
+    <div ng-if="employee.open" style="display:flex;" >
+        <div ng-repeat="pick in employee.picks track by $index" style="padding-left: 8%;padding-right: 10%;padding-bottom:2%;">
+           <div ng-if="$index == 0" class="md-list-item-text">
+            <div class="head2">
+              <i class="fa fa-user" ></i> 
+              <p>{{pick.nameCli}}</p>
+            </div>
+            <div class="head2"> 
+              <i class="fa fa-phone" style="padding-right:2%;"></i> 
+              <p>{{pick.phoneCli}}</p> 
+            </div>
+            <div class="head2">
+              <i class="fa fa-tag" ></i> 
+              <p>{{pick.service.metadata.name}}</p>
+            </div>  
           </div>
-          <md-chips ng-model="employee.services" readonly="true">
-            <md-chip-template>
-                {{$chip.id_name.name}}
-            </md-chip-template>
-          </md-chips>
-          <p ng-if="employee.services.length===0">No tiene servicios asignados</p> 
+          <div ng-if="$index == 1" class="md-list-item-text ">
+            <div class="head2">
+              <i class="fa fa-user" ></i> 
+              <p>{{pick.nameCli}}</p>
+            </div>
+            <div class="head2">
+              <i class="fa fa-phone" ></i> 
+              <p>{{pick.phoneCli}}</p> 
+            </div>
+            <div class="head2">
+              <i class="fa fa-tag" ></i> 
+              <p>{{pick.service.metadata.name}}</p>
+            </div> 
+            <div class="employeesActions">
+          <button class="fa fa-arrow-right" aria-label="edit" ng-click="nextPick(pick._id,pick.state)"></button> 
+          <button class="fa fa-times" ng-click="cancelPick(pick._id,pick.state)"></button>
         </div>
-      </div>
-    </div>
+          </div>     
+        </div>        
+      </div>     
   <md-divider></md-divider>  
 </md-list-item>
 </div>

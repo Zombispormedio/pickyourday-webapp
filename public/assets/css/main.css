@@ -89,8 +89,8 @@ button.webAppMenuOptions {
 }
 
 .timelineHours .right div{
-    text-align: center;
-    /*border-right: 1px solid #ddd;*/
+    /*text-align: center;
+    border-right: 1px solid #ddd;*/
     flex: 1;        
     margin-right: 3%;
 }
@@ -519,6 +519,15 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
     border-radius: 50px;   
     margin-top: 2%;
 }
+.head2{
+    display:flex;
+    margin-top: 2%;
+}
+.head2 > i{
+    font-size: 22px;
+    padding-top: 2%;
+    padding-right: 1%;
+}
 .dayEmployee{
     margin-top: 2%;
     margin-bottom: 2%;	
@@ -795,15 +804,17 @@ md-input-container:not(.md-input-invalid).md-input-focused label{
 .label{
     opacity: 0;
     position:absolute;
-    background-color: white;
     padding:1%;
-    border-color: #009688;
 }
 .label li{
     list-style:none; 
 }
 .infoPick:hover .label{
     opacity:1;
+    background-color: #009688;
+    color: white;
+    font-size: 15px;
+    font-style: italic;
 }
 .avaliablePick:hover{
     background-color: #00796B;

@@ -1,6 +1,7 @@
 webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdDialog){
 	
 	$scope.client={};
+	$scope.employees = [];
 
 	this.getServices=function(){
 		CompanyService.services().get({},function(result){
@@ -14,16 +15,21 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 	}
 	this.getServices();
 
-	this.getEmployees=function(){
-		CompanyService.employees().get({},function(result){
+	$scope.getEmployees=function(serviceId){
+		CompanyService.resourcesByServices().list({service:serviceId},function(result){
 			if(result.error)
 				return console.log(result.error);
-			$scope.employees=result.data;
+			$scope.resourcesByServices=result.data[0];
+			for(var i=0;i<$scope.resourcesByServices.length;i++){
+				if($scope.resourcesByServices[i].asigned == true)
+					$scope.employees.push($scope.resourcesByServices[i]);
+			}
+
+			console.log($scope.employees);
 		}, function(){
 	
 		});
 	}
-	this.getEmployees();
 
 	var serviceSelected = "";
 	var resourceSelected = "";
@@ -32,11 +38,10 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 
 	$scope.getTimeline = function (service, employee, date){
 		serviceSelected = service._id;
-		console.log(date);
+		
 		if(service!=null){
 			if(employee!=null){
-				CompanyService.timeline().get({service:service._id, resource:employee._id,rangeDays:1,date:date},function(result){
-			  		
+				CompanyService.timeline().get({service:service._id, resource:employee.resource_id,rangeDays:1,date:date},function(result){			  		
 			  		if(result.error)
 				    	return console.log(result.error);
 				    $scope.timeline=result.data;
@@ -153,11 +158,9 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
             .ariaLabel('Alert Dialog Demo')
             .ok('OK')
          )
-        .then(function() {          
-           $scope.getTimeline(serviceSelected,resourceSelected,dateSelected);
-           console.log(service);
-           console.log(employee);
-           console.log(date);
+        .then(function() {  
+        	$rootScope.go("app.ownpick");
+        	$scope.getTimeline(serviceSelected,resourceSelected,dateSelected);     
         }, function() {
             $scope.status = 'You cancelled the dialog.';
         });
