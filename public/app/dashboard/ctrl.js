@@ -37,8 +37,12 @@ webAppController.DashboardCtrl = function ($scope, CompanyService) {
 
       var spaces = Math.floor(((closeH*60+closeM) - (openH*60+openM))/30);
 
-      var aux = [];   
-      var s1,s2,l1,l2 = "";   
+      var aux = []; 
+
+      var dActual = new Date();
+      $scope.actualHour = Math.round((((dActual.getHours()*60)+ dActual.getMinutes()) - ((openH*60)+ openM))/5); 
+      console.log($scope.actualHour);
+
       
       for(var i=0; i<=spaces; i++){
         if(i>0)
@@ -46,37 +50,13 @@ webAppController.DashboardCtrl = function ($scope, CompanyService) {
 
         if(i<=spaces-1){
           aux.push(open.toTimeString().replace(/.*(\d{2}:\d{2})(:\d{2}).*/, "$1"));
-          s1 = aux[i];
-          s2 = s1.split(":");
         }else{
           $scope.lastHour = open.toTimeString().replace(/.*(\d{2}:\d{2})(:\d{2}).*/, "$1");
-          l1 = $scope.lastHour;
-          l2 = l1.split(":");
-        }
-           
-
-      var dActual = new Date();
-      var hActual = addZero(dActual.getHours().toString());
-      var mActual = addZero(dActual.getMinutes().toString());
-
-      if(s2[0] == hActual || l2[0] == hActual){
-        if(mActual == "00")
-            $scope.actualHour = i;
-        if(mActual == "30")
-          $scope.actualHour= i+1;     
-      }    
-        
+        }        
     }     
     $scope.spaces = aux;  
   }
-
-  function addZero(i) {
-      if (i < 10) {
-          i = "0" + i;
-      }
-      return i;
-  }
-    /*Day dashboard*/
+  /*Day dashboard*/
 
   this.getEmployees=function(){
     CompanyService.employees().get({},function(result){

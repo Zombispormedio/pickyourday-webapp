@@ -119,8 +119,8 @@ button.webAppMenuOptions {
     -webkit-transform: translate(-30px, -10px);
     -moz-transform: translate(-30px, -10px);
     -o-transform: translate(-30px, -10px);
-    transform: translate(-30px, -10px);*/
-    display: inline-block;
+    transform: translate(-30px, -10px);
+    display: inline-block;*/
     font-size: 10px;
     /*color: #666;*/
     color: #00796B;
@@ -526,7 +526,11 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
 .head2 > i{
     font-size: 22px;
     padding-top: 2%;
-    padding-right: 1%;
+    padding-right: 10%;
+    display:flex;
+}
+.head2 > p{
+    padding-left: 10%;
 }
 .dayEmployee{
     margin-top: 2%;
@@ -567,8 +571,9 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
     position: absolute;
 }
 .employeesActions{
-    float:right;
-    margin-top: 4%;
+    margin-top: -6%;
+    right: 0;
+    position: absolute;
 }
 .employeesActions > button{
     background: transparent;
@@ -721,7 +726,7 @@ a{
 }
 
 /***CHIPS***/
-md-chips .md-chip{
+/*md-chips .md-chip{
     background: 0 1px #009688;
     color:white;
 }
@@ -738,7 +743,46 @@ md-chips .md-chip.md-focused {
 }
 md-chips .md-chips.md-focused{
     box-shadow: 0 2px rgba(0,0,0,0.3);
+}*/
+
+.md-chips .md-chip {
+  background: #009688;
+  border-radius: 3px 0 0 3px;
+  color: white;
+  display: inline-block;
+  height: 26px;
+  line-height: 26px;
+  padding: 0 20px 0 23px;
+  position: relative;
+  margin: 0 10px 10px 0;
+  text-decoration: none;
+  -webkit-transition: color 0.2s;
 }
+
+.md-chips .md-chip::before {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
+  content: '';
+  height: 6px;
+  left: 10px;
+  position: absolute;
+  width: 6px;
+  top: 10px;
+}
+
+.md-chips .md-chip::after {
+  background: #fff;
+  border-bottom: 13px solid transparent;
+  border-left: 10px solid #009688;
+  border-top: 13px solid transparent;
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+
 .collapse-icon{
     font-size:2em;
 }
@@ -822,8 +866,8 @@ md-input-container:not(.md-input-invalid).md-input-focused label{
     padding:1%;
 }
 
-
+/*Statistics*/
 canvas{
-       border-radius: 11px; 
+    border-radius: 11px; 
     border: solid 6px #107576;
 }
