@@ -608,7 +608,9 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
 .promotions > img{
     width:150px;
     height:100px;
-    margin:2%;
+    margin-right: 2%;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
 .promotions p{
     font-size: 25px;

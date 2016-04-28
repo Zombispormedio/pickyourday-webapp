@@ -1,52 +1,50 @@
 <div class="head">
     <i class="fa fa-bullhorn"></i>
     <h1>Nueva promoción</h1>
+    <md-checkbox ng-model="promotion.ownCustomers" aria-label="onlyClients" style="position:absolute;right: 70px;top: 6%;">Solo clientes</md-checkbox>
 </div>
     
 <div id="formStyle">
     <form name="userForm" layout="column" class="form">        
         <div flex layout="row" layout-wrap>
-            <md-input-container flex="40" style="padding-right:5%;">           
+            <md-input-container flex="50" style="padding-right:5%;">           
                 <label>Título</label>
                  <md-icon class="fa fa-pencil formIcon"></md-icon> 
                 <input ng-model="promotion.name" name="title">
             </md-input-container>
 
-            <md-input-container flex="40">
+            <md-input-container flex="50">
                 <label>Descripción</label>
                 <md-icon class="fa fa-commenting-o formIcon"></md-icon> 
                 <input type="text" ng-model="promotion.description" name="description" ></input>
             </md-input-container>
         </div>
-
-        <div flex layout="row" layout-wrap>   
-            <md-input-container flex="40" style="padding-right:5%;">
-              <label>Máximo de unidades</label>
-              <md-icon class="fa fa-users formIcon"></md-icon>
-              <input ng-model="promotion.useLimit" name="units" step="any" type="number">
-            </md-input-container>
-
-            <md-input-container flex="40">
-                <label>Descuento</label>
-                <md-icon class="fa fa-percent formIcon"></md-icon>
-                <input type="number" step="any" name="discount" ng-model="promotion.discount" min="0" max="100"/>     
-            </md-input-container>
-        </div>
-
         <div flex layout="row" layout-wrap>
-            <md-input-container flex="40" style="padding-right:5%;">  
+            <md-input-container flex="50" style="padding-right:5%;">  
                 <md-icon class="fa fa-calendar formIcon"></md-icon>      
                 <input mdc-datetime-picker="" date="true" time="true" type="text" id="datetime" placeholder="Fecha desde" min-date="date" ng-model="promotion.initDate">
             </md-input-container>
-            <md-input-container flex="40">
+            <md-input-container flex="50">
                 <md-icon class="fa fa-calendar formIcon"></md-icon>
                 <input mdc-datetime-picker="" date="true" time="true" type="text" id="datetime" placeholder="Fecha hasta" min-date="date" ng-model="promotion.endDate">
             </md-input-container>
         </div>
 
-            
-        <div flex layout="row" layout-wrap>
+        <div flex layout="row" layout-wrap>   
+            <md-input-container flex="50" style="padding-right:5%;">
+              <label>Máximo de unidades</label>
+              <md-icon class="fa fa-users formIcon"></md-icon>
+              <input ng-model="promotion.useLimit" name="units" step="any" type="number">
+            </md-input-container>
 
+            <md-input-container flex="50">
+                <label>Descuento</label>
+                <md-icon class="fa fa-percent formIcon"></md-icon>
+                <input type="number" step="any" name="discount" ng-model="promotion.discount" min="0" max="100"/>     
+            </md-input-container>
+        </div>
+        
+        <div flex layout="row" layout-wrap>
             <md-input-container flex="50">           
                 <label>Servicios asociados</label>
                 <md-icon class="fa fa-tags formIcon"></md-icon>
@@ -55,22 +53,23 @@
                 </md-select>
             </md-input-container>
         </div>
-        
-    <md-checkbox ng-model="promotion.ownCustomers" aria-label="onlyClients" style="margin-left:0.25%;">Solo clientes</md-checkbox>
-        <div flex layout="row" layout-wrap>       
 
-            <div layout="row">
-                <p flex="80">Fotos</p>
-                <input id="newFile" type="file" name="images" base-sixty-four-input ng-model="images.data" style="display:none;">        
-                <md-button class="buttonStyleSimple" ng-click="addImages()">+ añadir fotos</md-button>
-            </div>    
-            <md-input-container>
+        <div layout="column" >   
+            <md-input-container style="margin-bottom:4%;">
+                <label>Imagen</label>
+                <md-icon class="fa fa-camera formIcon"></md-icon> 
+            </md-input-container>    
+            <md-button class="buttonStyleSimple" ng-click="addImages()" style="float: left;position: absolute;" >+ añadir fotos</md-button>
+            <md-input-container style="margin-top:4%;"> 
                 <div class="companyImages" ng-repeat="image in promotion.images">             
-                     <img ng-src="{{image.src}}" alt="{{image.alt}}">
-                     <md-button class="md-fab fa fa-times deleteImageIcon" aria-label="delete" ng-click="deleteImage($index)"></md-button>
+                    <img ng-src="{{image.src}}" alt="{{image.alt}}">
+                    <md-button class="md-fab fa fa-times deleteImageIcon" aria-label="delete" ng-click="deleteImage($index)"></md-button>
                 </div>
+                <input id="newFile" type="file" name="images" base-sixty-four-input ng-model="images.data"style="display:none;">
             </md-input-container>
-    </div>
-        <md-button class="buttonStyle2" ng-click="create()">Crear</md-button>
+        </div>
+
+        <md-button class="buttonStyle2" ng-click="create()" style="
+    margin-top: -2%;">Crear</md-button>
     </form>   
 </div>

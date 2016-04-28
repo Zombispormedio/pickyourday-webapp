@@ -39,7 +39,6 @@
 	</div>
 </div>
 
-
 <div class="head">
   <i class="fa fa-calendar-check-o"></i>
   <h1>Picks actuales</h1>
@@ -51,42 +50,43 @@
         <p>{{employee.name}} {{employee.surname}}</p>
       </div>        
     </div>
-    <div ng-if="employee.open" style="display:flex;" >
-        <div ng-repeat="pick in employee.picks track by $index" style="padding-left: 8%;padding-right: 10%;padding-bottom:2%;">
+    <div ng-if="employee.open" style="display:flex;">
+      {{pick}}
+        <div ng-repeat="p in employee.pick track by $index" style="padding-left: 8%;padding-right: 10%;padding-bottom:2%;">
           <div ng-if="$index == 0" class="md-list-item-text">
             <div class="head2">
               <i class="fa fa-user" ></i> 
-              <p>{{pick.nameCli}}</p>
+              <p>{{p.nameCli}}</p>
             </div>
             <div class="head2"> 
               <i class="fa fa-phone" style="padding-right:2%;"></i> 
-              <p>{{pick.phoneCli}}</p> 
+              <p>{{p.phoneCli}}</p> 
             </div>
             <div class="head2">
               <i class="fa fa-tag" ></i> 
-              <p>{{pick.service.metadata.name}}</p>
+              <p>{{p.service.metadata.name}}</p>
             </div>
             <div class="employeesActions">
-              <button class="fa fa-arrow-right" aria-label="edit" ng-click="nextPick(pick._id,pick.state)"></button> 
-              <button class="fa fa-times" ng-click="cancelPick(pick._id,pick.state)"></button>
+              <button class="fa fa-arrow-right" aria-label="edit" ng-click="nextPick(p._id,p.state)"></button> 
+              <button class="fa fa-times" ng-click="cancelPick(p._id,p.state)"></button>
             </div>  
           </div>
           <div ng-if="$index == 1" class="md-list-item-text ">
             <div class="head2">
               <i class="fa fa-user" ></i> 
-              <p>{{pick.nameCli}}</p>
+              <p>{{p.nameCli}}</p>
             </div>
             <div class="head2">
               <i class="fa fa-phone" ></i> 
-              <p>{{pick.phoneCli}}</p> 
+              <p>{{p.phoneCli}}</p> 
             </div>
             <div class="head2">
               <i class="fa fa-tag" ></i> 
-              <p>{{pick.service.metadata.name}}</p>
+              <p>{{p.service.metadata.name}}</p>
             </div>             
           </div>              
         </div>
-        <p ng-if="employee.picks.length ==0">¡Actualmente, no hay ningún pick asociado a este empleado!</p>
+        <p ng-if="employee.pick.length ==0">¡Actualmente, no hay ningún pick asociado a este empleado!</p>
       </div> 
     <md-divider></md-divider>  
 </md-list-item>

@@ -5,9 +5,11 @@
 <md-list-item class="md-3-line promotions" ng-repeat="promotion in promotions">
     <img ng-src="{{promotion.images[0].src}}" alt="{{promotion.name}}" />
     <div class="md-list-item-text" layout="column">
-       <h3>{{promotion.name}}</h3>
-       <h4>{{promotion.description}}</h4>
-       <div style="margin-top: 4%;">
+       
+          <h3>{{promotion.name}}</h3>       
+          <h4 style="white-space: normal;">{{promotion.description}}</h4>
+       
+       <div style="margin-top: 4%;display:flex;">
 	       <i class="fa fa-users formIcon"></i>
 	       <p> {{promotion.useLimit}}</p>
        </div>
@@ -16,6 +18,7 @@
 	<div class="statePromotion">
 		<p ng-if="promotion.state==='started'" style="color:#009688;">ACTIVA</p>
 		<p ng-if="promotion.state==='finished'" style="color:red;">FINALIZADA</p>
+    <p ng-if="promotion.state==='waiting'" style="color:red;">PENDIENTE</p>
 	</div> 
     <div class="promotionActions">
     	<button class="fa fa-pencil" aria-label="edit" ng-click="edit($index)"></button>

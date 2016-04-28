@@ -81,7 +81,8 @@ webAppFactory.CompanyService= function(ApiService){
         },
         pick:function(){
             return ApiService.rest(this.base+"/pick/",{
-                create:{method:"POST", params:{}}
+                create:{method:"POST", params:{}},
+                get:{method:"GET", params:{}}
             });
         },
         nextPick:function(){

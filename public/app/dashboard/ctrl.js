@@ -62,8 +62,22 @@ webAppController.DashboardCtrl = function ($scope, CompanyService) {
     CompanyService.employees().get({},function(result){
       if(result.error)
         return console.log(result.error);
-      $scope.employees=result.data;
-      console.log($scope.employees);
+      var employees = result.data;
+
+      async.reduce(result.data, [],function iteratee(prev, item, callback) {
+          searchPick(item._id,function(err, data){
+            if(err)
+              return callback(err);
+            item.pick = data;
+            prev.push(item);
+            callback(null,prev);
+          });
+      }, function done(err,result) {
+          if(err)
+            return console.log(err);
+            $scope.employees = result;
+            console.log($scope.employees);
+      });
     }, function(){
 
     });
@@ -82,6 +96,15 @@ webAppController.DashboardCtrl = function ($scope, CompanyService) {
     }     
   } 
   /**************************************/
+  var searchPick = function(idResource,callback){
+    CompanyService.pick().get({resource:idResource},function(result){
+      if(result.error)
+        return callback(result.error);
+      callback(null, result.data);
+    }, function(){
+
+    });
+  }
   $scope.cancelPick = function(idPick,statePick){
     console.log(idPick);
     console.log(statePick);
@@ -103,4 +126,5 @@ webAppController.DashboardCtrl = function ($scope, CompanyService) {
 
     });
   }
+  /*****************************************/
 };
