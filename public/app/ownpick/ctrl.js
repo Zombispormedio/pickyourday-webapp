@@ -2,11 +2,14 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 	
 	$scope.client={};
 	$scope.employees = [];
+	$scope.loading = true;
+	$scope.actualHour= -1;
 
 	this.getServices=function(){
 		CompanyService.services().get({},function(result){
 			if(result.error)
 				return console.log(result.error);
+			$scope.loading = false;
 			$scope.services=result.data;
 		}, function(){
 
@@ -19,6 +22,7 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 		CompanyService.resourcesByServices().list({service:serviceId},function(result){
 			if(result.error)
 				return console.log(result.error);
+			$scope.loading = false;
 			$scope.resourcesByServices=result.data[0];
 			for(var i=0;i<$scope.resourcesByServices.length;i++){
 				if($scope.resourcesByServices[i].asigned == true)
@@ -38,12 +42,13 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 
 	$scope.getTimeline = function (service, employee, date){
 		serviceSelected = service._id;
-		
+		$scope.loading = true;
 		if(service!=null){
 			if(employee!=null){
 				CompanyService.timeline().get({service:service._id, resource:employee.resource_id,rangeDays:1,date:date},function(result){			  		
 			  		if(result.error)
 				    	return console.log(result.error);
+				    $scope.loading = false;
 				    $scope.timeline=result.data;
 					console.log(result.data);
 				    $scope.calcSpaces(result.data[0].metadata.schedule[0].open, result.data[0].metadata.schedule[0].close);	
@@ -54,6 +59,7 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 				CompanyService.timeline().get({service:service._id,rangeDays:1,date:date},function(result){
 			  		if(result.error)
 				    	return console.log(result.error);
+				    $scope.loading = false;
 				    $scope.timeline=result.data;
 					console.log(result.data);
 				    $scope.calcSpaces(result.data[0].metadata.schedule[0].open, result.data[0].metadata.schedule[0].close);	
@@ -86,6 +92,9 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
   		var openM = open.getMinutes();
   		var closeH = close.getHours();
   		var closeM = close.getMinutes();
+
+  		var dActual = new Date();
+      	$scope.actualHour = Math.round((((dActual.getHours()*60)+ dActual.getMinutes()) - ((openH*60)+ openM))/5); 
 
   		var spaces = Math.floor(((closeH*60+closeM) - (openH*60+openM))/30);
 

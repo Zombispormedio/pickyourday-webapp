@@ -2,7 +2,12 @@
 <div class="head">
 	<i class="fa fa-calendar"></i>
 	<h1>Dashboard</h1>
+  <md-datepicker class="calendar" ng-model="myDate" md-placeholder="" style="position:absolute;right: 70px;" ng-change="getTimeline(myDate);"></md-datepicker>
 </div>
+  <button class="menuIcon fa fa-arrow-left" ng-style="{color: '#00796B', 'font-size':'25px', height:'25px',position:'absolute', left:'0'}" ng-click="getTimeline(myDate,'prev')"></button>
+  <button class="menuIcon fa fa-arrow-right" ng-style="{color: '#00796B', 'font-size':'25px', height:'25px',position:'absolute',right:'25px'}" ng-click="getTimeline(myDate,'next')"></button>
+
+
 
 <div ng-cloak class="timeline">
 	<div class="timelineHours">
@@ -16,7 +21,9 @@
 			</div>
 		</div>
 	</div>
-
+<div class="loading" ng-if="loading">
+    <h1><i class="fa fa-refresh fa-spin" ></i></h1>
+</div>
 	<div class="timelineContent" ng-repeat="t in timeline[0].timeLine">    
 	 	<p class="timelineNames">
 	 		{{t.resource.name}} {{t.resource.surname}}
@@ -39,55 +46,57 @@
 	</div>
 </div>
 
-<div class="head">
-  <i class="fa fa-calendar-check-o"></i>
-  <h1>Picks actuales</h1>
-</div>
-<md-list-item class="md-3-line employeesAvatar allEmployees" ng-repeat="employee in employees" ng-init="employee.open=false">  
-    <div class="employee">
-      <div class="employeesCard" ng-click="showInfo(employee)">
-        <ng-letter-avatar data="{{employee.name}}" shape="round"></ng-letter-avatar>
-        <p>{{employee.name}} {{employee.surname}}</p>
-      </div>        
-    </div>
-    <div ng-if="employee.open" style="display:flex;">
-      {{pick}}
-        <div ng-repeat="p in employee.pick track by $index" style="padding-left: 8%;padding-right: 10%;padding-bottom:2%;">
-          <div ng-if="$index == 0" class="md-list-item-text">
-            <div class="head2">
-              <i class="fa fa-user" ></i> 
-              <p>{{p.nameCli}}</p>
+<div id="actualPicks">
+  <div class="head">
+    <i class="fa fa-calendar-check-o"></i>
+    <h1>Picks actuales</h1>
+  </div>
+  <md-list-item class="md-3-line employeesAvatar allEmployees" ng-repeat="employee in employees" ng-init="employee.open=false">  
+      <div class="employee">
+        <div class="employeesCard" ng-click="showInfo(employee)">
+          <ng-letter-avatar data="{{employee.name}}" shape="round"></ng-letter-avatar>
+          <p>{{employee.name}} {{employee.surname}}</p>
+        </div>        
+      </div>
+      <div ng-if="employee.open" style="display:flex;">
+        {{pick}}
+          <div ng-repeat="p in employee.pick track by $index" style="padding-left: 8%;padding-right: 10%;padding-bottom:2%;">
+            <div ng-if="$index == 0" class="md-list-item-text">
+              <div class="head2">
+                <i class="fa fa-user" ></i> 
+                <p>{{p.nameCli}}</p>
+              </div>
+              <div class="head2"> 
+                <i class="fa fa-phone" style="padding-right:2%;"></i> 
+                <p>{{p.phoneCli}}</p> 
+              </div>
+              <div class="head2">
+                <i class="fa fa-tag" ></i> 
+                <p>{{p.service.metadata.name}}</p>
+              </div>
+              <div class="employeesActions">
+                <button class="fa fa-arrow-right" aria-label="edit" ng-click="nextPick(p._id,p.state)"></button> 
+                <button class="fa fa-times" ng-click="cancelPick(p._id,p.state)"></button>
+              </div>  
             </div>
-            <div class="head2"> 
-              <i class="fa fa-phone" style="padding-right:2%;"></i> 
-              <p>{{p.phoneCli}}</p> 
-            </div>
-            <div class="head2">
-              <i class="fa fa-tag" ></i> 
-              <p>{{p.service.metadata.name}}</p>
-            </div>
-            <div class="employeesActions">
-              <button class="fa fa-arrow-right" aria-label="edit" ng-click="nextPick(p._id,p.state)"></button> 
-              <button class="fa fa-times" ng-click="cancelPick(p._id,p.state)"></button>
-            </div>  
+            <div ng-if="$index == 1" class="md-list-item-text ">
+              <div class="head2">
+                <i class="fa fa-user" ></i> 
+                <p>{{p.nameCli}}</p>
+              </div>
+              <div class="head2">
+                <i class="fa fa-phone" ></i> 
+                <p>{{p.phoneCli}}</p> 
+              </div>
+              <div class="head2">
+                <i class="fa fa-tag" ></i> 
+                <p>{{p.service.metadata.name}}</p>
+              </div>             
+            </div>              
           </div>
-          <div ng-if="$index == 1" class="md-list-item-text ">
-            <div class="head2">
-              <i class="fa fa-user" ></i> 
-              <p>{{p.nameCli}}</p>
-            </div>
-            <div class="head2">
-              <i class="fa fa-phone" ></i> 
-              <p>{{p.phoneCli}}</p> 
-            </div>
-            <div class="head2">
-              <i class="fa fa-tag" ></i> 
-              <p>{{p.service.metadata.name}}</p>
-            </div>             
-          </div>              
-        </div>
-        <p ng-if="employee.pick.length ==0">¡Actualmente, no hay ningún pick asociado a este empleado!</p>
-      </div> 
-    <md-divider></md-divider>  
-</md-list-item>
+          <p ng-if="employee.pick.length ==0">¡Actualmente, no hay ningún pick asociado a este empleado!</p>
+        </div> 
+      <md-divider></md-divider>  
+  </md-list-item>
+  </div>
 </div>

@@ -3,6 +3,7 @@ webAppController.ServicesCtrl = function ($rootScope,$scope, CompanyService,  $m
     var self=this;
     var servicesByCategoryArray=[];
     $scope.serviceSelected = {};
+    $scope.loading = true;
 
     $scope.isOpen = function() { return $mdSidenav('right').isOpen(); };
     
@@ -22,6 +23,7 @@ webAppController.ServicesCtrl = function ($rootScope,$scope, CompanyService,  $m
         CompanyService.services().get({},function(result){
             if(result.error)
                 return console.log(result.error);
+            $scope.loading = false;
             $scope.services=result.data;
             $scope.getServicesByCategory();
             console.log($scope.services);

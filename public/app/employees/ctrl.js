@@ -1,11 +1,13 @@
 webAppController.EmployeesCtrl = function ($rootScope, $scope, CompanyService,  $mdDialog) {
 	
 	var self=this;
+	$scope.loading=true;
 
 	this.getEmployees=function(){
 		CompanyService.employees().get({},function(result){
 			if(result.error)
 				return console.log(result.error);
+			$scope.loading=false;
 			$scope.employees=result.data;
 		}, function(){
 	

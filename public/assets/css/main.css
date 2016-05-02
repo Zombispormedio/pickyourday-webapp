@@ -1,6 +1,9 @@
 body{
     font-family: roboto;
 }
+.loading{
+    margin-left: 45%;
+}
 .companyName{
     font-size: 25px;
     color: white;
@@ -64,15 +67,17 @@ button.webAppMenuOptions {
 /*Dashboard*/
 .timeline{
     /*overflow-x:scroll; */
-    margin-top: 2%;
-    margin-left: -3%;
+    margin-top: 4%;
+    /*margin-left: -3%;*/
+    margin-right: 3%;
+    margin-left: -5%;
 }
 .timelineContent{
     display:flex;
 }
 .timelineHours{
     display: flex;
-    width: 100%;
+   /*width: 100%;*/
 }
 
 .timelineHours .left{
@@ -92,7 +97,7 @@ button.webAppMenuOptions {
     /*text-align: center;
     border-right: 1px solid #ddd;*/
     flex: 1;        
-    margin-right: 3%;
+    /*margin-right: 3%;*/
 }
 
 .timelineHours .right .lastHour{
@@ -606,8 +611,8 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
 }
 /*my promotions*/
 .promotions > img{
-    width:150px;
-    height:100px;
+    width:170px;
+    height:125px;
     margin-right: 2%;
     margin-top: 2%;
     margin-bottom: 2%;

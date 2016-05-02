@@ -2,12 +2,13 @@ webAppController.PromotionCtrl = function ($rootScope, $scope, CompanyService, S
 	$scope.error="";
 	$scope.promotion = {images:[]};
 	$scope.images={};
+	$scope.loading = true;
 
 	this.getPromotions=function () {
 		CompanyService.promotions().get({}, function(result){
 			if(result.error)
 				return console.log(result.error);
-
+			$scope.loading = false;
 			$scope.promotions=result.data.map(function(item){
 				return item.promotions;
 			});

@@ -21,7 +21,10 @@
 		<md-datepicker class="calendar" ng-model="myDate" md-placeholder="Selecciona un dia"></md-datepicker>
 		<md-button class="md-fab fa fa-refresh md-mini addService" id="reloadOwnPickButton" style="margin-top: 1%;margin-left: 10%;" ng-click="getTimeline(service, employee, myDate)"></md-button>	
 	</div>
-
+	
+	<div class="loading" ng-if="loading">
+    	<h1><i class="fa fa-refresh fa-spin" ></i></h1>
+	</div>
 	<div ng-cloak class="timeline">
 		<div class="timelineHours">
 			<div class="left"></div>
@@ -41,6 +44,7 @@
 		 	</p>		
 		 	<div class="timelinePicks_container">
 			    <div class="timelinePicks" ng-repeat="r in t.steps[0] track by $index">
+			    	<div ng-if="$index == actualHour" style="border-left:2px solid red;height: 80px;position: absolute;margin-top:-0.8%;">{{}}</div>
 			 		<div ng-if="r == 0" style="background-color:#A2A9A9;" title="No disponible"></div>
 			      	<div class="avaliablePick" ng-if="isObject(r) == 'string'" title="Libre" ng-click="showDialog($event,r,t.resource)" style="background-color:white;"></div>
 			      	<div ng-if="isObject(r) == 'object'" style="background-color:#009688;" class="infoPick">

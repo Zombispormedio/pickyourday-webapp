@@ -1,22 +1,45 @@
-webAppController.DashboardCtrl = function ($scope, CompanyService) {
+webAppController.DashboardCtrl = function ($scope, CompanyService, $mdDialog) {
   var self = this;
   $scope.actualHour= -1;
+  $scope.loading=true;
 
-    this.getTimeline = function (){
-      CompanyService.timeline().get({rangeDays:1},function(result){
+  $scope.getTimeline = function (date, day){    
+    if(date!=null){
+      if(day == 'prev'){
+        var dPrev = new Date();
+        var dayOfMonth = $scope.myDate.getDate();
+        dPrev.setDate(dayOfMonth - 1);
+        $scope.myDate = dPrev;
+        console.log("prev " + dPrev);        
+      }        
+      if(day == 'next'){
+        var dNext = new Date();
+        var dayOfMonth = $scope.myDate.getDate();
+        dNext.setDate(dayOfMonth + 1);
+        $scope.myDate = dNext;
+        console.log("next "+dNext);
+      } 
+      document.getElementById("actualPicks").style.display = 'none';
+      console.log($scope.myDate);     
+    }else{
+      var d = new Date();
+      $scope.myDate = d;
+    }
+
+    
+    CompanyService.timeline().get({date:$scope.myDate,rangeDays:1},function(result){        
+      if(result.error)
+        return console.log(result.error);
+      $scope.loading=false;
+      $scope.timeline=result.data;
+      console.log(result.data);
+      $scope.calcSpaces(result.data[0].metadata.schedule[0].open, result.data[0].metadata.schedule[0].close);
+      
+    }, function(){
+    });
         
-        if(result.error)
-          return console.log(result.error);
-        $scope.timeline=result.data;
-        console.log(result.data);
-        $scope.calcSpaces(result.data[0].metadata.schedule[0].open, result.data[0].metadata.schedule[0].close);
-        
-      }, function(){
-
-      });
-    } 
-  this.getTimeline();  
-
+  } 
+  $scope.getTimeline();  
    /*$interval(function(){
       self.getTimeline();
     },10000)*/
@@ -41,8 +64,6 @@ webAppController.DashboardCtrl = function ($scope, CompanyService) {
 
       var dActual = new Date();
       $scope.actualHour = Math.round((((dActual.getHours()*60)+ dActual.getMinutes()) - ((openH*60)+ openM))/5); 
-      console.log($scope.actualHour);
-
       
       for(var i=0; i<=spaces; i++){
         if(i>0)

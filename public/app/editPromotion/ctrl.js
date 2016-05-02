@@ -2,11 +2,13 @@ webAppController.editPromotionCtrl = function ($rootScope, $scope, CompanyServic
 	$scope.error="";
 	$scope.promotion = {images:[]};
 	$scope.images={};
+	$scope.loading = true;
 
 	this.getPromotion = function () {
 		CompanyService.promotion().get($stateParams, function(result){
 			if(result.error)
 				return console.log(result.error);
+			$scope.loading = false;
 			$scope.promotion=result.data;			
 		}, function(){		
 				
@@ -30,11 +32,13 @@ webAppController.editPromotionCtrl = function ($rootScope, $scope, CompanyServic
 	}
 	$scope.$watch("images.data",function(){
 		var data=$scope.images.data; 
+		$scope.loading = true;
 		console.log(data);    
 		if(data){
 			SystemService.images().upload({type:"data"}, data, function(res){
 				$scope.promotion.images.push(res.data);
 			})
+			$scope.loading = false;
 		}   
 	})
 	$scope.deleteImage=function(index){

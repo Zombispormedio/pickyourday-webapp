@@ -2,6 +2,9 @@
 	<i class="fa fa-tags"></i>
 	<h1>Servicios</h1>
 </div>
+<div class="loading" ng-if="loading">
+    <h1><i class="fa fa-refresh fa-spin" ></i></h1>
+</div>
 <div class="companyServices">
 	<md-card ng-repeat="service in services" class="serviceList"  flex-md flex-gt-md="50" >
 	    <md-card-title>
