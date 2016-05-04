@@ -3,6 +3,7 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 	$scope.client={};
 	$scope.employees = [];
 	$scope.loading = true;
+	$scope.loading2 = true;
 	$scope.actualHour= -1;
 
 	this.getServices=function(){
@@ -22,7 +23,7 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 		CompanyService.resourcesByServices().list({service:serviceId},function(result){
 			if(result.error)
 				return console.log(result.error);
-			$scope.loading = false;
+			$scope.loading2 = false;
 			$scope.resourcesByServices=result.data[0];
 			for(var i=0;i<$scope.resourcesByServices.length;i++){
 				if($scope.resourcesByServices[i].asigned == true)
@@ -148,10 +149,12 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 		dateSelected = datePick;
 
 		CompanyService.pick().create({service: serviceSelected,initDate:dateSelected,nameCli,phoneCli,resource:resourceSelected},function(result){
-			if(result.error)
+			if(result.error){
 				return console.log(result.error);
-			else
-			$scope.showAlert();
+			}else{
+				$scope.showAlert();
+			}
+			
 		}, function(){
 
 		});
@@ -170,6 +173,21 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
         .then(function() {  
         	$rootScope.go("app.ownpick");
         	$scope.getTimeline(serviceSelected,resourceSelected,dateSelected);     
+        }, function() {
+            $scope.status = 'You cancelled the dialog.';
+        });
+    };
+    $scope.showErrorAlert = function() {
+        $mdDialog.show(
+            $mdDialog.alert()
+            .parent(angular.element(document.querySelector('#popupContainer')))
+            .clickOutsideToClose(true)
+            .title('')
+            .textContent('¡Ups, algo fue mal! El pick no se ha podido crear')
+            .ariaLabel('Alert Dialog Demo')
+            .ok('OK')
+         )
+        .then(function() {     
         }, function() {
             $scope.status = 'You cancelled the dialog.';
         });

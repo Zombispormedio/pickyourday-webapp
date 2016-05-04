@@ -586,6 +586,21 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
     display:inline;
     font-size: 22px;
 }
+.employeesActions2{
+    margin-top: -10%;
+    right: 0;
+    position: absolute;
+    margin-bottom: 1%;
+    
+}
+.employeesActions2 > button{
+    background: transparent;
+    border: none;
+    display:inline;
+    color:white;
+    margin-top: 5%;
+    float:right;
+}
 .timetableHead, .tagsHead{
     display:flex;	
     margin-top: -2%;
@@ -856,7 +871,7 @@ md-input-container:not(.md-input-invalid).md-input-focused label{
 .label{
     opacity: 0;
     position:absolute;
-    padding:1%;
+    padding:2%;
 }
 .label li{
     list-style:none; 

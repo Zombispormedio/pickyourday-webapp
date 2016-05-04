@@ -44,8 +44,9 @@
 		 	</p>		
 		 	<div class="timelinePicks_container">
 			    <div class="timelinePicks" ng-repeat="r in t.steps[0] track by $index">
-			    	<div ng-if="$index == actualHour" style="border-left:2px solid red;height: 80px;position: absolute;margin-top:-0.8%;">{{}}</div>
-			 		<div ng-if="r == 0" style="background-color:#A2A9A9;" title="No disponible"></div>
+			 		<div ng-if="r == 0" style="background-color:#A2A9A9;" title="No disponible">
+			 			<div ng-if="$index == actualHour" style="background-color:red; width: 45%; margin:0 auto;">{{}}</div>
+			 		</div>
 			      	<div class="avaliablePick" ng-if="isObject(r) == 'string'" title="Libre" ng-click="showDialog($event,r,t.resource)" style="background-color:white;"></div>
 			      	<div ng-if="isObject(r) == 'object'" style="background-color:#009688;" class="infoPick">
 					    <ul class="label">
@@ -54,7 +55,9 @@
 		                  <li ng-if="r.service!=''">{{r.service}}</li>
 		                </ul>
 				  	</div>
-				    <div ng-if="r == 2" style="background-color:#424242;" title="Cerrado"></div>
+				    <div ng-if="r == 2" style="background-color:#424242;" title="Cerrado">
+				    	<div ng-if="$index == actualHour" style="background-color:red; width: 45%; margin:0 auto;">{{}}</div>
+				    </div>
 				</div>
 			</div>
 		</div>

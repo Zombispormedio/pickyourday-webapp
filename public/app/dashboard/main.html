@@ -2,12 +2,14 @@
 <div class="head">
 	<i class="fa fa-calendar"></i>
 	<h1>Dashboard</h1>
-  <md-datepicker class="calendar" ng-model="myDate" md-placeholder="" style="position:absolute;right: 70px;" ng-change="getTimeline(myDate);"></md-datepicker>
+  <md-datepicker class="calendar" ng-model="myDate" md-placeholder="" style="position:absolute;right: 70px;width:104px;" ng-change="getTimeline(myDate);"></md-datepicker>
 </div>
   <button class="menuIcon fa fa-arrow-left" ng-style="{color: '#00796B', 'font-size':'25px', height:'25px',position:'absolute', left:'0'}" ng-click="getTimeline(myDate,'prev')"></button>
   <button class="menuIcon fa fa-arrow-right" ng-style="{color: '#00796B', 'font-size':'25px', height:'25px',position:'absolute',right:'25px'}" ng-click="getTimeline(myDate,'next')"></button>
 
-
+<div class="loading" ng-if="loading">
+      <h1><i class="fa fa-refresh fa-spin" ></i></h1>
+</div>
 
 <div ng-cloak class="timeline">
 	<div class="timelineHours">
@@ -20,36 +22,48 @@
 				<span class="hour">{{lastHour}}</span>
 			</div>
 		</div>
-	</div>
-<div class="loading" ng-if="loading">
-    <h1><i class="fa fa-refresh fa-spin" ></i></h1>
-</div>
+	</div>  
+
 	<div class="timelineContent" ng-repeat="t in timeline[0].timeLine">    
 	 	<p class="timelineNames">
 	 		{{t.resource.name}} {{t.resource.surname}}
 	 	</p>	 
 	 	<div class="timelinePicks_container">
 		    <div class="timelinePicks" ng-repeat="r in t.steps[0] track by $index">
-		      <div ng-if="$index == actualHour" style="border-left:2px solid red;height: 80px;position: absolute;margin-top:-0.8%;">{{}}</div>
-          <div ng-if="r == 0" style="background-color:white;" title="Libre"></div>          
+		      
+          <div ng-if="r == 0" style="background-color:white;" title="Libre">
+            <div ng-if="$index == actualHour" style="background-color:red; width: 45%; margin:0 auto;">{{}}</div>
+          </div>          
 		      <div ng-if="r!=0 && r!=2" style="background-color:#009688;" class="infoPick">
                 <ul class="label">
+                  <div class="employeesActions2">
+                    <button class="fa fa-times" ng-click="cancelPick(r.id_pick)"></button>
+                  </div>
+                  <div>
                   <li ng-if="r.customer!=''">{{r.customer}}</li>
                   <li ng-if="r.phone!=''">{{r.phone}}</li>
-                  <li ng-if="r.service!=''">{{r.service}}</li>
+                  <li ng-if="r.service!=''">{{r.service}}</li></div>
                 </ul>
           </div>
-		      <div ng-if="r == 2" style="background-color:#424242;" title="Cerrado"></div>	
+		      <div ng-if="r == 2" style="background-color:#424242;" title="Cerrado">
+             <div ng-if="$index == actualHour" style="background-color:red; width: 45%; margin:0 auto;">{{}}</div>
+
+          </div>	
 
 		    </div>       
 		</div>
 	</div>
 </div>
 
+
 <div id="actualPicks">
   <div class="head">
     <i class="fa fa-calendar-check-o"></i>
     <h1>Picks actuales</h1>
+  </div>
+
+  <div class="loading" ng-if="loading2">
+    <h1><i class="fa fa-refresh fa-spin" ></i></h1>
   </div>
   <md-list-item class="md-3-line employeesAvatar allEmployees" ng-repeat="employee in employees" ng-init="employee.open=false">  
       <div class="employee">
@@ -76,7 +90,7 @@
               </div>
               <div class="employeesActions">
                 <button class="fa fa-arrow-right" aria-label="edit" ng-click="nextPick(p._id,p.state)"></button> 
-                <button class="fa fa-times" ng-click="cancelPick(p._id,p.state)"></button>
+                <button class="fa fa-times" ng-click="nextPick(p._id,p.state)"></button>
               </div>  
             </div>
             <div ng-if="$index == 1" class="md-list-item-text ">

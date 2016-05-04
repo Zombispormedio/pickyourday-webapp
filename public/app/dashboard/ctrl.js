@@ -2,43 +2,70 @@ webAppController.DashboardCtrl = function ($scope, CompanyService, $mdDialog) {
   var self = this;
   $scope.actualHour= -1;
   $scope.loading=true;
+  $scope.loading2=true;
 
-  $scope.getTimeline = function (date, day){    
+  $scope.getTimeline = function (date, day){  
+    $scope.loading=true;
+    var d = new Date();
     if(date!=null){
       if(day == 'prev'){
         var dPrev = new Date();
         var dayOfMonth = $scope.myDate.getDate();
         dPrev.setDate(dayOfMonth - 1);
         $scope.myDate = dPrev;
-        console.log("prev " + dPrev);        
       }        
       if(day == 'next'){
         var dNext = new Date();
         var dayOfMonth = $scope.myDate.getDate();
         dNext.setDate(dayOfMonth + 1);
         $scope.myDate = dNext;
-        console.log("next "+dNext);
-      } 
-      document.getElementById("actualPicks").style.display = 'none';
-      console.log($scope.myDate);     
+      }   
     }else{
       var d = new Date();
+      var date = d.getDate();
       $scope.myDate = d;
     }
-
-    
-    CompanyService.timeline().get({date:$scope.myDate,rangeDays:1},function(result){        
-      if(result.error)
-        return console.log(result.error);
-      $scope.loading=false;
-      $scope.timeline=result.data;
-      console.log(result.data);
-      $scope.calcSpaces(result.data[0].metadata.schedule[0].open, result.data[0].metadata.schedule[0].close);
-      
-    }, function(){
-    });
-        
+    if($scope.myDate > d || $scope.myDate == d){
+      CompanyService.timeline().get({date:$scope.myDate,rangeDays:1},function(result){        
+        if(result.error)
+          return console.log(result.error);
+        $scope.loading=false;
+        console.log($scope.myDate);
+        console.log(d);
+        if($scope.myDate.getDay() == d.getDay()){
+          console.log("block")
+          document.getElementById("actualPicks").style.display = 'block';
+          $scope.getEmployees();
+        }else{
+          console.log("none")
+          document.getElementById("actualPicks").style.display = 'none';
+        }
+        $scope.timeline=result.data;
+        console.log(result.data);
+        $scope.calcSpaces(result.data[0].metadata.schedule[0].open, result.data[0].metadata.schedule[0].close);
+      }, function(){
+      });
+    }else{
+      $scope.myDate = d;
+      $scope.showErrorAlert();
+    }   
   } 
+  $scope.showErrorAlert = function() {
+      $mdDialog.show(
+          $mdDialog.alert()
+          .parent(angular.element(document.querySelector('#popupContainer')))
+          .clickOutsideToClose(true)
+          .title('')
+          .textContent('¡Fecha no válida!')
+          .ariaLabel('Alert Dialog Demo')
+          .ok('OK')
+       )
+      .then(function() { 
+          $scope.getTimeline();    
+      }, function() {
+          $scope.status = 'You cancelled the dialog.';
+      });
+  };
   $scope.getTimeline();  
    /*$interval(function(){
       self.getTimeline();
@@ -79,7 +106,7 @@ webAppController.DashboardCtrl = function ($scope, CompanyService, $mdDialog) {
   }
   /*Day dashboard*/
 
-  this.getEmployees=function(){
+  $scope.getEmployees=function(){
     CompanyService.employees().get({},function(result){
       if(result.error)
         return console.log(result.error);
@@ -96,14 +123,15 @@ webAppController.DashboardCtrl = function ($scope, CompanyService, $mdDialog) {
       }, function done(err,result) {
           if(err)
             return console.log(err);
-            $scope.employees = result;
-            console.log($scope.employees);
+
+          $scope.loading2 = false;
+          $scope.employees = result;
+          console.log($scope.employees);
       });
     }, function(){
 
     });
   }
-  this.getEmployees();
 
     $scope.showInfo=function(employee){
     
@@ -126,13 +154,13 @@ webAppController.DashboardCtrl = function ($scope, CompanyService, $mdDialog) {
 
     });
   }
-  $scope.cancelPick = function(idPick,statePick){
+  $scope.cancelPick = function(idPick){
     console.log(idPick);
-    console.log(statePick);
-    CompanyService.nextPick().change({pick:idPick,state:statePick},function(result){
+    CompanyService.cancelPick().cancel({id:idPick},function(result){
       if(result.error)
         return console.log(result.error);
-      $scope.nextPick=result.data;
+      $scope.cancelPick=result.data;
+      $scope.getTimeline($scope.myDate);
     }, function(){
 
     });

@@ -9,6 +9,7 @@ webAppController.EmployeesCtrl = function ($rootScope, $scope, CompanyService,  
 				return console.log(result.error);
 			$scope.loading=false;
 			$scope.employees=result.data;
+			console.log($scope.employees);
 		}, function(){
 	
 		});
