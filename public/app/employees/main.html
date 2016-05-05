@@ -36,7 +36,7 @@
           </div>
           <md-chips ng-model="employee.services" readonly="true">
             <md-chip-template>
-                {{$chip.id_name.name}}
+                {{$chip.name}}
             </md-chip-template>
           </md-chips>
           <p ng-if="employee.services.length===0">No tiene servicios asignados</p> 

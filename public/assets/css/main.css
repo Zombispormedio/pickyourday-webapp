@@ -265,9 +265,19 @@ background-color: blue;
 }
 /*Company profile*/
 .iconState{
-    float: right;
+    position:absolute;
+    right:120px;
     font-size: 25px;
     margin-top: 4%;
+}
+.requestButton{
+    color: black;
+    font-size: 30px;
+    height: 25px;
+    position: absolute;
+    right: 50px;
+    margin-top: 4.3%;
+    cursor: hand;
 }
 .form md-input-container>md-select{
     margin-left: 4%;
@@ -374,6 +384,7 @@ p.phones{
 .serviceList>md-card-title{
     background-color: #009688;	
     padding:0;
+    flex:2;
 }
 .serviceList>md-card-title p{
     margin-left: 2%;
@@ -404,7 +415,8 @@ p.phones{
 }
 
 .servicesCardInfo{
-    display:flex;
+    display: flex;
+    flex: 10;
 }
 .servicesCardInfo md-card-actions{    
     margin-top: 5%;
@@ -436,10 +448,17 @@ md-checkbox .md-ink-ripple, md-checkbox.md-checked .md-ink-ripple{
 margin-bottom: 5%;
 }*/
 .companyServices{
-    display:flex;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 .companyServices md-card{
-    width:50%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 47%;
+    max-width: 47%;
+    margin: 2% 0;
 }
 .buttonDeleteService, .buttonEditService{
     color:white;

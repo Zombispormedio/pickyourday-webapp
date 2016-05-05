@@ -37,16 +37,22 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 	}
 
 	var serviceSelected = "";
+	var idServiceSelected = -1;
+	var idResourceSelected = -1;
 	var resourceSelected = "";
 	var nullService=false;
 	var dateSelected = "";
 
 	$scope.getTimeline = function (service, employee, date){
-		serviceSelected = service._id;
+		serviceSelected = service;
+		idServiceSelected = service._id;
+		resourceSelected = employee;
 		$scope.loading = true;
 		if(service!=null){
 			if(employee!=null){
-				CompanyService.timeline().get({service:service._id, resource:employee.resource_id,rangeDays:1,date:date},function(result){			  		
+
+				idResourceSelected = employee.resource_id;
+				CompanyService.timeline().get({service:idServiceSelected, resource:idResourceSelected,rangeDays:1,date:date},function(result){			  		
 			  		if(result.error)
 				    	return console.log(result.error);
 				    $scope.loading = false;
@@ -57,7 +63,7 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 				    	$("#selectService").children().css("border-bottom-color", "rgba(0, 0, 0, 0.12)");	      
 			    	}, function(){ });
 			}else{
-				CompanyService.timeline().get({service:service._id,rangeDays:1,date:date},function(result){
+				CompanyService.timeline().get({service:idServiceSelected,rangeDays:1,date:date},function(result){
 			  		if(result.error)
 				    	return console.log(result.error);
 				    $scope.loading = false;
@@ -114,7 +120,7 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
   	}	
   	
   	$scope.showDialog = function(ev, date, employee) {
-  		resourceSelected = employee.id;
+  		idResourceSelected = employee.id;
 	    $mdDialog.show({
 	      controller: DialogController,
 	      templateUrl: 'app/ownpick/newPick.tmpl.html',
@@ -148,7 +154,7 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 		var phoneCli=client.phone;
 		dateSelected = datePick;
 
-		CompanyService.pick().create({service: serviceSelected,initDate:dateSelected,nameCli,phoneCli,resource:resourceSelected},function(result){
+		CompanyService.pick().create({service: idServiceSelected,initDate:dateSelected,nameCli,phoneCli,resource:idResourceSelected},function(result){
 			if(result.error){
 				return console.log(result.error);
 			}else{
@@ -171,7 +177,6 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
             .ok('OK')
          )
         .then(function() {  
-        	$rootScope.go("app.ownpick");
         	$scope.getTimeline(serviceSelected,resourceSelected,dateSelected);     
         }, function() {
             $scope.status = 'You cancelled the dialog.';

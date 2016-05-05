@@ -86,7 +86,11 @@
               </div>
               <div class="head2">
                 <i class="fa fa-tag" ></i> 
-                <p>{{p.service.metadata.name}}</p>
+                <p>{{p.service.name}}</p>
+              </div>
+              <div class="head2">
+                <i class="fa fa-clock-o" ></i> 
+                <p>{{p.initDate}}</p>
               </div>
               <div class="employeesActions">
                 <button class="fa fa-arrow-right" aria-label="edit" ng-click="nextPick(p._id,p.state)"></button> 
@@ -104,8 +108,12 @@
               </div>
               <div class="head2">
                 <i class="fa fa-tag" ></i> 
-                <p>{{p.service.metadata.name}}</p>
-              </div>             
+                <p>{{p.service.name}}</p>
+              </div>    
+              <div class="head2">
+                <i class="fa fa-clock-o" ></i> 
+                <p>{{p.initDate}}</p>
+              </div>         
             </div>              
           </div>
           <p ng-if="employee.pick.length ==0">¡Actualmente, no hay ningún pick asociado a este empleado!</p>
