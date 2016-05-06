@@ -25,6 +25,7 @@
 	<div class="loading" ng-if="loading">
     	<h1><i class="fa fa-refresh fa-spin" ></i></h1>
 	</div>
+
 	<div ng-cloak class="timeline">
 		<div class="timelineHours">
 			<div class="left"></div>
@@ -48,7 +49,7 @@
 			 			<div ng-if="$index == actualHour" style="background-color:red; width: 45%; margin:0 auto;">{{}}</div>
 			 		</div>
 			      	<div class="avaliablePick" ng-if="isObject(r) == 'string'" title="Libre" ng-click="showDialog($event,r,t.resource)" style="background-color:white;"></div>
-			      	<div ng-if="isObject(r) == 'object'" style="background-color:#009688;" class="infoPick">
+			      	<div ng-if="isObject(r) == 'object'" class="infoPick ownPick">
 					    <ul class="label">
 		                  <li ng-if="r.customer!=''">{{r.customer}}</li>
 		                  <li ng-if="r.phone!=''">{{r.phone}}</li>
@@ -60,5 +61,8 @@
 				    </div>
 				</div>
 			</div>
-		</div>
+		</div>		
+	</div>
+	<div ng-if="timeline[0].timeLine.length == '0'">
+		<p>¡No hay empleados asociados a este servicio!</p>
 	</div>

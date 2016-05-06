@@ -32,8 +32,7 @@ webAppController.editPromotionCtrl = function ($rootScope, $scope, CompanyServic
 	}
 	$scope.$watch("images.data",function(){
 		var data=$scope.images.data; 
-		$scope.loading = true;
-		console.log(data);    
+		$scope.loading = true;  
 		if(data){
 			SystemService.images().upload({type:"data"}, data, function(res){
 				$scope.promotion.images.push(res.data);
@@ -49,6 +48,7 @@ webAppController.editPromotionCtrl = function ($rootScope, $scope, CompanyServic
 			if(result.error)
 				return console.log(result.error);
 			$scope.services=result.data;
+			console.log($scope.services);
 		}, function(){
 
 		});

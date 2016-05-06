@@ -1,7 +1,7 @@
 <div ng-cloack>
 <div class="head">
 	<i class="fa fa-calendar"></i>
-	<h1>Dashboard</h1>
+	<h1>Mi negocio</h1>
   <md-datepicker class="calendar" ng-model="myDate" md-placeholder="" style="position:absolute;right: 70px;width:104px;" ng-change="getTimeline(myDate);"></md-datepicker>
 </div>
   <button class="menuIcon fa fa-arrow-left" ng-style="{color: '#00796B', 'font-size':'25px', height:'25px',position:'absolute', left:'0'}" ng-click="getTimeline(myDate,'prev')"></button>
@@ -34,7 +34,7 @@
           <div ng-if="r == 0" style="background-color:white;" title="Libre">
             <div ng-if="$index == actualHour" style="background-color:red; width: 45%; margin:0 auto;">{{}}</div>
           </div>          
-		      <div ng-if="r!=0 && r!=2" style="background-color:#009688;" class="infoPick">
+		      <div ng-if="r!=0 && r!=2" class="infoPick dashboard">
                 <ul class="label">
                   <div class="employeesActions2">
                     <button class="fa fa-times" ng-click="cancelPick(r.id_pick)"></button>
@@ -73,7 +73,6 @@
         </div>        
       </div>
       <div ng-if="employee.open" style="display:flex;">
-        {{pick}}
           <div ng-repeat="p in employee.pick track by $index" style="padding-left: 8%;padding-right: 10%;padding-bottom:2%;">
             <div ng-if="$index == 0" class="md-list-item-text">
               <div class="head2">
@@ -93,8 +92,8 @@
                 <p>{{p.initDate}}</p>
               </div>
               <div class="employeesActions">
-                <button class="fa fa-arrow-right" aria-label="edit" ng-click="nextPick(p._id,p.state)"></button> 
-                <button class="fa fa-times" ng-click="nextPick(p._id,p.state)"></button>
+                <button class="fa fa-arrow-right" aria-label="edit" ng-click="nextPick(employee._id,p._id,'finished')"></button> 
+                <button class="fa fa-times" ng-click="nextPick(employee._id, p._id,'cancelled')"></button>
               </div>  
             </div>
             <div ng-if="$index == 1" class="md-list-item-text ">

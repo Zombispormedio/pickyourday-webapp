@@ -30,14 +30,10 @@ webAppController.DashboardCtrl = function ($scope, CompanyService, $mdDialog) {
         if(result.error)
           return console.log(result.error);
         $scope.loading=false;
-        console.log($scope.myDate);
-        console.log(d);
         if($scope.myDate.getDay() == d.getDay()){
-          console.log("block")
           document.getElementById("actualPicks").style.display = 'block';
           $scope.getEmployees();
         }else{
-          console.log("none")
           document.getElementById("actualPicks").style.display = 'none';
         }
         $scope.timeline=result.data;
@@ -155,7 +151,6 @@ webAppController.DashboardCtrl = function ($scope, CompanyService, $mdDialog) {
     });
   }
   $scope.cancelPick = function(idPick){
-    console.log(idPick);
     CompanyService.cancelPick().cancel({id:idPick},function(result){
       if(result.error)
         return console.log(result.error);
@@ -166,11 +161,14 @@ webAppController.DashboardCtrl = function ($scope, CompanyService, $mdDialog) {
     });
   }
 
-  $scope.nextPick = function(idPick,statePick){
-    CompanyService.nextPick().change({pick:idPick,state:statePick},function(result){
+  $scope.nextPick = function(pResource,idPick,statePick){
+    console.log("entra");
+    CompanyService.nextPick().change({resource: pResource,pick:idPick,state:statePick},function(result){
       if(result.error)
         return console.log(result.error);
       $scope.nextPick=result.data;
+      console.log($scope.nextPick);
+      $rootScope.go("app.dashboard");
     }, function(){
 
     });

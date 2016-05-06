@@ -48,7 +48,7 @@
             <md-input-container flex="50">           
                 <label>Servicios asociados</label>
                 <md-icon class="fa fa-tags formIcon"></md-icon>
-                <md-select ng-model="promotion.services" multiple style="margin-left:0%;">
+                <md-select ng-model="promotion.services" style="margin-left:0%;">
                     <md-option ng-value="service._id" ng-repeat="service in services">{{ service.id_name.name}}</md-option>
                 </md-select>
             </md-input-container>

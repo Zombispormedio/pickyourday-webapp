@@ -50,8 +50,7 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 		$scope.loading = true;
 		if(service!=null){
 			if(employee!=null){
-
-				idResourceSelected = employee.resource_id;
+				idResourceSelected = employee.id;
 				CompanyService.timeline().get({service:idServiceSelected, resource:idResourceSelected,rangeDays:1,date:date},function(result){			  		
 			  		if(result.error)
 				    	return console.log(result.error);
@@ -120,6 +119,7 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
   	}	
   	
   	$scope.showDialog = function(ev, date, employee) {
+  		resourceSelected = employee;
   		idResourceSelected = employee.id;
 	    $mdDialog.show({
 	      controller: DialogController,
@@ -159,6 +159,10 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 				return console.log(result.error);
 			}else{
 				$scope.showAlert();
+				console.log(serviceSelected);
+				console.log(resourceSelected);
+				console.log(dateSelected);
+				$scope.getTimeline(serviceSelected,resourceSelected,dateSelected);
 			}
 			
 		}, function(){
@@ -177,7 +181,7 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
             .ok('OK')
          )
         .then(function() {  
-        	$scope.getTimeline(serviceSelected,resourceSelected,dateSelected);     
+        	     
         }, function() {
             $scope.status = 'You cancelled the dialog.';
         });

@@ -29,16 +29,20 @@ webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, Sys
     this.getProfile=function(){
         $rootScope.getProfile(function(data){
         $scope.profile=data;
-        console.log($scope.profile.state);
         if($scope.profile.state == "active"){
             document.getElementById("state").className="fa fa-check";
             document.getElementById("state").title = 'Activada';
+
         }else if($scope.profile.state == "demo"){
             document.getElementById("state").className="fa fa-eye";
             document.getElementById("state").title = 'Modo demo';
+            document.getElementById("request").display='block';
+            document.getElementById("request").className="fa fa-paper-plane";
+
         }else if($scope.profile.state == "pending"){
             document.getElementById("state").className="fa fa-clock-o";
             document.getElementById("state").title = 'Pendiente de confirmación';
+
         }else if($scope.profile.state == "refused"){
             document.getElementById("state").className="fa fa-ban";
             document.getElementById("state").title = 'Cancelada';

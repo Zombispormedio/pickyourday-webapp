@@ -270,6 +270,9 @@ background-color: blue;
     font-size: 25px;
     margin-top: 4%;
 }
+#request{
+    display:none;
+}
 .requestButton{
     color: black;
     font-size: 30px;
@@ -887,20 +890,59 @@ md-input-container:not(.md-input-invalid).md-input-focused label{
 .md-datepicker-input-container.md-datepicker-focused{
     border-bottom-color: #009688;
 }
-.label{
+.ownPick.label{
     opacity: 0;
+    height: 66px;
+    top: -15px;
     position:absolute;
-    padding:2%;
+    padding: 0 10px;
+    width: 200px;
+    z-index: -1;
 }
-.label li{
+.ownPick.label li{
     list-style:none; 
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    height:auto;
 }
-.infoPick:hover .label{
+.infoPick.ownPick:hover .ownPick.label{
     opacity:1;
     background-color: #009688;
     color: white;
     font-size: 15px;
     font-style: italic;
+    z-index: 1000;
+}
+.infoPick.ownPick{
+    position: relative;
+    background-color: #009688;
+}
+.infoPick.ownPick .ownPick.label:hover{
+    opacity: 0;
+    margin-left:10px;
+
+}
+
+.dashboard .label{
+    opacity: 0;
+    position:absolute;
+    padding:2%;
+    z-index: -1;
+}
+.dashboard .label li{
+    list-style:none; 
+}
+.infoPick.dashboard:hover .label{
+    opacity:1;
+    background-color: #009688;
+    color: white;
+    font-size: 15px;
+    font-style: italic;
+    z-index: 1000;
+}
+.infoPick{
+    background-color:#009688;
 }
 .avaliablePick:hover{
     background-color: #00796B;
