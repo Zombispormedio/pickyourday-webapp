@@ -546,18 +546,33 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
     border-radius: 50px;   
     margin-top: 2%;
 }
-.head2{
+.employeePicks{
+    /*padding-left: 8%;
+    padding-right: 10%;
+    padding-bottom:2%;*/
     display:flex;
-    margin-top: 2%;
+    flex-wrap:wrap;
+    flex:1;
+}
+.employeePicks div{
+    margin-left: 10%;
+    margin-top: 0;
+    margin-bottom: 1%;
+    margin-right: 0;
+}
+.head2{
+    display: flex;
+    flex:2;
+    margin-top: 2%; 
+    flex-direction: row;
 }
 .head2 > i{
-    font-size: 22px;
-    padding-top: 2%;
-    padding-right: 10%;
-    display:flex;
+    font-size: 20px;
+    padding-top: 0%;
+    margin-right: 1%;
 }
 .head2 > p{
-    padding-left: 10%;
+    justify-content: space-between; 
 }
 .dayEmployee{
     margin-top: 2%;
@@ -661,9 +676,7 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
     margin-right: 2%;
 }
 .promotionActions{
-    margin-top: 10%;
-    margin-bottom: 2%;
-    display:flex;
+    margin-top: 13%;
 }
 .promotionActions > button{
     background: transparent;
@@ -679,7 +692,7 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
     margin-top: -2%;
 }
 .statePromotion{
-    margin-right: -7%;
+    margin-right: -5%;
 }
 .statePromotion p{
     font-size: 15px;
@@ -765,9 +778,9 @@ a{
     display: none;
 }
 
-.md-dialog-container{
+/*.md-dialog-container{
     position: fixed;
-}
+}*/
 
 /***CHIPS***/
 /*md-chips .md-chip{
@@ -890,7 +903,7 @@ md-input-container:not(.md-input-invalid).md-input-focused label{
 .md-datepicker-input-container.md-datepicker-focused{
     border-bottom-color: #009688;
 }
-.ownPick.label{
+.ownPick .label{
     opacity: 0;
     height: 66px;
     top: -15px;
@@ -899,14 +912,14 @@ md-input-container:not(.md-input-invalid).md-input-focused label{
     width: 200px;
     z-index: -1;
 }
-.ownPick.label li{
+.ownPick .label li{
     list-style:none; 
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
     height:auto;
 }
-.infoPick.ownPick:hover .ownPick.label{
+.infoPick.ownPick:hover .label{
     opacity:1;
     background-color: #009688;
     color: white;
@@ -918,7 +931,7 @@ md-input-container:not(.md-input-invalid).md-input-focused label{
     position: relative;
     background-color: #009688;
 }
-.infoPick.ownPick .ownPick.label:hover{
+.infoPick .ownPick .label:hover{
     opacity: 0;
     margin-left:10px;
 

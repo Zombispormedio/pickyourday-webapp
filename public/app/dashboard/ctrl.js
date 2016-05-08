@@ -1,4 +1,4 @@
-webAppController.DashboardCtrl = function ($scope, CompanyService, $mdDialog) {
+webAppController.DashboardCtrl = function ($scope, CompanyService, $mdDialog,$rootScope) {
   var self = this;
   $scope.actualHour= -1;
   $scope.loading=true;
@@ -19,13 +19,16 @@ webAppController.DashboardCtrl = function ($scope, CompanyService, $mdDialog) {
         var dayOfMonth = $scope.myDate.getDate();
         dNext.setDate(dayOfMonth + 1);
         $scope.myDate = dNext;
-      }   
+      }  
+
     }else{
       var d = new Date();
-      var date = d.getDate();
       $scope.myDate = d;
     }
-    if($scope.myDate > d || $scope.myDate == d){
+    console.log("mydate "+$scope.myDate);
+      console.log("d "+d);
+    if($scope.myDate.getDate() >= d.getDate() && $scope.myDate.getMonth() >= d.getMonth()){
+      
       CompanyService.timeline().get({date:$scope.myDate,rangeDays:1},function(result){        
         if(result.error)
           return console.log(result.error);
@@ -37,7 +40,6 @@ webAppController.DashboardCtrl = function ($scope, CompanyService, $mdDialog) {
           document.getElementById("actualPicks").style.display = 'none';
         }
         $scope.timeline=result.data;
-        console.log(result.data);
         $scope.calcSpaces(result.data[0].metadata.schedule[0].open, result.data[0].metadata.schedule[0].close);
       }, function(){
       });
@@ -46,6 +48,7 @@ webAppController.DashboardCtrl = function ($scope, CompanyService, $mdDialog) {
       $scope.showErrorAlert();
     }   
   } 
+
   $scope.showErrorAlert = function() {
       $mdDialog.show(
           $mdDialog.alert()
@@ -62,7 +65,7 @@ webAppController.DashboardCtrl = function ($scope, CompanyService, $mdDialog) {
           $scope.status = 'You cancelled the dialog.';
       });
   };
-  $scope.getTimeline();  
+  $scope.getTimeline();
    /*$interval(function(){
       self.getTimeline();
     },10000)*/
@@ -150,25 +153,28 @@ webAppController.DashboardCtrl = function ($scope, CompanyService, $mdDialog) {
 
     });
   }
-  $scope.cancelPick = function(idPick){
+  $scope.cancelPick = function(idPick,date){
+    console.log(idPick);
     CompanyService.cancelPick().cancel({id:idPick},function(result){
       if(result.error)
         return console.log(result.error);
       $scope.cancelPick=result.data;
-      $scope.getTimeline($scope.myDate);
+      $scope.myDate = date;
+      console.log($scope.myDate);
+      $scope.getTimeline($scope.myDate, " ");
     }, function(){
 
     });
   }
 
   $scope.nextPick = function(pResource,idPick,statePick){
-    console.log("entra");
     CompanyService.nextPick().change({resource: pResource,pick:idPick,state:statePick},function(result){
       if(result.error)
         return console.log(result.error);
       $scope.nextPick=result.data;
       console.log($scope.nextPick);
-      $rootScope.go("app.dashboard");
+      $scope.getTimeline();
+      $scope.getEmployees();
     }, function(){
 
     });

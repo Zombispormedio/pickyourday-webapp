@@ -2,6 +2,7 @@ webAppController.EmployeesCtrl = function ($rootScope, $scope, CompanyService,  
 	
 	var self=this;
 	$scope.loading=true;
+	
 
 	this.getEmployees=function(){
 		CompanyService.employees().get({},function(result){
@@ -64,6 +65,7 @@ webAppController.EmployeesCtrl = function ($rootScope, $scope, CompanyService,  
         }, function() {
           $scope.status = 'You cancelled the dialog.';
         });
+
   	}
 
 
@@ -114,6 +116,7 @@ webAppController.EmployeesCtrl = function ($rootScope, $scope, CompanyService,  
 				return console.log(result.error);
 			console.log(result)
 			$scope.employees=result.data;
+			$scope.showCreateAlert();
 		}, function(){
 
 		});
@@ -123,8 +126,8 @@ webAppController.EmployeesCtrl = function ($rootScope, $scope, CompanyService,  
 		CompanyService.employees().update({id:employee._id},employee,function(result){
 			if(result.error)
 				return console.log(result.error);
-			console.log(result)
 			$scope.employees=result.data;
+			$scope.showModifyAlert();
 		}, function(){
 
 		});
@@ -146,6 +149,29 @@ webAppController.EmployeesCtrl = function ($rootScope, $scope, CompanyService,  
             .clickOutsideToClose(true)
             .title('')
             .textContent('¡Empleado eliminado correctamente!')
+            .ariaLabel('Alert Dialog Demo')
+            .ok('OK')
+        );
+    };
+    $scope.showModifyAlert = function() {
+        $mdDialog.show(
+            $mdDialog.alert()
+            .parent(angular.element(document.querySelector('#popupContainer')))
+            .clickOutsideToClose(true)
+            .title('')
+            .textContent('¡Empleado modificado correctamente!')
+            .ariaLabel('Alert Dialog Demo')
+            .ok('OK')
+        );
+    };
+    
+    $scope.showCreateAlert = function() {
+        $mdDialog.show(
+            $mdDialog.alert()
+            .parent(angular.element(document.querySelector('#popupContainer')))
+            .clickOutsideToClose(true)
+            .title('')
+            .textContent('¡Empleado creado correctamente!')
             .ariaLabel('Alert Dialog Demo')
             .ok('OK')
         );

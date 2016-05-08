@@ -21,9 +21,6 @@ webAppController.PromotionCtrl = function ($rootScope, $scope, CompanyService, S
 	$scope.goToNewPromotion=function(){
 		$rootScope.go("app.newPromotion");
 	}
-	$scope.edit=function(index){
-		$rootScope.go("app.editPromotion", {id:$scope.promotions[index]._id});
-	}
 	$scope.delete=function(index){
 		CompanyService.promotion().delete({id:$scope.promotions[index]._id}, function(result){
 			if(result.error)

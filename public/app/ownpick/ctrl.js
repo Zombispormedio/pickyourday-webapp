@@ -1,7 +1,7 @@
 webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdDialog){
 	
 	$scope.client={};
-	$scope.employees = [];
+	
 	$scope.loading = true;
 	$scope.loading2 = true;
 	$scope.actualHour= -1;
@@ -20,17 +20,17 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 	this.getServices();
 
 	$scope.getEmployees=function(serviceId){
+		$scope.employees = [];
+		$scope.loading=true;
 		CompanyService.resourcesByServices().list({service:serviceId},function(result){
 			if(result.error)
 				return console.log(result.error);
-			$scope.loading2 = false;
+			$scope.loading = false;
 			$scope.resourcesByServices=result.data[0];
 			for(var i=0;i<$scope.resourcesByServices.length;i++){
 				if($scope.resourcesByServices[i].asigned == true)
 					$scope.employees.push($scope.resourcesByServices[i]);
 			}
-
-			console.log($scope.employees);
 		}, function(){
 	
 		});
@@ -48,9 +48,16 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 		idServiceSelected = service._id;
 		resourceSelected = employee;
 		$scope.loading = true;
+
+		console.log(service)
+		console.log(employee)
+		
 		if(service!=null){
 			if(employee!=null){
-				idResourceSelected = employee.id;
+				if(employee.resource_id != null)
+					idResourceSelected = employee.resource_id;
+				else
+					idResourceSelected = employee.id;	
 				CompanyService.timeline().get({service:idServiceSelected, resource:idResourceSelected,rangeDays:1,date:date},function(result){			  		
 			  		if(result.error)
 				    	return console.log(result.error);
@@ -73,8 +80,7 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 				    if(nullService==true)
 				    	$("#selectService").children().css("border-bottom-color", "rgba(0, 0, 0, 0.12)");	      
 		    	}, function(){ });
-			}
-		  	
+			}		  	
 		}else{
 			nullService=true;
 			$("#selectService").children().css("border-bottom-color", "red");
@@ -86,7 +92,6 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
   	}
 
 	$scope.spaces = [];
-
   	$scope.calcSpaces = function(o, c){
 
   		var open = new Date(o);
@@ -120,7 +125,10 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
   	
   	$scope.showDialog = function(ev, date, employee) {
   		resourceSelected = employee;
+
   		idResourceSelected = employee.id;
+  		console.log(employee);
+  		console.log(idResourceSelected);
 	    $mdDialog.show({
 	      controller: DialogController,
 	      templateUrl: 'app/ownpick/newPick.tmpl.html',
@@ -131,7 +139,7 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
         .then(function(client) {
       		$scope.createPick(date,client);
         }, function() {
-          $scope.status = 'You cancelled the dialog.';
+          	$scope.status = 'You cancelled the dialog.';
         });
   	}
 
@@ -159,9 +167,6 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 				return console.log(result.error);
 			}else{
 				$scope.showAlert();
-				console.log(serviceSelected);
-				console.log(resourceSelected);
-				console.log(dateSelected);
 				$scope.getTimeline(serviceSelected,resourceSelected,dateSelected);
 			}
 			
@@ -180,8 +185,8 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
             .ariaLabel('Alert Dialog Demo')
             .ok('OK')
          )
-        .then(function() {  
-        	     
+        .then(function() { 
+			
         }, function() {
             $scope.status = 'You cancelled the dialog.';
         });
@@ -196,7 +201,7 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
             .ariaLabel('Alert Dialog Demo')
             .ok('OK')
          )
-        .then(function() {     
+        .then(function() {         
         }, function() {
             $scope.status = 'You cancelled the dialog.';
         });

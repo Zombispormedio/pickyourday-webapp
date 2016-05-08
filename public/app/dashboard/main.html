@@ -37,13 +37,14 @@
 		      <div ng-if="r!=0 && r!=2" class="infoPick dashboard">
                 <ul class="label">
                   <div class="employeesActions2">
-                    <button class="fa fa-times" ng-click="cancelPick(r.id_pick)"></button>
+                    <button class="fa fa-times" ng-click="cancelPick(r.id_pick, myDate)"></button>
                   </div>
                   <div>
                   <li ng-if="r.customer!=''">{{r.customer}}</li>
                   <li ng-if="r.phone!=''">{{r.phone}}</li>
                   <li ng-if="r.service!=''">{{r.service}}</li></div>
                 </ul>
+                <div ng-if="$index == actualHour" style="background-color:red; width: 45%; margin:0 auto;">{{}}</div>
           </div>
 		      <div ng-if="r == 2" style="background-color:#424242;" title="Cerrado">
              <div ng-if="$index == actualHour" style="background-color:red; width: 45%; margin:0 auto;">{{}}</div>
@@ -72,8 +73,8 @@
           <p>{{employee.name}} {{employee.surname}}</p>
         </div>        
       </div>
-      <div ng-if="employee.open" style="display:flex;">
-          <div ng-repeat="p in employee.pick track by $index" style="padding-left: 8%;padding-right: 10%;padding-bottom:2%;">
+      <div ng-if="employee.open" style="display:flex;padding:1%;">
+          <div ng-repeat="p in employee.pick track by $index" class="employeePicks">
             <div ng-if="$index == 0" class="md-list-item-text">
               <div class="head2">
                 <i class="fa fa-user" ></i> 
@@ -87,10 +88,7 @@
                 <i class="fa fa-tag" ></i> 
                 <p>{{p.service.name}}</p>
               </div>
-              <div class="head2">
-                <i class="fa fa-clock-o" ></i> 
-                <p>{{p.initDate}}</p>
-              </div>
+          
               <div class="employeesActions">
                 <button class="fa fa-arrow-right" aria-label="edit" ng-click="nextPick(employee._id,p._id,'finished')"></button> 
                 <button class="fa fa-times" ng-click="nextPick(employee._id, p._id,'cancelled')"></button>
@@ -108,11 +106,7 @@
               <div class="head2">
                 <i class="fa fa-tag" ></i> 
                 <p>{{p.service.name}}</p>
-              </div>    
-              <div class="head2">
-                <i class="fa fa-clock-o" ></i> 
-                <p>{{p.initDate}}</p>
-              </div>         
+              </div>        
             </div>              
           </div>
           <p ng-if="employee.pick.length ==0">¡Actualmente, no hay ningún pick asociado a este empleado!</p>

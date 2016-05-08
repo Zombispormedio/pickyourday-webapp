@@ -12,9 +12,9 @@
           <h3 style="font-size: 18px;font-weight: 500;">{{promotion.name}}</h3>       
           <h4 style="white-space: normal;">{{promotion.description}}</h4>
        
-       <div style="margin-top: 4%;display:flex;">
+       <div style="margin-top: 4%;display:flex;" title="Unidades disponibles">
 	       <i class="fa fa-users formIcon"></i>
-	       <p> {{promotion.useLimit}}</p>
+	       <p> {{promotion.useLimit-promotion.timesUsed}}</p>
        </div>
     </div>
 
@@ -22,11 +22,11 @@
 		<p ng-if="promotion.state==='started'" style="color:#009688;">ACTIVA</p>
 		<p ng-if="promotion.state==='finished'" style="color:red;">FINALIZADA</p>
     <p ng-if="promotion.state==='waiting'" style="color:red;">PENDIENTE</p>
-	</div> 
-    <div class="promotionActions">
-    	<button class="fa fa-pencil" aria-label="edit" ng-click="edit($index)"></button>
-			<button class="fa fa-times" aria-label="delete" ng-click="delete($index)"></button>
-    </div>
+	</div>
+   
+  <div class="promotionActions">
+		<button class="fa fa-times" aria-label="delete" ng-click="delete($index)"></button>
+  </div>
        
 		<md-divider ></md-divider>
 </md-list-item>
