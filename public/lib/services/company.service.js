@@ -2,6 +2,12 @@ webAppFactory.CompanyService= function(ApiService){
     return {
 
         base:"company",
+
+        register:function(){
+            return ApiService.rest(this.base, {
+                  new:{method:"POST", params:{}},
+            });
+        },
         picks:function(){
             return ApiService.rest(this.base+"/pick/:id",{
                 list:{method:"GET", params:{}}

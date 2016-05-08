@@ -16,8 +16,12 @@ webAppFactory.OauthService= function(ApiService){
             return ApiService.rest(this.base+"/role/:role", {
                   check:{method:"GET", params:{role:"@role"}},
             });
+        },        
+        categories:function(){
+            return ApiService.rest(this.base+"/category/",{
+                list:{method:"GET", params:{}}
+            });
         }
-
     };
 };
 

@@ -263,6 +263,22 @@ background-color: blue;
 #login-tab md-tabs-canvas {
     height:60px;
 }
+
+.register md-input-container{
+    height: 20px;
+}
+
+ .register md-select .md-select-value.md-select-placeholder {
+    /* color: rgba(0, 0, 0, 0.3); */
+    border-color: white;
+}
+.register md-select .md-select-value.md-select-placeholder label{
+    color:white;
+}
+/* ** */
+.register md-select:not([disabled]):focus .md-select-value {
+    border-bottom-color: #009688;
+}
 /*Company profile*/
 .iconState{
     position:absolute;
@@ -906,7 +922,7 @@ md-input-container:not(.md-input-invalid).md-input-focused label{
 .ownPick .label{
     opacity: 0;
     height: 66px;
-    top: -15px;
+    top: -5px;
     position:absolute;
     padding: 0 10px;
     width: 200px;

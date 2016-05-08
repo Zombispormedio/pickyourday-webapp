@@ -41,7 +41,7 @@ webAppController.ServicesCtrl = function ($rootScope,$scope, CompanyService,  $m
           
           servicesByCategoryArray = $scope.servicesByCategory;
           console.log(servicesByCategoryArray);
-;        }, function(){
+       }, function(){
 
         });
     }

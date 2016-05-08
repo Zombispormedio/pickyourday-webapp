@@ -2,12 +2,9 @@ webAppController.LoginCtrl = function ($rootScope, $scope, OauthService, ConfigS
 
     $scope.error="";
     $scope.user = {email:"", };
+
     $scope.login = function () {
-
-
-
         async.waterfall([
-
             function validate(next){
                 var isEmail=emptyOrUndefined($scope.user.email);
                 var isPassword=emptyOrUndefined($scope.user.password);
@@ -46,9 +43,6 @@ webAppController.LoginCtrl = function ($rootScope, $scope, OauthService, ConfigS
 
                 }, ConfigService.ServerNotFound(next));
             }
-
-
-
         ], function(err, user){
             if(err){
                 return $rootScope.warningToast(err);
@@ -56,9 +50,21 @@ webAppController.LoginCtrl = function ($rootScope, $scope, OauthService, ConfigS
             saveLocal("user", user);
             $rootScope.go("app.dashboard");
         });
-
-
     };
 
+    $scope.register = function(){
 
+    }
+
+    $scope.getCategories = function(){
+        OauthService.categories().list({},function(result){
+            if(result.error)
+                return console.log(result.error);
+            $scope.categories=result.data;
+            console.log($scope.categories);
+        }, function(){
+
+        });
+    }
+    $scope.getCategories();
 };

@@ -49,7 +49,9 @@
 			 		<div ng-if="r == 0" style="background-color:#A2A9A9;" title="No disponible">
 			 			<div ng-if="$index == actualHour" style="background-color:red; width: 45%; margin:0 auto;">{{}}</div>
 			 		</div>
-			      	<div class="avaliablePick" ng-if="isObject(r) == 'string'" title="Libre" ng-click="showDialog($event,r,t.resource)" style="background-color:white;"></div>
+			      	<div class="avaliablePick" ng-if="isObject(r) == 'string'" title="Libre" ng-click="showDialog($event,r,t.resource)" style="background-color:white;">
+			      		<div ng-if="$index == actualHour" style="background-color:red; width: 45%; margin:0 auto;">{{}}</div>
+			      	</div>
 			      	<div ng-if="isObject(r) == 'object'" class="infoPick ownPick">
 					    <ul class="label">
 		                  <li ng-if="r.customer!=''">{{r.customer}}</li>
