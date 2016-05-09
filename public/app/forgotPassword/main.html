@@ -1,0 +1,32 @@
+<div flex="grow" class="backgroundLogin" id="login">    
+ 	<div layout="row" class="title">
+        <img ng-src="/assets/img/logo2.png">  
+        <h1>Pick Your Day</h1>
+	</div>
+
+	<div layout="column" class="loginForm" layout-align="center center"> 
+		<md-tabs md-dynamic-height style="width: 30%;" id="login-tab">
+	      <md-tab label="Nueva contraseña">                   
+			<div layout="column" layout-align="center">
+				<md-input-container ng-if="!reseting"> 
+					<label>Email</label>
+					<input ng-model="fase1.email">
+				</md-input-container>
+				<md-input-container ng-if="reseting">
+					<label>Código</label>
+					<input ng-model="fase2.code" type="text" >
+				</md-input-container>
+				<md-input-container ng-if="reseting">
+					<label>Contraseña</label>
+					<input ng-model="fase2.password" type="password" >
+				</md-input-container>
+				<md-input-container layout-align="center center">
+					<md-button ng-click="forgot()" class="loginButton" flex="30" flex-sm="100" ng-if="!reseting">Continuar</md-button>
+					<md-button ng-click="reset()" class="loginButton" flex="30" flex-sm="100" ng-if="reseting">Aceptar</md-button>
+				</md-input-container>
+
+			</div>			
+	      </md-tab>
+	    </md-tabs>
+	    </div>
+</div>

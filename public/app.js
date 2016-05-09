@@ -13,6 +13,7 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
 
 
     $stateProvider
+
         .state("login", {
         url: "/login",
         onEnter: function ($rootScope) {
@@ -24,6 +25,19 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
         templateUrl: 'app/login/main.html',
         controller: 'LoginCtrl'      
 
+    })
+        .state("forgot_password", {
+        url: '/forgot_password',
+        onEnter: function ($rootScope) {
+            if (getJSONLocal("user")) {
+
+                $rootScope.go("login");
+            }
+        },
+      
+        templateUrl: 'app/forgotPassword/main.html',
+        controller: 'PasswordCtrl'
+          
     })
         .state("app", {
         url: '/',
@@ -38,6 +52,7 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
         abstract:true
         
     })
+        
         .state("app.dashboard", {
         url: 'dashboard',
         onEnter: function ($rootScope) {

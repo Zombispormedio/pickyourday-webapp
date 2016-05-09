@@ -1,7 +1,11 @@
-webAppController.LoginCtrl = function ($rootScope, $scope, OauthService, ConfigService) {
+webAppController.LoginCtrl = function ($rootScope, $scope, OauthService, ConfigService, CompanyService) {
 
     $scope.error="";
     $scope.user = {email:"", };
+
+    $scope.goToForgot = function(){
+        $rootScope.go("forgot_password");
+    }
 
     $scope.login = function () {
         async.waterfall([
@@ -53,8 +57,42 @@ webAppController.LoginCtrl = function ($rootScope, $scope, OauthService, ConfigS
     };
 
     $scope.register = function(){
+        CompanyService.register().new($scope.company,function(result){
+            if(result.error){
+                return console.log(result.error);
+                $scope.showErrorRegisterAlert();
+            }else{
+                $scope.company = {};
+               $scope.register=result.data;
+                console.log($scope.register);
+                $scope.showRegisterAlert(); 
+            }
+        }, function(){
 
+        });
     }
+    $scope.showRegisterAlert = function() {
+        $mdDialog.show(
+            $mdDialog.alert()
+            .parent(angular.element(document.querySelector('#popupContainer')))
+            .clickOutsideToClose(true)
+            .title('')
+            .textContent('¡Registro correcto!')
+            .ariaLabel('Alert Dialog Demo')
+            .ok('OK')
+        );
+    };
+    $scope.showErrorRegisterAlert = function() {
+        $mdDialog.show(
+            $mdDialog.alert()
+            .parent(angular.element(document.querySelector('#popupContainer')))
+            .clickOutsideToClose(true)
+            .title('')
+            .textContent('¡Ups, error al registrarse!')
+            .ariaLabel('Alert Dialog Demo')
+            .ok('OK')
+        );
+    };
 
     $scope.getCategories = function(){
         OauthService.categories().list({},function(result){

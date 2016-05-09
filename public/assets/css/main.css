@@ -6,7 +6,7 @@ body{
 }
 .companyName{
     font-size: 25px;
-    color: white;
+    color: #FFF;
     margin: 4%;
 }
 .webAppMenuInfo{
@@ -46,7 +46,7 @@ button.webAppMenuOptions {
     display:flex;
 }
 .container1{
-    background-color: white;
+    background-color: #FFF;
     width:75%;
     margin: 0 auto;
     margin-bottom: 5%;
@@ -188,8 +188,20 @@ height: 150px;
 background-color: blue;
 }*/
 /*Login*/
+.title > img{
+    margin-left:2%;
+    margin-top:1%;
+    height:120px;
+}
+.title > h1{
+    color: #FFF;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 400;
+    padding-top: 50px;
+}
 .contactIcon,.contact{
-    color: white;
+    color: #FFF;
     right:0;
     top:0;
     font-size: 40px;
@@ -199,8 +211,22 @@ background-color: blue;
     background-color: none;
     position: absolute;
 }
+.register md-select .md-select-value.md-select-placeholder {
+    /* color: rgba(0, 0, 0, 0.3); */
+    border-color: #FFF;
+}
+.register md-select .md-select-value.md-select-placeholder span{
+    color:#FFF;
+}
+/* ** */
+.register md-select:not([disabled]):focus .md-select-value {
+    border-bottom-color: rgb(233, 0, 80);
+}
+.register .md-select-value :first-child{
+    color:#FFF;
+}
 .menuIcon{
-    color: white;
+    color: #FFF;
     font-size: 40px;
     margin-top: 3%;
     margin-left: 5%;
@@ -216,26 +242,27 @@ background-color: blue;
 }
 
 .loginForm input{
-    color:white;
+    color:#FFF;
 }
 .loginForm{
     height: 60%;
 }
 .loginForm h2{
-    color:white;
+    color:#FFF;
     text-align: left;
 }
 #login label{
-    color: white;
+    color: #FFF;
 }
 .loginForm .md-input, #login input:focus{
-    border-color: white;
+    border-color: #FFF;
 }
 .loginButton{
-    min-width: 100%;
+    min-width: 50%;
     margin:0;
     background-color: rgba(0, 82, 82, 0.76);
-    color:white;
+    color:#FFF;
+    float:right;
 }
 .loginButton:hover{
     background-color: rgba(222, 214, 214, 0.2);
@@ -245,7 +272,7 @@ background-color: blue;
     width: 30%;
 }
 #login-tab .md-tab.md-active{
-    color:white;
+    color:#FFF;
 }
 #login-tab .md-tab .md-ripple-container {
     color: #00796B; 
@@ -263,26 +290,18 @@ background-color: blue;
 #login-tab md-tabs-canvas {
     height:60px;
 }
-
+.register .md-errors-spacer {
+    color: #FFF;
+}
 .register md-input-container{
-    height: 20px;
+    height: 30px;
 }
 
- .register md-select .md-select-value.md-select-placeholder {
-    /* color: rgba(0, 0, 0, 0.3); */
-    border-color: white;
-}
-.register md-select .md-select-value.md-select-placeholder label{
-    color:white;
-}
-/* ** */
-.register md-select:not([disabled]):focus .md-select-value {
-    border-bottom-color: #009688;
-}
+
 /*Company profile*/
 .iconState{
     position:absolute;
-    right:120px;
+    right:100px;
     font-size: 25px;
     margin-top: 4%;
 }
@@ -291,11 +310,11 @@ background-color: blue;
 }
 .requestButton{
     color: black;
-    font-size: 30px;
+    font-size: 20px;
     height: 25px;
     position: absolute;
     right: 50px;
-    margin-top: 4.3%;
+    margin-top: 5%;
     cursor: hand;
 }
 .form md-input-container>md-select{
@@ -407,7 +426,7 @@ p.phones{
 }
 .serviceList>md-card-title p{
     margin-left: 2%;
-    color:white;
+    color:#FFF;
     font-size: 18px;
     font-weight: bold;
 }
@@ -480,7 +499,7 @@ margin-bottom: 5%;
     margin: 2% 0;
 }
 .buttonDeleteService, .buttonEditService{
-    color:white;
+    color:#FFF;
     font-size: 25px;
     margin-right: 5%;
     background:none;
@@ -499,7 +518,7 @@ margin-bottom: 5%;
 }
 .addServiceToolbar{
     background-color: #009688;
-    color:white;
+    color:#FFF;
 }
 .datePicker{
     margin-left: 1%;
@@ -511,7 +530,7 @@ margin-bottom: 5%;
 }
 .buttonStyle2{
     background-color: #009688;
-    color: white;
+    color: #FFF;
     width:20%;
     margin-top: 3%;
 }
@@ -521,7 +540,7 @@ margin-bottom: 5%;
 .buttonStyle:not([disabled]):hover,.buttonStyle:not([disabled]):active,.buttonStyle:not([disabled]):focus, 
 .buttonStyle2:not([disabled]):hover,.buttonStyle2:not([disabled]):active,.buttonStyle2:not([disabled]):focus{
     background-color: #00796B;
-    color:white;
+    color:#FFF;
 }
 .formIcon{
     font-size: 22px;
@@ -650,7 +669,7 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
     background: transparent;
     border: none;
     display:inline;
-    color:white;
+    color:#FFF;
     margin-top: 5%;
     float:right;
 }
@@ -678,27 +697,49 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
     margin-top: -15px; 
 }
 /*my promotions*/
-.promotions > img{
-    width:170px;
-    height:125px;
+.promotions img{
+    width:200px;
+    height:150px;
     margin-right: 2%;
     margin-top: 2%;
     margin-bottom: 2%;
 }
+.promotions .left{
+    display:block;
+}
+.promotionInfo{
+    display: inline-flex;
+}
+.promotionInfo div{
+    display:flex;    
+    margin-right: 50%;
+    margin-top: 20%;
+}
 .promotions p{
     font-size: 25px;
 }
-.promotions > div i {
-    margin-right: 2%;
+.promotionInfo > div i{
+    margin-right: 15%;
+}
+.promotions .md-chips{
+    padding:0;
 }
 .promotionActions{
-    margin-top: 13%;
+    position: absolute;
+    right: 2px;
+    bottom: 10px;
 }
 .promotionActions > button{
     background: transparent;
     border: none;
     display:inline;
     font-size: 22px;
+}
+.promotionServices{
+    margin-top: 6%;
+}
+.promotions md-chips.md-default-theme .md-chips, md-chips .md-chips{
+    box-shadow: none;
 }
 .dialogForm md-input-container {       
     display:inline-block;
@@ -708,7 +749,8 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
     margin-top: -2%;
 }
 .statePromotion{
-    margin-right: -5%;
+    position: absolute;
+    right: 0;
 }
 .statePromotion p{
     font-size: 15px;
@@ -723,7 +765,7 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
     margin-left: 1.5%;
     margin-top: 1.5%;
     position:fixed;
-    color:white;
+    color:#FFF;
 }
 .md-toast-content{
     font-size: 1.5em;
@@ -772,11 +814,11 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
 
 a{
     text-decoration: none;
-    color: white;
+    color: #FFF;
 }
 
 .webAppMenuInfo a:hover{
-    color: white;
+    color: #FFF;
 }
 
 .mt1{
@@ -794,34 +836,10 @@ a{
     display: none;
 }
 
-/*.md-dialog-container{
-    position: fixed;
-}*/
-
-/***CHIPS***/
-/*md-chips .md-chip{
-    background: 0 1px #009688;
-    color:white;
-}
-.md-chips .md-chip{    
-    margin-top: 0%;
-    margin-bottom: 1%;
-    margin-left: 2%
-}
-.md-chips .md-chip .md-chip-remove md-icon {
-    color:white;
-}
-md-chips .md-chip.md-focused {
-    background: #00796B;
-}
-md-chips .md-chips.md-focused{
-    box-shadow: 0 2px rgba(0,0,0,0.3);
-}*/
-
 .md-chips .md-chip {
   background: #009688;
   border-radius: 3px 0 0 3px;
-  color: white;
+  color: #FFF;
   display: inline-block;
   height: 26px;
   line-height: 26px;
@@ -830,6 +848,7 @@ md-chips .md-chips.md-focused{
   margin: 0 10px 10px 0;
   text-decoration: none;
   -webkit-transition: color 0.2s;
+  font-size: 15px;
 }
 
 .md-chips .md-chip::before {
@@ -873,15 +892,15 @@ md-chips .md-chips.md-focused{
 /***own pick***/
 .md-calendar-day-header{
   background-color: #009688;
-  color:white;   
+  color:#FFF;   
 }
 .md-datepicker-calendar-pane.md-pane-open{
-    background-color: white;
+    background-color: #FFF;
     border-color: tan;
 }
 /*.md-calendar-date:not(.md-disabled) .md-calendar-date-selection-indicator:hover{
     background-color: #009688;
-    color:white;
+    color:#FFF;
 }*/
 .md-calendar-scroll-mask{
     height: 240px;
@@ -900,7 +919,7 @@ md-chips .md-chips.md-focused{
     margin-top: 1.4%;
 }
 .md-datepicker-expand-triangle {
-    color:white;
+    color:#FFF;
 }
 
 md-input-container:not(.md-input-invalid).md-input-focused label{
@@ -911,7 +930,7 @@ md-input-container:not(.md-input-invalid).md-input-focused label{
 }
 .md-calendar-date.md-focus .md-calendar-date-selection-indicator,.md-calendar-date.md-focus.md-calendar-selected-date .md-calendar-date-selection-indicator{
     background: #009688;
-    color:white;
+    color:#FFF;
 }
 .md-datepicker-open .md-datepicker-calendar-icon{
     fill: rgba(0,0,0,0.54);
@@ -931,14 +950,14 @@ md-input-container:not(.md-input-invalid).md-input-focused label{
 .ownPick .label li{
     list-style:none; 
     overflow: hidden;
-    white-space: nowrap;
+    #FFF-space: nowrap;
     text-overflow: ellipsis;
     height:auto;
 }
 .infoPick.ownPick:hover .label{
     opacity:1;
     background-color: #009688;
-    color: white;
+    color: #FFF;
     font-size: 15px;
     font-style: italic;
     z-index: 1000;
@@ -965,7 +984,7 @@ md-input-container:not(.md-input-invalid).md-input-focused label{
 .infoPick.dashboard:hover .label{
     opacity:1;
     background-color: #009688;
-    color: white;
+    color: #FFF;
     font-size: 15px;
     font-style: italic;
     z-index: 1000;

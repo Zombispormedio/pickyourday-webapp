@@ -1,7 +1,7 @@
 <div flex="grow" class="backgroundLogin" id="login">    
- 	<div layout="row">
-        <img ng-src="/assets/img/logo.png" height="100px" style="margin-left:2%;margin-top:1%;margin-right:1%;">  
-        <h1 style="margin-top:2.5%;color:white;font-size: 24px;">Pick Your Day</h1>
+ 	<div layout="row" class="title">
+        <img ng-src="/assets/img/logo2.png">  
+        <h1>Pick Your Day</h1>
 	</div>
 
 	<div layout="column" class="loginForm" layout-align="center center"> 
@@ -13,9 +13,10 @@
 					<input ng-model="user.email">
 				</md-input-container>
 				<md-input-container>
-					<label>Password</label>
+					<label>Contraseña</label>
 					<input ng-model="user.password" type="password" >
 				</md-input-container>
+				<a href="" ng-click="goToForgot()" style="text-decoration: underline;">¿Olvidaste tu contraseña?</a>
 				<md-input-container layout-align="center center">
 					<md-button ng-click="login()" class="loginButton" flex="30" flex-sm="100">Login</md-button>
 				</md-input-container>
@@ -24,23 +25,28 @@
 	      <md-tab label="Registro">	
 	      	<div layout="column" layout-align="center" class="register">     
         		
-	            	<md-input-container flex="50"> 
+	            	<md-input-container flex="40"> 
 	            		<label>Nombre</label> 			
 	                	<input name="companyname" ng-model="company.name">
 	            	</md-input-container>
 
-		            <md-input-container flex="50">			
+		            <md-input-container flex="40">			
 		                <label>CIF</label>			
 		                <input ng-model="company.cif" md-maxlength="9">
 		            </md-input-container>
 		        
-		            <md-input-container flex="50">
+		            <md-input-container flex="40">
 		                <label>Email</label> 
 		                <input name="email" ng-model="company.email">
 		            </md-input-container>
 
-		            <md-input-container flex="55">
-		                <label style=" color:white;">Category</label>
+		            <md-input-container>
+						<label>Contraseña</label>
+						<input ng-model="company.password" type="password" >
+					</md-input-container>
+
+		            <md-input-container flex="40">
+		                <label style=" color:white;">Categoría</label>
 		                <md-select ng-model="company.category" multiple style="margin-left: 0%;">
 		                    <md-option ng-value="category._id" ng-repeat="category in categories">{{category.name}}</md-option>          
 		                </md-select>                  

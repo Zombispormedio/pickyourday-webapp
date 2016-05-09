@@ -26,9 +26,10 @@ webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, Sys
         });
     });
 
-    this.getProfile=function(){
+    $scope.getProfile=function(){
         $rootScope.getProfile(function(data){
         $scope.profile=data;
+        console.log($scope.profile)
         if($scope.profile.state == "active"){
             document.getElementById("state").className="fa fa-check";
             document.getElementById("state").title = 'Activada';
@@ -36,8 +37,8 @@ webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, Sys
         }else if($scope.profile.state == "demo"){
             document.getElementById("state").className="fa fa-eye";
             document.getElementById("state").title = 'Modo demo';
-            document.getElementById("request").display='block';
-            document.getElementById("request").className="fa fa-paper-plane";
+            document.getElementById("request").style.display='block';
+            document.getElementById("request").className="requestButton menuIcon fa fa-paper-plane";
 
         }else if($scope.profile.state == "pending"){
             document.getElementById("state").className="fa fa-clock-o";
@@ -50,7 +51,15 @@ webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, Sys
 
         });
     }
-    this.getProfile();
+    $scope.getProfile();
+
+    $scope.sendRequest = function (){
+        
+        $scope.profile.state = "active";
+        $scope.saveChanges();
+        console.log($scope.profile);
+        $scope.getProfile();
+    }
 
     $scope.edit=function(){
         $scope.editable=true;
