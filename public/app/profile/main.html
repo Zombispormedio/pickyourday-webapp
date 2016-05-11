@@ -55,7 +55,7 @@
                     <md-icon class="fa fa-key formIcon"></md-icon> 
                 </md-input-container>
             <md-chips ng-if="checkKeywords()" ng-model="profile.keywords" readonly="!editable"></md-chips>
-            <p ng-if="!checkKeywords()">No hay palabras clave</p>
+            <p ng-if="!checkKeywords()">¡No hay palabras clave!</p>
         </div>
    
         <div flex ng-cloak>
@@ -100,7 +100,7 @@
 
                 </md-card-content>
             </md-card>
-            <p ng-if="!checkSchedules()">No hay horarios</p>
+            <p ng-if="!checkSchedules()">¡No hay horarios!</p>
         </div>
 
         <div layout="column" flex >
@@ -134,8 +134,7 @@
             <div layout="row">
                 <md-input-container flex="40">
                     <label>Latitud</label>
-                    <input type="text" name="zipcode" ng-model="profile.location.geolocation.latitude" ng-disabled="!editable" >	
-
+                    <input type="text" name="zipcode" ng-model="profile.location.geolocation.latitude" ng-disabled="!editable" >
                 </md-input-container>
                 <md-input-container flex="45" flex-offset="10">
                     <label>Longitud</label> 
@@ -174,7 +173,7 @@
                         </md-button>
 
                     </md-list-item>
-                    <md-list-item ng-if="profile.phone.length==0" ><p>Ninguno teléfono añadido</p></md-list-item>
+                    <md-list-item ng-if="profile.phone.length==0" ><p>¡Ningún teléfono añadido!</p></md-list-item>
                 </md-list>
 
                 <md-list ng-cloak flex="50" flex-offset="10">
@@ -197,12 +196,21 @@
                             <md-icon md-font-icon="fa-times" class="fa fa-md"  ng-if="editable" aria-label="add" ng-click="deleteEmailSecond($index)"></md-icon>
                         </md-button>	
                     </md-list-item>
-                    <md-list-item ng-if="profile.emailSecond.length==0" ><p>Ninguno email añadido</p></md-list-item>
+                    <md-list-item ng-if="profile.emailSecond.length==0" ><p>¡Ningún email añadido!</p></md-list-item>
                 </md-list>
             </div>
         </div>
-
-
+        <div class="premium">
+            <md-input-container>
+                <label>Premium</label>
+                <md-select id="premium" ng-model="typePremium">
+                    <md-option ng-value="1">1 mes</md-option>  
+                    <md-option ng-value="2">6 meses</md-option>  
+                    <md-option ng-value="3">1 año</md-option>          
+                </md-select>                  
+            </md-input-container>
+            <md-button class="buttonStyleSimple" ng-click="setPremium()">Pagar</md-button>
+        </div>
         <div layout="column" >
             <div layout="row">
                 <p flex="80">Fotos</p>
@@ -216,7 +224,7 @@
                 </div>
                 <input id="newFile" type="file" name="images" base-sixty-four-input ng-model="images.data" ng-if="editable"  style="display:none;">
             </md-input-container>
-        </div>
+        </div>   
         <div style="display:flex;">
             <md-button class="buttonStyle2" ng-if="editable" ng-click="saveChanges()">Guardar cambios</md-button>
             <md-button class="buttonStyle2" ng-if="editable" ng-click="cancel()">Cancelar</md-button>

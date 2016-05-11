@@ -29,7 +29,7 @@ webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, Sys
     $scope.getProfile=function(){
         $rootScope.getProfile(function(data){
         $scope.profile=data;
-        console.log($scope.profile)
+
         if($scope.profile.state == "active"){
             document.getElementById("state").className="fa fa-check";
             document.getElementById("state").title = 'Activada';
@@ -57,8 +57,7 @@ webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, Sys
         
         $scope.profile.state = "active";
         $scope.saveChanges();
-        console.log($scope.profile);
-        $scope.getProfile();
+        window.location.reload();
     }
 
     $scope.edit=function(){
@@ -199,5 +198,17 @@ webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, Sys
                 daytime.times.push(current);
             }
         }
+    }
+    $scope.setPremium = function(){
+        console.log($scope.typePremium);
+        CompanyService.premium().set({premium:$scope.typePremium},function(result){
+            if(result.error)
+                return console.log(result.error);
+            $scope.premium = result.data;
+            console.log($scope.premium)
+            window.location= $scope.premium;
+        }, function(){
+
+        });
     }
 };

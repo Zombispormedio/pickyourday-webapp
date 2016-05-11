@@ -21,22 +21,22 @@
               <md-input-container>              
                 <label>Nombre</label>      
                 <md-icon class="fa fa-tag formIcon"></md-icon> 
-                <input name="name" type="text" ng-model="service.name"></input>
+                <input name="name" type="text" ng-model="service.name" required></input>
               </md-input-container>
               <md-input-container>              
                 <label>Descripción</label>      
                 <md-icon class="fa fa-commenting-o formIcon"></md-icon> 
-                <input name="description" type="text" ng-model="service.description"></input>
+                <input name="description" type="text" ng-model="service.description" required></input>
               </md-input-container>
             <md-input-container>
               <label>Duración</label>
               <md-icon class="fa fa-clock-o formIcon"></md-icon>
-              <input ng-model="service.duration" name="duration" step="5" type="number">
+              <input ng-model="service.duration" name="duration" step="5" type="number" required>
             </md-input-container>
             <md-input-container>
               <label>Precio</label>
               <md-icon class="fa fa-eur formIcon"></md-icon>
-              <input ng-model="service.price" name="price" step="any" type="number">
+              <input ng-model="service.price" name="price" step="any" type="number" required>
             </md-input-container>
             <!--<div flex ng-cloak style="margin-left:5%;margin-right:5%;margin-top:-3%;">         
                 <md-chips ng-model="service.keywords"

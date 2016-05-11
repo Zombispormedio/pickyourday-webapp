@@ -314,7 +314,7 @@ background-color: blue;
     height: 25px;
     position: absolute;
     right: 50px;
-    margin-top: 5%;
+    margin-top: 4.5%;
     cursor: hand;
 }
 .form md-input-container>md-select{
@@ -400,6 +400,13 @@ p.phones{
 }
 #saveProfile, #addPhone,#addImage, #addEmailSecond{
     display:none;
+}
+
+.premium{
+    display:block;
+}
+.premium md-input-container{
+    width:30%;
 }
 /*Servicios*/
 .head{
