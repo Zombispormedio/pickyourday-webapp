@@ -5,48 +5,68 @@ webAppController.DashboardCtrl = function ($scope, CompanyService, $mdDialog,$ro
   $scope.loading2=true;
 
   $scope.getTimeline = function (date, day){  
-    $scope.loading=true;
-    var d = new Date();
-    if(date!=null){
-      if(day == 'prev'){
-        var dPrev = new Date();
-        var dayOfMonth = $scope.myDate.getDate();
-        dPrev.setDate(dayOfMonth - 1);
-        $scope.myDate = dPrev;
-      }        
-      if(day == 'next'){
-        var dNext = new Date();
-        var dayOfMonth = $scope.myDate.getDate();
-        dNext.setDate(dayOfMonth + 1);
-        $scope.myDate = dNext;
-      }  
+    $rootScope.getProfile(function(data){
+       $scope.profile=data;
+      if($scope.profile.state!="demo"){
 
-    }else{
-      var d = new Date();
-      $scope.myDate = d;
-    }
-    console.log("mydate "+$scope.myDate);
-      console.log("d "+d);
-    if($scope.myDate.getDate() >= d.getDate() && $scope.myDate.getMonth() >= d.getMonth()){
-      
-      CompanyService.timeline().get({date:$scope.myDate,rangeDays:1},function(result){        
-        if(result.error)
-          return console.log(result.error);
-        $scope.loading=false;
-        if($scope.myDate.getDay() == d.getDay()){
-          document.getElementById("actualPicks").style.display = 'block';
-          $scope.getEmployees();
+        $scope.loading=true;
+        var d = new Date();
+        if(date!=null){
+          if(day == 'prev'){
+            var dPrev = new Date();
+            var dayOfMonth = $scope.myDate.getDate();
+            dPrev.setDate(dayOfMonth - 1);
+            $scope.myDate = dPrev;
+          }        
+          if(day == 'next'){
+            var dNext = new Date();
+            var dayOfMonth = $scope.myDate.getDate();
+            dNext.setDate(dayOfMonth + 1);
+            $scope.myDate = dNext;
+          }  
+
         }else{
-          document.getElementById("actualPicks").style.display = 'none';
+          var d = new Date();
+          $scope.myDate = d;
         }
-        $scope.timeline=result.data;
-        $scope.calcSpaces(result.data[0].metadata.schedule[0].open, result.data[0].metadata.schedule[0].close);
-      }, function(){
-      });
-    }else{
-      $scope.myDate = d;
-      $scope.showErrorAlert();
-    }   
+        console.log("mydate "+$scope.myDate);
+          console.log("d "+d);
+        if($scope.myDate.getDate() >= d.getDate() && $scope.myDate.getMonth() >= d.getMonth()){
+          
+          CompanyService.timeline().get({date:$scope.myDate,rangeDays:1},function(result){        
+            if(result.error)
+              return console.log(result.error);
+            $scope.loading=false;
+            if($scope.myDate.getDay() == d.getDay()){
+              document.getElementById("actualPicks").style.display = 'block';
+              $scope.getEmployees();
+            }else{
+              document.getElementById("actualPicks").style.display = 'none';
+            }
+            $scope.timeline=result.data;
+            $scope.calcSpaces(result.data[0].metadata.schedule[0].open, result.data[0].metadata.schedule[0].close);
+          }, function(){
+          });
+        }else{
+          $scope.myDate = d;
+          $scope.showErrorAlert();
+        }   
+      }else{
+        console.log("demo")
+        $scope.loading = false;
+        $scope.loading2 = false;
+        document.getElementById("timeline").style.display='none';
+        $mdDialog.show(
+            $mdDialog.alert()
+            .parent(angular.element(document.querySelector('#popupContainer')))
+            .clickOutsideToClose(true)
+            .title('')
+            .textContent('¡Para ver tu dashboard, tu empresa debe estar activada!')
+            .ariaLabel('Alert Dialog Demo')
+            .ok('OK')
+        );
+      }
+    });
   } 
 
   $scope.showErrorAlert = function() {

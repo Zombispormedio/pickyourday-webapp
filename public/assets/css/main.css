@@ -881,6 +881,10 @@ a{
   top: 0;
 }
 
+#keywordsProfile md-chips-wrap {
+    margin-top: 2%;
+}
+
 
 .collapse-icon{
     font-size:2em;

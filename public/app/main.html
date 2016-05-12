@@ -14,7 +14,7 @@
             <img ng-src="{{ 'logo.png'|image}}" class="avatar-sidenav" alt="Default Avatar" flex="30" ng-if="!profile.images[0]" ui-sref="app.dashboard">
             <div layout="column" flex>
                 <h3 class="companyName">{{profile.name}}</h3>
-                <a ui-sref="app.profile" href="">Editar perfil</a>
+                <div ng-click="closeLeftMenu()"><a ui-sref="app.profile" href="">Editar perfil</a></div>
             </div>
         </div>
         <md-divider></md-divider>

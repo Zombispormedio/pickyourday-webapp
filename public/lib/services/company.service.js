@@ -105,6 +105,11 @@ webAppFactory.CompanyService= function(ApiService){
             return ApiService.rest(this.base+"/setPremium/",{
                 set:{method:"POST", params:{}}
             });
+        }, 
+        pay:function(){
+            return ApiService.rest(this.base+"/payment/",{
+                set:{method:"POST", params:{}}
+            });
         }
     };
 };

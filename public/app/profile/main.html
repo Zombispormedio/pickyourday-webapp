@@ -54,7 +54,7 @@
                     <label>Palabras clave</label>          
                     <md-icon class="fa fa-key formIcon"></md-icon> 
                 </md-input-container>
-            <md-chips ng-if="checkKeywords()" ng-model="profile.keywords" readonly="!editable"></md-chips>
+            <md-chips id="keywordsProfile" ng-if="checkKeywords()" ng-model="profile.keywords" readonly="!editable"></md-chips>
             <p ng-if="!checkKeywords()">¡No hay palabras clave!</p>
         </div>
    
