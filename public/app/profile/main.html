@@ -57,7 +57,7 @@
         </div>
    
         <div flex ng-cloak>
-            <div >               
+            <div>               
                 <md-input-container >        
                     <label>Horario</label>          
                     <md-icon class="fa fa-calendar formIcon"></md-icon> 
@@ -181,7 +181,7 @@
                     <md-subheader>Emails secundarios</md-subheader>
                     <md-list-item ng-if="editable"  style="height: 25px;">
                         <p class="phones"> 
-                            <i class="fa fa-envelope-o emailSecond"></i>                       
+                            <i class="fa fa-envelope-o emailSecond"></i>
                             <md-input-container>
                                 <input type="email" ng-model="aux.emailSecond">
                             </md-input-container>
@@ -214,11 +214,12 @@
         </div>
         <div layout="column" >
             <div layout="row">
-                <md-input-container >        
+                <md-input-container style="margin-bottom:4%;">        
                     <label>Fotos</label>          
-                    <md-icon class="fa fa-camera formIcon"></md-icon> 
+                    <md-icon class="fa fa-camera formIcon"></md-icon>
                 </md-input-container>
-                <md-button class="buttonStyleSimple" ng-if="editable" ng-click="addImages()" flex>+ añadir fotos</md-button>
+                <md-button class="buttonStyleSimple" ng-click="addImages()" style="float: left;margin-top:6%" ng-if="editable">+ añadir fotos</md-button>
+                
             </div>
             <div ng-if="profile.images.length == 0"><p>¡No hay fotos!</p></div>
             <md-input-container> 
@@ -230,9 +231,9 @@
             </md-input-container>
 
         </div>   
-        <div style="display:flex;">
-            <md-button class="buttonStyle2" ng-if="editable" ng-click="saveChanges()">Guardar cambios</md-button>
-            <md-button class="buttonStyle2" ng-if="editable" ng-click="cancel()">Cancelar</md-button>
+        <div style="display:flex;margin-top:-5%;right:30px;position:absolute;">
+            <md-button class="buttonStyle3" ng-if="editable" ng-click="saveChanges()">Guardar cambios</md-button>
+            <md-button class="buttonStyle3" ng-if="editable" ng-click="cancel()">Cancelar</md-button>
         </div>
     </form>
     <md-button class="md-fab fa fa-pencil" id="editProfile" ng-if="!editable" ng-click="edit()"aria-label="editProfile"></md-button>

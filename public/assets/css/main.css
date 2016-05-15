@@ -541,11 +541,17 @@ margin-bottom: 5%;
     width:20%;
     margin-top: 3%;
 }
+.buttonStyle3{
+    background-color: #009688;
+    color: #FFF;
+    margin-top: 3%;
+}
 .buttonStyleSimple:not([disabled]):hover,.buttonStyleSimple:not([disabled]):active,.buttonStyleSimple:not([disabled]):focus{
     background-color: transparent;
 }
 .buttonStyle:not([disabled]):hover,.buttonStyle:not([disabled]):active,.buttonStyle:not([disabled]):focus, 
-.buttonStyle2:not([disabled]):hover,.buttonStyle2:not([disabled]):active,.buttonStyle2:not([disabled]):focus{
+.buttonStyle2:not([disabled]):hover,.buttonStyle2:not([disabled]):active,.buttonStyle2:not([disabled]):focus,
+.buttonStyle3:not([disabled]):hover,.buttonStyle3:not([disabled]):active,.buttonStyle3:not([disabled]):focus{
     background-color: #00796B;
     color:#FFF;
 }
@@ -598,7 +604,6 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
 }
 .employeePicks div{
     margin-left: 10%;
-    margin-top: 0;
     margin-bottom: 1%;
     margin-right: 0;
 }
@@ -655,7 +660,7 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
     position: absolute;
 }
 .employeesActions{
-    margin-top: -6%;
+    margin-top: -3%;
     right: 0;
     position: absolute;
 }
@@ -827,7 +832,10 @@ a{
 .webAppMenuInfo a:hover{
     color: #FFF;
 }
-
+.webAppMenuInfo img{
+    width:100px;
+    height:100px;
+}
 .mt1{
     margin-top: 1%;
 }
@@ -1018,5 +1026,15 @@ md-input-container:not(.md-input-invalid).md-input-focused label{
     background-color: #00796B;
     padding:1%;
 }
-
-/*Statistics*/
+/**Payment**/
+#payment{
+    padding:10%;
+    display:none;
+    justify-content:center;
+}
+#payment > i, .loadingPayment{
+    font-size: 50px;
+    justify-content: center;
+    display: flex;
+    padding: 10%;
+}

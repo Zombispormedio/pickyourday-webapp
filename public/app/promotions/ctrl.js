@@ -19,7 +19,19 @@ webAppController.PromotionCtrl = function ($rootScope, $scope, CompanyService, S
 	}
 	this.getPromotions();
 	$scope.goToNewPromotion=function(){
-		$rootScope.go("app.newPromotion");
+		if($scope.profile.premium == true){
+			$rootScope.go("app.newPromotion");
+		}else{
+			$mdDialog.show(
+	            $mdDialog.alert()
+	            .parent(angular.element(document.querySelector('#popupContainer')))
+	            .clickOutsideToClose(true)
+	            .title('')
+	            .textContent('¡Para crear promociones debes ser premium!')
+	            .ariaLabel('Alert Dialog Demo')
+	            .ok('OK')
+        	);
+		}
 	}
 	$scope.delete=function(index){
 		CompanyService.promotion().delete({id:$scope.promotions[index]._id}, function(result){
@@ -43,4 +55,11 @@ webAppController.PromotionCtrl = function ($rootScope, $scope, CompanyService, S
 	        .ok('OK')
 	    );
   	};
+  	$scope.getProfile=function(){
+        $rootScope.getProfile(function(data){
+        $scope.profile=data;
+        console.log($scope.profile);
+    })
+     }
+    $scope.getProfile();
 };

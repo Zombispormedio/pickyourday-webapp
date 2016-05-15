@@ -9,9 +9,9 @@
 <div flex layout="row">	 
     <md-sidenav md-component-id="left" class="md-sidenav-left">
         <div class="webAppMenuInfo" layout="row">
-            <img ng-src="{{profile.images[0].src || ('logo.png'|image)}}" class="avatar-sidenav" alt="{{profile.images[0].alt}}" flex="30" ng-if="profile.images[0]" ui-sref="app.dashboard">
+            <img ng-src="{{profile.images[0].src || ('logo.png'|image)}}" class="avatar-sidenav" alt="{{profile.images[0].alt}}" ng-if="profile.images[0]" ui-sref="app.dashboard">
 
-            <img ng-src="{{ 'logo.png'|image}}" class="avatar-sidenav" alt="Default Avatar" flex="30" ng-if="!profile.images[0]" ui-sref="app.dashboard">
+            <img ng-src="{{ 'logo.png'|image}}" class="avatar-sidenav" alt="Default Avatar" ng-if="!profile.images[0]" ui-sref="app.dashboard">
             <div layout="column" flex>
                 <h3 class="companyName">{{profile.name}}</h3>
                 <div ng-click="closeLeftMenu()"><a ui-sref="app.profile" href="">Editar perfil</a></div>

@@ -10,23 +10,23 @@
             <md-input-container flex="50" style="padding-right:5%;">           
                 <label>Título</label>
                  <md-icon class="fa fa-pencil formIcon"></md-icon> 
-                <input ng-model="promotion.name" name="title">
+                <input ng-model="promotion.name" name="title" required>
             </md-input-container>
 
             <md-input-container flex="50">
                 <label>Descripción</label>
                 <md-icon class="fa fa-commenting-o formIcon"></md-icon> 
-                <input type="text" ng-model="promotion.description" name="description" ></input>
+                <input type="text" ng-model="promotion.description" name="description" required></input>
             </md-input-container>
         </div>
         <div flex layout="row" layout-wrap>
             <md-input-container flex="50" style="padding-right:5%;">  
                 <md-icon class="fa fa-calendar formIcon"></md-icon>      
-                <input mdc-datetime-picker="" date="true" time="true" type="text" id="datetime" placeholder="Fecha desde" min-date="date" ng-model="promotion.initDate">
+                <input mdc-datetime-picker="" date="true" time="true" type="text" id="datetime" placeholder="Fecha desde" min-date="date" ng-model="promotion.initDate" required>
             </md-input-container>
             <md-input-container flex="50">
                 <md-icon class="fa fa-calendar formIcon"></md-icon>
-                <input mdc-datetime-picker="" date="true" time="true" type="text" id="datetime" placeholder="Fecha hasta" min-date="date" ng-model="promotion.endDate">
+                <input mdc-datetime-picker="" date="true" time="true" type="text" id="datetime" placeholder="Fecha hasta" min-date="date" ng-model="promotion.endDate" required>
             </md-input-container>
         </div>
 
@@ -34,13 +34,13 @@
             <md-input-container flex="50" style="padding-right:5%;">
               <label>Máximo de unidades</label>
               <md-icon class="fa fa-users formIcon"></md-icon>
-              <input ng-model="promotion.useLimit" name="units" step="any" type="number">
+              <input ng-model="promotion.useLimit" name="units" step="any" type="number" required>
             </md-input-container>
 
             <md-input-container flex="50">
                 <label>Descuento</label>
                 <md-icon class="fa fa-percent formIcon"></md-icon>
-                <input type="number" step="any" name="discount" ng-model="promotion.discount" min="0" max="100"/>     
+                <input type="number" step="any" name="discount" ng-model="promotion.discount" min="0" max="100" required/>     
             </md-input-container>
         </div>
         
@@ -48,13 +48,13 @@
             <md-input-container flex="50">           
                 <label>Servicios asociados</label>
                 <md-icon class="fa fa-tags formIcon"></md-icon>
-                <md-select ng-model="promotion.services" style="margin-left:0%;" multiple>
+                <md-select ng-model="promotion.services" style="margin-left:0%;" multiple required>
                     <md-option ng-value="service._id" ng-repeat="service in services">{{service.name}}</md-option>
                 </md-select>
             </md-input-container>
         </div>
 
-        <div layout="column" >   
+        <div layout="column">   
             <md-input-container style="margin-bottom:4%;">
                 <label>Imagen</label>
                 <md-icon class="fa fa-camera formIcon"></md-icon> 
@@ -65,7 +65,7 @@
                     <img ng-src="{{image.src}}" alt="{{image.alt}}">
                     <md-button class="md-fab fa fa-times deleteImageIcon" aria-label="delete" ng-click="deleteImage($index)"></md-button>
                 </div>
-                <input id="newFile" type="file" name="images" base-sixty-four-input ng-model="images.data"style="display:none;">
+                <input id="newFile" type="file" name="images" base-sixty-four-input ng-model="images.data"style="display:none;" required>
             </md-input-container>
         </div>
 

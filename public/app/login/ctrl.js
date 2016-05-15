@@ -50,6 +50,7 @@ webAppController.LoginCtrl = function ($rootScope, $scope, OauthService, ConfigS
         ], function(err, user){
             if(err){
                 return $rootScope.warningToast(err);
+                
             }
             saveLocal("user", user);
             $rootScope.go("app.dashboard");

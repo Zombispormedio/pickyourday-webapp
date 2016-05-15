@@ -98,7 +98,7 @@ webAppController.ServicesCtrl = function ($rootScope,$scope, CompanyService,  $m
             .ok('OK')
         )
         .then(function() {          
-           window.location.reload();
+           $scope.getServices();
         }, function() {
             $scope.status = 'You cancelled the dialog.';
         });

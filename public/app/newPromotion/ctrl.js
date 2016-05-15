@@ -2,18 +2,19 @@ webAppController.newPromotionCtrl = function ($rootScope, $scope, CompanyService
 	$scope.error="";
 	$scope.promotion = {images:[]};
 	$scope.images={};
+	
 
-	$scope.create = function () {
+	$scope.create = function () {		
 		CompanyService.promotion().create({}, $scope.promotion, function(result){
-			if(result.error)
-				return console.log(result.error);
-			$scope.promotion=result.data;
-			console.log($scope.promotion);
-			$rootScope.go("app.promotions");
-			
+		if(result.error)
+			return console.log(result.error);
+		$scope.promotion=result.data;
+		console.log($scope.promotion);
+		$rootScope.go("app.promotions");
+		
 		}, function(){		
 				
-		});			
+		});						
 	}
 
 	$scope.showCreateAlert = function(){

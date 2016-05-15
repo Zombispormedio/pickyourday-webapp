@@ -169,8 +169,9 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 			}else{
 				$scope.showAlert();
 				var now = new Date();
-				var d = dateSelected.getDate();
-				now.setDate(d);
+				console.log(dateSelected);
+				var d = new Date(dateSelected);
+				now.setDate(d.getDate());
 				$scope.getTimeline(serviceSelected,resourceSelected,now);
 			}
 			

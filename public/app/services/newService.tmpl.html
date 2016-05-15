@@ -14,7 +14,7 @@
               <md-input-container style="margin-right: 10px;margin-bottom: 8%;">               
                 <md-icon class="fa fa-tags formIcon"></md-icon> 
                 <label>Servicios</label>           
-                <md-select ng-model="service._id" style="margin-left: 0%;" ng-change="update(service._id)">
+                <md-select ng-model="service.id_name" style="margin-left: 0%;" ng-change="update(service.id_name)">
                     <md-option ng-value="default_service._id" ng-repeat="default_service in servicesByCategory">{{default_service.name}}</md-option>
                 </md-select>  
               </md-input-container>

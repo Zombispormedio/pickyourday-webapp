@@ -48,9 +48,7 @@
           </div>
 		      <div ng-if="r == 2" style="background-color:#424242;" title="Cerrado">
              <div ng-if="$index == actualHour" style="background-color:red; width: 45%; margin:0 auto;">{{}}</div>
-
           </div>	
-
 		    </div>       
 		</div>
 	</div>
@@ -113,5 +111,6 @@
         </div> 
       <md-divider></md-divider>  
   </md-list-item>
+  <div ng-if="employees.length==0">¡No hay empleados añadidos!</div>
   </div>
 </div>

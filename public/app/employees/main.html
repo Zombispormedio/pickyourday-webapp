@@ -39,11 +39,13 @@
                 {{$chip.name}}
             </md-chip-template>
           </md-chips>
-          <p ng-if="employee.services.length===0">No tiene servicios asignados</p> 
+          <div ng-if="employee.services.length===0"><p>¡No tiene servicios asignados!</p> </div>
         </div>
       </div>
     </div>
   <md-divider></md-divider>  
 </md-list-item>
+<div ng-if="employees.length==0">¡No hay empleados añadidos!</div>
+  </div>
 
 <md-button class="md-fab fa fa-plus addEmployee" ng-click="showDialog($event)"></md-button>

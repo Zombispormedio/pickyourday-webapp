@@ -26,9 +26,29 @@ webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, Sys
         });
     });
 
+
+    var getLocation = function (cb){
+        navigator.geolocation.getCurrentPosition(function(position){
+            $scope.$apply(function () {
+                cb(position);
+            });
+        });
+    }
+
     $scope.getProfile=function(){
         $rootScope.getProfile(function(data){
         $scope.profile=data;
+
+        
+            $scope.profile.location=$scope.profile.location || {};
+            if($scope.profile.location.geolocation == void 0){
+                $scope.profile.location.geolocation = {};
+                getLocation(function(position){
+                    $scope.profile.location.geolocation.latitude = position.coords.latitude;
+                    $scope.profile.location.geolocation.longitude = position.coords.longitude;
+                });
+            
+        }
 
         if($scope.profile.state == "active"){
             document.getElementById("state").className="fa fa-check";
@@ -49,6 +69,12 @@ webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, Sys
             document.getElementById("state").title = 'Cancelada';
         }
 
+        if($scope.profile.premium == true || $scope.profile.state =="demo"){
+           var p = document.getElementsByClassName("premium");
+           for(var i=0;i<p.length;i++){
+                p[i].style.display='none';
+           }
+        }
         });
     }
     $scope.getProfile();
@@ -57,7 +83,7 @@ webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, Sys
         
         $scope.profile.state = "active";
         $scope.saveChanges();
-        window.location.reload();
+        console.log($scope.profile);
     }
 
     $scope.edit=function(){
@@ -65,8 +91,8 @@ webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, Sys
     }
 
     $scope.cancel = function(){
-        window.location.reload();
-          $scope.editable=false;
+        $scope.getProfile();
+        $scope.editable=false;
     }
     $scope.addPhone=function(){
         if($scope.aux.phone!=""){
@@ -117,6 +143,7 @@ webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, Sys
             
             $rootScope.sucessToast("Los datos se han guardado correctamente");
             $scope.editable=false;
+            $scope.getProfile();
         }, function(){
 
         });
