@@ -52,7 +52,7 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
         abstract:true
         
     })
-        
+         
         .state("app.dashboard", {
         url: 'dashboard',
         onEnter: function ($rootScope) {
@@ -204,6 +204,22 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
             }
         }      
     })
+        .state("app.payment", {
+        url: 'payment',
+        onEnter: function ($rootScope) {
+            if (getJSONLocal("user")) {
+
+                $rootScope.go("login");
+            }
+        },
+        views: {
+            content: {
+                templateUrl: 'app/payment/main.html',
+                controller: 'PaymentCtrl'
+            }
+        } 
+    })
+       
 
 
 

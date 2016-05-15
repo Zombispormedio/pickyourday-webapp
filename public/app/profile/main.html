@@ -2,13 +2,11 @@
     <div class="head">
         <i class="fa fa-user"></i>
         <h1>Mi negocio</h1> 
-    </div>
-    
+    </div>    
     <div class="iconState">
         <i id="state" class=""></i>
     </div> 
-
-    <div >
+    <div>
         <button id="request" class="" ng-click="sendRequest()" title="Enviar solicitud"></button>
     </div>
 </div>
@@ -51,9 +49,9 @@
 
         <div ng-cloak>		
              <md-input-container style="width: 100%;">        
-                    <label>Palabras clave</label>          
-                    <md-icon class="fa fa-key formIcon"></md-icon> 
-                </md-input-container>
+                <label>Palabras clave</label>          
+                <md-icon class="fa fa-key formIcon"></md-icon> 
+            </md-input-container>
             <md-chips id="keywordsProfile" ng-if="checkKeywords()" ng-model="profile.keywords" readonly="!editable"></md-chips>
             <p ng-if="!checkKeywords()">¡No hay palabras clave!</p>
         </div>
@@ -149,7 +147,10 @@
         </div>
 
         <div layout="column" flex style="margin-top:2%;">
-            <label>Datos de Contacto</label>
+            <md-input-container style="width: 100%;">        
+                <label>Datos de contacto</label>          
+                <md-icon style="color:black;" class="fa fa-phone formIcon"></md-icon> 
+            </md-input-container>
             <div layout="row">
                 <md-list ng-cloak flex="50">
                     <md-subheader>Teléfonos</md-subheader>
@@ -213,10 +214,13 @@
         </div>
         <div layout="column" >
             <div layout="row">
-                <p flex="80">Fotos</p>
+                <md-input-container >        
+                    <label>Fotos</label>          
+                    <md-icon class="fa fa-camera formIcon"></md-icon> 
+                </md-input-container>
                 <md-button class="buttonStyleSimple" ng-if="editable" ng-click="addImages()" flex>+ añadir fotos</md-button>
             </div>
-
+            <div ng-if="profile.images.length == 0"><p>¡No hay fotos!</p></div>
             <md-input-container> 
                 <div class="companyImages" ng-repeat="image in profile.images">				
                     <img ng-src="{{image.src}}" alt="{{image.alt}}">
@@ -224,6 +228,7 @@
                 </div>
                 <input id="newFile" type="file" name="images" base-sixty-four-input ng-model="images.data" ng-if="editable"  style="display:none;">
             </md-input-container>
+
         </div>   
         <div style="display:flex;">
             <md-button class="buttonStyle2" ng-if="editable" ng-click="saveChanges()">Guardar cambios</md-button>

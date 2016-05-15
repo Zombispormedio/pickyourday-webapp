@@ -8,41 +8,39 @@
 <md-list-item class="md-3-line promotions" ng-repeat="promotion in promotions">
     
     <img ng-src="{{promotion.images[0].src}}" alt="{{promotion.name}}" />
-    <div class="statePromotion">
-        <p ng-if="promotion.state==='started'" style="color:#009688;">ACTIVA</p>
-        <p ng-if="promotion.state==='finished'" style="color:red;">FINALIZADA</p>
-        <p ng-if="promotion.state==='waiting'" style="color:red;">PENDIENTE</p>
-      </div>
-    
-      <div class="md-list-item-text" layout="column">       
-        <div class="left">
-          <h3 style="font-size: 18px;font-weight: 500;">{{promotion.name}}</h3>       
-        <h4 style="white-space: normal;">{{promotion.description}}</h4>
-        
-        <div class="promotionInfo">
-          <div title="Unidades disponibles">
-  	       <i class="fa fa-users formIcon"></i>
-  	       <p> {{promotion.useLimit-promotion.timesUsed}}</p>
-          </div>
-          <div title="Descuento">
-            <i class="fa fa-percent formIcon"></i>
-            <p>{{promotion.discount}}</p>  
-          </div>       
-        </div>     
-     </div> 
+      <div class="statePromotion">
+          <p ng-if="promotion.state==='started'" style="color:#009688;">ACTIVA</p>
+          <p ng-if="promotion.state==='finished'" style="color:red;">FINALIZADA</p>
+          <p ng-if="promotion.state==='waiting'" style="color:red;">PENDIENTE</p>
+        </div>
+      
+        <div class="md-list-item-text" layout="column">       
+          <div class="left">
+            <h3 style="font-size: 18px;font-weight: 500;">{{promotion.name}}</h3>       
+          <h4 style="white-space: normal;">{{promotion.description}}</h4>
+          
+          <div class="promotionInfo">
+            <div title="Unidades disponibles">
+    	       <i class="fa fa-users formIcon"></i>
+    	       <p> {{promotion.useLimit-promotion.timesUsed}}</p>
+            </div>
+            <div title="Descuento">
+              <i class="fa fa-percent formIcon"></i>
+              <p>{{promotion.discount}}</p>  
+            </div>       
+          </div>     
+       </div> 
 
       <md-chips ng-model="promotion.services" readonly="true" class="promotionServices">
         <md-chip-template>
             {{$chip.name}}
         </md-chip-template>
       </md-chips>
-    </div>
-    	
+    </div> 	
        
       <div class="promotionActions">
     		<button class="fa fa-trash-o" aria-label="delete" ng-click="delete($index)"></button>
-      </div>
-       
+      </div>       
 		<md-divider ></md-divider>
 </md-list-item>
 <div ng-if="promotions.length==0" >

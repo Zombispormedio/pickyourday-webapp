@@ -881,6 +881,17 @@ a{
   top: 0;
 }
 
+.md-chips .md-chip .md-chip-remove md-icon{
+    color:#fff;
+    top: 45%;
+}
+
+md-chips .md-chip.md-focused{
+    background-color: #00796B;
+}
+md-chips .md-chips.md-focused{
+    box-shadow:0 2px #009688;
+}
 #keywordsProfile md-chips-wrap {
     margin-top: 2%;
 }
@@ -1009,7 +1020,3 @@ md-input-container:not(.md-input-invalid).md-input-focused label{
 }
 
 /*Statistics*/
-canvas{
-    border-radius: 11px; 
-    border: solid 6px #107576;
-}
