@@ -1,4 +1,4 @@
-webAppController.LoginCtrl = function ($rootScope, $scope, OauthService, ConfigService, CompanyService) {
+webAppController.LoginCtrl = function ($mdDialog,$rootScope, $scope, OauthService, ConfigService, CompanyService) {
 
     $scope.error="";
     $scope.user = {email:"", };
