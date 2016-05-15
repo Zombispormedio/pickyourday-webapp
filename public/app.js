@@ -19,7 +19,7 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
         onEnter: function ($rootScope) {
             if (getJSONLocal("user")) {
 
-                $rootScope.go("app.dashboard");
+                $rootScope.go("app.profile");
             }
         },
         templateUrl: 'app/login/main.html',
@@ -205,9 +205,9 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
         }      
     })
         .state("app.payment", {
-        url: 'payment',
+        url: 'payment?:paymentId&:token&:PayerID',
         onEnter: function ($rootScope) {
-            if (getJSONLocal("user")) {
+            if (!getJSONLocal("user")) {
 
                 $rootScope.go("login");
             }

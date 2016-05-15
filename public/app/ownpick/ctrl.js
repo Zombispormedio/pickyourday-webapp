@@ -124,11 +124,12 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
   	}	
   	
   	$scope.showDialog = function(ev, date, employee) {
-  		resourceSelected = employee;
+  		var resourcePick = employee;
 
-  		idResourceSelected = employee.id;
-  		console.log(employee);
-  		console.log(idResourceSelected);
+  		idResourcePick = resourcePick.id;
+  		console.log(resourcePick);
+  		console.log(idResourcePick);
+
 	    $mdDialog.show({
 	      controller: DialogController,
 	      templateUrl: 'app/ownpick/newPick.tmpl.html',
@@ -137,7 +138,7 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 	      clickOutsideToClose:true
 	    })
         .then(function(client) {
-      		$scope.createPick(date,client);
+      		$scope.createPick(date,client,idResourcePick);
         }, function() {
           	$scope.status = 'You cancelled the dialog.';
         });
@@ -157,17 +158,20 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 	}
 	
 	
-	$scope.createPick = function (datePick,client){
+	$scope.createPick = function (datePick,client, idResourcePick){
 		var nameCli=client.name;
 		var phoneCli=client.phone;
 		dateSelected = datePick;
 
-		CompanyService.pick().create({service: idServiceSelected,initDate:dateSelected,nameCli,phoneCli,resource:idResourceSelected},function(result){
+		CompanyService.pick().create({service: idServiceSelected,initDate:dateSelected,nameCli,phoneCli,resource:idResourcePick},function(result){
 			if(result.error){
 				return console.log(result.error);
 			}else{
 				$scope.showAlert();
-				$scope.getTimeline(serviceSelected,resourceSelected,dateSelected);
+				var now = new Date();
+				var d = dateSelected.getDate();
+				now.setDate(d);
+				$scope.getTimeline(serviceSelected,resourceSelected,now);
 			}
 			
 		}, function(){
