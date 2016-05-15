@@ -53,6 +53,7 @@ webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, Sys
         if($scope.profile.state == "active"){
             document.getElementById("state").className="fa fa-check";
             document.getElementById("state").title = 'Activada';
+            document.getElementById("request").style.display='none';
 
         }else if($scope.profile.state == "demo"){
             document.getElementById("state").className="fa fa-eye";
@@ -63,10 +64,12 @@ webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, Sys
         }else if($scope.profile.state == "pending"){
             document.getElementById("state").className="fa fa-clock-o";
             document.getElementById("state").title = 'Pendiente de confirmación';
+            document.getElementById("request").style.display='none';
 
         }else if($scope.profile.state == "refused"){
             document.getElementById("state").className="fa fa-ban";
             document.getElementById("state").title = 'Cancelada';
+            document.getElementById("request").style.display='none';
         }
 
         if($scope.profile.premium == true || $scope.profile.state =="demo"){
@@ -81,7 +84,7 @@ webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, Sys
 
     $scope.sendRequest = function (){
         
-        $scope.profile.state = "active";
+        $scope.profile.state = "pending";
         $scope.saveChanges();
         console.log($scope.profile);
     }
