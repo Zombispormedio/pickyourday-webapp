@@ -240,7 +240,7 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
             templateUrl: 'app/utils/message-toast/main.html',
             position:"true true false false",
             locals:{data:{message:message, theme:theme}},
-            hideDelay: 5000,
+            hideDelay: 50000000,
         });
     };
 
