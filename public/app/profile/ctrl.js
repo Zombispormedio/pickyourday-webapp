@@ -1,6 +1,7 @@
 webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, SystemService,$mdDialog, NgMap) {
 
     $scope.editable=false;	
+    $scope.loading = true;
 
     $scope.days={"Monday":"Lunes", "Tuesday": "Martes", "Wednesday":"Miércoles", "Thursday": "Jueves", "Friday":"Viernes", "Saturday":"Sábado", "Sunday":"Domingo"};
 
@@ -38,16 +39,15 @@ webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, Sys
     $scope.getProfile=function(){
         $rootScope.getProfile(function(data){
         $scope.profile=data;
+        $scope.loading = false;         
+        $scope.profile.location=$scope.profile.location || {};
 
-        
-            $scope.profile.location=$scope.profile.location || {};
-            if($scope.profile.location.geolocation == void 0){
-                $scope.profile.location.geolocation = {};
-                getLocation(function(position){
-                    $scope.profile.location.geolocation.latitude = position.coords.latitude;
-                    $scope.profile.location.geolocation.longitude = position.coords.longitude;
-                });
-            
+        if($scope.profile.location.geolocation == void 0){
+            $scope.profile.location.geolocation = {};
+            getLocation(function(position){
+                $scope.profile.location.geolocation.latitude = position.coords.latitude;
+                $scope.profile.location.geolocation.longitude = position.coords.longitude;
+            });            
         }
 
         if($scope.profile.state == "active"){
@@ -127,7 +127,7 @@ webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, Sys
         var data=$scope.images.data;     
         if(data){
             SystemService.images().upload({type:"data"}, data, function(res){
-                $scope.profile.images.push(res.data);
+                $scope.profile.images.push(res.data);              
             })
         }   
     })
@@ -144,7 +144,15 @@ webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, Sys
                 $scope.profile=data;
             });
             
-            $rootScope.sucessToast("Los datos se han guardado correctamente");
+            $mdDialog.show(
+                $mdDialog.alert()
+                .parent(angular.element(document.querySelector('#popupContainer')))
+                .clickOutsideToClose(true)
+                .title('')
+                .textContent('¡Datos guardados correctamente!')
+                .ariaLabel('Alert Dialog Demo')
+                .ok('OK')
+            );
             $scope.editable=false;
             $scope.getProfile();
         }, function(){

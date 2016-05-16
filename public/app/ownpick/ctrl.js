@@ -1,12 +1,42 @@
 webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdDialog){
 	
-	$scope.client={};
-	
+	$scope.client={};	
 	$scope.loading = true;
-	$scope.loading2 = true;
 	$scope.actualHour= -1;
+	$scope.spaces = [];
 
-	this.getServices=function(){
+	var serviceSelected = "";
+	var idServiceSelected = -1;
+	var idResourceSelected = -1;
+	var resourceSelected = "";
+	var nullService=false;
+	var dateSelected = "";
+
+	$scope.checkCompany = function(){
+		$rootScope.getProfile(function(data){
+        $scope.profile=data;
+
+			if($scope.profile.premium == true){
+				$scope.getServices();
+				document.getElementById("newPickSelector").style.display="flex";
+				document.getElementById("newPickSelector").style.flex="1";
+			}else{		
+				$scope.loading = false;		
+				$mdDialog.show(
+		            $mdDialog.alert()
+		            .parent(angular.element(document.querySelector('#popupContainer')))
+		            .clickOutsideToClose(true)
+		            .title('Aviso')
+		            .textContent('¡Para crear picks debes ser premium!')
+		            .ariaLabel('Alert Dialog Demo')
+		            .ok('OK')
+	        	);	        	
+			}
+		})
+	}
+	$scope.checkCompany();
+	
+	$scope.getServices=function(){
 		CompanyService.services().get({},function(result){
 			if(result.error)
 				return console.log(result.error);
@@ -15,10 +45,8 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 		}, function(){
 
 		});
-
 	}
-	this.getServices();
-
+	
 	$scope.getEmployees=function(serviceId){
 		$scope.employees = [];
 		$scope.loading=true;
@@ -35,13 +63,6 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 	
 		});
 	}
-
-	var serviceSelected = "";
-	var idServiceSelected = -1;
-	var idResourceSelected = -1;
-	var resourceSelected = "";
-	var nullService=false;
-	var dateSelected = "";
 
 	$scope.getTimeline = function (service, employee, date){
 		serviceSelected = service;
@@ -84,14 +105,14 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 		}else{
 			nullService=true;
 			$("#selectService").children().css("border-bottom-color", "red");
-		}
+		}	
   	}	
 
   	$scope.isObject= function(r){
   		return typeof(r);
   	}
 
-	$scope.spaces = [];
+	
   	$scope.calcSpaces = function(o, c){
 
   		var open = new Date(o);

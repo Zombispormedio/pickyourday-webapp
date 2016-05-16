@@ -49,7 +49,15 @@ webAppController.LoginCtrl = function ($mdDialog,$rootScope, $scope, OauthServic
             }
         ], function(err, user){
             if(err){
-                return $rootScope.warningToast(err.message|| err);
+                $mdDialog.show(
+                    $mdDialog.alert()
+                    .parent(angular.element(document.querySelector('#popupContainer')))
+                    .clickOutsideToClose(true)
+                    .title('Error')
+                    .textContent('¡Revisa el email y contraseña introducidos!')
+                    .ariaLabel('Alert Dialog Demo')
+                    .ok('OK')
+                );
                 
             }
             saveLocal("user", user);

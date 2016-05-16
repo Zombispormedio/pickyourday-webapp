@@ -50,7 +50,7 @@ button.webAppMenuOptions {
     width:75%;
     margin: 0 auto;
     margin-bottom: 5%;
-    margin-top: 3%;
+    margin-top: 4%;
     -webkit-box-shadow: 0px 0px 0px 10px rgba(203,200,194,0.52);
     -moz-box-shadow: 0px 0px 0px 10px rgba(203,200,194,0.52);
     box-shadow: 0px 0px 0px 10px rgba(203,200,194,0.52);
@@ -198,7 +198,8 @@ background-color: blue;
     font-size: 20px;
     text-transform: uppercase;
     font-weight: 400;
-    padding-top: 50px;
+    padding-top: 50px;    
+    margin-left: -1%;
 }
 .contactIcon,.contact{
     color: #FFF;
@@ -299,6 +300,16 @@ background-color: blue;
 
 
 /*Company profile*/
+#logoPremium{
+    position: absolute;
+    right: 30px;
+    top: 0px;
+    display:none;
+}
+#logoPremium > img{
+    width:100px;
+    height:100px;
+}
 .iconState{
     position:absolute;
     right:100px;
@@ -639,6 +650,9 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
     padding-left: 3%;
 }
 /*Employees*/
+.employee:hover{
+    cursor:pointer;
+}
 .infoEmployee{
     margin-left: 9%;
 }
@@ -920,6 +934,10 @@ md-chips .md-chips.md-focused{
    
 }
 /***own pick***/
+#newPickSelector{
+    display:none;
+}
+
 .md-calendar-day-header{
   background-color: #009688;
   color:#FFF;   
@@ -1027,14 +1045,17 @@ md-input-container:not(.md-input-invalid).md-input-focused label{
     padding:1%;
 }
 /**Payment**/
-#payment{
-    padding:10%;
-    display:none;
-    justify-content:center;
+#payment, #paymentError{
+    padding: 5%;
+    display: none;
+    justify-content: center;
+    font-size: 20px;
 }
-#payment > i, .loadingPayment{
-    font-size: 50px;
+#payment > i, .loadingPayment>i, #paymentError >i{
+    font-size: 40px;
     justify-content: center;
     display: flex;
-    padding: 10%;
+    /* padding: 10%; */
+    margin-top: 2.5%;
+    margin-right: 2%;
 }

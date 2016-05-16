@@ -25,7 +25,11 @@ webAppController.AppCtrl = function ($rootScope,$scope, $mdSidenav,CompanyServic
       $rootScope.getProfile(function(data){
           $scope.profile=data;
             $scope.profile.first_word="Q";
+            if($scope.profile.premium == true){
+        document.getElementById("logoPremium").style.display='block';
+      }
       });
+      
   }
   this.getProfile();
 };

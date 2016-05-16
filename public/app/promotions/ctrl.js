@@ -26,7 +26,7 @@ webAppController.PromotionCtrl = function ($rootScope, $scope, CompanyService, S
 	            $mdDialog.alert()
 	            .parent(angular.element(document.querySelector('#popupContainer')))
 	            .clickOutsideToClose(true)
-	            .title('')
+	            .title('Aviso')
 	            .textContent('¡Para crear promociones debes ser premium!')
 	            .ariaLabel('Alert Dialog Demo')
 	            .ok('OK')

@@ -9,10 +9,15 @@ webAppController.PaymentCtrl = function ($stateParams, CompanyService,$scope){
     $scope.doPayment = function(){
     	CompanyService.pay().set({paymentId: idPayment,token:t,PayerID:idPayer},function(result){
 			if(result.error){
-				return console.log(result.error);
-			}else{
-				$scope.loading=false;
-				document.getElementById("payment").style.display='flex';
+                                
+                document.getElementById("paymentError").style.display='flex';
+			$scope.loading=false;}else{
+                
+                    $scope.loading=false;
+                   document.getElementById("payment").style.display='flex'; 
+              
+                    
+				
 			}		
 		}, function(){
 		});

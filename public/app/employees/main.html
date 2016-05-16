@@ -6,8 +6,8 @@
     <h1><i class="fa fa-refresh fa-spin" ></i></h1>
 </div>
 
-  <md-list-item class="md-3-line employeesAvatar allEmployees" ng-repeat="employee in employees" ng-init="employee.open=false">  
-    <div class="employee">
+<md-list-item class="md-3-line employeesAvatar allEmployees" ng-repeat="employee in employees" ng-init="employee.open=false">  
+    <div class="employee" title="más información">
       <div class="employeesCard" ng-click="showInfo(employee)">
         <ng-letter-avatar data="{{employee.name}}" shape="round"></ng-letter-avatar>
         <p>{{employee.name}} {{employee.surname}}</p>
@@ -39,13 +39,15 @@
                 {{$chip.name}}
             </md-chip-template>
           </md-chips>
-          <div ng-if="employee.services.length===0"><p>¡No tiene servicios asignados!</p> </div>
+          <div ng-if="employee.services.length===0" style="margin-top: -2%;">
+            <p>¡No tiene servicios asignados!</p> 
+          </div>
         </div>
       </div>
     </div>
   <md-divider></md-divider>  
 </md-list-item>
-<div ng-if="employees.length==0">¡No hay empleados añadidos!</div>
-  </div>
-
+<div ng-if="employees.length==0">
+  <p>¡No hay empleados añadidos!</p>
+</div>
 <md-button class="md-fab fa fa-plus addEmployee" ng-click="showDialog($event)"></md-button>

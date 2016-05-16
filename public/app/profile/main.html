@@ -2,7 +2,7 @@
     <div class="head">
         <i class="fa fa-user"></i>
         <h1>Mi negocio</h1> 
-    </div>    
+    </div>   
     <div class="iconState">
         <i id="state" class=""></i>
     </div> 
@@ -200,10 +200,37 @@
                     <md-list-item ng-if="profile.emailSecond.length==0" ><p>¡Ningún email añadido!</p></md-list-item>
                 </md-list>
             </div>
-        </div>
+        </div>        
+        <div layout="column" >
+            <div layout="row">
+                <md-input-container style="margin-bottom:4%;">        
+                    <label>Fotos</label>          
+                    <md-icon class="fa fa-camera formIcon"></md-icon>
+                </md-input-container>
+                <md-button class="buttonStyleSimple" ng-click="addImages()" style="float: left;margin-top:6%" ng-if="editable">+ añadir fotos</md-button>                
+            </div>
+            <div ng-if="profile.images.length == 0">
+                <p>¡No hay fotos!</p>
+            </div>
+            <div class="loading" ng-if="loading">
+                <h1><i class="fa fa-refresh fa-spin" ></i></h1>               
+            </div>
+            <md-input-container> 
+                <div class="companyImages" ng-repeat="image in profile.images">				
+                    <img ng-src="{{image.src}}" alt="{{image.alt}}">
+                    <md-button class="md-fab fa fa-times deleteImageIcon" aria-label="delete" ng-click="deleteImage($index)" ng-if="editable"></md-button>
+                </div>
+                <input id="newFile" type="file" name="images" base-sixty-four-input ng-model="images.data" ng-if="editable"  style="display:none;">
+            </md-input-container>
+        </div>  
+
+        <md-input-container>        
+            <label>Cuenta premium</label>          
+            <md-icon class="fa fa-diamond formIcon"></md-icon>
+        </md-input-container>
         <div class="premium">
             <md-input-container>
-                <label>Premium</label>
+                <label>Duración</label>
                 <md-select id="premium" ng-model="typePremium">
                     <md-option ng-value="1">1 mes</md-option>  
                     <md-option ng-value="2">6 meses</md-option>  
@@ -212,25 +239,7 @@
             </md-input-container>
             <md-button class="buttonStyleSimple" ng-click="setPremium()">Pagar</md-button>
         </div>
-        <div layout="column" >
-            <div layout="row">
-                <md-input-container style="margin-bottom:4%;">        
-                    <label>Fotos</label>          
-                    <md-icon class="fa fa-camera formIcon"></md-icon>
-                </md-input-container>
-                <md-button class="buttonStyleSimple" ng-click="addImages()" style="float: left;margin-top:6%" ng-if="editable">+ añadir fotos</md-button>
-                
-            </div>
-            <div ng-if="profile.images.length == 0"><p>¡No hay fotos!</p></div>
-            <md-input-container> 
-                <div class="companyImages" ng-repeat="image in profile.images">				
-                    <img ng-src="{{image.src}}" alt="{{image.alt}}">
-                    <md-button class="md-fab fa fa-times deleteImageIcon" aria-label="delete" ng-click="deleteImage($index)" ng-if="editable"></md-button>
-                </div>
-                <input id="newFile" type="file" name="images" base-sixty-four-input ng-model="images.data" ng-if="editable"  style="display:none;">
-            </md-input-container>
-
-        </div>   
+      
         <div style="display:flex;margin-top:-5%;right:30px;position:absolute;">
             <md-button class="buttonStyle3" ng-if="editable" ng-click="saveChanges()">Guardar cambios</md-button>
             <md-button class="buttonStyle3" ng-if="editable" ng-click="cancel()">Cancelar</md-button>

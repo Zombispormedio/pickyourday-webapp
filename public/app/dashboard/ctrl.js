@@ -49,7 +49,19 @@ webAppController.DashboardCtrl = function ($scope, CompanyService, $mdDialog,$ro
 
             $scope.timeline=result.data;
             $scope.calcSpaces(result.data[0].metadata.schedule[0].open, result.data[0].metadata.schedule[0].close);
-          
+              if($scope.timeline.length==0){
+                loading = false;
+                $mdDialog.show(
+                  $mdDialog.alert()
+                    .parent(angular.element(document.querySelector('#popupContainer')))
+                    .clickOutsideToClose(true)
+                    .title('Dashboard no disponible')
+                    .textContent('Asegurate de que tu empresa está configurada correctamente')
+                    .ariaLabel('Alert Dialog Demo')
+                    .ok('Ok!')
+                    .targetEvent(ev)
+                );
+              }
             }, function(){
           });
         }else{
@@ -65,7 +77,7 @@ webAppController.DashboardCtrl = function ($scope, CompanyService, $mdDialog,$ro
             $mdDialog.alert()
             .parent(angular.element(document.querySelector('#popupContainer')))
             .clickOutsideToClose(true)
-            .title('')
+            .title('Dashboard no disponible')
             .textContent('¡Para ver tu dashboard, tu empresa debe estar activada!')
             .ariaLabel('Alert Dialog Demo')
             .ok('OK')
@@ -80,7 +92,7 @@ webAppController.DashboardCtrl = function ($scope, CompanyService, $mdDialog,$ro
           $mdDialog.alert()
           .parent(angular.element(document.querySelector('#popupContainer')))
           .clickOutsideToClose(true)
-          .title('')
+          .title('Error')
           .textContent('¡Fecha no válida!')
           .ariaLabel('Alert Dialog Demo')
           .ok('OK')
