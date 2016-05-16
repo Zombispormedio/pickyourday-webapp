@@ -38,47 +38,61 @@ webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, Sys
 
     $scope.getProfile=function(){
         $rootScope.getProfile(function(data){
-        $scope.profile=data;
-        $scope.loading = false;         
-        $scope.profile.location=$scope.profile.location || {};
+            $scope.profile=data;
+                     
+            $scope.profile.location=$scope.profile.location || {};
 
-        if($scope.profile.location.geolocation == void 0){
-            $scope.profile.location.geolocation = {};
-            getLocation(function(position){
-                $scope.profile.location.geolocation.latitude = position.coords.latitude;
-                $scope.profile.location.geolocation.longitude = position.coords.longitude;
-            });            
-        }
+            if($scope.profile.location.geolocation == void 0){
+                $scope.profile.location.geolocation = {};
+                getLocation(function(position){
+                    $scope.profile.location.geolocation.latitude = position.coords.latitude;
+                    $scope.profile.location.geolocation.longitude = position.coords.longitude;
+                });            
+            }
 
-        if($scope.profile.state == "active"){
-            document.getElementById("state").className="fa fa-check";
-            document.getElementById("state").title = 'Activada';
-            document.getElementById("request").style.display='none';
+            if($scope.profile.state == "active"){
+                document.getElementById("state").className="fa fa-check";
+                document.getElementById("state").title = 'Activada';
+                document.getElementById("request").style.display='none';
 
-        }else if($scope.profile.state == "demo"){
-            document.getElementById("state").className="fa fa-eye";
-            document.getElementById("state").title = 'Modo demo';
-            document.getElementById("request").style.display='block';
-            document.getElementById("request").className="requestButton menuIcon fa fa-paper-plane";
+            }else if($scope.profile.state == "demo"){
+                document.getElementById("state").className="fa fa-eye";
+                document.getElementById("state").title = 'Modo demo';
+                document.getElementById("request").style.display='block';
+                document.getElementById("request").className="requestButton menuIcon fa fa-paper-plane";
 
-        }else if($scope.profile.state == "pending"){
-            document.getElementById("state").className="fa fa-clock-o";
-            document.getElementById("state").title = 'Pendiente de confirmación';
-            document.getElementById("request").style.display='none';
+            }else if($scope.profile.state == "pending"){
+                document.getElementById("state").className="fa fa-clock-o";
+                document.getElementById("state").title = 'Pendiente de confirmación';
+                document.getElementById("request").style.display='none';
 
-        }else if($scope.profile.state == "refused"){
-            document.getElementById("state").className="fa fa-ban";
-            document.getElementById("state").title = 'Cancelada';
-            document.getElementById("request").style.display='none';
-        }
+            }else if($scope.profile.state == "refused"){
+                document.getElementById("state").className="fa fa-ban";
+                document.getElementById("state").title = 'Cancelada';
+                document.getElementById("request").style.display='none';
+            }
 
-        if($scope.profile.premium == true || $scope.profile.state =="demo"){
-           var p = document.getElementsByClassName("premium");
+            if($scope.profile.premium == true || $scope.profile.state =="demo"){
+               var p = document.getElementsByClassName("premium");
+               for(var i=0;i<p.length;i++){
+                    p[i].style.display='none';
+               }  
+
+            }
+        var premiumDate = $scope.profile.dateExpire;
+        var d = premiumDate.split("T");
+        $scope.dateExpire = d[0];
+        if($scope.profile.premium == true)
+            document.getElementById("timePremium").style.display = 'block';
+        
+        $scope.loading = false;
+        var p = document.getElementsByClassName("profileForm");
            for(var i=0;i<p.length;i++){
-                p[i].style.display='none';
-           }
-        }
+                p[i].style.display='block';
+           } 
         });
+
+       
     }
     $scope.getProfile();
 
@@ -239,11 +253,13 @@ webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, Sys
     }
     $scope.setPremium = function(){
         console.log($scope.typePremium);
+        $scope.loading2 = true;
         CompanyService.premium().set({premium:$scope.typePremium},function(result){
             if(result.error)
                 return console.log(result.error);
             $scope.premium = result.data;
             console.log($scope.premium)
+            $scope.loading2 = false;
             window.location= $scope.premium;
         }, function(){
 

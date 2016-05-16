@@ -58,5 +58,9 @@ webAppController.newPromotionCtrl = function ($rootScope, $scope, CompanyService
 		});
 	}
 	this.getServices();
+
+	$scope.cancel = function(){
+        $rootScope.go("app.promotions");
+    }
 	
 };

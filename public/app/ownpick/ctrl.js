@@ -16,7 +16,7 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 		$rootScope.getProfile(function(data){
         $scope.profile=data;
 
-			if($scope.profile.premium == true){
+			if($scope.profile.state == "active"){
 				$scope.getServices();
 				document.getElementById("newPickSelector").style.display="flex";
 				document.getElementById("newPickSelector").style.flex="1";
@@ -27,7 +27,7 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 		            .parent(angular.element(document.querySelector('#popupContainer')))
 		            .clickOutsideToClose(true)
 		            .title('Aviso')
-		            .textContent('¡Para crear picks debes ser premium!')
+		            .textContent('¡Para crear picks tu empresa debe estar activada!')
 		            .ariaLabel('Alert Dialog Demo')
 		            .ok('OK')
 	        	);	        	

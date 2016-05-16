@@ -10,8 +10,11 @@
         <button id="request" class="" ng-click="sendRequest()" title="Enviar solicitud"></button>
     </div>
 </div>
+<div class="loading" ng-if="loading">
+    <h1><i class="fa fa-refresh fa-spin" ></i></h1>               
+</div>
 
-<div id="formStyle">	
+<div id="formStyle" class="profileForm">	
     <form name="userForm" class="form" layout="column">
         <div flex layout="row" layout-wrap>
             <md-input-container flex="40">			
@@ -64,8 +67,8 @@
                 </md-input-container>
                 <md-button style="float:right;" class="buttonStyleSimple" ng-if="editable" ng-click="addSchedule()" flex>+ añadir Horario</md-button>
             </div>
-            <md-card ng-repeat="schedule in profile.scheduleActivity" ng-init="schedule.show=false">
-                <md-card-header>
+            <md-card id="horario" ng-repeat="schedule in profile.scheduleActivity" ng-init="schedule.show=false" >
+                <md-card-header ng-click="schedule.show=!schedule.show">
                     <md-card-header-text layout="row" layout-align="space-between center">
                         <div flex="100">
                             <md-datepicker ng-model="schedule.initial" md-placeholder="Introduce fecha inicial" class="only-button-date"></md-datepicker>{{schedule.initial | date: 'MMMM dd'}}
@@ -80,13 +83,13 @@
                         </span>
                     </md-card-header-text>
                 </md-card-header>
-                <md-card-content ng-if="schedule.show">
+                <md-card-content ng-if="schedule.show" style="margin-top:-5%;">
                     <md-list class="md-dense" >
                         <md-subheader class="md-no-sticky">Semana</md-subheader>
                         <md-list-item class="md-3-line" ng-repeat="daytime in schedule.week">
                             <div class="md-list-item-text" layout="column" style="margin-bottom: 1%;" >
                                 <h3 class="mb1comma5" flex>{{daytime.day}}</h3>
-                                <md-chips ng-model="daytime.times" md-on-add="checkTime(daytime)" readonly="!editable" flex>
+                                <md-chips style="margin-bottom: -1%;" ng-model="daytime.times" md-on-add="checkTime(daytime)" readonly="!editable" flex placeholder="08:00-14:00">
                                 </md-chips>
                                 <p class="note" ng-if="daytime.times==0">
                                     Cerrado
@@ -207,13 +210,10 @@
                     <label>Fotos</label>          
                     <md-icon class="fa fa-camera formIcon"></md-icon>
                 </md-input-container>
-                <md-button class="buttonStyleSimple" ng-click="addImages()" style="float: left;margin-top:6%" ng-if="editable">+ añadir fotos</md-button>                
+                <md-button class="buttonStyleSimple" ng-click="addImages()" style="float: left;margin-top:6%" ng-if="editable">+ añadir fotos</md-button>
             </div>
             <div ng-if="profile.images.length == 0">
                 <p>¡No hay fotos!</p>
-            </div>
-            <div class="loading" ng-if="loading">
-                <h1><i class="fa fa-refresh fa-spin" ></i></h1>               
             </div>
             <md-input-container> 
                 <div class="companyImages" ng-repeat="image in profile.images">				
@@ -239,7 +239,9 @@
             </md-input-container>
             <md-button class="buttonStyleSimple" ng-click="setPremium()">Pagar</md-button>
         </div>
-      
+        <div id="timePremium">
+           <p>Hasta: {{dateExpire}}</p>
+        </div>      
         <div style="display:flex;margin-top:-5%;right:30px;position:absolute;">
             <md-button class="buttonStyle3" ng-if="editable" ng-click="saveChanges()">Guardar cambios</md-button>
             <md-button class="buttonStyle3" ng-if="editable" ng-click="cancel()">Cancelar</md-button>
@@ -247,3 +249,4 @@
     </form>
     <md-button class="md-fab fa fa-pencil" id="editProfile" ng-if="!editable" ng-click="edit()"aria-label="editProfile"></md-button>
 </div>
+
