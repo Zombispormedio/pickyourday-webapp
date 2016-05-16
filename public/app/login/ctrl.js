@@ -49,7 +49,7 @@ webAppController.LoginCtrl = function ($mdDialog,$rootScope, $scope, OauthServic
             }
         ], function(err, user){
             if(err){
-                return $rootScope.warningToast(err);
+                return $rootScope.warningToast(err.message);
                 
             }
             saveLocal("user", user);
