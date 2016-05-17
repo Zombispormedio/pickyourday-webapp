@@ -80,8 +80,10 @@ webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, Sys
 
             }
         var premiumDate = $scope.profile.dateExpire;
-        var d = premiumDate.split("T");
-        $scope.dateExpire = d[0];
+        if(premiumDate){
+            var d = premiumDate.split("T");
+            $scope.dateExpire = d[0];
+        }
         if($scope.profile.premium == true)
             document.getElementById("timePremium").style.display = 'block';
         
