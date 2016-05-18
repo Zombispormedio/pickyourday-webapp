@@ -76,12 +76,12 @@
             <div ng-if="$index == 0" class="md-list-item-text">
               <div class="head2">
                 <i class="fa fa-user" ></i> 
-                <p>{{p.nameCli}}</p>
+                <p>{{p.nameCli||p.customer.name||p.customer.email}}</p>
               </div>
               <div class="head2"> 
                 <i class="fa fa-phone" style="padding-right:2%;"></i> 
-                <p>{{p.phoneCli}}</p> 
-              </div>
+                <p>{{p.phoneCli||p.customer.phone||'N/A'}}</p> 
+                </div>
               <div class="head2">
                 <i class="fa fa-tag" ></i> 
                 <p>{{p.service.name}}</p>
@@ -94,12 +94,13 @@
             </div>
             <div ng-if="$index == 1" class="md-list-item-text ">
               <div class="head2">
+            
                 <i class="fa fa-user" ></i> 
-                <p>{{p.nameCli}}</p>
+                <p>{{p.nameCli|| p.customer.name||p.customer.email}}</p>
               </div>
               <div class="head2">
                 <i class="fa fa-phone" ></i> 
-                <p>{{p.phoneCli}}</p> 
+                <p>{{p.phoneCli||p.customer.phone||'N/A'}}</p> 
               </div>
               <div class="head2">
                 <i class="fa fa-tag" ></i> 

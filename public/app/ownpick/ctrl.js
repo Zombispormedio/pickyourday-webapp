@@ -1,4 +1,4 @@
-webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdDialog, $document){
+webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdDialog){
 	
 	$scope.client={};	
 	$scope.loading = true;
@@ -88,7 +88,7 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 					console.log(result.data);
 				    $scope.calcSpaces(result.data[0].metadata.schedule[0].open, result.data[0].metadata.schedule[0].close);	
 				    if(nullService==true)
-				    	$("#selectService").children().css("border-bottom-color", "rgba(0, 0, 0, 0.12)");	      
+				    	document.getElementById("selectService").children[0].style.borderBottomColor="rgba(0, 0, 0, 0.12)";	      
 			    	}, function(){ });
 			}else{
 				CompanyService.timeline().get({service:idServiceSelected,rangeDays:1,date:date},function(result){
@@ -100,12 +100,12 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 				    $scope.calcSpaces(result.data[0].metadata.schedule[0].open, result.data[0].metadata.schedule[0].close);	
 				    
 				    if(nullService==true)
-				    	$("#selectService").children().css("border-bottom-color", "rgba(0, 0, 0, 0.12)");	      
+				    	document.getElementById("selectService").children[0].style.borderBottomColor= "rgba(0, 0, 0, 0.12)";	      
 		    	}, function(){ });
 			}		  	
 		}else{
 			nullService=true;
-			$("#selectService").children().css("border-bottom-color", "red");
+			document.getElementById("selectService").children[0].style.borderBottomColor= "red";
 		}	
   	}	
 
