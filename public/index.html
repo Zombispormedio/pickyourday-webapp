@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="/assets/css/main.css">
         <link rel="shortcut icon" type="image/png" href="{{'logo.png'|image}}"/>
     </head>
-    <body>
+    <body ng-class="{'backgroundLogin':isState('login')||isState('forgot_password') }">
 
         <div ui-view></div>
 

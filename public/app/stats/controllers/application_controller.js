@@ -7,4 +7,7 @@ webAppController.StatsCtrl =function($rootScope, $scope){
     };
     
     
+    $scope.back=function(){
+        $rootScope.go("app.dashboard");
+    }
 };

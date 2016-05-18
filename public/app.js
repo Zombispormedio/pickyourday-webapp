@@ -365,4 +365,8 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
         fn(data);
 
     }
+    
+    $rootScope.isState=function(state){
+        return $state.is(state);
+    }
 });

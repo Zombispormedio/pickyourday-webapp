@@ -1,4 +1,4 @@
-webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdDialog){
+webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdDialog, $document){
 	
 	$scope.client={};	
 	$scope.loading = true;
@@ -66,7 +66,7 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 
 	$scope.getTimeline = function (service, employee, date){
 		serviceSelected = service;
-		idServiceSelected = service._id;
+		
 		resourceSelected = employee;
 		$scope.loading = true;
 
@@ -74,6 +74,7 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 		console.log(employee)
 		
 		if(service!=null){
+            idServiceSelected = service._id;
 			if(employee!=null){
 				if(employee.resource_id != null)
 					idResourceSelected = employee.resource_id;
