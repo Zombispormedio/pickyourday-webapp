@@ -4,14 +4,15 @@
 	<h1>Mi negocio</h1>
   <md-datepicker class="calendar" ng-model="myDate" md-placeholder="" style="position:absolute;right: 70px;width:104px;" ng-change="getTimeline(myDate);"></md-datepicker>
 </div>
-  <button class="menuIcon fa fa-arrow-left" ng-style="{color: '#00796B', 'font-size':'25px', height:'25px',position:'absolute', left:'0'}" ng-click="getTimeline(myDate,'prev')"></button>
-  <button class="menuIcon fa fa-arrow-right" ng-style="{color: '#00796B', 'font-size':'25px', height:'25px',position:'absolute',right:'25px'}" ng-click="getTimeline(myDate,'next')"></button>
+ <button class="menuIcon fa fa-arrow-left" ng-style="{color: '#00796B', 'font-size':'25px', height:'25px',position:'absolute', left:'0'}" ng-click="getTimeline(myDate,'prev')"></button>
+  <button class="menuIcon fa fa-arrow-right" ng-style="{color: '#00796B', 'font-size':'25px', height:'25px',position:'absolute',right:'25px'}" ng-click="getTimeline(myDate,'next')"></button> 
 
 <div class="loading" ng-if="loading">
       <h1><i class="fa fa-refresh fa-spin" ></i></h1>
 </div>
 
 <div ng-cloak class="timeline">
+  
 	<div class="timelineHours">
 		<div class="left"></div>
 		<div class="right">
@@ -74,6 +75,9 @@
       <div ng-if="employee.open" style="display:flex;padding:1%;">
           <div ng-repeat="p in employee.pick track by $index" class="employeePicks">
             <div ng-if="$index == 0" class="md-list-item-text">
+              <div>
+                <p>Cita actual</p>
+              </div>
               <div class="head2">
                 <i class="fa fa-user" ></i> 
                 <p>{{p.nameCli||p.customer.name||p.customer.email}}</p>
@@ -93,8 +97,10 @@
               </div>  
             </div>
             <div ng-if="$index == 1" class="md-list-item-text ">
-              <div class="head2">
-            
+              <div>
+                <p>Cita siguiente</p>
+              </div>
+              <div class="head2">            
                 <i class="fa fa-user" ></i> 
                 <p>{{p.nameCli|| p.customer.name||p.customer.email}}</p>
               </div>

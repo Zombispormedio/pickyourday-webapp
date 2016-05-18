@@ -21,12 +21,13 @@ webAppController.AppCtrl = function ($rootScope,$scope, $mdSidenav,CompanyServic
   };
 
   this.getProfile=function(){      
-      $rootScope.getProfile(function(data){
-          $scope.profile=data;
-            $scope.profile.first_word="Q";
-            if($scope.profile.premium == true){
-              document.getElementById("logoPremium").style.display='block';
-      }
+    $rootScope.getProfile(function(data){
+      $scope.profile=data;
+        $scope.profile.first_word="Q";
+        console.log($scope.profile.premium)
+        if($scope.profile.premium == true){
+          document.getElementById("logoPremium").style.display='block';
+        }
     });      
   }
   this.getProfile();

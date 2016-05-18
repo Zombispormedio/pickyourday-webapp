@@ -12,7 +12,8 @@ webAppController.PaymentCtrl = function ($stateParams, CompanyService,$scope){
 		        $scope.loading=false;
             }else{                
                 $scope.loading=false;
-               document.getElementById("payment").style.display='flex';  				
+               document.getElementById("payment").style.display='flex'; 
+
 			}		
 		}, function(){
 		});
