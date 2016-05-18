@@ -5,7 +5,7 @@ webAppFactory.CompanyService= function(ApiService){
 
         register:function(){
             return ApiService.rest(this.base, {
-                  new:{method:"POST", params:{}},
+                new:{method:"POST", params:{}},
             });
         },
         picks:function(){
@@ -14,10 +14,10 @@ webAppFactory.CompanyService= function(ApiService){
             });
         },
         profile:function(){
-        	return ApiService.rest(this.base+"/profile/:id",{
-        		get:{method:"GET", params:{}},
+            return ApiService.rest(this.base+"/profile/:id",{
+                get:{method:"GET", params:{}},
                 update:{method:"PUT", params:{}}
-        	});
+            });
         },
         services:function(){
             return ApiService.rest(this.base+"/service/:id",{
@@ -39,13 +39,13 @@ webAppFactory.CompanyService= function(ApiService){
                 delete:{method:"DELETE", params:{id:'@id'}}
             });
         },
-         promotions:function(){
+        promotions:function(){
             return ApiService.rest(this.base+"/promotion/",{
                 get:{method:"GET", params:{}}
             });
         },       
         employees:function(){
-             return ApiService.rest(this.base+"/resource/:id",{
+            return ApiService.rest(this.base+"/resource/:id",{
                 /*list:{method:"GET", params:{}},*/
                 get:{method:"GET", params:{}},
                 create:{method:"POST", params:{}},
@@ -78,7 +78,7 @@ webAppFactory.CompanyService= function(ApiService){
                 get:{method:"GET", params:{}}
             });
         },
-        
+
         developer:function(){
             return ApiService.rest(this.base+"/developer/",{
                 get:{method:"GET", params:{}},
@@ -110,6 +110,42 @@ webAppFactory.CompanyService= function(ApiService){
             return ApiService.rest(this.base+"/payment/",{
                 set:{method:"POST", params:{}}
             });
-        }
+        },
+
+
+        Pick:function(){
+            return ApiService.rest(this.base+"/statsPicks", {
+                stats:{method:"GET", params:{}}
+            });
+        },
+
+        OriginPick:function(){
+            return ApiService.rest(this.base+"/originPicks", {
+                stats:{method:"GET", params:{}}
+            });
+        },
+
+        ScoreService:function(){
+            return ApiService.rest(this.base+"/scoreService", {
+                stats:{method:"GET", params:{}}
+            });
+        },
+        MoneyResource:function(){
+            return ApiService.rest(this.base+"/moneyResources", {
+                stats:{method:"GET", params:{}}
+            });
+        },
+
+        WorkResource:function(){
+            return ApiService.rest(this.base+"/workResources", {
+                stats:{method:"GET", params:{}}
+            });
+        },
+        Profile:function(){
+            return ApiService.rest(this.base+"/profile",{
+                get:{method:"GET", params:{}}
+            });
+        },
+
     };
 };

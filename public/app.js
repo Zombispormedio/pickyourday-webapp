@@ -3,13 +3,13 @@ var webAppFactory = {};
 var webAppFilter = {};
 var webAppDirective = {};
 
-var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMaterial', 'ngMaterialDatePicker','ngLetterAvatar', 'naif.base64', 'ngMap', 'angular-clipboard'])
+var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMaterial', 'ngMaterialDatePicker','ngLetterAvatar', 'naif.base64', 'ngMap', 'angular-clipboard',  'alexandra'])
 .controller(webAppController)
 .factory(webAppFactory)
 .filter( webAppFilter)
 .directive(webAppDirective)
 
-.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
+.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $mdThemingProvider) {
 
 
     $stateProvider
@@ -189,21 +189,6 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
             }
         }      
     })
-        .state("app.stats", {
-        url: 'stats',
-        onEnter: function ($rootScope) {
-            if (!getJSONLocal("user")) {
-
-                $rootScope.go("login");
-            }
-        },
-        views: {
-            content: {
-                templateUrl: 'app/stats/main.html',
-                controller: 'StatsCtrl'
-            }
-        }      
-    })
         .state("app.payment", {
         url: 'payment?:paymentId&:token&:PayerID',
         onEnter: function ($rootScope) {
@@ -219,12 +204,105 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
             }
         } 
     })
+     .state("stats", {
+        url: '/stats',
+        onEnter: function ($rootScope) {
+            if (!getJSONLocal("user")) {
+
+                $rootScope.go("login");
+            }
+        },
+        templateUrl: 'app/stats/main.html',
+        controller: 'StatsCtrl',
+        abstract:true
+
+    })
+        .state("stats.normal", {
+        url: '/normal',
+        onEnter: function ($rootScope) {
+            if (!getJSONLocal("user")) {
+
+                $rootScope.go("login");
+            }
+        },
+        views: {
+            content: {
+                templateUrl: 'app/stats/normal/main.html',
+                controller: 'NormalCtrl'
+            }
+        }  
+    })
+    
+    .state("stats.slider", {
+        url: '/slider',
+        onEnter: function ($rootScope) {
+            if (!getJSONLocal("user")) {
+
+                $rootScope.go("login");
+            }
+        },
+        views: {
+            content: {
+                templateUrl: 'app/stats/slider/main.html',
+                controller: 'SliderCtrl'
+            }
+        }  
+    })
+     .state("stats.player", {
+        url: '/player',
+        onEnter: function ($rootScope) {
+            if (!getJSONLocal("user")) {
+
+                $rootScope.go("login");
+            }
+        },
+        views: {
+            content: {
+                templateUrl: 'app/stats/player/main.html',
+                controller: 'PlayerCtrl'
+            }
+        }  
+    })
+    .state("stats.heightmap", {
+        url: '/height-map',
+        onEnter: function ($rootScope) {
+            if (!getJSONLocal("user")) {
+
+                $rootScope.go("login");
+            }
+        },
+        views: {
+            content: {
+                templateUrl: 'app/stats/height-map/main.html',
+                controller: 'HeightMapCtrl'
+            }
+        }  
+    })
        
 
 
 
     $urlRouterProvider.otherwise("/login");
     $httpProvider.interceptors.push('AuthInterceptor');
+    
+     $mdThemingProvider.theme('stats-theme')
+   .backgroundPalette('teal', {
+      'default': '500', // by default use shade 400 from the pink palette for primary intentions
+      'hue-1': '100', // use shade 100 for the <code>md-hue-1</code> class
+      'hue-2': '600', // use shade 600 for the <code>md-hue-2</code> class
+      'hue-3': 'A100' // use shade A100 for the <code>md-hue-3</code> class
+    })
+    .primaryPalette('lime', {
+      'default': '400', // by default use shade 400 from the pink palette for primary intentions
+      'hue-1': '100', // use shade 100 for the <code>md-hue-1</code> class
+      'hue-2': '600', // use shade 600 for the <code>md-hue-2</code> class
+      'hue-3': 'A100' // use shade A100 for the <code>md-hue-3</code> class
+    })
+    // If you specify less than all of the keys, it will inherit from the
+    // default shades
+    .accentPalette('teal', {
+      'default': '500' // use shade 200 for default, and keep all other shades the same
+    });
 
 })
 

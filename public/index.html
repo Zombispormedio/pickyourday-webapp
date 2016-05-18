@@ -5,6 +5,9 @@
         <title>Pickyourday Companies</title>
         <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css"> 
         <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css"> 
+        
+         <link rel="stylesheet" href="bower_components/mdi/css/materialdesignicons.min.css"> 
+        
         <link rel="stylesheet" href="bower_components/angular-material-datetimepicker/css/material-datetimepicker.min.css">           
         <link rel="stylesheet" href="/assets/css/main.css">
         <link rel="shortcut icon" type="image/png" href="{{'logo.png'|image}}"/>
@@ -53,7 +56,13 @@
         <script type="text/javascript" src="/app/help/ctrl.js"></script>
         <script type="text/javascript" src="/app/ownpick/ctrl.js"></script>
         <script type="text/javascript" src="/app/settings/ctrl.js"></script>
-        <script type="text/javascript" src="/app/stats/ctrl.js"></script>
+ 
+        
+        <script type="text/javascript" src="/app/stats/controllers/application_controller.js"></script>
+        <script type="text/javascript" src="/app/stats/controllers/height_map_controller.js"></script>
+        <script type="text/javascript" src="/app/stats/controllers/normal_controller.js"></script>
+        <script type="text/javascript" src="/app/stats/controllers/player_controller.js"></script>
+        <script type="text/javascript" src="/app/stats/controllers/slider_controller.js"></script>
 
         <script type="text/javascript" src="/app/utils/message-toast/ctrl.js"></script>
 
@@ -63,7 +72,22 @@
         <script type="text/javascript" src="lib/services/company.service.js"></script>
         <script type="text/javascript" src="lib/services/config.service.js"></script>
         <script type="text/javascript" src="lib/services/system.service.js"></script>
+        <script type="text/javascript" src="lib/services/stats.service.js"></script>
         <script type="text/javascript" src="lib/filters.js"></script>
+        
+        
+        <!-- 3D Stats-->
+        <script type="text/javascript" src="bower_components/gl-matrix/gl-matrix-min.js"></script>
+        <script type="text/javascript" src="bower_components/three.js/three.min.js"></script>
+        <script type="text/javascript" src="bower_components/immutable/dist/immutable.min.js"></script>
+        <script type="text/javascript" src="bower_components/chance/dist/chance.min.js"></script>
+        <script type="text/javascript" src="bower_components/tween.js/src/Tween.js"></script>
+        
+        <script type="text/javascript" src="vendor/blaze/blaze.min.js"></script>
+        
+        <script type="text/javascript" src="vendor/alexandra/dist/alexandra.min.js"></script>
+        <script type="text/javascript" src="vendor/alexandra/dist/textures_values.js"></script>
+        
 
     </body>
 </html>

@@ -1,8 +1,56 @@
-<div class="head">
-    <i class="fa fa-bar-chart"></i>
-    <h1>Estad&iacute;sticas</h1>
-</div>
+<div layout="column">
+    <md-toolbar class="md-accent md-whiteframe-1dp" style=" height:35px;min-height: 35px!important;" md-theme="stats-theme">
+        <div class="md-toolbar-tools">
+            <div flex>
+                <md-button class="md-primary md-raised" style="color: white; background-color: #009688; margin-left: -3%;">
+                    <i class="mdi mdi-chevron-left"></i>
+                    Volver al Dashboard
+                </md-button>
+            </div>
 
-<md-content style="margin-top: 5%;">
-  
-</md-content>
+            <div flex="20" layout="row">
+                <md-menu style="margin: 0" flex="20">
+                    <md-button aria-label="Type Stats" class="md-icon-button button-stats" ng-click="openMenu($mdOpenMenu, $event)">
+                        <md-icon md-menu-origin md-font-icon="mdi-chart-areaspline" class="mdi" style="color: white; font-size: 2em; margin-top: -5.3%"></md-icon>
+                    </md-button>
+                    <md-menu-content width="4" style="background-color: white">
+                        <md-menu-item>
+                            <md-button ui-sref="stats.normal">
+                                <md-icon md-font-icon="mdi-chart-bubble" class="mdi" style=" color: black; font-size: 2em"></md-icon>
+                                Normal
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button  ui-sref="stats.slider">
+                                <md-icon md-font-icon="mdi-clock-start" class="mdi" style=" color: black; font-size: 2em"></md-icon>
+                                Slider
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-divider></md-menu-divider>
+                        <md-menu-item>
+                            <md-button  ui-sref="stats.player">
+                                <md-icon md-font-icon="mdi-play-box-outline" class="mdi" style=" color: black; font-size: 2em"></md-icon>
+                                Player
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button  ui-sref="stats.heightmap">
+                                <md-icon md-font-icon="mdi-airplane-landing" class="mdi" style=" color: black; font-size: 2em"></md-icon>
+                                Height Map
+                            </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+                <i class="mdi mdi-chevron-down" style="margin-top: 5%; margin-left: -5%;"></i>
+                <h2 style="margin-top: 2%;margin-left: 2%;">
+                    <span>Pickyourday 3D</span>
+                </h2>
+            </div>
+            <span flex></span>
+
+        </div>
+    </md-toolbar>
+
+
+    <div ui-view="content"></div>
+</div>
