@@ -76,7 +76,7 @@
           <div ng-repeat="p in employee.pick track by $index" class="employeePicks">
             <div ng-if="$index == 0" class="md-list-item-text">
               <div>
-                <p>Cita actual</p>
+                <p>PICK ACTUAL</p>
               </div>
               <div class="head2">
                 <i class="fa fa-user" ></i> 
@@ -92,13 +92,13 @@
               </div>
           
               <div class="employeesActions">
-                <button class="fa fa-arrow-right" aria-label="edit" ng-click="nextPick(employee._id,p._id,'finished')"></button> 
-                <button class="fa fa-times" ng-click="nextPick(employee._id, p._id,'cancelled')"></button>
+                <button class="fa fa-arrow-right" aria-label="next" ng-click="nextPick(employee._id,p._id,'finished')" title="Siguiente pick"></button> 
+                <button class="fa fa-times" ng-click="nextPick(employee._id, p._id,'cancelled')" title="Cancelar"></button>
               </div>  
             </div>
             <div ng-if="$index == 1" class="md-list-item-text ">
               <div>
-                <p>Cita siguiente</p>
+                <p>SIGUIENTE PICK</p>
               </div>
               <div class="head2">            
                 <i class="fa fa-user" ></i> 

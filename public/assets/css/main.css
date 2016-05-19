@@ -618,9 +618,11 @@ md-select-menu md-option[selected]:focus, md-select-menu md-option[selected]{
     display:flex;
     flex-wrap:wrap;
     flex:1;
+    margin-top: -1%;
+
 }
 .employeePicks div{
-    margin-left: 10%;
+    margin-left: 5%;
     margin-bottom: 1%;
     margin-right: 0;
 }
@@ -1064,4 +1066,13 @@ md-input-container:not(.md-input-invalid).md-input-focused label{
     /* padding: 10%; */
     margin-top: 2.5%;
     margin-right: 2%;
+}
+
+
+/**Stats***/
+md-progress-linear .md-bar{
+    background-color: #009688;
+}
+#statsSelector .md-label{
+    margin-top: 3%;
 }
