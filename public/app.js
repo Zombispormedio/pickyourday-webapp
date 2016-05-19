@@ -144,21 +144,6 @@ var app = angular.module('pickyourday-webapp', ['ui.router', "ngResource", 'ngMa
             }
         }      
     })
-        .state("app.help", {
-        url: 'help',
-        onEnter: function ($rootScope) {
-            if (!getJSONLocal("user")) {
-
-                $rootScope.go("login");
-            }
-        },
-        views: {
-            content: {
-                templateUrl: 'app/help/main.html',
-                controller: 'HelpCtrl'
-            }
-        }      
-    })
         .state("app.ownpick", {
         url: 'ownpick',
         onEnter: function ($rootScope) {

@@ -18,7 +18,7 @@
             <img ng-src="{{ 'logo.png'|image}}" class="avatar-sidenav" alt="Default Avatar" ng-if="!profile.images[0]" ui-sref="app.dashboard">
             <div layout="column" flex>
                 <h3 class="companyName">{{profile.name}}</h3>
-                <div ng-click="closeLeftMenu()"><a ui-sref="app.profile" href="">Editar perfil</a></div>
+                <div ng-click="closeLeftMenu()"><a ui-sref="app.profile" href="" style="padding-left: 5%;">Editar perfil</a></div>
             </div>
         </div>
         <md-divider></md-divider>
@@ -31,7 +31,6 @@
             <div ng-click="closeLeftMenu()"><a ui-sref="stats.normal"><i class="fa fa-line-chart"></i> Estadísticas</a></div>
 
             <div ng-click="closeLeftMenu()"><a ui-sref="app.settings"><i class="fa fa-cog"></i> Configuración</a></div>
-            <div ng-click="closeLeftMenu()"><a ui-sref="app.help"><i class="fa fa-question-circle"></i> Ayuda</a></div>
             <div><button class="webAppMenuOptions" ng-click="logout()"><i class="fa fa-power-off"></i> Cerrar sesión</button></div>
         </div>  
     </md-sidenav>

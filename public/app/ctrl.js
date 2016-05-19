@@ -8,15 +8,14 @@ webAppController.AppCtrl = function ($rootScope,$scope, $mdSidenav,CompanyServic
      $mdSidenav('left').close();
   }
   $scope.logout = function () {  
-
-	OauthService. logout().Session(function(){
-		 deleteLocal("user");
-        $rootScope.go("login");   
-	}, function(){});
+  	OauthService. logout().Session(function(){
+  		 deleteLocal("user");
+          $rootScope.go("login");   
+  	}, function(){});
           
-    };
+  };
 
-   $scope.resourcesView = function() {
+  $scope.resourcesView = function() {
     $mdSidenav('right').toggle();
   };
 

@@ -1,3 +1,0 @@
-webAppController.HelpCtrl = function (){
-    
-}

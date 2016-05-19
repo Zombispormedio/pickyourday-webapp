@@ -1,4 +1,4 @@
-webAppController.PaymentCtrl = function ($stateParams, CompanyService,$scope){
+webAppController.PaymentCtrl = function (OauthService,$stateParams, CompanyService,$scope, $rootScope){
     var idPayment = $stateParams.paymentId;
     var t = $stateParams.token;
     var idPayer = $stateParams.PayerID;
@@ -13,9 +13,8 @@ webAppController.PaymentCtrl = function ($stateParams, CompanyService,$scope){
             }else{                
                 $scope.loading=false;
                document.getElementById("payment").style.display='flex'; 
-
-			}		
-		}, function(){
+               $rootScope.getProfile();	
+           }
 		});
     }
     $scope.doPayment();
