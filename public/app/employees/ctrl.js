@@ -123,6 +123,7 @@ webAppController.EmployeesCtrl = function ($rootScope, $scope, CompanyService,  
 	}
 
 	this.modifyEmployee = function(employee){
+		console.log(employee)
 		CompanyService.employees().update({id:employee._id},employee,function(result){
 			if(result.error)
 				return console.log(result.error);

@@ -15,7 +15,7 @@
 </div>
 
 <div id="formStyle" class="profileForm">	
-    <form name="userForm" class="form" layout="column">
+    <form name="userForm" class="form" layout="column" style="margin-bottom: 10%;">
         <div flex layout="row" layout-wrap>
             <md-input-container flex="40">			
                 <label>Nombre</label>
@@ -55,7 +55,7 @@
                 <label>Palabras clave</label>          
                 <md-icon class="fa fa-key formIcon"></md-icon> 
             </md-input-container>
-            <md-chips id="keywordsProfile" ng-if="checkKeywords()" ng-model="profile.keywords" readonly="!editable"></md-chips>
+            <md-chips id="keywordsProfile" ng-model="profile.keywords" readonly="!editable"></md-chips>
             <p ng-if="!checkKeywords()">¡No hay palabras clave!</p>
         </div>
    
@@ -237,12 +237,14 @@
                     <md-option ng-value="3">1 año</md-option>          
                 </md-select>                  
             </md-input-container>
+
             <md-button class="buttonStyleSimple" ng-click="setPremium()">Pagar</md-button>
-        </div>
+        </div> 
+        <p ng-if="profile.state == 'demo'">¡Opción no disponible en modo demo!</p>
         <div id="timePremium">
            <p>Hasta: {{dateExpire}}</p>
         </div>      
-        <div style="display:flex;margin-top:-5%;right:30px;position:absolute;">
+        <div style="display:flex;margin-top:5%;right:30px;position:absolute;">
             <md-button class="buttonStyle3" ng-if="editable" ng-click="saveChanges()">Guardar cambios</md-button>
             <md-button class="buttonStyle3" ng-if="editable" ng-click="cancel()">Cancelar</md-button>
         </div>
