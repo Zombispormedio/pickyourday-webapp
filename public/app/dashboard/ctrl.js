@@ -1,4 +1,4 @@
-webAppController.DashboardCtrl = function ($scope, CompanyService, $mdDialog,$rootScope) {
+webAppController.DashboardCtrl = function ($scope, CompanyService, $mdDialog,$rootScope,$interval) {
   var self = this;
   $scope.actualHour= -1;
   $scope.loading=true;
@@ -30,9 +30,6 @@ webAppController.DashboardCtrl = function ($scope, CompanyService, $mdDialog,$ro
           var d = new Date();
           $scope.myDate = d;
         }
-
-        console.log("mydate "+$scope.myDate);
-        console.log("d "+d);
 
         if($scope.myDate.getDate() >= d.getDate() && $scope.myDate.getMonth() >= d.getMonth()){          
           CompanyService.timeline().get({date:$scope.myDate,rangeDays:1},function(result){        
@@ -104,9 +101,9 @@ webAppController.DashboardCtrl = function ($scope, CompanyService, $mdDialog,$ro
       });
   };
   $scope.getTimeline();
-   /*$interval(function(){
-      self.getTimeline();
-    },10000)*/
+  /*$interval(function(){
+      $scope.getTimeline($scope.myDate);
+  },30000)*/
 
     $scope.spaces = [];
 

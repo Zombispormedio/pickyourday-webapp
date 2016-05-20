@@ -76,8 +76,7 @@ webAppController.ProfileCtrl = function ($rootScope, $scope, CompanyService, Sys
                var p = document.getElementsByClassName("premium");
                for(var i=0;i<p.length;i++){
                     p[i].style.display='none';
-               }  
-
+               }
             }
         var premiumDate = $scope.profile.dateExpire;
         if(premiumDate){

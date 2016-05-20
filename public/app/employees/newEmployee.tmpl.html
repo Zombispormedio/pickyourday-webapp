@@ -13,30 +13,30 @@
               <md-input-container>      
                 <label>Nombre</label>
                 <md-icon class="fa fa-user formIcon" style="margin-top: 10%;"></md-icon> 
-                <input name="name" ng-model="employee.name">
+                <input name="name" ng-model="employee.name" required>
               </md-input-container>
               <md-input-container style="margin-left:11%;">             
                 <label>Apellidos</label>      
-                <input name="surname" type="text" ng-model="employee.surname"></input>
+                <input name="surname" type="text" ng-model="employee.surname" required></input>
               </md-input-container>
             </div>
             <div flex layout="row" layout-wrap>
               <md-input-container>              
                 <label>Descripción</label>      
                 <md-icon class="fa fa-commenting-o formIcon"></md-icon> 
-                <input name="description" type="text" ng-model="employee.description"></input>
+                <input name="description" type="text" ng-model="employee.description" required></input>
               </md-input-container>
               <md-input-container>              
                 <label>Teléfono</label>      
                 <md-icon class="fa fa-phone formIcon"></md-icon> 
-                <input name="phone" type="text" ng-model="employee.phone"></input>
+                <input name="phone" type="text" ng-model="employee.phone" required></input>
               </md-input-container>
             </div>
             <div flex layout="row" layout-wrap>
               <md-input-container style="margin-right: 10px;">
                 <md-icon class="fa fa-tags formIcon"></md-icon> 
                 <label>Servicios</label>
-                <md-select ng-model="employee.services" multiple style="margin-left: 0%;">
+                <md-select ng-model="employee.services" multiple style="margin-left: 0%;" required>
                     <md-option ng-value="service._id" ng-repeat="service in services">{{service.name}}</md-option>
                 </md-select>  
               </md-input-container>

@@ -36,6 +36,7 @@
 <md-sidenav md-component-id="right" class="md-sidenav-right resourcesServices">
 	<h2><i class="fa fa-users"></i> Empleados</h2>
 	<md-list-item ng-repeat="resourceByService in resourcesByServices">
+	{{resourceByService}}
 	   <p>{{resourceByService.resource}}</p>
 	   <md-checkbox class="" ng-model="resourceByService.asigned" ng-change="toggle(resourceByService)"></md-checkbox>
 	</md-list-item>

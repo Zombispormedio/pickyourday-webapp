@@ -47,7 +47,11 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 		});
 	}
 	
-	$scope.getEmployees=function(serviceId){
+	$scope.getEmployees=function(serviceId){	
+		var p = document.getElementsByClassName("timeline");
+           for(var i=0;i<p.length;i++){
+                p[i].style.display='none';
+        }	
 		$scope.employees = [];
 		$scope.loading=true;
 		CompanyService.resourcesByServices().list({service:serviceId},function(result){
@@ -59,6 +63,7 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 				if($scope.resourcesByServices[i].asigned == true)
 					$scope.employees.push($scope.resourcesByServices[i]);
 			}
+			
 		}, function(){
 	
 		});
@@ -102,11 +107,16 @@ webAppController.OwnPickCtrl = function ($rootScope, $scope, CompanyService,$mdD
 				    if(nullService==true)
 				    	document.getElementById("selectService").children[0].style.borderBottomColor= "rgba(0, 0, 0, 0.12)";	      
 		    	}, function(){ });
-			}		  	
+			}
+			var p = document.getElementsByClassName("timeline");
+           for(var i=0;i<p.length;i++){
+                p[i].style.display='block';
+        	}	  	
 		}else{
 			nullService=true;
 			document.getElementById("selectService").children[0].style.borderBottomColor= "red";
 		}	
+
   	}	
 
   	$scope.isObject= function(r){
