@@ -144,8 +144,8 @@
                 </md-input-container> 
             </div>
 
-            <ng-map zoom="20" center="[{{profile.location.geolocation.latitude}}, {{profile.location.geolocation.longitude}}]">
-                <marker position="[{{profile.location.geolocation.latitude}}, {{profile.location.geolocation.longitude}}]" title="drag me" draggable="{{editable}}"></marker>
+            <ng-map zoom="20" center="[{{profile.location.geolocation.longitude}}, {{profile.location.geolocation.latitude}}]">
+                <marker position="[{{profile.location.geolocation.longitude}},{{profile.location.geolocation.latitude}}]" title="drag me" draggable="{{editable}}"></marker>
             </ng-map>
         </div>
 
